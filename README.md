@@ -7,6 +7,7 @@ Major Thanks to...
 * balika011
 * Znullptr
 * Pablo (kozarovv)
+* ChendoChap
 * xyz
 * CelesteBlue
 * kiwidogg
