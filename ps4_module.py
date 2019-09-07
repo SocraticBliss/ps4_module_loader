@@ -453,7 +453,7 @@ class Dynamic:
             0x20 : 'SCE_CANT_SHARE',
         }.get(self.INDEX, 'Missing Module Attribute!!!')
     
-    def comment(self, address, stubs, modules):
+    def comment(self, address, stubs, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
             return '%s | %s' % (self.tag(), [item[1] for item in stubs if item[0] == self.VALUE][0])
@@ -478,10 +478,10 @@ class Dynamic:
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
                 return '%s | MID:%#x Version:%i.%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, [item[1] for item in modules if item[0] == self.INDEX][0])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, [item[1] for item in libraries if item[0] == self.INDEX][0])
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
                 return '%s | LID:%#x Version:%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, [item[1] for item in modules if item[0] == self.INDEX][0])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, [item[1] for item in libraries if item[0] == self.INDEX][0])
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
                 return '%s | %s' % (self.tag(), self.mod_attribute())
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB_ATTR]:
@@ -492,7 +492,7 @@ class Dynamic:
         
         return '%s | %#x' % (self.tag(), self.VALUE)
     
-    def process(self, stubs, modules):
+    def process(self, stubs, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
             stubs[self.VALUE] = 0
@@ -535,13 +535,13 @@ class Dynamic:
             self.INDEX          = self.VALUE & 0xFFF
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
-                if self.INDEX not in modules:
-                    modules[self.INDEX] = 0
+                if self.INDEX not in libraries:
+                    libraries[self.INDEX] = 0
                 return '%s | MID:%#x Version:%i.%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, self.INDEX)
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
-                if self.INDEX not in modules:
-                    modules[self.INDEX] = 0
+                if self.INDEX not in libraries:
+                    libraries[self.INDEX] = 0
                 return '%s | LID:%#x Version:%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.INDEX)
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
@@ -576,7 +576,7 @@ class Relocation:
         self.OFFSET = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
         self.INFO   = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
         self.ADDEND = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-    
+        
     def type(self):
     
         return {
@@ -622,7 +622,7 @@ class Relocation:
             Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD : 'R_X86_64_ORBIS_GOTPCREL_LOAD',
         }.get(self.INFO, 'Missing PS4 Relocation Type!!!')
     
-    def process(self, library, functions):
+    def process(self, nids, functions, libraries):
     
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
@@ -638,37 +638,41 @@ class Relocation:
             self.INDEX = 0
         
         # Function Name (Offset) == Symbol Value + AddEnd (S + A)
-        # Module/Library Name (Offset) == Symbol Value (S)
+        # Library Name  (Offset) == Symbol Value (S)
         if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_JUMP_SLOT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
             idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: %s' % self.RELSTR, False)
             
-            # module NID function
+            # Library NID Name
             try:
-                module, nid, function = [item for item in library if item[1] == self.RELSTR[:11]][0]
+                library, nid, name = [item for item in nids if item[1] == self.RELSTR[:11]][0]
             
             except:
-                module = 'Unknown'
-                function = self.RELSTR
+                try:
+                    library = libraries[ord(self.RELSTR[12:13]) - 65][1]
+                except:
+                    library = ''
+                
+                name = self.RELSTR
                 pass
             
             # Rename the Import...
-            idc.set_name(self.OFFSET, '__imp_%s' % function, SN_NOCHECK | SN_NOWARN)
+            idc.set_name(self.OFFSET, '__imp_%s' % name, SN_NOCHECK | SN_NOWARN)
             
             # Rename the Function...
             idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
-            idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN)
+            idc.set_name(idc.get_qword(self.OFFSET) - 0x6, name, SN_NOCHECK | SN_NOWARN)
             
             try:
-                import_node = idaapi.netnode(module, 0, True)
-                import_node.supset(ea2node(self.OFFSET), function)
+                import_node = idaapi.netnode(library, 0, True)
+                import_node.supset(ea2node(self.OFFSET), name)
             
                 # Requires customized loader.i / ida_loader.py(d)
-                idaapi.import_module(module, None, import_node.index(), None, 'linux')
+                idaapi.import_module(library, None, import_node.index(), None, 'linux')
             
             except:
                 pass
             
-            return '%#x | %s : %s' % (self.OFFSET, function, self.type())
+            return '%#x | %s : %s' % (self.OFFSET, name, self.type())
         
         # String (Offset) == Base + AddEnd (B + A)
         if self.type() in ['R_X86_64_RELATIVE']:
@@ -787,8 +791,8 @@ def accept_file(f, n):
     except:
         pass
 
-# Load De-Obfuscation Library...
-def load_library(f):
+# Load NID Library...
+def load_nids(f):
 
     try:
         format = '%s' % f[-3:]
@@ -796,14 +800,14 @@ def load_library(f):
         
         with open(location) as database:
             if format == 'csv':
-                library = [tuple(line) for line in csv.reader(database, delimiter=' ')]
+                nids = [tuple(line) for line in csv.reader(database, delimiter=' ')]
             else:
                 for line in database.readlines():
                     if re.search('^      \w*:$', line):
-                        module = line.strip().split(':')[0]
+                        library = line.strip().split(':')[0]
                     elif re.search('^          \w*: 0x[0-9a-fA-F]{8}$', line):
-                        function, nid = line.strip().split(':')
-                        library.append((module, nid.strip(), function))
+                        name, nid = line.strip().split(':')
+                        nids.append((library, nid.strip(), name))
     
     except IOError:
         retry = idaapi.ask_file(0, '%s|*.%s|All files (*.*)|*.*' % (f, format), 'Please gimme your %s file' % f)
@@ -812,14 +816,14 @@ def load_library(f):
             try:
                 with open(location, 'rb') as database:
                     if format == 'csv':
-                        library = [tuple(line) for line in csv.reader(database, delimiter=' ')]
+                        nids = [tuple(line) for line in csv.reader(database, delimiter=' ')]
                     else:
                         for line in database.readlines():
                             if re.search('^      \w*:$', line):
-                                module = line.strip().split(':')[0]
+                                library = line.strip().split(':')[0]
                             elif re.search('^          \w*: 0x[0-9a-fA-F]{8}$', line):
-                                function, nid = line.strip().split(':')
-                                library.append((module, nid.strip(), function))
+                                name, nid = line.strip().split(':')
+                                nids.append((library, nid.strip(), name))
             
             except:
                 idc.error('I see what you did there... kudos')
@@ -828,7 +832,7 @@ def load_library(f):
         else:
             idc.error('Missing %s' % location)
     
-    return library
+    return nids
 
 # Load Input Binary...
 def load_file(f, neflags, format):
@@ -840,7 +844,7 @@ def load_file(f, neflags, format):
     bitness = ps.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'gnulnx_x64')
     
     # Load Aerolib...
-    nidlib = load_library('aerolib.csv')
+    nids = load_nids('aerolib.csv')
     
     # Segment Loading...
     for segm in ps.E_SEGMENTS:
@@ -865,7 +869,7 @@ def load_file(f, neflags, format):
             # Process Dynamic Segment....
             elif segm.name() == 'DYNAMIC':
                 stubs = {}
-                modules = {}
+                libraries = {}
                 f.seek(segm.OFFSET)
                 
                 offset = segm.OFFSET
@@ -873,7 +877,7 @@ def load_file(f, neflags, format):
                 dynamicsize = size
                 
                 for entry in xrange(size / 0x10):
-                    idc.set_cmt(address + (entry * 0x10), Dynamic(f).process(stubs, modules), False)
+                    idc.set_cmt(address + (entry * 0x10), Dynamic(f).process(stubs, libraries), False)
             
             # Process Exception Handling Segment...
             else:
@@ -943,14 +947,14 @@ def load_file(f, neflags, format):
                 stubs = sorted(stubs.iteritems(), key = operator.itemgetter(0))
                 #print('Stubs: %s' % stubs)
                 
-                # Modules
-                for key in modules:
+                # Libraries
+                for key in libraries:
                     idc.create_strlit(location + key, BADADDR)
-                    modules[key] = idc.get_strlit_contents(location + key, BADADDR)
-                    idc.set_cmt(location + key, 'Module', False)
+                    libraries[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    idc.set_cmt(location + key, 'Library', False)
                 
-                modules = sorted(modules.iteritems(), key = operator.itemgetter(0))
-                #print('Modules: %s' % modules)
+                libraries = sorted(libraries.iteritems(), key = operator.itemgetter(0))
+                #print('Libraries: %s' % libraries)
                 
                 # Functions
                 for key in functions:
@@ -966,7 +970,7 @@ def load_file(f, neflags, format):
                 f.seek(segm.OFFSET + Dynamic.SYMTAB + 0x30)
                 
                 for entry in xrange((Dynamic.SYMTABSZ - 0x30) / 0x18):
-                    Symbol(f).resolve(location + (entry * 0x18), nidlib, functions[entry][1])
+                    Symbol(f).resolve(location + (entry * 0x18), nids, functions[entry][1])
             
             except:
                 pass
@@ -986,7 +990,7 @@ def load_file(f, neflags, format):
                 
                 for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nidlib, functions), False)
+                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, functions, libraries), False)
             
             except:
                 pass
@@ -1023,7 +1027,7 @@ def load_file(f, neflags, format):
                 
                 for entry in xrange(dynamicsize / 0x10):
                     idaapi.create_struct(dynamic + (entry * 0x10), 0x10, struct)
-                    idc.set_cmt(dynamic + (entry * 0x10), Dynamic(f).comment(address, stubs, modules), False)
+                    idc.set_cmt(dynamic + (entry * 0x10), Dynamic(f).comment(address, stubs, libraries), False)
             
             except:
                 pass
