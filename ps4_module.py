@@ -453,7 +453,7 @@ class Dynamic:
             0x20 : 'SCE_CANT_SHARE',
         }.get(self.INDEX, 'Missing Module Attribute!!!')
     
-    def comment(self, address, stubs, libraries):
+    def comment(self, address, stubs, modules, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
             return '%s | %s' % (self.tag(), [item[1] for item in stubs if item[0] == self.VALUE][0])
@@ -478,7 +478,7 @@ class Dynamic:
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
                 return '%s | MID:%#x Version:%i.%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, [item[1] for item in libraries if item[0] == self.INDEX][0])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, [item[1] for item in modules if item[0] == self.INDEX][0])
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
                 return '%s | LID:%#x Version:%i Name:%s' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, [item[1] for item in libraries if item[0] == self.INDEX][0])
@@ -492,7 +492,7 @@ class Dynamic:
         
         return '%s | %#x' % (self.tag(), self.VALUE)
     
-    def process(self, stubs, libraries):
+    def process(self, stubs, modules, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
             stubs[self.VALUE] = 0
@@ -535,13 +535,13 @@ class Dynamic:
             self.INDEX          = self.VALUE & 0xFFF
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
-                if self.INDEX not in libraries:
-                    libraries[self.INDEX] = 0
+                if self.INDEX not in modules:
+                    modules[self.INDEX] = 0
                 return '%s | MID:%#x Version:%i.%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, self.INDEX)
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
                 if self.INDEX not in libraries:
-                    libraries[self.INDEX] = 0
+                    libraries[self.INDEX] = self.ID
                 return '%s | LID:%#x Version:%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.INDEX)
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
@@ -576,7 +576,7 @@ class Relocation:
         self.OFFSET = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
         self.INFO   = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
         self.ADDEND = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        
+    
     def type(self):
     
         return {
@@ -642,18 +642,43 @@ class Relocation:
         if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_JUMP_SLOT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
             idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: %s' % self.RELSTR, False)
             
-            # Library NID Name
+            # Name
             try:
-                library, nid, name = [item for item in nids if item[1] == self.RELSTR[:11]][0]
+                name = [item[2] for item in nids if item[1] == self.RELSTR[:11]][0]
             
             except:
-                try:
-                    library = libraries[ord(self.RELSTR[12:13]) - 65][1]
-                except:
-                    library = ''
-                
                 name = self.RELSTR
-                pass
+            
+            # Library
+            try:
+                # [letter]#
+                if ord(self.RELSTR[13:14]) == 35:
+                    lid = ord(self.RELSTR[12:13]) - 65
+                    
+                    if lid > 25:
+                        lid -= 6 
+                    
+                    library = [item[1] for item in libraries if item[0] == lid][0] 
+                
+                # [letter][letter]#
+                elif ord(self.RELSTR[14:15]) == 35:
+                    lid = ord(self.RELSTR[12:13]) - 65
+                    
+                    if lid > 25:
+                        lid -= 6
+                    
+                    lid2 = ord(self.RELSTR[13:14]) - 65
+                    
+                    if lid2 > 25:
+                        lid2 -= 6
+                    
+                    library = [item[1] for item in libraries if item[0] == (lid + lid2)][0]
+                # Not a NID
+                else:
+                    library = ''
+            
+            except:
+                library = ''
             
             # Rename the Import...
             idc.set_name(self.OFFSET, '__imp_%s' % name, SN_NOCHECK | SN_NOWARN)
@@ -662,7 +687,7 @@ class Relocation:
             idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
             idc.set_name(idc.get_qword(self.OFFSET) - 0x6, name, SN_NOCHECK | SN_NOWARN)
             
-            try:
+            try:              
                 import_node = idaapi.netnode(library, 0, True)
                 import_node.supset(ea2node(self.OFFSET), name)
             
@@ -855,7 +880,7 @@ def load_file(f, neflags, format):
             address = segm.MEM_ADDR if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.OFFSET + 0x1000000
             size    = segm.MEM_SIZE if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.FILE_SIZE
             
-            print('# Creating %s Segment...' % segm.name())
+            print('# Processing %s Segment...' % segm.name())
             f.file2base(segm.OFFSET, address, address + segm.FILE_SIZE, FILEREG_PATCHABLE)
             
             if segm.name() not in ['DYNAMIC', 'GNU_EH_FRAME']:
@@ -869,6 +894,7 @@ def load_file(f, neflags, format):
             # Process Dynamic Segment....
             elif segm.name() == 'DYNAMIC':
                 stubs = {}
+                modules = {}
                 libraries = {}
                 f.seek(segm.OFFSET)
                 
@@ -877,11 +903,12 @@ def load_file(f, neflags, format):
                 dynamicsize = size
                 
                 for entry in xrange(size / 0x10):
-                    idc.set_cmt(address + (entry * 0x10), Dynamic(f).process(stubs, libraries), False)
+                    idc.set_cmt(address + (entry * 0x10), Dynamic(f).process(stubs, modules, libraries), False)
             
+            '''
             # Process Exception Handling Segment...
-            else:
-                '''
+            elif segm.name() == 'GNU_EH_FRAME':
+                
                 # Exception Handling Frame Header Structure
                 members = [('version', 'Version', 0x1),
                            ('eh_frame_ptr_enc', 'Encoding of Exception Handling Frame Pointer', 0x1),
@@ -890,14 +917,14 @@ def load_file(f, neflags, format):
                 struct = segm.struct('EHFrame', members)
                 
                 idaapi.create_struct(address, 0x4, struct)
-                '''
+                
                 # Exception Handling Structure
                 members = [('exception', 'value', 0x8)]
                 struct = segm.struct('Exception', members)
                 
                 for entry in xrange(size / 0x8):
                     idaapi.create_struct(address + (entry * 0x8), 0x8, struct)
-        
+            '''
         # Process SCE 'Special' Shared Object Segment...
         if segm.name() == 'SCE_DYNLIBDATA':
             # SCE Fingerprint
@@ -947,14 +974,27 @@ def load_file(f, neflags, format):
                 stubs = sorted(stubs.iteritems(), key = operator.itemgetter(0))
                 #print('Stubs: %s' % stubs)
                 
-                # Libraries
-                for key in libraries:
+                # Modules
+                for key in modules:
                     idc.create_strlit(location + key, BADADDR)
+                    modules[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    idc.set_cmt(location + key, 'Module', False)
+                
+                modules = sorted(modules.iteritems(), key = operator.itemgetter(0))
+                #print('Modules: %s' % modules)
+                
+                # Libraries and LIDs
+                lids = {}
+                for key, value in libraries.iteritems():
+                    idc.create_strlit(location + key, BADADDR)
+                    lids[value] = idc.get_strlit_contents(location + key, BADADDR)
                     libraries[key] = idc.get_strlit_contents(location + key, BADADDR)
                     idc.set_cmt(location + key, 'Library', False)
                 
                 libraries = sorted(libraries.iteritems(), key = operator.itemgetter(0))
                 #print('Libraries: %s' % libraries)
+                lids = sorted(lids.iteritems(), key = operator.itemgetter(0))
+                #print('Lids: %s' % lids)
                 
                 # Functions
                 for key in functions:
@@ -990,7 +1030,7 @@ def load_file(f, neflags, format):
                 
                 for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, functions, libraries), False)
+                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, functions, lids), False)
             
             except:
                 pass
@@ -1027,7 +1067,7 @@ def load_file(f, neflags, format):
                 
                 for entry in xrange(dynamicsize / 0x10):
                     idaapi.create_struct(dynamic + (entry * 0x10), 0x10, struct)
-                    idc.set_cmt(dynamic + (entry * 0x10), Dynamic(f).comment(address, stubs, libraries), False)
+                    idc.set_cmt(dynamic + (entry * 0x10), Dynamic(f).comment(address, stubs, modules, libraries), False)
             
             except:
                 pass
@@ -1063,16 +1103,6 @@ def load_file(f, neflags, format):
     # __stack_chk_fail
     try:
         function = idc.get_name_ea_simple('__stack_chk_fail')
-        function = idaapi.get_func(function)
-        function.flags |= FUNC_NORET
-        idaapi.update_func(function)
-    
-    except:
-        pass
-    
-    # __stack_chk_guard
-    try:
-        function = idc.get_name_ea_simple('__stack_chk_guard')
         function = idaapi.get_func(function)
         function.flags |= FUNC_NORET
         idaapi.update_func(function)
