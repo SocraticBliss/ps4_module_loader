@@ -622,7 +622,7 @@ class Relocation:
             Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD : 'R_X86_64_ORBIS_GOTPCREL_LOAD',
         }.get(self.INFO, 'Missing PS4 Relocation Type!!!')
     
-    def process(self, nids, functions, libraries):
+    def process(self, alphabet, nids, functions, libraries):
     
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
@@ -651,28 +651,20 @@ class Relocation:
             
             # Library
             try:
-                # [letter]#
-                if ord(self.RELSTR[13:14]) == 35:
-                    lid = ord(self.RELSTR[12:13]) - 65
-                    
-                    if lid > 25:
-                        lid -= 6 
-                    
+                lid = next(index for index, char in alphabet.iteritems() if char == self.RELSTR[12:13])
+                
+                # [base64]#
+                if self.RELSTR[13:14] == '#':
+
                     library = [item[1] for item in libraries if item[0] == lid][0] 
                 
-                # [letter][letter]#
-                elif ord(self.RELSTR[14:15]) == 35:
-                    lid = ord(self.RELSTR[12:13]) - 65
+                # [base64][base64]#
+                elif self.RELSTR[14:15] == '#':
                     
-                    if lid > 25:
-                        lid -= 6
-                    
-                    lid2 = ord(self.RELSTR[13:14]) - 65
-                    
-                    if lid2 > 25:
-                        lid2 -= 6
+                    lid2 = next(index for index, char in alphabet.iteritems() if char == self.RELSTR[13:14])
                     
                     library = [item[1] for item in libraries if item[0] == (lid + lid2)][0]
+                
                 # Not a NID
                 else:
                     library = ''
@@ -1028,9 +1020,14 @@ def load_file(f, neflags, format):
                 location = address + Dynamic.JMPTAB
                 f.seek(segm.OFFSET + Dynamic.JMPTAB)
                 
+                # PS4 Base64 Alphabet
+                base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
+                alphabet = { index:char for index, char in enumerate(base64) }
+                #print(alphabet)
+                
                 for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, functions, lids), False)
+                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(alphabet, nids, functions, lids), False)
             
             except:
                 pass
