@@ -650,21 +650,25 @@ class Relocation:
                 function = self.NID
             
             # Library
-            lid1 = alphabet[self.NID[12:13]]
-            
-            # [base64]#
-            if self.NID[13:14] == '#':
-            
-                library = libraries[lid1]
-            
-            # [base64][base64]#
-            elif self.NID[14:15] == '#':
+            try:
+                lid1 = alphabet[self.NID[12:13]]
                 
-                lid2 = alphabet[self.NID[13:14]]
-                library = libraries[lid1 + lid2]
-            
+                # [base64]#
+                if self.NID[13:14] == '#':
+                
+                    library = libraries[lid1]
+                
+                # [base64][base64]#
+                elif self.NID[14:15] == '#':
+                    
+                    lid2 = alphabet[self.NID[13:14]]
+                    library = libraries[lid1 + lid2]
+                
+                else:
+                    raise
+                    
             # Not a NID
-            else:
+            except:
                 library = ''
             
             # Rename the Import...
@@ -1017,6 +1021,7 @@ def load_file(f, neflags, format):
                 # PS4 Base64 Alphabet
                 base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
                 alphabet = { character:index for index, character in enumerate(base64) }
+                #print(alphabet)
                 
                 for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
