@@ -556,7 +556,7 @@ class Dynamic:
 
 class Relocation:
 
-    __slots__ = ('OFFSET', 'INDEX', 'INFO', 'ADDEND', 'RELSTR')
+    __slots__ = ('OFFSET', 'INDEX', 'INFO', 'ADDEND', 'NID')
     
     # PS4 (X86_64) Relocation Codes (40)
     (R_X86_64_NONE, R_X86_64_64, R_X86_64_PC32, R_X86_64_GOT32,
@@ -569,7 +569,7 @@ class Relocation:
     R_X86_64_GOTPC64, R_X86_64_GOTPLT64, R_X86_64_PLTOFF64, R_X86_64_SIZE32,
     R_X86_64_SIZE64, R_X86_64_GOTPC32_TLSDESC, R_X86_64_TLSDESC_CALL, R_X86_64_TLSDESC,
     R_X86_64_IRELATIVE, R_X86_64_RELATIVE64) = xrange(0x27)
-    R_X86_64_ORBIS_GOTPCREL_LOAD             = 0x28
+    R_X86_64_ORBIS_GOTPCREL_LOAD             = 0x28 
     
     def __init__(self, f):
     
@@ -629,10 +629,10 @@ class Relocation:
             self.INFO &= 0xFF
             
             try:
-                self.RELSTR = next(value for key, value in enumerate(functions) if key + 2 == self.INDEX)[1]
+                self.NID = next(value for key, value in enumerate(functions) if key + 2 == self.INDEX)[1]
             
             except:
-                self.RELSTR = ''
+                self.NID = ''
         
         else:
             self.INDEX = 0
@@ -640,48 +640,43 @@ class Relocation:
         # Function Name (Offset) == Symbol Value + AddEnd (S + A)
         # Library Name  (Offset) == Symbol Value (S)
         if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_JUMP_SLOT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
-            idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: %s' % self.RELSTR, False)
+            idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: ' + self.NID, False)
             
-            # Name
+            # Function
             try:
-                name = [item[2] for item in nids if item[1] == self.RELSTR[:11]][0]
+                function = [item[2] for item in nids if item[1] == self.NID[:11]][0]
             
             except:
-                name = self.RELSTR
+                function = self.NID
             
             # Library
-            try:
-                lid = next(index for index, char in alphabet.iteritems() if char == self.RELSTR[12:13])
-                
-                # [base64]#
-                if self.RELSTR[13:14] == '#':
-
-                    library = [item[1] for item in libraries if item[0] == lid][0] 
-                
-                # [base64][base64]#
-                elif self.RELSTR[14:15] == '#':
-                    
-                    lid2 = next(index for index, char in alphabet.iteritems() if char == self.RELSTR[13:14])
-                    
-                    library = [item[1] for item in libraries if item[0] == (lid + lid2)][0]
-                
-                # Not a NID
-                else:
-                    library = ''
+            lid1 = alphabet[self.NID[12:13]]
             
-            except:
+            # [base64]#
+            if self.NID[13:14] == '#':
+            
+                library = libraries[lid1]
+            
+            # [base64][base64]#
+            elif self.NID[14:15] == '#':
+                
+                lid2 = alphabet[self.NID[13:14]]
+                library = libraries[lid1 + lid2]
+            
+            # Not a NID
+            else:
                 library = ''
             
             # Rename the Import...
-            idc.set_name(self.OFFSET, '__imp_%s' % name, SN_NOCHECK | SN_NOWARN)
+            idc.set_name(self.OFFSET, '__imp_' + function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
             
             # Rename the Function...
             idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
-            idc.set_name(idc.get_qword(self.OFFSET) - 0x6, name, SN_NOCHECK | SN_NOWARN)
+            idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN)
             
             try:              
                 import_node = idaapi.netnode(library, 0, True)
-                import_node.supset(ea2node(self.OFFSET), name)
+                import_node.supset(ea2node(self.OFFSET), function)
             
                 # Requires customized loader.i / ida_loader.py(d)
                 idaapi.import_module(library, None, import_node.index(), None, 'linux')
@@ -689,7 +684,7 @@ class Relocation:
             except:
                 pass
             
-            return '%#x | %s : %s' % (self.OFFSET, name, self.type())
+            return '%#x | %s : %s' % (self.OFFSET, function, self.type())
         
         # String (Offset) == Base + AddEnd (B + A)
         if self.type() in ['R_X86_64_RELATIVE']:
@@ -779,7 +774,7 @@ class Symbol:
     
     def resolve(self, address, library, function):
     
-        idc.set_cmt(self.VALUE, 'NID: %s' % function, False)
+        idc.set_cmt(self.VALUE, 'NID: ' + function, False)
         
         try:
             function = [item[2] for item in library if item[1] == function[:11]][0]
@@ -787,14 +782,14 @@ class Symbol:
         except:
             pass
         
-        #print('Function: %s number: %s ' % (function, idaapi.get_func_num(self.VALUE)))
+        #print('Function: %s number: %s' % (function, idaapi.get_func_num(self.VALUE)))
         if idaapi.get_func_num(self.VALUE) > 0:
             idc.del_func(self.VALUE)
         
         idc.add_func(self.VALUE)
         idc.add_entry(self.VALUE, self.VALUE, function, True)
         idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN)
-        idc.set_cmt(address, '%s | %s ' % (function, self.info()), False)
+        idc.set_cmt(address, '%s | %s' % (function, self.info()), False)
 
 # PROGRAM START
 
@@ -803,7 +798,7 @@ def accept_file(f, n):
 
     try:
         if not isinstance(n, (int, long)) or n == 0:
-            return 'PS4 - %s' % Binary(f).type() if f.read(4) == '\x7FELF' else 0
+            return 'PS4 - ' + Binary(f).type() if f.read(4) == '\x7FELF' else 0
     
     except:
         pass
@@ -812,7 +807,7 @@ def accept_file(f, n):
 def load_nids(f):
 
     try:
-        format = '%s' % f[-3:]
+        format = f[-3:]
         location = '%s/loaders/%s' % (idc.idadir(), f)
         
         with open(location) as database:
@@ -845,9 +840,9 @@ def load_nids(f):
             except:
                 idc.error('I see what you did there... kudos')
             
-            shutil.copy2(retry, '%s' % location)
+            shutil.copy2(retry, location)
         else:
-            idc.error('Missing %s' % location)
+            idc.error('Missing ' + location)
     
     return nids
 
@@ -964,7 +959,7 @@ def load_file(f, neflags, format):
                     idc.set_cmt(location + key, 'Stub', False)
                 
                 stubs = sorted(stubs.iteritems(), key = operator.itemgetter(0))
-                #print('Stubs: %s' % stubs)
+                #print('Stubs: ' + stubs)
                 
                 # Modules
                 for key in modules:
@@ -973,7 +968,7 @@ def load_file(f, neflags, format):
                     idc.set_cmt(location + key, 'Module', False)
                 
                 modules = sorted(modules.iteritems(), key = operator.itemgetter(0))
-                #print('Modules: %s' % modules)
+                #print('Modules: ' + modules)
                 
                 # Libraries and LIDs
                 lids = {}
@@ -984,9 +979,8 @@ def load_file(f, neflags, format):
                     idc.set_cmt(location + key, 'Library', False)
                 
                 libraries = sorted(libraries.iteritems(), key = operator.itemgetter(0))
-                #print('Libraries: %s' % libraries)
-                lids = sorted(lids.iteritems(), key = operator.itemgetter(0))
-                #print('Lids: %s' % lids)
+                #print('Libraries: ' + libraries)
+                #print('Lids: ' + lids)
                 
                 # Functions
                 for key in functions:
@@ -995,7 +989,7 @@ def load_file(f, neflags, format):
                     idc.set_cmt(location + key, 'Function', False)
                 
                 functions = sorted(functions.iteritems(), key = operator.itemgetter(0))
-                #print('Functions: %s' % functions)
+                #print('Functions: ' + functions)
                 
                 # Resolve Functions
                 location = address + Dynamic.SYMTAB + 0x30
@@ -1022,8 +1016,7 @@ def load_file(f, neflags, format):
                 
                 # PS4 Base64 Alphabet
                 base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
-                alphabet = { index:char for index, char in enumerate(base64) }
-                #print(alphabet)
+                alphabet = { character:index for index, character in enumerate(base64) }
                 
                 for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
