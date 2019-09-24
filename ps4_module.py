@@ -26,16 +26,12 @@ ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 from idaapi import *
 from idc import *
-from pprint import pprint as pp
 
 import csv
 import idaapi
 import idc
-import operator
-import re
 import shutil
 import struct
-import sys
 
 class Binary:
 
@@ -77,16 +73,13 @@ class Binary:
         self.EI_PADDING       = struct.unpack('6x', f.read(6))
         self.EI_SIZE          = struct.unpack('<B', f.read(1))[0]
         
-        Binary.FMT = '<I' if self.EI_CLASS == 0x1 else '<Q'
-        Binary.SIZE = struct.calcsize(Binary.FMT)
-        
         # Elf Properties
         self.E_TYPE           = struct.unpack('<H', f.read(2))[0]
         self.E_MACHINE        = struct.unpack('<H', f.read(2))[0]
         self.E_VERSION        = struct.unpack('<I', f.read(4))[0]
-        self.E_START_ADDR     = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.E_PHT_OFFSET     = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.E_SHT_OFFSET     = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.E_START_ADDR     = struct.unpack('<Q', f.read(8))[0]
+        self.E_PHT_OFFSET     = struct.unpack('<Q', f.read(8))[0]
+        self.E_SHT_OFFSET     = struct.unpack('<Q', f.read(8))[0]
         self.E_FLAGS          = struct.unpack('<I', f.read(4))[0]
         self.E_SIZE           = struct.unpack('<H', f.read(2))[0]
         self.E_PHT_SIZE       = struct.unpack('<H', f.read(2))[0]
@@ -131,13 +124,13 @@ class Binary:
         idc.set_inf_attr(INF_MODEL, pointer)
         idc.set_inf_attr(INF_SIZEOF_BOOL, 0x1)
         idc.set_inf_attr(INF_SIZEOF_LONG, 0x8)
-        idc.set_inf_attr(INF_SIZEOF_LDBL, 0x10 if self.EI_CLASS == 0x2 else 0x8)
+        idc.set_inf_attr(INF_SIZEOF_LDBL, 0x10)
         
         # Type Library
         idc.add_default_til(til)
         
         # Loader Flags
-        idc.set_inf_attr(INF_LFLAGS, LFLG_64BIT if self.EI_CLASS == 0x2 else LFLG_PC_FLAT)
+        idc.set_inf_attr(INF_LFLAGS, LFLG_64BIT)
         
         # Assume GCC3 names
         idc.set_inf_attr(INF_DEMNAMES, DEMNAM_GCC3)
@@ -150,7 +143,8 @@ class Binary:
         
         # Return Bitsize
         return self.EI_CLASS
-        
+    
+
 class Segment:
 
     __slots__ = ('TYPE', 'FLAGS', 'OFFSET', 'MEM_ADDR',
@@ -190,24 +184,14 @@ class Segment:
     
     def __init__(self, f):
     
-        self.TYPE         = struct.unpack('<I', f.read(4))[0]
-        
-        if Binary.FMT == '<I':
-            self.OFFSET    = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.MEM_ADDR  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.FILE_ADDR = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.FILE_SIZE = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.MEM_SIZE  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.FLAGS     = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.ALIGNMENT = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        else:
-            self.FLAGS     = struct.unpack('<I', f.read(4))[0]
-            self.OFFSET    = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.MEM_ADDR  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.FILE_ADDR = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.FILE_SIZE = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.MEM_SIZE  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-            self.ALIGNMENT = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.TYPE      = struct.unpack('<I', f.read(4))[0]
+        self.FLAGS     = struct.unpack('<I', f.read(4))[0]
+        self.OFFSET    = struct.unpack('<Q', f.read(8))[0]
+        self.MEM_ADDR  = struct.unpack('<Q', f.read(8))[0]
+        self.FILE_ADDR = struct.unpack('<Q', f.read(8))[0]
+        self.FILE_SIZE = struct.unpack('<Q', f.read(8))[0]
+        self.MEM_SIZE  = struct.unpack('<Q', f.read(8))[0]
+        self.ALIGNMENT = struct.unpack('<Q', f.read(8))[0]
     
     def alignment(self):
     
@@ -257,7 +241,7 @@ class Segment:
         for (member, comment, size) in members:
             flags = idaapi.get_flags_by_size(size)
             
-            if member == 'function':
+            if member == 'offset':
                 idc.add_struc_member(entry, member, location, flags + FF_0OFF, BADADDR, size, BADADDR, 0, REF_OFF64)
             else:
                 idc.add_struc_member(entry, member, location, flags, BADADDR, size)
@@ -283,9 +267,10 @@ class Segment:
             Segment.PT_GNU_EH_FRAME    : 'CONST',
             Segment.PT_GNU_STACK       : 'DATA',
         }.get(self.TYPE, 'UNK')
+    
 
 class Section:
-
+    
     __slots__ = ('NAME', 'TYPE', 'FLAGS', 'MEM_ADDR',
                  'OFFSET', 'FILE_SIZE', 'LINK', 'INFO',
                  'ALIGNMENT', 'FSE_SIZE')
@@ -294,17 +279,18 @@ class Section:
     
         self.NAME      = struct.unpack('<I', f.read(4))[0]
         self.TYPE      = struct.unpack('<I', f.read(4))[0]
-        self.FLAGS     = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.MEM_ADDR  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.OFFSET    = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.FILE_SIZE = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.FLAGS     = struct.unpack('<Q', f.read(8))[0]
+        self.MEM_ADDR  = struct.unpack('<Q', f.read(8))[0]
+        self.OFFSET    = struct.unpack('<Q', f.read(8))[0]
+        self.FILE_SIZE = struct.unpack('<Q', f.read(8))[0]
         self.LINK      = struct.unpack('<I', f.read(4))[0]
         self.INFO      = struct.unpack('<I', f.read(4))[0]
-        self.ALIGNMENT = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.FSE_SIZE  = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.ALIGNMENT = struct.unpack('<Q', f.read(8))[0]
+        self.FSE_SIZE  = struct.unpack('<Q', f.read(8))[0]
+    
 
 class Dynamic:
-
+    
     __slots__ = ('TAG', 'VALUE', 'ID', 'VERSION_MAJOR', 'VERSION_MINOR', 'INDEX')
     
     # Dynamic Tags
@@ -353,8 +339,8 @@ class Dynamic:
     
     def __init__(self, f):
     
-        self.TAG   = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.VALUE = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.TAG   = struct.unpack('<Q', f.read(8))[0]
+        self.VALUE = struct.unpack('<Q', f.read(8))[0]
     
     def tag(self):
     
@@ -456,7 +442,7 @@ class Dynamic:
     def comment(self, address, stubs, modules, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
-            return '%s | %s' % (self.tag(), [item[1] for item in stubs if item[0] == self.VALUE][0])
+            return '%s | %s' % (self.tag(), stubs[self.VALUE])
         elif self.TAG == Dynamic.DT_SCE_HASH:
             return '%s | %#x' % (self.tag(), address + Dynamic.HASHTAB)
         elif self.TAG == Dynamic.DT_SCE_STRTAB:
@@ -478,17 +464,17 @@ class Dynamic:
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
                 return '%s | MID:%#x Version:%i.%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, [item[1] for item in modules if item[0] == self.INDEX][0])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, modules[self.INDEX])
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
                 return '%s | LID:%#x Version:%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, [item[1] for item in libraries if item[0] == self.INDEX][0])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, libraries[self.INDEX])
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
                 return '%s | %s' % (self.tag(), self.mod_attribute())
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB_ATTR]:
                 return '%s | LID:%#x Attributes:%s' % \
                        (self.tag(), self.ID, self.lib_attribute())
             elif self.TAG == Dynamic.DT_SCE_ORIGINAL_FILENAME:
-                return '%s | %s' % (self.tag(), [item[1] for item in stubs if item[0] == self.INDEX][0])
+                return '%s | %s' % (self.tag(), stubs[self.VALUE])
         
         return '%s | %#x' % (self.tag(), self.VALUE)
     
@@ -553,10 +539,11 @@ class Dynamic:
                 stubs[self.INDEX] = 0
         
         return '%s | %#x' % (self.tag(), self.VALUE)
+    
 
 class Relocation:
 
-    __slots__ = ('OFFSET', 'INDEX', 'INFO', 'ADDEND', 'NID')
+    __slots__ = ('OFFSET', 'INDEX', 'INFO', 'ADDEND')
     
     # PS4 (X86_64) Relocation Codes (40)
     (R_X86_64_NONE, R_X86_64_64, R_X86_64_PC32, R_X86_64_GOT32,
@@ -573,9 +560,9 @@ class Relocation:
     
     def __init__(self, f):
     
-        self.OFFSET = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.INFO   = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
-        self.ADDEND = struct.unpack(Binary.FMT, f.read(Binary.SIZE))[0]
+        self.OFFSET = struct.unpack('<Q', f.read(8))[0]
+        self.INFO   = struct.unpack('<Q', f.read(8))[0]
+        self.ADDEND = struct.unpack('<Q', f.read(8))[0]
     
     def type(self):
     
@@ -622,82 +609,86 @@ class Relocation:
             Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD : 'R_X86_64_ORBIS_GOTPCREL_LOAD',
         }.get(self.INFO, 'Missing PS4 Relocation Type!!!')
     
-    def process(self, alphabet, nids, functions, libraries):
+    def process(self, nids, symbols):
     
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
             self.INFO &= 0xFF
-            
-            try:
-                self.NID = next(value for key, value in enumerate(functions) if key + 2 == self.INDEX)[1]
-            
-            except:
-                self.NID = ''
+        else:
+            self.INDEX = 0            
         
+        # String (Offset) == Base + AddEnd (B + A)
+        if self.type() == 'R_X86_64_RELATIVE':
+            idaapi.put_qword(self.OFFSET, self.ADDEND)
+            idaapi.create_data(self.OFFSET, FF_QWORD, 0x8, BADNODE)
+        
+        # Object
+        if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
+            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
+            
+            # Resolve the NID...
+            idc.set_cmt(self.OFFSET, 'NID: ' + symbol, False)
+            object = nids.get(symbol[:11], symbol)
+            
+            # Rename the Object...
+            idc.set_name(self.OFFSET, object, SN_NOCHECK | SN_NOWARN | SN_FORCE)
+        
+        return self.type()
+    
+    def resolve(self, alphabet, nids, symbols, libraries):
+    
+        if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
+            self.INDEX = self.INFO >> 32
+            self.INFO &= 0xFF
+            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
         else:
             self.INDEX = 0
         
+        # Library
+        try:
+            lid1 = alphabet[symbol[12:13]]
+            
+            # [base64]#
+            if symbol[13:14] == '#':
+                library = libraries[lid1]
+            
+            # [base64][base64]#
+            elif symbol[14:15] == '#':
+                lid2 = alphabet[symbol[13:14]]
+                library = libraries[lid1 + lid2]
+            
+            else:
+                raise
+        
+        # Not a NID
+        except:
+            library = ''
+        
         # Function Name (Offset) == Symbol Value + AddEnd (S + A)
         # Library Name  (Offset) == Symbol Value (S)
-        if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_JUMP_SLOT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
-            idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: ' + self.NID, False)
-            
-            # Function
-            try:
-                function = [item[2] for item in nids if item[1] == self.NID[:11]][0]
-            
-            except:
-                function = self.NID
-            
-            # Library
-            try:
-                lid1 = alphabet[self.NID[12:13]]
-                
-                # [base64]#
-                if self.NID[13:14] == '#':
-                
-                    library = libraries[lid1]
-                
-                # [base64][base64]#
-                elif self.NID[14:15] == '#':
-                    
-                    lid2 = alphabet[self.NID[13:14]]
-                    library = libraries[lid1 + lid2]
-                
-                else:
-                    raise
-                    
-            # Not a NID
-            except:
-                library = ''
-            
-            # Rename the Import...
-            idc.set_name(self.OFFSET, '__imp_' + function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
-            
-            # Rename the Function...
-            idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
-            idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN)
-            
-            try:              
-                import_node = idaapi.netnode(library, 0, True)
-                import_node.supset(ea2node(self.OFFSET), function)
-            
-                # Requires customized loader.i / ida_loader.py(d)
-                idaapi.import_module(library, None, import_node.index(), None, 'linux')
-            
-            except:
-                pass
-            
-            return '%#x | %s : %s' % (self.OFFSET, function, self.type())
+        # Resolve the NID...
+        idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: ' + symbol, False)
+        function = nids.get(symbol[:11], symbol)
         
-        # String (Offset) == Base + AddEnd (B + A)
-        if self.type() in ['R_X86_64_RELATIVE']:
-            idaapi.put_qword(self.OFFSET, self.ADDEND)
-            idaapi.create_data(self.OFFSET, FF_QWORD, 0x8, BADNODE)
-            
-            return '%#x | %s | %#x' % (self.OFFSET, self.type(), self.ADDEND)
+        # Rename the Jump Function...
+        idc.set_name(self.OFFSET, '__imp_' + function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
-        return '%#x | %#x | %#x' % (self.OFFSET, self.INFO, self.ADDEND)
+        # Rename the Real Function...
+        idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
+        idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN)
+        
+        try:
+            import_node = idaapi.netnode(library, 0, True)
+            import_node.supset(ea2node(self.OFFSET), function)
+        
+            # Requires customized loader.i / ida_loader.py(d)
+            idaapi.import_module(library, None, import_node.index(), None, 'linux')
+        
+        except:
+            pass
+        
+        return self.type()
+    
 
 class Symbol:
 
@@ -729,19 +720,11 @@ class Symbol:
     def __init__(self, f):
     
         self.NAME      = struct.unpack('<I', f.read(4))[0]
-        
-        if Binary.FMT == '<I':
-            self.VALUE     = struct.unpack('<I', f.read(4))[0]
-            self.SIZE      = struct.unpack('<I', f.read(4))[0]
-            self.INFO      = struct.unpack('<B', f.read(1))[0]
-            self.OTHER     = struct.unpack('<B', f.read(1))[0]
-            self.INDEX     = struct.unpack('<H', f.read(2))[0]
-        else:
-            self.INFO      = struct.unpack('<B', f.read(1))[0]
-            self.OTHER     = struct.unpack('<B', f.read(1))[0]
-            self.INDEX     = struct.unpack('<H', f.read(2))[0]
-            self.VALUE     = struct.unpack('<Q', f.read(8))[0]
-            self.SIZE      = struct.unpack('<Q', f.read(8))[0]
+        self.INFO      = struct.unpack('<B', f.read(1))[0]
+        self.OTHER     = struct.unpack('<B', f.read(1))[0]
+        self.INDEX     = struct.unpack('<H', f.read(2))[0]
+        self.VALUE     = struct.unpack('<Q', f.read(8))[0]
+        self.SIZE      = struct.unpack('<Q', f.read(8))[0]
     
     def info(self):
     
@@ -769,31 +752,28 @@ class Symbol:
             Symbol.ST_WEAK_TLS        : 'Weak : TLS',
         }.get(self.INFO, 'Missing Symbol Information!!!')
     
-    def process(self, functions):
+    def process(self, symbols):
     
         if self.NAME != 0:
-            functions[self.NAME] = 0
+            symbols[self.NAME] = 0
         
         return '%#x | %s' % (self.NAME, self.info())
     
-    def resolve(self, address, library, function):
+    def resolve(self, address, nids, symbol):
     
-        idc.set_cmt(self.VALUE, 'NID: ' + function, False)
+        # Resolve the NID...
+        idc.set_cmt(self.VALUE, 'NID: ' + symbol, False)
+        function = nids.get(symbol[:11], symbol)
         
-        try:
-            function = [item[2] for item in library if item[1] == function[:11]][0]
-        
-        except:
-            pass
-        
-        #print('Function: %s number: %s' % (function, idaapi.get_func_num(self.VALUE)))
+        #print('Function: %s | number: %s' % (function, idaapi.get_func_num(self.VALUE)))
         if idaapi.get_func_num(self.VALUE) > 0:
             idc.del_func(self.VALUE)
+            idc.add_func(self.VALUE)
+            idc.add_entry(self.VALUE, self.VALUE, function, True)
+            idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN)
+            idc.set_cmt(address, '%s | %s' % (function, self.info()), False)
         
-        idc.add_func(self.VALUE)
-        idc.add_entry(self.VALUE, self.VALUE, function, True)
-        idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN)
-        idc.set_cmt(address, '%s | %s' % (function, self.info()), False)
+    
 
 # PROGRAM START
 
@@ -808,51 +788,32 @@ def accept_file(f, n):
         pass
 
 # Load NID Library...
-def load_nids(f):
+def load_nids(location, nids = {}):
 
     try:
-        format = f[-3:]
-        location = '%s/loaders/%s' % (idc.idadir(), f)
-        
         with open(location) as database:
-            if format == 'csv':
-                nids = [tuple(line) for line in csv.reader(database, delimiter=' ')]
-            else:
-                for line in database.readlines():
-                    if re.search('^      \w*:$', line):
-                        library = line.strip().split(':')[0]
-                    elif re.search('^          \w*: 0x[0-9a-fA-F]{8}$', line):
-                        name, nid = line.strip().split(':')
-                        nids.append((library, nid.strip(), name))
+            nids = dict(row for row in csv.reader(database, delimiter=' '))
     
     except IOError:
-        retry = idaapi.ask_file(0, '%s|*.%s|All files (*.*)|*.*' % (f, format), 'Please gimme your %s file' % f)
+        retry = idaapi.ask_file(0, 'aerolib.csv|*.csv|All files (*.*)|*.*', 'Please gimme your aerolib.csv file')
         
         if retry != None:
             try:
-                with open(location, 'rb') as database:
-                    if format == 'csv':
-                        nids = [tuple(line) for line in csv.reader(database, delimiter=' ')]
-                    else:
-                        for line in database.readlines():
-                            if re.search('^      \w*:$', line):
-                                library = line.strip().split(':')[0]
-                            elif re.search('^          \w*: 0x[0-9a-fA-F]{8}$', line):
-                                name, nid = line.strip().split(':')
-                                nids.append((library, nid.strip(), name))
-            
+                with open(retry) as database:
+                    nids = dict(row for row in csv.reader(database, delimiter=' '))
+                
+                shutil.copy2(retry, location)
+                
             except:
-                idc.error('I see what you did there... kudos')
-            
-            shutil.copy2(retry, location)
+                print('Ok, no NIDs for you!')
         else:
-            idc.error('Missing ' + location)
+            print('Ok, no NIDs for you!')
     
     return nids
 
 # Load Input Binary...
 def load_file(f, neflags, format):
-    
+
     print('# PS4 Module Loader')
     ps = Binary(f)
     
@@ -860,14 +821,14 @@ def load_file(f, neflags, format):
     bitness = ps.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'gnulnx_x64')
     
     # Load Aerolib...
-    nids = load_nids('aerolib.csv')
+    nids = load_nids(idc.idadir() + '/loaders/aerolib.csv')
     
     # Segment Loading...
     for segm in ps.E_SEGMENTS:
     
         # Process Loadable Segments...
         if segm.name() in ['CODE', 'DATA', 'SCE_RELRO', 'DYNAMIC', 'GNU_EH_FRAME', 'SCE_DYNLIBDATA']:
-            
+        
             address = segm.MEM_ADDR if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.OFFSET + 0x1000000
             size    = segm.MEM_SIZE if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.FILE_SIZE
             
@@ -875,8 +836,9 @@ def load_file(f, neflags, format):
             f.file2base(segm.OFFSET, address, address + segm.FILE_SIZE, FILEREG_PATCHABLE)
             
             if segm.name() not in ['DYNAMIC', 'GNU_EH_FRAME']:
+                
                 idaapi.add_segm(0, address, address + size, segm.name(), segm.type(), ADDSEG_NOTRUNC | ADDSEG_FILLGAP)
-            
+                
                 # Processor Specific Segment Details
                 idc.set_segm_addressing(address, bitness)
                 idc.set_segm_alignment(address, segm.alignment())
@@ -884,6 +846,7 @@ def load_file(f, neflags, format):
             
             # Process Dynamic Segment....
             elif segm.name() == 'DYNAMIC':
+            
                 stubs = {}
                 modules = {}
                 libraries = {}
@@ -916,8 +879,10 @@ def load_file(f, neflags, format):
                 for entry in xrange(size / 0x8):
                     idaapi.create_struct(address + (entry * 0x8), 0x8, struct)
             '''
+        
         # Process SCE 'Special' Shared Object Segment...
         if segm.name() == 'SCE_DYNLIBDATA':
+        
             # SCE Fingerprint
             idc.make_array(address, 0x14)
             idc.set_name(address, 'SCE_FINGERPRINT')
@@ -938,11 +903,11 @@ def load_file(f, neflags, format):
                 # Symbol Table
                 location = address + Dynamic.SYMTAB
                 f.seek(segm.OFFSET + Dynamic.SYMTAB)
-                functions = {}
+                symbols = {}
                 
                 for entry in xrange(Dynamic.SYMTABSZ / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Symbol(f).process(functions), False)
+                    idc.set_cmt(location + (entry * 0x18), Symbol(f).process(symbols), False)
             
             except:
                 pass
@@ -962,8 +927,7 @@ def load_file(f, neflags, format):
                     stubs[key] = idc.get_strlit_contents(location + key, BADADDR)
                     idc.set_cmt(location + key, 'Stub', False)
                 
-                stubs = sorted(stubs.iteritems(), key = operator.itemgetter(0))
-                #print('Stubs: ' + stubs)
+                #print('Stubs: %s' % stubs)
                 
                 # Modules
                 for key in modules:
@@ -971,8 +935,7 @@ def load_file(f, neflags, format):
                     modules[key] = idc.get_strlit_contents(location + key, BADADDR)
                     idc.set_cmt(location + key, 'Module', False)
                 
-                modules = sorted(modules.iteritems(), key = operator.itemgetter(0))
-                #print('Modules: ' + modules)
+                #print('Modules: %s' % modules)
                 
                 # Libraries and LIDs
                 lids = {}
@@ -982,25 +945,52 @@ def load_file(f, neflags, format):
                     libraries[key] = idc.get_strlit_contents(location + key, BADADDR)
                     idc.set_cmt(location + key, 'Library', False)
                 
-                libraries = sorted(libraries.iteritems(), key = operator.itemgetter(0))
-                #print('Libraries: ' + libraries)
-                #print('Lids: ' + lids)
+                #print('LIDs: %s' % lids)
                 
-                # Functions
-                for key in functions:
+                # Symbols
+                for key in symbols:
                     idc.create_strlit(location + key, BADADDR)
-                    functions[key] = idc.get_strlit_contents(location + key, BADADDR)
-                    idc.set_cmt(location + key, 'Function', False)
+                    symbols[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    idc.set_cmt(location + key, 'Symbol', False)
                 
-                functions = sorted(functions.iteritems(), key = operator.itemgetter(0))
-                #print('Functions: ' + functions)
-                
-                # Resolve Functions
+                #print('Symbols: %s' % symbols)
+            
+            except:
+                pass
+            
+            # Resolve Export Symbols
+            try:
+                symbols = sorted(symbols.iteritems())
                 location = address + Dynamic.SYMTAB + 0x30
                 f.seek(segm.OFFSET + Dynamic.SYMTAB + 0x30)
                 
                 for entry in xrange((Dynamic.SYMTABSZ - 0x30) / 0x18):
-                    Symbol(f).resolve(location + (entry * 0x18), nids, functions[entry][1])
+                    Symbol(f).resolve(location + (entry * 0x18), nids, symbols[entry][1])
+            
+            except:
+                pass
+            
+            # Jump Table
+            try:                
+                # --------------------------------------------------------------------------------------------------------
+                # Jump Entry Structure
+                members = [('offset', 'Offset (String Index)', 0x8),
+                           ('info', 'Info (Symbol Index : Relocation Code)', 0x8),
+                           ('addend', 'AddEnd', 0x8)]
+                struct = segm.struct('Jump', members)
+                
+                # PS4 Base64 Alphabet
+                base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
+                alphabet = { character:index for index, character in enumerate(base64) }
+                #print(alphabet)
+                
+                # Jump Table
+                location = address + Dynamic.JMPTAB
+                f.seek(segm.OFFSET + Dynamic.JMPTAB)
+                
+                for entry in xrange(Dynamic.JMPTABSZ / 0x18):
+                    idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
+                    idc.set_cmt(location + (entry * 0x18), Relocation(f).resolve(alphabet, nids, symbols, lids), False)
             
             except:
                 pass
@@ -1015,17 +1005,12 @@ def load_file(f, neflags, format):
                 struct = segm.struct('Relocation', members)
                 
                 # Relocation Table (with specific addends)
-                location = address + Dynamic.JMPTAB
-                f.seek(segm.OFFSET + Dynamic.JMPTAB)
+                location = address + Dynamic.RELATAB
+                f.seek(segm.OFFSET + Dynamic.RELATAB)
                 
-                # PS4 Base64 Alphabet
-                base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
-                alphabet = { character:index for index, character in enumerate(base64) }
-                #print(alphabet)
-                
-                for entry in xrange((Dynamic.JMPTABSZ + Dynamic.RELATABSZ) / 0x18):
+                for entry in xrange(Dynamic.RELATABSZ / 0x18):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(alphabet, nids, functions, lids), False)
+                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, symbols), False)
             
             except:
                 pass
@@ -1095,7 +1080,7 @@ def load_file(f, neflags, format):
     print('# Waiting for the AutoAnalyzer to Complete...')
     idaapi.auto_wait()
     
-    # __stack_chk_fail
+    # Set No Return for __stack_chk_fail...
     try:
         function = idc.get_name_ea_simple('__stack_chk_fail')
         function = idaapi.get_func(function)
@@ -1105,7 +1090,7 @@ def load_file(f, neflags, format):
     except:
         pass
     
-    # Fix-up left-over functions...
+    # Additional function creation...
     try:
         code = idaapi.get_segm_by_name('CODE')
         
@@ -1126,7 +1111,7 @@ def load_file(f, neflags, format):
     
     except:
         pass
-
+    
     print('# Done!')
     return 1
 
