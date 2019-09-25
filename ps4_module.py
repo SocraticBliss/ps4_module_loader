@@ -110,7 +110,7 @@ class Binary:
             Binary.ET_SCE_REPLAY_EXEC : 'Replay Module',
             Binary.ET_SCE_RELEXEC     : 'Relocatable PRX',
             Binary.ET_SCE_STUBLIB     : 'SDK Stub Library',
-            Binary.ET_SCE_DYNEXEC     : 'Main Module - ALSR',
+            Binary.ET_SCE_DYNEXEC     : 'Main Module - ASLR',
             Binary.ET_SCE_DYNAMIC     : 'Shared Object PRX',
         }.get(self.E_TYPE, 'Missing Program Type!!!')
     
@@ -241,7 +241,7 @@ class Segment:
         for (member, comment, size) in members:
             flags = idaapi.get_flags_by_size(size)
             
-            if member == 'offset':
+            if member in ['addend', 'offset']:
                 idc.add_struc_member(entry, member, location, flags + FF_0OFF, BADADDR, size, BADADDR, 0, REF_OFF64)
             else:
                 idc.add_struc_member(entry, member, location, flags, BADADDR, size)
@@ -446,9 +446,13 @@ class Dynamic:
         elif self.TAG == Dynamic.DT_SCE_HASH:
             return '%s | %#x' % (self.tag(), address + Dynamic.HASHTAB)
         elif self.TAG == Dynamic.DT_SCE_STRTAB:
-            return '%s | %#x' % (self.tag(), address + Dynamic.STRTAB)
+            address += Dynamic.STRTAB
+            idc.add_entry(address, address, '.dynstr', False)
+            return '%s | %#x' % (self.tag(), address)
         elif self.TAG == Dynamic.DT_SCE_SYMTAB:
-            return '%s | %#x' % (self.tag(), address + Dynamic.SYMTAB)
+            address += Dynamic.SYMTAB
+            idc.add_entry(address, address, '.dynsym', False)
+            return '%s | %#x' % (self.tag(), address)
         elif self.TAG == Dynamic.DT_SCE_JMPREL:
             return '%s | %#x' % (self.tag(), address + Dynamic.JMPTAB)
         elif self.TAG == Dynamic.DT_SCE_RELA:
@@ -480,7 +484,13 @@ class Dynamic:
     
     def process(self, stubs, modules, libraries):
     
-        if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
+        if self.TAG == Dynamic.DT_INIT:
+            Dynamic.INIT = self.VALUE
+            idc.add_entry(Dynamic.INIT, Dynamic.INIT, '.init', True)
+        elif self.TAG == Dynamic.DT_FINI:
+            Dynamic.FINI = self.VALUE
+            idc.add_entry(Dynamic.FINI, Dynamic.FINI, '.fini', True)
+        elif self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
             stubs[self.VALUE] = 0
         elif self.TAG == Dynamic.DT_SCE_STRTAB:
             Dynamic.STRTAB = self.VALUE
@@ -505,12 +515,9 @@ class Dynamic:
             Dynamic.HASHTAB = self.VALUE
         elif self.TAG == Dynamic.DT_SCE_HASHSZ:
             Dynamic.HASHTABSZ = self.VALUE
-        elif self.TAG == Dynamic.DT_INIT:
-            Dynamic.INIT = self.VALUE
-        elif self.TAG == Dynamic.DT_FINI:
-            Dynamic.FINI = self.VALUE
         elif self.TAG == Dynamic.DT_SCE_PLTGOT:
             Dynamic.GOT = self.VALUE
+            idc.add_entry(Dynamic.GOT, Dynamic.GOT, '.got.plt', False)
         elif self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_IMPORT_LIB,
                           Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB,
                           Dynamic.DT_SCE_EXPORT_LIB_ATTR, Dynamic.DT_SCE_MODULE_INFO,
@@ -614,6 +621,7 @@ class Relocation:
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
             self.INFO &= 0xFF
+            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
         else:
             self.INDEX = 0            
         
@@ -624,7 +632,6 @@ class Relocation:
         
         # Object
         if self.type() in ['R_X86_64_64', 'R_X86_64_GLOB_DAT', 'R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
-            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
             
             # Resolve the NID...
             idc.set_cmt(self.OFFSET, 'NID: ' + symbol, False)
@@ -757,7 +764,7 @@ class Symbol:
         if self.NAME != 0:
             symbols[self.NAME] = 0
         
-        return '%#x | %s' % (self.NAME, self.info())
+        return self.info()
     
     def resolve(self, address, nids, symbol):
     
@@ -768,7 +775,7 @@ class Symbol:
         #print('Function: %s | number: %s' % (function, idaapi.get_func_num(self.VALUE)))
         if idaapi.get_func_num(self.VALUE) > 0:
             idc.del_func(self.VALUE)
-
+        
         if self.VALUE > 0:
             idc.add_func(self.VALUE)
             idc.add_entry(self.VALUE, self.VALUE, function, True)
@@ -887,13 +894,13 @@ def load_file(f, neflags, format):
         
             # SCE Fingerprint
             idc.make_array(address, 0x14)
-            idc.set_name(address, 'SCE_FINGERPRINT')
-            #idc.set_cmt(address, ' '.join(x.encode('hex') for x in idc.get_bytes(address, 0x14)).upper(), False)
+            idc.set_name(address, 'SCE_FINGERPRINT', SN_NOCHECK | SN_NOWARN | SN_FORCE)
+            idc.set_cmt(address, ' '.join(x.encode('hex') for x in idc.get_bytes(address, 0x14)).upper(), False)
             
-            # Symbol Table
+            # Dynamic Symbol Table
             try:
                 # --------------------------------------------------------------------------------------------------------
-                # Symbol Entry Structure
+                # Dynamic Symbol Entry Structure
                 members = [('name', 'Name (String Index)', 0x4),
                            ('info', 'Info (Binding : Type)', 0x1),
                            ('other', 'Other', 0x1),
@@ -902,7 +909,7 @@ def load_file(f, neflags, format):
                            ('size', 'Size', 0x8)]
                 struct = segm.struct('Symbol', members)
                 
-                # Symbol Table
+                # Dynamic Symbol Table
                 location = address + Dynamic.SYMTAB
                 f.seek(segm.OFFSET + Dynamic.SYMTAB)
                 symbols = {}
@@ -914,14 +921,12 @@ def load_file(f, neflags, format):
             except:
                 pass
             
-            # String Table
+            # Dynamic String Table
             try:
                 # --------------------------------------------------------------------------------------------------------
                 # Dynamic String Table
                 location = address + Dynamic.STRTAB
                 f.seek(segm.OFFSET + Dynamic.STRTAB)
-                
-                idc.set_name(location, '.dynstr', False)
                 
                 # Stubs
                 for key in stubs:
@@ -984,7 +989,7 @@ def load_file(f, neflags, format):
                 # PS4 Base64 Alphabet
                 base64 = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-')
                 alphabet = { character:index for index, character in enumerate(base64) }
-                #print(alphabet)
+                #print('Base64 Table: %s' % alphabet)
                 
                 # Jump Table
                 location = address + Dynamic.JMPTAB
@@ -1054,31 +1059,10 @@ def load_file(f, neflags, format):
             except:
                 pass
             
-            # Initialization Function
-            try:
-                idc.add_entry(Dynamic.INIT, Dynamic.INIT, '.init', True)
-            
-            except:
-                pass
-            
-            # Finalization Function
-            try:
-                idc.add_entry(Dynamic.FINI, Dynamic.FINI, '.fini', True)
-            
-            except:
-                pass
-            
-            # Global Offset Table
-            try:
-                idc.add_entry(Dynamic.GOT, Dynamic.GOT, '.got.plt', False)
-            
-            except:
-                pass
     
     # Start Function
     idc.add_entry(ps.E_START_ADDR, ps.E_START_ADDR, 'start', True)
     
-    # Wait for the AutoAnalyzer to Complete...
     print('# Waiting for the AutoAnalyzer to Complete...')
     idaapi.auto_wait()
     
@@ -1092,7 +1076,7 @@ def load_file(f, neflags, format):
     except:
         pass
     
-    # Additional function creation...
+    # Missed Function Creation...
     try:
         code = idaapi.get_segm_by_name('CODE')
         
