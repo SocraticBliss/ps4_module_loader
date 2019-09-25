@@ -9224,6 +9224,7 @@ ZaqmGEtYuL0 sceCameraGetConfig
 a5xFueMZIMs sceCameraGetContrast
 tslCukqFE+E sceCameraGetDefectivePixelCancellation
 DSOLCrc3Kh8 sceCameraGetDeviceConfig
+n+rFeP1XXyM sceCameraGetDeviceConfigWithoutHandle
 jTJCdyv9GLU sceCameraGetDeviceID
 WZpxnSAM-ds sceCameraGetDeviceInfo
 ObIste7hqdk sceCameraGetExposureGain
@@ -9265,6 +9266,7 @@ NVITuK83Z7o sceCameraSetProcessFocusByHandle
 8MjO05qk5hA sceCameraSetRegister
 bSKEi2PzzXI sceCameraSetSaturation
 P-7MVfzvpsM sceCameraSetSharpness
+3VJOpzKoIeM sceCameraSetTrackerMode
 nnR7KAIDPv8 sceCameraSetUacModeInternal
 wpeyFwJ+UEI sceCameraSetVideoSync
 8WtmqmE4edw sceCameraSetVideoSyncInternal
@@ -9272,6 +9274,7 @@ k3zPIcgFNv0 sceCameraSetWhiteBalance
 9EpRYMy7rHU sceCameraStart
 cLxF1QtHch0 sceCameraStartByHandle
 2G2C0nmd++M sceCameraStop
++X1Kgnn3bzg sceCameraStopByHandle
 NqTjmoN0lj8 sceClAudiodecCreateDecoder
 IgMVFBKHGFE sceClAudiodecDecode
 5cmnYvTeG20 sceClAudiodecDeleteDecoder
