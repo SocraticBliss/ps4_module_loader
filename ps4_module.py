@@ -48,14 +48,14 @@ class Binary:
     ET_EXEC                   = 0x2
     ET_DYN                    = 0x3
     ET_CORE                   = 0x4
-    ET_SCE_EXEC               = 0xfe00
-    ET_SCE_REPLAY_EXEC        = 0xfe01
-    ET_SCE_RELEXEC            = 0xfe04
-    ET_SCE_STUBLIB            = 0xfe0c
-    ET_SCE_DYNEXEC            = 0xfe10
-    ET_SCE_DYNAMIC            = 0xfe18
-    ET_LOPROC                 = 0xff00
-    ET_HIPROC                 = 0xffff
+    ET_SCE_EXEC               = 0xFE00
+    ET_SCE_REPLAY_EXEC        = 0xFE01
+    ET_SCE_RELEXEC            = 0xFE04
+    ET_SCE_STUBLIB            = 0xFE0C
+    ET_SCE_DYNEXEC            = 0xFE10
+    ET_SCE_DYNAMIC            = 0xFE18
+    ET_LOPROC                 = 0xFF00
+    ET_HIPROC                 = 0xFFFF
     
     # Elf Architecture
     EM_X86_64                 = 0x3E
@@ -164,14 +164,14 @@ class Segment:
     PT_SCE_PROCPARAM       = 0x61000001
     PT_SCE_MODULEPARAM     = 0x61000002
     PT_SCE_RELRO           = 0x61000010
-    PT_GNU_EH_FRAME        = 0x6474e550
-    PT_GNU_STACK           = 0x6474e551
-    PT_SCE_COMMENT         = 0x6fffff00
-    PT_SCE_LIBVERSION      = 0x6fffff01
-    PT_HIOS                = 0x6fffffff
+    PT_GNU_EH_FRAME        = 0x6474E550
+    PT_GNU_STACK           = 0x6474E551
+    PT_SCE_COMMENT         = 0x6FFFFF00
+    PT_SCE_LIBVERSION      = 0x6FFFFF01
+    PT_HIOS                = 0x6FFFFFFF
     PT_LOPROC              = 0x70000000
     PT_SCE_SEGSYM          = 0x700000A8
-    PT_HIPROC              = 0x7fffffff
+    PT_HIPROC              = 0x7FFFFFFF
     
     # Segment Alignments
     AL_NONE                = 0x0
@@ -303,39 +303,39 @@ class Dynamic:
     DT_SCE_IDTABENTSZ           = 0x61000005
     DT_SCE_FINGERPRINT          = 0x61000007
     DT_SCE_ORIGINAL_FILENAME    = 0x61000009
-    DT_SCE_MODULE_INFO          = 0x6100000d
-    DT_SCE_NEEDED_MODULE        = 0x6100000f
+    DT_SCE_MODULE_INFO          = 0x6100000D
+    DT_SCE_NEEDED_MODULE        = 0x6100000F
     DT_SCE_MODULE_ATTR          = 0x61000011
     DT_SCE_EXPORT_LIB           = 0x61000013
     DT_SCE_IMPORT_LIB           = 0x61000015
     DT_SCE_EXPORT_LIB_ATTR      = 0x61000017
     DT_SCE_IMPORT_LIB_ATTR      = 0x61000019
-    DT_SCE_STUB_MODULE_NAME     = 0x6100001d
-    DT_SCE_STUB_MODULE_VERSION  = 0x6100001f
+    DT_SCE_STUB_MODULE_NAME     = 0x6100001D
+    DT_SCE_STUB_MODULE_VERSION  = 0x6100001F
     DT_SCE_STUB_LIBRARY_NAME    = 0x61000021
     DT_SCE_STUB_LIBRARY_VERSION = 0x61000023
     DT_SCE_HASH                 = 0x61000025
     DT_SCE_PLTGOT               = 0x61000027
     DT_SCE_JMPREL               = 0x61000029
-    DT_SCE_PLTREL               = 0x6100002b
-    DT_SCE_PLTRELSZ             = 0x6100002d
-    DT_SCE_RELA                 = 0x6100002f
+    DT_SCE_PLTREL               = 0x6100002B
+    DT_SCE_PLTRELSZ             = 0x6100002D
+    DT_SCE_RELA                 = 0x6100002F
     DT_SCE_RELASZ               = 0x61000031
     DT_SCE_RELAENT              = 0x61000033
     DT_SCE_STRTAB               = 0x61000035
     DT_SCE_STRSZ                = 0x61000037
     DT_SCE_SYMTAB               = 0x61000039
-    DT_SCE_SYMENT               = 0x6100003b
-    DT_SCE_HASHSZ               = 0x6100003d
-    DT_SCE_SYMTABSZ             = 0x6100003f
-    DT_SCE_HIOS                 = 0x6ffff000
-    DT_GNU_HASH                 = 0x6ffffef5
-    DT_VERSYM                   = 0x6ffffff0
-    DT_RELACOUNT                = 0x6ffffff9
-    DT_RELCOUNT                 = 0x6ffffffa
-    DT_FLAGS_1                  = 0x6ffffffb
-    DT_VERDEF                   = 0x6ffffffc
-    DT_VERDEFNUM                = 0x6ffffffd
+    DT_SCE_SYMENT               = 0x6100003B
+    DT_SCE_HASHSZ               = 0x6100003D
+    DT_SCE_SYMTABSZ             = 0x6100003F
+    DT_SCE_HIOS                 = 0x6FFFF000
+    DT_GNU_HASH                 = 0x6FFFFEF5
+    DT_VERSYM                   = 0x6FFFFFF0
+    DT_RELACOUNT                = 0x6FFFFFF9
+    DT_RELCOUNT                 = 0x6FFFFFFA
+    DT_FLAGS_1                  = 0x6FFFFFFB
+    DT_VERDEF                   = 0x6FFFFFFC
+    DT_VERDEFNUM                = 0x6FFFFFFD
     
     def __init__(self, f):
     
