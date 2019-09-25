@@ -263,7 +263,7 @@ class Segment:
             Segment.PT_SCE_DYNLIBDATA  : 'CONST',
             Segment.PT_SCE_PROCPARAM   : 'CONST',
             Segment.PT_SCE_MODULEPARAM : 'CONST',
-            Segment.PT_SCE_RELRO       : 'CONST',
+            Segment.PT_SCE_RELRO       : 'DATA',
             Segment.PT_GNU_EH_FRAME    : 'CONST',
             Segment.PT_GNU_STACK       : 'DATA',
         }.get(self.TYPE, 'UNK')
