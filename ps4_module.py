@@ -768,6 +768,8 @@ class Symbol:
         #print('Function: %s | number: %s' % (function, idaapi.get_func_num(self.VALUE)))
         if idaapi.get_func_num(self.VALUE) > 0:
             idc.del_func(self.VALUE)
+
+        if self.VALUE > 0:
             idc.add_func(self.VALUE)
             idc.add_entry(self.VALUE, self.VALUE, function, True)
             idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN)
