@@ -19,8 +19,6 @@ Major Thanks to...
 Extra Special Thanks for telling me my program sucks...
 * zecoxao
 
-If you have any suggestions or ideas, please feel free to create pull requests!
-
 ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 # Installation
