@@ -335,6 +335,9 @@ NEF_MINI = _ida_loader.NEF_MINI
 NEF_LOPT = _ida_loader.NEF_LOPT
 NEF_LALL = _ida_loader.NEF_LALL
 
+LOADER_EXT = _ida_loader.LOADER_EXT
+PLUGIN_EXT = _ida_loader.PLUGIN_EXT
+IDP_EXT = _ida_loader.IDP_EXT
 LOADER_DLL = _ida_loader.LOADER_DLL
 
 def load_binary_file(*args):
