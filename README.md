@@ -1,5 +1,4 @@
 # PS4 Module Loader
-IDA loader for reading Sony PlayStation(R) 4 Module files
 SocraticBliss (R)
 
 Major Thanks to...
