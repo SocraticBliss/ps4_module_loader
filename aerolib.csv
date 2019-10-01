@@ -8347,6 +8347,7 @@ GipcbdDM5cI makecontext
 gQX+4GDQjpM malloc
 J6FoFNydpFI malloc_finalize
 owT6zLJxrTs malloc_initialize
+0F08WOP8G3s malloc_report_memory_blocks
 CC-BLMBu9-I malloc_stats
 KuOuD58hqn4 malloc_stats_fast
 NDcSfcYZRC8 malloc_usable_size
@@ -10382,6 +10383,7 @@ o6ZgXfFdWXQ sceJpegEncQueryMemorySize
 cG3t15OK4Ow sceKernelAddFileEvent
 R74tt43xP6k sceKernelAddHRTimerEvent
 VHCS3rCd0PM sceKernelAddReadEvent
+uqJlNd9XIrA sceKernelAddResource
 57ZK+ODEXWY sceKernelAddTimerEvent
 4R6-OvI2cEA sceKernelAddUserEvent
 WDszmSbWuDk sceKernelAddUserEventEdge
@@ -10487,9 +10489,11 @@ BNowx2l588E sceKernelGetProcessTimeCounterFrequency
 +g+UP8Pyfmo sceKernelGetProcessType
 959qrazPIrg sceKernelGetProcParam
 pyAyDVpDOhw sceKernelGetProductCode
+tlLu+KqzgDY sceKernelGetProductStr
 L0v2Go5jOuM sceKernelGetPrtAperture
 85QMKsnns2o sceKernelGetResource
 S2-4Sh3qnm8 sceKernelGetResourceLimit
+TQxbrxPdIxU sceKernelGetResourceOne
 bmQaivctXo4 sceKernelGetSafemode
 py6L8jiVAN8 sceKernelGetSanitizerMallocReplaceExternal
 bnZxYgAFeA0 sceKernelGetSanitizerNewReplaceExternal
@@ -10596,6 +10600,7 @@ rzEsC81gurc sceKernelSetGPI
 ca7v6Cxulzs sceKernelSetGPO
 4nAp4pZgV1A sceKernelSetGpuCu
 8UVYwy0F2Hk sceKernelSetProcessName
+-W4xI5aVI8w sceKernelSetProcessProperty
 BohYr-F7-is sceKernelSetPrtAperture
 As-JdqyUuMs sceKernelSetSafemode
 ChCOChPU-YM sceKernelSettimeofday
@@ -13566,6 +13571,7 @@ jr52f45OlWg sceVideoOutCursorSetHotSpot
 u-9bhWQApq8 sceVideoOutCursorSetImageAddress
 N17AK88NdD0 sceVideoOutCursorSetPosition
 735GfVO9v2s sceVideoOutCursorSetPositionStereo
+KA515kD5rAY sceVideoOutDeleteDriver
 -Ozn0F1AFRg sceVideoOutDeleteFlipEvent
 oNOQn3knW6s sceVideoOutDeleteVblankEvent
 W0iQAbGaTBg sceVideoOutGetCurrentOutputMode_
