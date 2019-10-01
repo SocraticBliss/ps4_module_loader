@@ -1,5 +1,5 @@
 # PS4 Module Loader
-
+IDA loader for reading Sony PlayStation(R) 4 Module files
 SocraticBliss (R)
 
 Major Thanks to...
@@ -18,8 +18,6 @@ Major Thanks to...
 
 Extra Special Thanks for telling me my program sucks...
 * zecoxao
-
-ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 # Installation
 1) Place the **ps4_module.py** and **aerolib.csv** files in your IDA's **loaders** directory
