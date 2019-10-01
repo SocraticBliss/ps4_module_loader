@@ -19,6 +19,8 @@ Major Thanks to...
 Extra Special Thanks for telling me my program sucks...
 * zecoxao
 
+If you have any suggestions or ideas, please feel free to create pull requests!
+
 ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 # Installation
@@ -29,7 +31,3 @@ ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 # Usage
 1) Load a PS4 Module file (.prx, .sprx, .elf, .self)
 2) Select the option ending with **[ps4_module.py]**
-
-If you have any suggestions or ideas, please feel free to create pull requests! 
-
-To make the most out of this, we have to work together!
