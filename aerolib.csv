@@ -7496,6 +7496,7 @@ sZ93QMbGRJY gammaf
 E3RYvWbYLgk gammaf_r
 u+brAYVFGUs GC_createInstanceIDs
 igMefp4SAv0 get_authinfo
+WtR7OVvUgSo get_page_table_stats
 UgfS6HQA+H4 get_random
 p2xgfB-30g8 get_self_auth_info
 iKJMWrAumPE getargc
@@ -8599,7 +8600,7 @@ FJxiqh2DvTw pclose
 EMutwaQ34Jo perror
 UbpaHV1cB94 pfr_cmap_class_rec
 rONISOlHgZI pfr_driver_class
-L6WLBSYfL6k physhm_open
+n371J5cP+uo physhm_open
 AUqJNkobQ1c physhm_unlink
 -Jp7F+pXxNg pipe
 ku7D4q1Y9PI poll
