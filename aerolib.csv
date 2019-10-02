@@ -6644,6 +6644,14 @@ vsK6LzRtRLI basename_r
 RMo7j0iTPfA bcopy
 mKA4m9Tc6-4 bdf_driver_class
 KuOmgKoqCdY bind
+RHpq9hQfTj8 BIO_ctrl
+lpJ3zhgftCg BIO_free
+ARlY6zhSacE BIO_new
+eVcWmVlimPA BIO_puts
+iEE4nhybTTw BN_free
+74vuH9BYkF0 BN_mul
+NDsTaWhoVQI BN_new
+ZJvtsevwowQ BN_print
 NesIgTmfF0Q bsearch
 hzX87C+zDAY bsearch_s
 LEvm25Sxi7I btowc
@@ -7024,6 +7032,7 @@ juWbTNM+8hw fsync
 EBvr2CZnjVo FT_Activate_Size
 pSgOzwkzx4Y FT_Add_Default_Modules
 LonHHN98tMI FT_Add_Module
+Uw+BZJpflxk FT_Alloc
 D1l8+Bu+-Y8 FT_Angle_Diff
 p90G4PB-rPc FT_Atan2
 21vkVuOP2lk FT_Attach_File
@@ -7057,6 +7066,7 @@ Vrab2WK1mgk FT_Face_GetCharVariantIsDefault
 mGMeRKWGTL4 FT_Face_GetVariantsOfChar
 EruGr0TR1CU FT_Face_SetUnpatentedHinting
 EqN+ED6P2FA FT_FloorFix
+fHMsRluEMfI FT_Free
 dMSDtQsYuJM FT_Get_Advance
 l55oKq6zmrA FT_Get_Advances
 obnSzeb-KXk FT_Get_Char_Index
@@ -7798,6 +7808,9 @@ idWUOMHlXf0 glViewport
 Ab0R4oOE-DY glWaitSync
 1mecP7RgI2A gmtime
 5bBacGLyLOs gmtime_s
+Ulu9vNs5vn8 goby_Fin
+yhd+GKb-NyQ gp_trace
+HYgtW9iS5Fk HMAC
 K1S8oc61xiM htonl
 jogUIsOV3-U htons
 YFoOw5GkkK0 hypot
@@ -8362,6 +8375,8 @@ UbnVmck+o10 mbsinit
 VUzjXknPPBs mbstowcs
 tdcAqgCS+uI mbstowcs_s
 6eU9xX9oEdQ mbtowc
+lsoHI3p77nU MD4_Init
+muak2D0KKx8 MD5_Init
 7KuwdAt0kQQ mdbg_call
 LYbbZxXNAns mdbg_service
 Ujf3KzMvRmI memalign
@@ -8563,6 +8578,7 @@ QaTrhMKUT18 nexttowardf
 ryyn6-WJm6U nexttowardl
 3YnXspQNyw8 nmount
 3wcYIMz8LUo nrand48
+Y3hsRCZODFs nsnp_Fin
 jct5WjixLgk ntohl
 oLFi+HuZ7hY ntohs
 wuCroIGjt2g open
@@ -8583,6 +8599,7 @@ FJxiqh2DvTw pclose
 EMutwaQ34Jo perror
 UbpaHV1cB94 pfr_cmap_class_rec
 rONISOlHgZI pfr_driver_class
+L6WLBSYfL6k physhm_open
 AUqJNkobQ1c physhm_unlink
 -Jp7F+pXxNg pipe
 ku7D4q1Y9PI poll
@@ -8783,6 +8800,7 @@ G7yOZJObV+4 qsort_s
 qdGFBoLVNKI quick_exit
 0t0-MxQNwK4 raise
 cpCOXWMgha0 rand
+BxZOkd4o1U8 RAND_add
 dW3xsu3EgFI rand_r
 fquAdjX4Sws rand_s
 w1o05aHJT4c random
@@ -8821,6 +8839,9 @@ c7ZnT7V1B98 rmdir
 nlaojL9hDtA round
 DDHG1a6+3q0 roundf
 8F1ctQaP0uk roundl
+5zpup0URQoc RSA_free
+kADEz2eAE7c RSA_new
+UukOy6kz+VM RSA_size
 pBwtarKd7eg RSA_verifySignature
 u8M56qpqTtw rtld_printf
 2I2RV6LyNng rtprio_thread
@@ -10441,6 +10462,7 @@ lsc8IlEjXhI sceKernelEnterSblock
 D4yla3vx4tY sceKernelError
 c7noapHDHWU sceKernelEventLogInit
 H6bIN2qvlxY sceKernelEventLogPread
+L6WLBSYfL6k sceKernelEventLogRead
 TmkVz5YgHg8 sceKernelEventLogWrite
 Ac86z8q7T8A sceKernelExitSblock
 UtszJWHrDcA sceKernelFchmod
@@ -10495,7 +10517,9 @@ L0v2Go5jOuM sceKernelGetPrtAperture
 S2-4Sh3qnm8 sceKernelGetResourceLimit
 TQxbrxPdIxU sceKernelGetResourceOne
 bmQaivctXo4 sceKernelGetSafemode
+bt0POEUZddE sceKernelGetSanitizerMallocReplace
 py6L8jiVAN8 sceKernelGetSanitizerMallocReplaceExternal
+F4Kib3Mb0wI sceKernelGetSanitizerNewReplace
 bnZxYgAFeA0 sceKernelGetSanitizerNewReplaceExternal
 ou2GyAJwJ+Q sceKernelGetSubsysId
 3EDFoWECKOg sceKernelGetSystemSwBeta
@@ -12215,6 +12239,7 @@ DB7Mkm+Pqzw scePthreadResume
 te+MBYMzDhY scePthreadResumeAll
 i2ifZ3fS2fo scePthreadRwlockattrDestroy
 LcOZBHGqbFk scePthreadRwlockattrGetpshared
+Kyls1ChFyrc scePthreadRwlockattrGettype
 yOfGg-I1ZII scePthreadRwlockattrInit
 -ZvQH18j10c scePthreadRwlockattrSetpshared
 BB+kb08Tl9A scePthreadRwlockDestroy
@@ -13793,11 +13818,16 @@ yhxKO9LYc8A sigvec
 mrbHXqK8wkg sigwait
 Uq5BGthgbl4 sigwaitinfo
 H8ya2H00jbI sin
+jMB7EFyu30Y sincos
+pztV4AF18iI sincosf
 Q4rRL34CEeE sinf
 ZjtRqSMJwdw sinh
 1t1-JoZ0sZQ sinhf
 lYdqBvDgeHU sinhl
 vxgqrJxDPHo sinl
+omT5ldW9X3E sk_num
+XCv0qOUtAu8 sk_pop
+izfIVmcJB4o sk_value
 0wu33hunNdE sleep
 eLdDw6l0-bU snprintf
 3BytPOQgVKc snprintf_s
@@ -13834,8 +13864,10 @@ y+ZFCsZYNME SSL_ASYNC_start
 5g9cNS3IFCk SSL_closeConnection
 i9AvJK-l5Jk SSL_connect
 mgs+n71u35Y SSL_connectWithCfgParam
+iGuym9i4NcU SSL_ctrl
 4hPwsDmVKZc SSL_enableCiphers
 yUd2ukhZLJI SSL_findConnectionInstance
+gOmQbOkqJBE SSL_free
 J7LWSdYo0Zg SSL_getCipherInfo
 kRb0lquIrj0 SSL_getClientRandom
 sSD8SHia8Zc SSL_getClientSessionInfo
@@ -13857,6 +13889,8 @@ fje5RYUa+2g SSL_isSessionSSL
 IKENWUUd8bk SSL_lockSessionCacheMutex
 n6-12LafAeA SSL_lookupAlert
 H4Z3ShBNjSA SSL_negotiateConnection
+D8Br9BnZoqo SSL_new
+lg5Z+eVXA-A SSL_read
 9PTAJclcW50 SSL_recv
 NrZz0ZgQrao SSL_recvPending
 SHInb+l58Bs SSL_releaseTables
@@ -13872,6 +13906,7 @@ pbTq-nEsN1w SSL_setSessionFlags
 -UDxVMs9h9M SSL_shutdown
 nH9FVvfZhCs SSL_sslSettings
 2Bd7UoCRhQ8 SSL_validateCertParam
+8I1tIrw0dvg SSLeay
 E6ao34wPw+U stat
 ngZnQWyUvGI statfs
 ayTeobcoGj8 statvfs
@@ -13940,6 +13975,8 @@ ZD+Dp+-LsGg sys_nsig
 yCdGspbNHZ8 sys_siglist
 Y16fu+FC+3Q sys_signame
 b7uXQmnfB2s sysarch
+eaiyhIBmf34 sysc_e00
+XPlTYt2TOg0 sysc_s00
 W0Aa+HAwN6U syscall
 mkawd0NA9ts sysconf
 DFmMT80xcNI sysctl
