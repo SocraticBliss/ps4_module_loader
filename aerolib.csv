@@ -9086,6 +9086,7 @@ KHXHMDLkILw sceAudiodecDecode
 Tp+ZEy69mLk sceAudiodecDeleteDecoder
 VjhsmxpcezI sceAudiodecInitLibrary
 h5jSB2QIDV0 sceAudiodecTermLibrary
+Db6G2wnBgp0 sceAudiodReportOutput
 IQtWgnrw6v8 sceAudioInChangeAppModuleState
 Jh6WbHhnI68 sceAudioInClose
 VoX9InuwwTg sceAudioInDeviceOpen
@@ -9144,6 +9145,8 @@ X7Cfsiujm8Y sceAudioOutSetUsbVolume
 b+uAV89IlxE sceAudioOutSetVolume
 uo+eoPzdQ-s sceAudioOutStartSharePlay
 teCyKKZPjME sceAudioOutStopSharePlay
+jgpc-w4H7FU sceAutoMounterClientInit
+iEXIEzTjNtI sceAutoMounterClientTerm
 KMcEa+rHsIo sceAvPlayerAddSource
 x8uvuFOPZhU sceAvPlayerAddSourceEx
 NkJwDzKmIlw sceAvPlayerClose
@@ -9160,6 +9163,7 @@ UbQoYawOsfY sceAvPlayerIsActive
 XC9wM+xULz8 sceAvPlayerJumpToTime
 9y5v+fGN4Wk sceAvPlayerPause
 HD1YKVU26-M sceAvPlayerPostInit
+agig-iDRrTE sceAvPlayerPrintf
 w5moABNwnRY sceAvPlayerResume
 eBTreZ84JFY sceAvPlayerSetLogCallback
 OVths0xGfho sceAvPlayerSetLooping
@@ -9183,6 +9187,7 @@ vh3aQ+JUpSU sceAvSettingGetDeviceInfo
 -Mui67TZd4s sceAvSettingGetHdmiMonitorInfo
 6i0wQ7VpTSg sceAvSettingGetMorpheusPuStatus
 EIZdWTT7Zdw sceAvSettingInit
+Xb2ez5SqR38 sceAvSettingTerm
 Ej9YiEmOWVE sceAvSettingIsSupportedVideoOutModeByHdmiMonitorInfo
 twiNZBeuppA sceAvSettingIsSuspendedProcessOutputModeAvailable
 GUna2W6TBG4 sceAvSettingIsSuspendedProcessOutputModeAvailable2
@@ -9227,6 +9232,7 @@ WQbIW7cm-Bc sceBgftServiceInit
 ECCXnWcVm7Y sceBgftServiceSyncCall
 8P9BlyDO4xE sceBgftServiceTerm
 YWT1GrcWuQs sceBluetoothHidGetDeviceInfo
+tul3-GzejQc sceBluetoothHidInit
 G2OOzViPX7I sceBufferInit
 QhjrPkRPUZQ sceCameraAccGetData
 UFonL7xopFM sceCameraAudioClose
@@ -9623,12 +9629,14 @@ oFon+A5v1z8 sceDeviceServiceGetGeneration
 84fDxStrG44 sceDeviceServiceInitialize
 UNMEa+5lrUA sceDeviceServiceQueryDeviceInfo_
 Uq8uW74rVpU sceDeviceServiceTerminate
+3xULm-emJqE sceDiscIdGet
 rsrNnCwuy4w sceDiscMapBitmapInfoServerStart
 W0NXxBnfZpA sceDiscMapBitmapInfoServerStop
 lbQKqsERhtE sceDiscMapIsRequestOnHDD
 Ob34lg2OTG0 sceDseehxFlush
 Sfr8N-9Sdhw sceDseehxInit
 -8ArXjBU6qg sceDtcpIpInit
+2i0OGsRbIUA sceDtcpIpTerm
 vjjqXVUcU8w sceDtsEncCreateEncoder
 Dd9-iAuMyis sceDtsEncDeleteEncoder
 jm5stx2t4Ao sceDtsEncEncode
@@ -9639,6 +9647,7 @@ W5iJUafU8r4 sceEditMp4GetStatus
 TzoWJFBjBW8 sceEditMp4Initialize
 WVBXdDlF1TE sceEditMp4InitializeParam
 F0Sos4cB8Zg sceEditMp4Terminate
+P9v+xD9gBQU sceEditMp4Unite
 ekXHb1kDBl0 sceErrorDialogClose
 t2FvHRXzgqk sceErrorDialogGetStatus
 I88KChlynSs sceErrorDialogInitialize
@@ -9992,6 +10001,7 @@ MLvYI86FFAo sceGameLiveStreamingSetStandbyScreenResource
 Y1WxX7dPMCw sceGameLiveStreamingStartSocialFeedbackMessageFiltering
 bYuGUBuIsaY sceGameLiveStreamingStopSocialFeedbackMessageFiltering
 9yK6Fk8mKOQ sceGameLiveStreamingTerminate
+LYVV9z8+owM sceGameUpdateCheck
 b0xyllnVY-I sceGnmAddEqEvent
 b08AgtPlHPg sceGnmAreSubmitsAllowed
 ihxrbsoSKWc sceGnmBeginWorkload
@@ -10314,17 +10324,21 @@ IWalAn-guFs sceHttpUriParse
 mUU363n4yc0 sceHttpUriSweepPath
 thTS+57zoLM sceHttpUriUnescape
 qISjDHrxONc sceHttpWaitRequest
+HgXd0wLL-UA sceIduUtilReboot
 xbqCEIzvg3E sceImeBackendAllConfirm
 BfYmnUyy0ew sceImeBackendClose
 GB70BZwBCjI sceImeBackendConvertBackward
 mJlVV44ycU0 sceImeBackendDeleteCharacter
 MTHPbVoNR0A sceImeBackendEnterCharacter
 SrHBQhBty6Y sceImeBackendGetCandidateList
+S+NgTvWVJLA sceImeBackendGetCandidateListSize
 Xva83fZZ7D4 sceImeBackendGetCaretIndex
 n0FeJgonoxQ sceImeBackendGetConfirmString
 co7QF5zVjnY sceImeBackendGetConvertString
 EYkbvZMNLvs sceImeBackendGetString
+5yb0O2TsYvw sceImeBackendOpen
 5KKsXg7EXi8 sceImeBackendPartConfirm
+8BNxNGzXcIc sceImeBackendReset
 TmVP8LzcFcY sceImeClose
 Ho5NVQzpKHo sceImeConfigGet
 P5dPeiLwm-M sceImeConfigSet
@@ -10705,6 +10719,8 @@ u32UXVridxQ sceLibcPafMspaceRealloc
 4SvlEtd0j40 sceLibcPafMspaceReallocalign
 0FnzR6qum90 sceLibcPafMspaceReportMemoryBlocks
 AUYdq63RG3U sceLibcPafMspaceTrim
+DWzAHSX9KW8 sceLibreSslInit
+n2fSRzuTEY4 sceLibreSslTerm
 GpWMCMxa1aA sceLibSecureAddCipher
 +dVBPC74ZhM sceLibSecureAddHash
 hMYgMP-Vuno sceLibSecureCryptographyDecrypt
@@ -10951,6 +10967,10 @@ TPVebHEFB2s sceMusicCoreServerSetTrackList
 5n5i6p18f+Q sceMusicCoreServerTerminate
 EEkGXyPcT6E sceMusicCoreServerTriggerEvent
 MrUOZGxjKw8 sceMusicCoreServerUnregistEventCallback
+fIii6-0Adxc sceMusicPlayerServicePause
+KblnYfZ5AGM sceMusicPlayerServicePlay
+5LhFvqzrcug sceMusicPlayerServiceSeek
+7Ayp3diNYnk sceMusicPlayerServiceStop
 PIWqhn9oSxc sceNetAccept
 PcdLABhYga4 sceNetAllocateAllRouteInfo
 c8IRpl4L74I sceNetBandwidthControlGetDefaultParam
@@ -11304,6 +11324,8 @@ fhJ5uKzcn0w sceNpCreateThread
 sjnIeFCuTD0 sceNpDeleteEventFlag
 S7QTn72PrDw sceNpDeleteRequest
 xPrF2nGPBXQ sceNpDeleteSema
+aQZPV4OQRGo sceNpEulaDialogClose
+BV1OcAHhXnA sceNpEulaDialogOpen
 VWOc5KnleQ0 sceNpFreeImpl
 vjwlDmsGtME sceNpFreeKernelMemory
 +Y1acHGomGQ sceNpFriendListDialogClose
@@ -11342,6 +11364,9 @@ F6E4ycq9Dbg sceNpGetUserIdByOnlineId
 VUHUasztbUY sceNpGlobalHeapGetAllocatorEx
 Tr0u0p-T+x8 sceNpGlobalHeapInit
 hyrDIxugcKw sceNpGlobalHeapTerm
+MwcHR8xIR2w sceNpGriefReportCdInit
+tcSNPbqj3pk sceNpGriefReportCdPost
++nfHWFq9rhA sceNpGriefReportCdTerm
 Oad3rvY-NJQ sceNpHasSignedUp
 wVdn78HKc30 sceNpHeapDestroy
 JHGxU93dbQg sceNpHeapFreeImpl
@@ -11622,6 +11647,7 @@ aEzKdJzATZ0 sceNpPartyGetState
 o7grRhiGHYI sceNpPartyGetStateAsUser
 EjyAI+QNgFw sceNpPartyGetStateAsUserA
 lhYCTQmBkds sceNpPartyInitialize
+RXNCDw2GDEg sceNpPartyJoin
 J8jAi-tfJHc sceNpPartyLeave
 kA88gbv71ao sceNpPartyRegisterHandler
 +v4fVHMwFWc sceNpPartyRegisterHandlerA
@@ -11738,6 +11764,8 @@ IHRDvZodPYY sceNpSignalingSetContextOption
 NPhw0UXaNrk sceNpSignalingTerminate
 b4qaXPzMJxo sceNpSignalingTerminateConnection
 -W28+9p1CKI sceNpSignalSema
+L9K4mZErvfg sceNpSnsDailymotionDialogClose
+O2t1Dm4eMig sceNpSnsDailymotionDialogOpen
 -LJbF9b-Who sceNpSnsFacebookAbortRequest
 OoTjfxl8-wI sceNpSnsFacebookCreateRequest
 pTvAKV1iQkE sceNpSnsFacebookDeleteRequest
@@ -11762,6 +11790,8 @@ zSR6kEWpr0c sceNpSnsIntTest
 Wp+C91igTkE sceNpSnsIntTwGetSystemAccessToken
 0xrhvJ8QANU sceNpSnsIntYtGetAccessToken
 Q+mSQ2U6wWY sceNpSnsIntYtRefreshMasterToken
+4H0h0tPjIk0 sceNpSnsYouTubeDialogClose
+mjxFUp94LL4 sceNpSnsYouTubeDialogOpen
 IqaPZ1ZMC+c sceNpStartApp
 pXI1y1rz4+w sceNpStartVsh
 HJosRn4GUxs sceNpStopApp
@@ -12005,6 +12035,12 @@ Fa4dVWgmffk sceNpWordFilterSetTimeout
 87ivWj5yKzg sceNpWordFilterWaitAsync
 fEcrs9UPPyo sceNpXmlParse
 MCLGkfBmw4c sceNpXmlParseInit
+z8N+d7DLC4E sceOpusCeltDecCreate
+jCeqFWeN9HA sceOpusCeltDecCtl
+6fxZHeuNhIA sceOpusCeltDecDecode
+CdMxiPm8PRc sceOpusCeltEncCreate
+XW1+EtPFPAM sceOpusCeltEncCtl
+tpKYaXK-zVs sceOpusCeltEncEncode
 6ncge5+l5Qs scePadClose
 kazv1NzSB8c scePadConnectPort
 AcslpN1jHR8 scePadDeviceClassGetExtendedInformation
@@ -12132,6 +12168,8 @@ U6h4e5JRPaQ scePngDecParseHeader
 RUrWdwTWZy8 scePngEncDelete
 xgDjJKpcyHo scePngEncEncode
 9030RnBDoh4 scePngEncQueryMemorySize
+zTnim89xUWY scePs2EmuMenuDialogClose
+coiMIPkR+Ro scePs2EmuMenuDialogOpen
 JMADh-6iSWc scePsmExecute
 ZyBRuMgQYvM ScePsmMonoFree
 VvAMtxBHcZc ScePsmMonoStringToUtf8
@@ -12436,16 +12474,20 @@ beAsSTVWVPQ sceRudpSetMaxSegmentSize
 0yzYdZf0IwE sceRudpSetOption
 OMYRTU0uc4w sceRudpTerminate
 KaPL3fbTLCA sceRudpWrite
+W0SsxHQUhGs sceS3daClose
 lE4k3hlQbZk sceS3daOpen
 V4c2fjAX9fQ sceS3dConversionClose
 06dizTpJ-kw sceS3dConversionExec
 PuDr2i2SilM sceS3dConversionOpen
 5yFpvHAL1qM sceS3dConversionQueryAttr
+dQ2GohUHXzk sceSaveDataAbort
 z1JA8-iJt3k sceSaveDataBackup
 kLJQ3XioYiU sceSaveDataBindPsnAccount
 RQOqDbk3bSU sceSaveDataCheckBackupData
 v1TrX+3ZB10 sceSaveDataCheckBackupDataInternal
 Wz-4JZfeO9g sceSaveDataClearProgress
+YbCO38BOOl4 sceSaveDataCopy5
+gW6G4HxBBXA sceSaveDataDebug
 S1GkePI17zQ sceSaveDataDelete
 SQWusLoK8Pw sceSaveDataDelete5
 fH46Lag88XY sceSaveDataDialogClose
@@ -12486,6 +12528,7 @@ yKDy8S5yLA0 sceSaveDataTerminate
 WAzWTZm1H+I sceSaveDataTransferringMount
 BMR4F-Uek3E sceSaveDataUmount
 VwadwBBBJ80 sceSaveDataUmountWithBackup
+COwz3WBj+5s sceSaveDataUpload
 504MPu5OUbg sceSblACMgrCheckPlatformDLL
 JuMLLmmvRgk sceScreenShotCapture
 tIYf0W5VTi8 sceScreenShotDisable
@@ -13180,6 +13223,8 @@ RA2D9rFH-Uw sceUsbdUnlockEvents
 1DkGvUQYFKI sceUsbdUnlockEventWaiters
 OULgIo1zAsA sceUsbdUnrefDevice
 ys2e9VRBPrY sceUsbdWaitForEvent
+K7Vb-7JGXVc sceUsbStorageDialogClose
+ClBMa8CWKkM sceUsbStorageDialogOpen
 -GvBqz54ssU sceUsbStorageGetDeviceInfo
 mryrNITeYvI sceUsbStorageGetDeviceList
 BDDZwF5kuTc sceUsbStorageInit
@@ -13581,6 +13626,7 @@ jeigLlKdp5I sceVideodecFlush
 kg+lH0V61hM sceVideodecMapMemory
 leCAscipfFY sceVideodecQueryResourceInfo
 f8AgDv-1X8A sceVideodecReset
+jnvPWZ140Sw sceVideoDecoderArbitrationEnable
 HXzjK9yI30k sceVideoOutAddFlipEvent
 Xru92wHJRmg sceVideoOutAddVblankEvent
 pv9CI5VC+R0 sceVideoOutAdjustColor_
@@ -13631,6 +13677,7 @@ j6RaAUlaLv0 sceVideoOutWaitVblank
 KHvkPQJDMLk sceVideoRecordingClose
 QNg8KGixrzg sceVideoRecordingCopyBGRAtoNV12
 fZJQzFK4Gv4 sceVideoRecordingGetStatus
+RXXBl6-iimo sceVideoRecordingInit
 7QoTYzVuzto sceVideoRecordingOpen
 s28dalBwp2g sceVideoRecordingOpen2
 ZvWzS2wTIMc sceVideoRecordingQueryMemSize
@@ -13638,6 +13685,9 @@ bGYkY6q3bIw sceVideoRecordingQueryMemSize2
 Fc8qxlKINYQ sceVideoRecordingSetInfo
 tWoe9IlGAhs sceVideoRecordingStart
 OOFxrMY+mfI sceVideoRecordingStop
+gWZikoR+g9g sceVideoRecordingTerm
+wzr6GTOo9Dw sceVisionManagerOpen
+P9+90HStC44 sceVisionManagerClose
 ACdU2QH82O4 sceVisionManagerRequestClose
 JeAOV3YYkBU sceVisionManagerRequestOpen
 oV9GAdJ23Gw sceVoiceConnectIPortToOPort
@@ -13688,6 +13738,9 @@ Ao2YNSA7-Qo sceVoiceStop
 jSZNP7xJrcw sceVoiceUpdatePort
 hg9T73LlRiU sceVoiceVADAdjustment
 YeJl6yDlhW0 sceVoiceWriteToIPort
+UJvFjRAnQ2k sceVorbisDecClear
+YzIPMpnHJzU sceVorbisDecInfo
+ItJTxCCvT4A sceVorbisDecRead
 hBH2ABP7IeY sceVrServiceDialogClose
 cYnBkgm8I0c sceVrServiceDialogGetResult
 kUavKmsczkY sceVrServiceDialogGetStatus
