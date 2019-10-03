@@ -10529,6 +10529,7 @@ TmkVz5YgHg8 sceKernelEventLogWrite
 Ac86z8q7T8A sceKernelExitSblock
 UtszJWHrDcA sceKernelFchmod
 SoZkxZkCHaw sceKernelFcntl
+30Rh4ixbKy4 sceKernelFdatasync
 YDg-SQj66AQ sceKernelFlock
 kBwCPsYX-m4 sceKernelFstat
 fTx66l5iWIA sceKernelFsync
@@ -10592,14 +10593,17 @@ kOcnerypnQA sceKernelGettimezone
 otfCdjLjGrQ sceKernelGetVddVid
 rNRtm1uioyY sceKernelHasNeoMode
 l-zbaxNzruE sceKernelHwHasOpticalOut
++ofrEv1aAU0 sceKernelHwHasWlanBt
 1wxFFk3xIhA sceKernelIccControlBDPowerState
 Z7NoR9m5SVo sceKernelIccGetCpuInfoBit
 tCQzG0iC8zw sceKernelIccGetPowerNumberOfBootShutdown
 PA6ZwQM5tNQ sceKernelIccGetPowerOperatingTime
 wXmx+vN8puE sceKernelIccGetPowerUpCause
 zEmi6zvei2k sceKernelIccGetThermalAlert
+NtOA+0RApBg sceKernelIccGetUSBPowerState
 qWoGe2XqwVw sceKernelIccIndicatorBootDone
 gQXxz1IoL5U sceKernelIccIndicatorShutdown
+98LV9dS2Fvw sceKernelIccIndicatorStandby
 wNeGsNes5ck sceKernelIccNotifyBootStatus
 xXj0rnNUYIk sceKernelIccNvsFlush
 0gkGdPk8dXw sceKernelIccReadPowerBootMessage
@@ -10615,7 +10619,10 @@ cbn9Di01j0k sceKernelIsAuthenticNeo
 K0ZTCJ-wFrM sceKernelIsDebuggerAttached
 UtO0OHMCgmI sceKernelIsDevelopmentMode
 QNjGUdj1HPM sceKernelIsDevKit
+ts25M0mp2uY sceKernelIsGenuineCEX
+lFf3UU811v4 sceKernelIsGenuineDevKit
 u3h77G+tFVc sceKernelIsGenuineN
+S4XWKGFp+bc sceKernelIsGenuineTestKit
 xeu-pV8wkKs sceKernelIsInSandbox
 miPa6vSAqos sceKernelIsKratos
 WslcK1FQcGI sceKernelIsNeoMode
@@ -10685,6 +10692,7 @@ VjBtg5Btl94 sceKernelSetFsstParam
 rzEsC81gurc sceKernelSetGPI
 ca7v6Cxulzs sceKernelSetGPO
 4nAp4pZgV1A sceKernelSetGpuCu
+BDLSyH7y6Mo sceKernelSetPhysFmemLimit
 8UVYwy0F2Hk sceKernelSetProcessName
 -W4xI5aVI8w sceKernelSetProcessProperty
 BohYr-F7-is sceKernelSetPrtAperture
