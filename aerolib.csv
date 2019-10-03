@@ -235,9 +235,14 @@ P0jjY6bxakI __sys_dynlib_get_list2
 nZHk+lpqwVQ __sys_dynlib_load_prx
 nG-FYqFutUo __sys_get_proc_type_info
 O-hEvSnv2o4 __sys_is_development_mode
+2M+dFM8Wmq4 __sys_kqueueex
 3CNY4Z0Luc8 __sys_namedobj_create
 E7CmfLfeSuQ __sys_namedobj_delete
 msfSXXy-8H8 __sys_nanosleep
+UTR6wAkajxk __sys_netabort
+zsTvhCDrOjQ __sys_netcontrol
+X86Q0qQJ1m0 __sys_netgetiflist
+Wx2+2t1mX1E __sys_netgetsockinfo
 iZFJYJJoZS8 __sys_opmc_disable
 MGrj20+EK+U __sys_opmc_enable
 h+4DJpAXs4I __sys_opmc_get_ctr
@@ -251,6 +256,8 @@ n0ErFZ2hmKs __sys_randomized_path
 9Iem9Wk07xU __sys_rdup
 7NwggrWJ5cA __sys_regmgr_call
 ByogDrS-Xw8 __sys_set_uevt
+t+rTx5NW+qU __sys_socketclose
+pG70GT5yRo4 __sys_socketex
 EeVthQocE3Y __sys_test_debug_rwmem
 jTPE1AS7uak __sys_workaround8849
 vNe1w4diLCs __tls_get_addr
