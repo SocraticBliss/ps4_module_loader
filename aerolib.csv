@@ -10538,11 +10538,18 @@ NLq2b1jOaN0 sceKernelFutimes
 YeU23Szo3BM sceKernelGetAllowedSdkVersionOnSystem
 G-MYv5erXaU sceKernelGetAppInfo
 QtLhuYZf9jg sceKernelGetBackupRestoreMode
+n0FvTzIPodM sceKernelGetBioUsageAll
 OX9wtyjVAJY sceKernelGetBudget
 WB66evu8bsU sceKernelGetCompiledSdkVersion
+jgYD8N1DILg sceKernelGetCompiledSdkVersionByPath
 8BrtU9maWG4 sceKernelGetCompiledSdkVersionByPid
+iUohlUDiGac sceKernelGetCpuFrequency
 VOx8NGmHXTs sceKernelGetCpumode
+F9LZ1EbJnfo sceKernelGetCpumodeGame
 ssmH9nMYO4o sceKernelGetCpuUsage
+ToISj0q68Qg sceKernelGetCpuUsageAll
+VS45LnNqyCo sceKernelGetCpuUsageProc
+QbdkmhQQfIM sceKernelGetCpuUsageProc2
 g0VTBxfJyu0 sceKernelGetCurrentCpu
 i-H8tE6wTqI sceKernelGetDataTransferMode
 j2AIqSqJP0w sceKernelGetdents
@@ -10555,6 +10562,7 @@ Q0qr9AyqJSk sceKernelGetEventFflags
 23CPPI1tyBY sceKernelGetEventFilter
 mJ7aghmgvfc sceKernelGetEventId
 vz+pg2zdopI sceKernelGetEventUserData
+JGfTMBOdUJo sceKernelGetFsSandboxRandomWord
 4oXYe9Xmk0Q sceKernelGetGPI
 6sy3Y9QjOJw sceKernelGetGPO
 lZG-WlKxRqQ sceKernelGetIdPs
@@ -10564,10 +10572,13 @@ RpQJJVKTiFM sceKernelGetModuleInfoForUnwind
 f7KBOafysXo sceKernelGetModuleInfoFromAddr
 HZO7xOos4xc sceKernelGetModuleInfoInternal
 IuxnUuXk6Bg sceKernelGetModuleList
+u+mlUkWpU3Y sceKernelGetModuleListInternal
 DLORcroUqbc sceKernelGetOpenPsId
 ul57hvm6mBc sceKernelGetOpenPsIdForSystem
 tZ2yplY8MBY sceKernelGetPageTableStats
+NSw6bEcrtWo sceKernelGetPagingStatsOfAllObjects
 7hsMq4oz0Sc sceKernelGetPagingStatsOfAllThreads
+fUJRLEbJOuQ sceKernelGetProcessName
 4J2sUJmuHZQ sceKernelGetProcessTime
 fgxnMeTNUtY sceKernelGetProcessTimeCounter
 BNowx2l588E sceKernelGetProcessTimeCounterFrequency
@@ -10576,6 +10587,8 @@ BNowx2l588E sceKernelGetProcessTimeCounterFrequency
 pyAyDVpDOhw sceKernelGetProductCode
 tlLu+KqzgDY sceKernelGetProductStr
 L0v2Go5jOuM sceKernelGetPrtAperture
+Q30w46WtYQw sceKernelGetResidentCount
+a7DM+5cDkAg sceKernelGetResidentFmemCount
 85QMKsnns2o sceKernelGetResource
 S2-4Sh3qnm8 sceKernelGetResourceLimit
 TQxbrxPdIxU sceKernelGetResourceOne
@@ -10587,6 +10600,7 @@ bnZxYgAFeA0 sceKernelGetSanitizerNewReplaceExternal
 ou2GyAJwJ+Q sceKernelGetSubsysId
 3EDFoWECKOg sceKernelGetSystemSwBeta
 Mv1zUObHvXI sceKernelGetSystemSwVersion
+4vkZwDJbMx0 sceKernelGetThreadName
 ejekcaNQNq0 sceKernelGettimeofday
 kOcnerypnQA sceKernelGettimezone
 1j3S3n-tTW4 sceKernelGetTscFrequency
@@ -10595,10 +10609,14 @@ rNRtm1uioyY sceKernelHasNeoMode
 l-zbaxNzruE sceKernelHwHasOpticalOut
 +ofrEv1aAU0 sceKernelHwHasWlanBt
 1wxFFk3xIhA sceKernelIccControlBDPowerState
+U0NKl-rjhYA sceKernelIccGetCountTime
 Z7NoR9m5SVo sceKernelIccGetCpuInfoBit
+8TqMzIggthc sceKernelIccGetErrLog
+C+i9gJY4A1I sceKernelIccGetHwInfo
 tCQzG0iC8zw sceKernelIccGetPowerNumberOfBootShutdown
 PA6ZwQM5tNQ sceKernelIccGetPowerOperatingTime
 wXmx+vN8puE sceKernelIccGetPowerUpCause
+L21PBFwqIiM sceKernelIccGetSysEventLog
 zEmi6zvei2k sceKernelIccGetThermalAlert
 NtOA+0RApBg sceKernelIccGetUSBPowerState
 qWoGe2XqwVw sceKernelIccIndicatorBootDone
@@ -10621,6 +10639,7 @@ UtO0OHMCgmI sceKernelIsDevelopmentMode
 QNjGUdj1HPM sceKernelIsDevKit
 ts25M0mp2uY sceKernelIsGenuineCEX
 lFf3UU811v4 sceKernelIsGenuineDevKit
+H54cSDvjryI sceKernelIsGenuineKratosCex
 u3h77G+tFVc sceKernelIsGenuineN
 S4XWKGFp+bc sceKernelIsGenuineTestKit
 xeu-pV8wkKs sceKernelIsInSandbox
@@ -10644,6 +10663,7 @@ IWIBBdTHit4 sceKernelMapFlexibleMemory
 NcaWUxfMNIQ sceKernelMapNamedDirectMemory
 mL8NDH86iQI sceKernelMapNamedFlexibleMemory
 kc+LEEIYakc sceKernelMapNamedSystemFlexibleMemory
+bvD+95Q6asU sceKernelMemoryPoolGetBlockStats
 1-LFLmRFxxM sceKernelMkdir
 3k6kx-zOOSQ sceKernelMlock
 EfqmKkirJF0 sceKernelMlockall
@@ -10668,6 +10688,7 @@ k1jIkFHa9OU sceKernelProtectDirectMemory
 nKWi-N2HBV4 sceKernelPwrite
 mBd4AfLP+u8 sceKernelPwritev
 WFcfL2lzido sceKernelQueryMemoryProtection
+p2suRCR4KqE sceKernelRandomizedPath
 LxIacrWiJ3w sceKernelRdup
 Cg4srZ6TKbU sceKernelRead
 ScfnaxnQXn4 sceKernelReadDipswData
@@ -10680,11 +10701,14 @@ teiItL2boFw sceKernelReleaseFlexibleMemory
 M0z6Dr6TNnM sceKernelReportUnpatchedFunctionCall
 7oxv3PPCumo sceKernelReserveVirtualRange
 naInUjYt3so sceKernelRmdir
+Kf10sqhOoRY sceKernelRtldControl
+ASVb7Y-pR4Y sceKernelSandboxPath
 zl7hupSO0C0 sceKernelSendNotificationRequest
 CkomU+GYCQ8 sceKernelSetAppInfo
 9xRIkqnNibE sceKernelSetBackupRestoreMode
 nzuKTmqQFXY sceKernelSetBudget
 FeBOnMEm0SY sceKernelSetCompressionAttribute
+KCwXUKT269I sceKernelSetCpumodeGame
 HBsPvq47HNA sceKernelSetDipsw
 OfrPlrwzl4U sceKernelSetDirectMemoryType
 IOnSvHzqu6A sceKernelSetEventFlag
@@ -10698,6 +10722,7 @@ BDLSyH7y6Mo sceKernelSetPhysFmemLimit
 BohYr-F7-is sceKernelSetPrtAperture
 As-JdqyUuMs sceKernelSetSafemode
 ChCOChPU-YM sceKernelSettimeofday
+cxdklXtQcqA sceKernelSetTimezoneInfo
 DGMG3JshrZU sceKernelSetVirtualRangeName
 R7Xj-th93gs sceKernelSetVmContainer
 4czppHBiriw sceKernelSignalSema
@@ -14094,6 +14119,7 @@ mkawd0NA9ts sysconf
 DFmMT80xcNI sysctl
 MhC53TKmjVA sysctlbyname
 UkEV4hvMo1E sysctlnametomib
+MMSo+k+Wp0Y sysKernelGetLowerLimitUpdVersion
 6jj29MbyzuI sysKernelGetManufacturingMode
 1U-s6o8XOcE sysKernelGetUpdVersion
 UNS2V4S097M syslog
