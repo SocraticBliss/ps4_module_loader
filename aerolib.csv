@@ -13686,8 +13686,8 @@ Fc8qxlKINYQ sceVideoRecordingSetInfo
 tWoe9IlGAhs sceVideoRecordingStart
 OOFxrMY+mfI sceVideoRecordingStop
 gWZikoR+g9g sceVideoRecordingTerm
-wzr6GTOo9Dw sceVisionManagerOpen
 P9+90HStC44 sceVisionManagerClose
+wzr6GTOo9Dw sceVisionManagerOpen
 ACdU2QH82O4 sceVisionManagerRequestClose
 JeAOV3YYkBU sceVisionManagerRequestOpen
 oV9GAdJ23Gw sceVoiceConnectIPortToOPort
