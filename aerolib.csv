@@ -8808,6 +8808,7 @@ OuKg+kRDD7U pthread_rwlockattr_setpshared
 8NuOHiTr1Vw pthread_rwlockattr_settype_np
 EotR8a3ASf4 pthread_self
 oxMp8uPqa+U pthread_set_name_np
+el9stmu6290 pthread_set_user_context_np
 5KWrg7-ZqvE pthread_setaffinity_np
 lZzFeSxPl08 pthread_setcancelstate
 2dEhvvjlq30 pthread_setcanceltype
@@ -10465,6 +10466,7 @@ j1LyMdaM+C0 sceJpegEncDelete
 QbrU0cUghEM sceJpegEncEncode
 o6ZgXfFdWXQ sceJpegEncQueryMemorySize
 cG3t15OK4Ow sceKernelAddFileEvent
+YJ7JscWubcU sceKernelAddGpuExceptionEvent
 R74tt43xP6k sceKernelAddHRTimerEvent
 VHCS3rCd0PM sceKernelAddReadEvent
 uqJlNd9XIrA sceKernelAddResource
@@ -10517,6 +10519,7 @@ BpFoboUJoZU sceKernelCreateEventFlag
 s4tJF+n0mZ0 sceKernelCreateSblock
 188x57JYp0g sceKernelCreateSema
 XECwgo2nbek sceKernelDebugGetAppStatus
+CgfvQDFAtYU sceKernelDebugGetPauseCount
 +iVwFsjXaFQ sceKernelDebugGpuPaDebugIsInProgress
 2tJsBnPiylo sceKernelDebugInjectProcessEvent
 9JYNqN6jAKI sceKernelDebugOutText
@@ -10527,6 +10530,7 @@ vs+KPSoE7AM sceKernelDeleteBudget
 HhGAQ+ffliw sceKernelDeleteEport
 jpFjmgAC5AE sceKernelDeleteEqueue
 8mql9OcQnd4 sceKernelDeleteEventFlag
+8skggWXlSqM sceKernelDeleteGpuExceptionEvent
 UmXngHKB6is sceKernelDeleteFileEvent
 J+LF6LwObXU sceKernelDeleteHRTimerEvent
 JxJ4tfgKlXA sceKernelDeleteReadEvent
@@ -10558,6 +10562,7 @@ G-MYv5erXaU sceKernelGetAppInfo
 QtLhuYZf9jg sceKernelGetBackupRestoreMode
 n0FvTzIPodM sceKernelGetBioUsageAll
 OX9wtyjVAJY sceKernelGetBudget
+ikkTGg4Cshw sceKernelGetCallRecord
 WB66evu8bsU sceKernelGetCompiledSdkVersion
 jgYD8N1DILg sceKernelGetCompiledSdkVersionByPath
 8BrtU9maWG4 sceKernelGetCompiledSdkVersionByPid
@@ -10605,6 +10610,7 @@ BNowx2l588E sceKernelGetProcessTimeCounterFrequency
 pyAyDVpDOhw sceKernelGetProductCode
 tlLu+KqzgDY sceKernelGetProductStr
 L0v2Go5jOuM sceKernelGetPrtAperture
+9thKyBzyAR4 sceKernelGetRenderingMode
 Q30w46WtYQw sceKernelGetResidentCount
 a7DM+5cDkAg sceKernelGetResidentFmemCount
 85QMKsnns2o sceKernelGetResource
@@ -10677,6 +10683,7 @@ oib76F-12fk sceKernelLseek
 LFbwY8r50o8 sceKernelLwfsAllocateBlock
 s2PjRq4By9U sceKernelLwfsLseek
 T4osaR3EDkI sceKernelLwfsSetAttribute
+kHOS+St2y7M sceKernelLwfsTrimBlock
 FNigDX9ue0g sceKernelLwfsWrite
 L-Q3LEjIbgA sceKernelMapDirectMemory
 BQQniolj9tQ sceKernelMapDirectMemory2
@@ -10701,6 +10708,7 @@ xQIIfJ860sk sceKernelMunlock
 lvD71jP2Mnk sceKernelMunlockall
 cQke9UuBQOk sceKernelMunmap
 QvsZxomvUHs sceKernelNanosleep
+KB7Vc2+5S54 sceKernelNormalizePath
 1G3lF1Gg1k8 sceKernelOpen
 wibWed78GyY sceKernelOpenEport
 1vDaenmJtyA sceKernelOpenEventFlag
@@ -10714,6 +10722,7 @@ k1jIkFHa9OU sceKernelProtectDirectMemory
 nKWi-N2HBV4 sceKernelPwrite
 mBd4AfLP+u8 sceKernelPwritev
 WFcfL2lzido sceKernelQueryMemoryProtection
+il03nluKfMk sceKernelRaiseException
 p2suRCR4KqE sceKernelRandomizedPath
 LxIacrWiJ3w sceKernelRdup
 Cg4srZ6TKbU sceKernelRead
@@ -10733,8 +10742,10 @@ zl7hupSO0C0 sceKernelSendNotificationRequest
 CkomU+GYCQ8 sceKernelSetAppInfo
 9xRIkqnNibE sceKernelSetBackupRestoreMode
 nzuKTmqQFXY sceKernelSetBudget
+P6dUEXUHXjo sceKernelSetCallRecord
 FeBOnMEm0SY sceKernelSetCompressionAttribute
 KCwXUKT269I sceKernelSetCpumodeGame
++rSNKzU+aNQ sceKernelSetDataTransferMode
 HBsPvq47HNA sceKernelSetDipsw
 OfrPlrwzl4U sceKernelSetDirectMemoryType
 IOnSvHzqu6A sceKernelSetEventFlag
@@ -10742,6 +10753,7 @@ VjBtg5Btl94 sceKernelSetFsstParam
 rzEsC81gurc sceKernelSetGPI
 ca7v6Cxulzs sceKernelSetGPO
 4nAp4pZgV1A sceKernelSetGpuCu
+A1zOC17L80g sceKernelSetMemoryPstate
 BDLSyH7y6Mo sceKernelSetPhysFmemLimit
 8UVYwy0F2Hk sceKernelSetProcessName
 -W4xI5aVI8w sceKernelSetProcessProperty
