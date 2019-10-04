@@ -10519,6 +10519,7 @@ s4tJF+n0mZ0 sceKernelCreateSblock
 XECwgo2nbek sceKernelDebugGetAppStatus
 +iVwFsjXaFQ sceKernelDebugGpuPaDebugIsInProgress
 2tJsBnPiylo sceKernelDebugInjectProcessEvent
+9JYNqN6jAKI sceKernelDebugOutText
 OMDRKKAZ8I4 sceKernelDebugRaiseException
 zE-wXIZjLoM sceKernelDebugRaiseExceptionOnReleaseMode
 S-AQZoElaRM sceKernelDebugSpawn
