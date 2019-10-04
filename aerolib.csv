@@ -10536,6 +10536,7 @@ YWQFUyXIVdU sceKernelDeleteTimerEvent
 LJDwdSNTnDg sceKernelDeleteUserEvent
 cBGTk8S92XM sceKernelDeleteWriteEvent
 BHouLQzh0X0 sceKernelDirectMemoryQuery
+ZB9HZnouJrc sceKernelDirectMemoryQueryForId
 LwG8g3niqwA sceKernelDlsym
 lsc8IlEjXhI sceKernelEnterSblock
 D4yla3vx4tY sceKernelError
