@@ -10591,10 +10591,12 @@ JGfTMBOdUJo sceKernelGetFsSandboxRandomWord
 lZG-WlKxRqQ sceKernelGetIdPs
 ePRSOZsroIQ sceKernelGetIpcPath
 kUpgrXIrz7Q sceKernelGetModuleInfo
+QgsKEUfkqMA sceKernelGetModuleInfo2
 RpQJJVKTiFM sceKernelGetModuleInfoForUnwind
 f7KBOafysXo sceKernelGetModuleInfoFromAddr
 HZO7xOos4xc sceKernelGetModuleInfoInternal
 IuxnUuXk6Bg sceKernelGetModuleList
+ZzzC3ZGVAkc sceKernelGetModuleList2
 u+mlUkWpU3Y sceKernelGetModuleListInternal
 DLORcroUqbc sceKernelGetOpenPsId
 ul57hvm6mBc sceKernelGetOpenPsIdForSystem
@@ -10789,6 +10791,7 @@ JTvBflhYazQ sceKernelWaitEventFlag
 Zxa0VhQVTsk sceKernelWaitSema
 4wSze92BhLI sceKernelWrite
 853R8RXtPMY sceKernelWriteDipswData
+I111PPn2g18 sceKernelWriteSdkEventLog
 kAt6VDbHmro sceKernelWritev
 omkB3RQAzoI sceKernelXenterSblock
 sNHr6sLUsRE sceKernelXexitSblock
