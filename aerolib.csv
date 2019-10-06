@@ -10,6 +10,7 @@ CS91br93fag __ashldi3
 ECUHmdEfhic __ashlti3
 fSZ+gbf8Ekc __ashrdi3
 7+0ouwmGDww __ashrti3
+JZWEhLSIMoQ __atomic_is_lock_free
 XGNIEdRyYPo __cleanup
 gCf7+aGEhnU __clzdi2
 ptL8XWgpGS4 __clzsi2
@@ -45,6 +46,7 @@ PsrRUg671K0 __cxa_increment_exception_refcount
 zr094EQ39Ww __cxa_pure_virtual
 ZL9FV4mJXxo __cxa_rethrow
 qKQiNX91IGo __cxa_rethrow_primary_exception
+BKSCW2bCACA __cxa_thread_atexit
 vkuuLfhnSZI __cxa_throw
 eTP9Mz4KkY4 __divdc3
 mdGgLADsq8A __divdf3
@@ -255,9 +257,12 @@ kPGXeSQeoWc __sys_osem_open
 n0ErFZ2hmKs __sys_randomized_path
 9Iem9Wk07xU __sys_rdup
 7NwggrWJ5cA __sys_regmgr_call
+NTNdYQluihk __sys_resume_internal_hdd
+6wXisPohifE __sys_resume_process
 ByogDrS-Xw8 __sys_set_uevt
 t+rTx5NW+qU __sys_socketclose
 pG70GT5yRo4 __sys_socketex
+-rXkJO1hOk0 __sys_suspend_process
 EeVthQocE3Y __sys_test_debug_rwmem
 jTPE1AS7uak __sys_workaround8849
 vNe1w4diLCs __tls_get_addr
@@ -748,7 +753,9 @@ YvmY5Jf0VYU _Thrd_join
 OCbJ96N1utA _Thrd_lt
 jfRI3snge3o _Thrd_sleep
 0JidN6q9yGo _Thrd_start
+gsqXCd6skKs _Thrd_start_with_attr
 ihfGsjLjmOM _Thrd_start_with_name
+ShanbBWU3AA _Thrd_start_with_name_attr
 exNzzCAQuWM _Thrd_yield
 kQelMBYgkK0 _thread_autoinit_dummy_decl
 dmUgzUX3nXU _thread_autoinit_dummy_decl_stub
@@ -5781,7 +5788,9 @@ YBrp9BlADaA _ZNSt23_Generic_error_categoryD0Ev
 MAalgQhejPc _ZNSt23_Generic_error_categoryD1Ev
 jVwxMhFRw8Q _ZNSt24_Iostream_error_categoryD0Ev
 27Z-Cx1jbkU _ZNSt24_Iostream_error_categoryD1Ev
+H7-7Z3ixv-w _ZNSt4_Pad7_LaunchEPKcPP12pthread_attrPP7pthread
 PBbZjsL6nfc _ZNSt4_Pad7_LaunchEPKcPP7pthread
+fLBZMOQh-3Y _ZNSt4_Pad7_LaunchEPP12pthread_attrPP7pthread
 xZqiZvmcp9k _ZNSt4_Pad7_LaunchEPP7pthread
 a-z7wxuYO2E _ZNSt4_Pad8_ReleaseEv
 uhnb6dnXOnc _ZNSt4_PadC2EPKc
@@ -5974,6 +5983,7 @@ gMwkpZNI9Us _ZNSt8messagesIwED0Ev
 I-e7Dxo087A _ZNSt8messagesIwED2Ev
 9iXtwvGVFRI _ZNSt8numpunctIcE2idE
 1LvbNeZZJ-o _ZNSt8numpunctIcE5_InitERKSt8_Locinfob
+fFnht9SPed8 _ZNSt8numpunctIcE5_TidyEv
 zCB24JBovnQ _ZNSt8numpunctIcE7_GetcatEPPKNSt6locale5facetEPKS1_
 TEtyeXjcZ0w _ZNSt8numpunctIcEC1Em
 WK24j1F3rCU _ZNSt8numpunctIcEC1EPKcmb
@@ -5986,6 +5996,7 @@ qEob3o53s2M _ZNSt8numpunctIcED1Ev
 xFva4yxsVW8 _ZNSt8numpunctIcED2Ev
 XZNi3XtbWQ4 _ZNSt8numpunctIwE2idE
 uiRALKOdAZk _ZNSt8numpunctIwE5_InitERKSt8_Locinfob
+2YCDWkuFEy8 _ZNSt8numpunctIwE5_TidyEv
 SdXFaufpLIs _ZNSt8numpunctIwE7_GetcatEPPKNSt6locale5facetEPKS1_
 XOgjMgZ3fjo _ZNSt8numpunctIwEC1Em
 H+T2VJ91dds _ZNSt8numpunctIwEC1EPKcmb
@@ -8613,6 +8624,7 @@ yS8U2TGCe1A nanosleep
 cJLTwtKGXJk nearbyint
 c+4r-T-tEIc nearbyintf
 6n23e0gIJ9s nearbyintl
+P330P3dFF68 Need_sceLibc
 ZT4ODD2Ts9o Need_sceLibcInternal
 h+J60RRlfnk nextafter
 3m2ro+Di+Ck nextafterf
@@ -10608,6 +10620,7 @@ fUJRLEbJOuQ sceKernelGetProcessName
 fgxnMeTNUtY sceKernelGetProcessTimeCounter
 BNowx2l588E sceKernelGetProcessTimeCounterFrequency
 +g+UP8Pyfmo sceKernelGetProcessType
+4P1e01mbenA sceKernelGetProcessTypeOfBudget
 959qrazPIrg sceKernelGetProcParam
 pyAyDVpDOhw sceKernelGetProductCode
 tlLu+KqzgDY sceKernelGetProductStr
@@ -10719,6 +10732,8 @@ MwhHNKdBXq8 sceKernelOpenSema
 12wOHk8ywb0 sceKernelPollSema
 +r3rMFwItV4 sceKernelPread
 yTj62I7kw4s sceKernelPreadv
+-ajib2lKj-c sceKernelPrepareToResumeProcess
+5ifAYsFspMM sceKernelPrepareToSuspendProcess
 Wl2o5hOVZdw sceKernelPrintBacktraceWithModuleInfo
 k1jIkFHa9OU sceKernelProtectDirectMemory
 nKWi-N2HBV4 sceKernelPwrite
@@ -10761,10 +10776,13 @@ BDLSyH7y6Mo sceKernelSetPhysFmemLimit
 -W4xI5aVI8w sceKernelSetProcessProperty
 BohYr-F7-is sceKernelSetPrtAperture
 As-JdqyUuMs sceKernelSetSafemode
+2mH42a-kAiQ sceKernelSetSafemodeDirect
 ChCOChPU-YM sceKernelSettimeofday
 cxdklXtQcqA sceKernelSetTimezoneInfo
 DGMG3JshrZU sceKernelSetVirtualRangeName
 R7Xj-th93gs sceKernelSetVmContainer
+XQ1A9VPIigU sceKernelSflashGetWritePrio
+X79uU+sZkdQ sceKernelSflashSetWritePrio
 4czppHBiriw sceKernelSignalSema
 -ZR+hG7aDHw sceKernelSleep
 qIjSKZfWk5I sceKernelSpawn
@@ -10774,6 +10792,7 @@ yeW8YJ4T7K4 sceKernelSuspendSystem
 KK6B72YC-js sceKernelSwitchToBaseMode
 +DVcq4YF6Xg sceKernelSwitchToNeoMode
 uvT2iYBBnkY sceKernelSync
+VinlCA8Vkg8 sceKernelTerminateProcess
 hUN72ocX6gM sceKernelTerminateSysCore
 1yca4VvfcNA sceKernelTitleWorkaroundIsEnabled
 GST42pfUfMc sceKernelTitleWorkdaroundIsEnabled
