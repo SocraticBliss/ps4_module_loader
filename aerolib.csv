@@ -10488,9 +10488,11 @@ nYX3q3hser8 sceHidControlDisconnectPort
 akmC1nXbrLE sceHidControlGetBatteryState
 u2GrRj85Riw sceHidControlGetDeviceInfo
 EfvzrKzujQE sceHidControlGetDeviceName
+AURXo5jFRu0 sceHidControlGetJediExtensionUnitInfo
 Pc92TjYbXpc sceHidControlGetSparkState
 Y1WkAv+vINM sceHidControlInit
 JcPje9m3yyc sceHidControlSetApplicationFocus
++Xne3E9M-E8 sceHidControlSetJediVolumeGain
 vY-muZt5ojc sceHidControlSetProcessFocus
 6wfdbeqaQco sceHidControlSetUserColor
 6biw1XHTSqQ sceHmdClose
@@ -10943,6 +10945,7 @@ l-zbaxNzruE sceKernelHwHasOpticalOut
 +ofrEv1aAU0 sceKernelHwHasWlanBt
 1wxFFk3xIhA sceKernelIccControlBDPowerState
 U0NKl-rjhYA sceKernelIccGetCountTime
+1NlbNxWzn7U sceKernelIccGetCPMode
 Z7NoR9m5SVo sceKernelIccGetCpuInfoBit
 8TqMzIggthc sceKernelIccGetErrLog
 C+i9gJY4A1I sceKernelIccGetHwInfo
@@ -10955,6 +10958,8 @@ NtOA+0RApBg sceKernelIccGetUSBPowerState
 qWoGe2XqwVw sceKernelIccIndicatorBootDone
 gQXxz1IoL5U sceKernelIccIndicatorShutdown
 98LV9dS2Fvw sceKernelIccIndicatorStandby
+7Q-U-8yN1Hk sceKernelIccIndicatorStandbyBoot
+Eye1lgCj9yo sceKernelIccIndicatorStandbyShutdown
 wNeGsNes5ck sceKernelIccNotifyBootStatus
 xXj0rnNUYIk sceKernelIccNvsFlush
 0gkGdPk8dXw sceKernelIccReadPowerBootMessage
@@ -11066,6 +11071,7 @@ A1zOC17L80g sceKernelSetMemoryPstate
 BDLSyH7y6Mo sceKernelSetPhysFmemLimit
 8UVYwy0F2Hk sceKernelSetProcessName
 -W4xI5aVI8w sceKernelSetProcessProperty
+U5HG6wD4smU sceKernelSetProcessPropertyString
 BohYr-F7-is sceKernelSetPrtAperture
 As-JdqyUuMs sceKernelSetSafemode
 2mH42a-kAiQ sceKernelSetSafemodeDirect
