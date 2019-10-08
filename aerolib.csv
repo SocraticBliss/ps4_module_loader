@@ -9466,8 +9466,8 @@ Ko8fB-6YDp8 sceAvSettingNotifyProcessSuspend
 Pxx1uH51g-E sceAvSettingOpenLoopbackBuffers
 dnM9JfgxHbk sceAvSettingRemoveCallbacks
 I37rBumJ9X4 sceAvSettingRemoveProcessOutputMode
-fscoS+Gh3Sw sceAvSettingSetAvOutputMode
 o7btxEpLl-0 sceAvSettingSetAudioOutModeAny
+fscoS+Gh3Sw sceAvSettingSetAvOutputMode
 geoQ77m8Trc sceAvSettingSetVideoOutModeAny
 t-BDxreA7sU sceAvSettingSetVideoOutModeAny_
 a4sYJjuBVbg sceAvSettingSetVideoOutputColorEffect
