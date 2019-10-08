@@ -11296,6 +11296,8 @@ puHrnP8V-dY sceMbusEventReceive
 GssDGmm3rGM sceMbusGetControlStatus
 Czjo1Se8pEw sceMbusGetDeviceDescription
 yTC1T2lLJwY sceMbusGetDeviceInfo
+RsKVKhSWt28 sceMbusGetDeviceInfo_
+b28tsShnGuQ sceMbusGetSimulatedHandleStatusInfo
 hIAyLXI4V8g sceMbusGetSparkState
 pOTLKv4IdPc sceMbusGetUsersDeviceInfo
 wRPXMGtkOq0 sceMbusInit
@@ -11315,9 +11317,11 @@ hykD8qmO6XA sceMbusTerm
 84H-GMsBU6M sceMbusUserLogin
 VKZKhUg0vyU sceMbusUserLogout
 cAnT0Rw-IwU sceMouseClose
+QA9Qupz3Zjw sceMouseGetDeviceInfo
 Qs0wWulgl7U sceMouseInit
 RaqxZIf6DvE sceMouseOpen
 x8qnXqh-tiM sceMouseRead
+crkFfp-cmFo sceMouseSetHandType
 ghLUU2Z5Lcg sceMouseSetPointerSpeed
 XX6wlxpHyeo sceMoveClose
 gByWl2lZ3Eg sceMoveGetCalibrationInfo
