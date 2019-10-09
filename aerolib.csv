@@ -13593,6 +13593,7 @@ rb8JKArrzc0 sceKernelInternalHeapPrintBacktraceWithModuleInfo
 xAKAe6kFk90 sceKernelInternalMapDirectMemory
 -YTW+qXc3CQ sceKernelInternalMemoryGetModuleSegmentInfo
 jh+8XiK4LeE sceKernelIsAddressSanitizerEnabled
+oU4h4oBe2l0 sceKernelIsAllowedToSelectDvdRegion
 PKg59uLpHNI sceKernelIsAssistMode
 cbn9Di01j0k sceKernelIsAuthenticNeo
 8aCOCGoRkUI sceKernelIsCEX
@@ -13607,6 +13608,7 @@ u3h77G+tFVc sceKernelIsGenuineN
 S4XWKGFp+bc sceKernelIsGenuineTestKit
 xeu-pV8wkKs sceKernelIsInSandbox
 miPa6vSAqos sceKernelIsKratos
+Jp76d0USJeM sceKernelIsMainOnStanbyMode
 21+rb7xOlJk sceKernelIsModuleLoaded
 WslcK1FQcGI sceKernelIsNeoMode
 yDBwVAolDgg sceKernelIsStack
