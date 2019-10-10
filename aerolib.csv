@@ -11756,6 +11756,7 @@ cejlyvC7+N8 sceAvSettingEnterAudioMuteForShutdown
 1-O9j5vS8QU sceAvSettingGetCurrentHdmiDeviceId
 PagHtqiYnQg sceAvSettingGetCurrentOutputMode
 ZmPBwBD2tIY sceAvSettingGetCurrentOutputMode_
+j-b-RFZ3gjw sceAvSettingGetCurrentOutputMode2_
 vfzFZDaFuKU sceAvSettingGetDetailedHdcpStatus
 vh3aQ+JUpSU sceAvSettingGetDeviceInfo
 AoBZzDiZwng sceAvSettingGetHdcpStatus
@@ -12329,6 +12330,7 @@ EY8cOKuR7Bc sceDebugTriggerCoredump
 QTpgnwUVRWw sceDebugWriteProcessMemory
 qXMciKkR0H0 sceDebugWriteProcessRegister
 tHeVbJMcEv8 sceDebugWriteThreadRegister
+BQqV4AR38B8 sceDeci4hCreateHostProcessAndWait
 q2eqZBGasE0 sceDeci4hOpen
 5zcQehpL1Mc sceDeci4hRead
 z5ST9CIgHa0 sceDepthEnableExtendedMode
@@ -12925,6 +12927,9 @@ Fa3x75OOLRA sceGnmEndWorkload
 vbcR4Ken6AA sceGnmFindResources
 4Mv9OXypBG8 sceGnmFindResourcesPublic
 iBt3Oe00Kvc sceGnmFlushGarlic
+GviyYfFQIkc sceGnmGetCoredumpAddress
+meiO-5ZCVIE sceGnmGetCoredumpMode
+pd4C7da6sEg sceGnmGetDebugTimestamp
 UoYY0DWMC0U sceGnmGetEqEventType
 H7-fgvEutM0 sceGnmGetEqTimeStamp
 oL4hGI1PMpw sceGnmGetGpuBlockStatus
@@ -12937,6 +12942,7 @@ dewXw5roLs0 sceGnmGetPhysicalCounterFromVirtualized
 fzJdEihTFV4 sceGnmGetProtectionFaultTimeStamp
 4PKnYXOhcx4 sceGnmGetResourceBaseAddressAndSizeInBytes
 O0S96YnD04U sceGnmGetResourceName
+eLQbNsKeTkU sceGnmGetResourceRegistrationBuffers
 UBv7FkVfzcQ sceGnmGetResourceShaderGuid
 bdqdvIkLPIU sceGnmGetResourceType
 UoBuWAhKk7U sceGnmGetResourceUserData
@@ -12952,6 +12958,7 @@ aj3L-iaFmyk sceGnmInsertSetColorMarker
 jiItzS6+22g sceGnmInsertSetMarker
 URDgJcXhQOs sceGnmInsertThreadTraceMarker
 1qXLHIpROPE sceGnmInsertWaitFlipDone
+HRyNHoAjb6E sceGnmIsCoredumpValid
 jg33rEKLfVs sceGnmIsUserPaEnabled
 26PM5Mzl8zc sceGnmLogicalCuIndexToPhysicalCuIndex
 RU74kek-N0c sceGnmLogicalCuMaskToPhysicalCuMask
@@ -12962,11 +12969,18 @@ A+uGq+3KFtQ sceGnmMapComputeQueueWithPriority
 9Mv61HaMhfA sceGnmRegisterGdsResource
 t7-VbMosbR4 sceGnmRegisterGnmLiveCallbackConfig
 ZFqKFl23aMc sceGnmRegisterOwner
+j6mSQs3UgaY sceGnmRegisterOwnerForSystem
 nvEwfYAImTs sceGnmRegisterResource
 gObODli-OH8 sceGnmRequestFlipAndSubmitDone
 6YRHhh5mHCs sceGnmRequestFlipAndSubmitDoneForWorkload
 f85orjx7qts sceGnmRequestMipStatsReportAndReset
 MYRtYhojKdA sceGnmResetVgtControl
+hS0MKPRdNr0 sceGnmSdmaClose
+Lg2isla2XeQ sceGnmSdmaCopyLinear
+-Se2FY+UTsI sceGnmSdmaCopyTiled
+OlFgKnBsALE sceGnmSdmaCopyWindow
+LQQN0SwQv8c sceGnmSdmaFlush
+5AtqyMgO7fM sceGnmSdmaOpen
 KXltnCwEJHQ sceGnmSetCsShader
 Kx-h-nWQJ8A sceGnmSetCsShaderWithModifier
 X9Omw9dwv5M sceGnmSetEmbeddedPsShader
@@ -12989,12 +13003,16 @@ y+iI2lkX+qI sceGnmSetWaveLimitMultiplier
 XiyzNZ9J4nQ sceGnmSetWaveLimitMultipliers
 aqhuK2Mj4X4 sceGnmSpmInit
 KHpZ9hJo1c0 sceGnmSpmInit2
+QEsMC+M3yjE sceGnmSpmSetDelay
+cMWWYeqQQlM sceGnmSpmSetSelectCounter
+AmmYLcJGTl0 sceGnmSpmStartSpm
 xbxNatawohc sceGnmSubmitAndFlipCommandBuffers
 Ga6r7H6Y0RI sceGnmSubmitAndFlipCommandBuffersForWorkload
 zwY0YV91TTI sceGnmSubmitCommandBuffers
 jRcI8VcgTz4 sceGnmSubmitCommandBuffersForWorkload
 yvZ73uQUqrk sceGnmSubmitDone
 bsvV-oFZSiM sceGnmSysClose
+9l2uOATqogs sceGnmSysGetClientNumber
 DgEvomXMtAM sceGnmSysOpen
 ArSg-TGinhk sceGnmUnmapComputeQueue
 yhFCnaz5daw sceGnmUnregisterAllResourcesForOwner
@@ -13374,6 +13392,7 @@ k+LGes6TQQI sceIpmiMgrPauseDump
 L4j7nnv2fVU sceIpmiMgrStartDump
 JPh3Zgg0Zwc sceJpegDecCreate
 1kzQRoWEgSA sceJpegDecDecode
+919MhccOiII sceJpegDecDecodeWithInputControl
 Hwh11+m5KoI sceJpegDecDelete
 LSinoSQH790 sceJpegDecParseHeader
 uNAUmANZMEw sceJpegDecQueryMemorySize
@@ -14538,12 +14557,15 @@ sXVQUIGmk2U sceNpGetPlatformType
 Z3mnqcGmf8E sceNpGetProcessId
 pJlGhXEt5CU sceNpGetRandom
 Pglk7zFj0DI sceNpGetSdkVersion
+ljqnF0hmLjo sceNpGetSdkVersionUInt
 eQH7nWPcAgc sceNpGetState
 PVVsRmMkO1g sceNpGetSystemClockUsec
 VgYczPGB5ss sceNpGetUserIdByAccountId
 F6E4ycq9Dbg sceNpGetUserIdByOnlineId
 -gN6uE+zWng sceNpGlobalHeapGetAllocator
 VUHUasztbUY sceNpGlobalHeapGetAllocatorEx
+P4YpPziLBd4 sceNpGlobalHeapGetAllocatorExPtr
+DI5n4aOdxmk sceNpGlobalHeapGetAllocatorPtr
 Tr0u0p-T+x8 sceNpGlobalHeapInit
 hyrDIxugcKw sceNpGlobalHeapTerm
 MwcHR8xIR2w sceNpGriefReportCdInit
@@ -14606,6 +14628,8 @@ EjMsfO3GCIA sceNpJoinThread
 vJGDnNh4I0g sceNpJsonParse
 T61vWaA+d9Q sceNpJsonParse2
 XTi+x-uTX9o sceNpJsonParse2Init
+RgfCYkjW7As sceNpJsonParseBuf
+SnAdybtBK3o sceNpJsonParseBufInit
 p5ZkSMRR7AU sceNpJsonParseEx
 nhgjiwPUIzI sceNpJsonParseExInit
 teVnFAL6GNY sceNpJsonParseInit
@@ -15351,6 +15375,7 @@ MCLGkfBmw4c sceNpXmlParseInit
 z8N+d7DLC4E sceOpusCeltDecCreate
 jCeqFWeN9HA sceOpusCeltDecCtl
 6fxZHeuNhIA sceOpusCeltDecDecode
+zKQEeM0cBVs sceOpusCeltDecDecodeFloat
 q76RU0c+L+4 sceOpusCeltDecDecodeWithPriority
 Sn-MpfGTN9w sceOpusCeltDecDestroy
 xUp4-mftj5I sceOpusCeltDecGetSize
@@ -15358,6 +15383,7 @@ CdMxiPm8PRc sceOpusCeltEncCreate
 XW1+EtPFPAM sceOpusCeltEncCtl
 fNSqFBHAETU sceOpusCeltEncDestroy
 tpKYaXK-zVs sceOpusCeltEncEncode
+-TpTQG4cqr4 sceOpusCeltEncEncodeFloat
 Am+ONet261k sceOpusCeltEncEncodeWithPriority
 WYwgHnzZDzc sceOpusCeltEncGetSize
 6ncge5+l5Qs scePadClose
@@ -15515,6 +15541,7 @@ PDu2PNjfb1M scePlayReadyReset
 o-Z4rChSsSE scePlayReadyStoreCleanup
 m0uW+8pFyaw scePngDecCreate
 WC216DD3El4 scePngDecDecode
+cJ--1xAbj-I scePngDecDecodeWithInputControl
 QbD+eENEwo8 scePngDecDelete
 U6h4e5JRPaQ scePngDecParseHeader
 -6srIGbLTIU scePngDecQueryMemorySize
@@ -16046,6 +16073,7 @@ xuLuaJ4Ywlg sceShareUtilityAdvanceValidateContents
 1TFyHtLzdvg sceShareUtilityAdvanceWakeUpShareMenu
 tyYRZwL4rog sceShareUtilityAdvanceWakeUpShareMenuBroadcast
 wcxz4F94s6k sceShareUtilityAdvanceWakeUpShareMenuDefault
+PtFg1zs3XQA sceShareUtilityAdvanceWakeUpShareMenuForShareContent
 Jlv-lYxEnvM sceShareUtilityInitialize
 j7DlalBzHh8 sceShareUtilityInitializeEx2
 Lqp4EDIRXSo sceShareUtilityOpenShareMenu
@@ -16353,6 +16381,8 @@ E4a-ahM57QQ sceSslSetVerifyCallback
 lnHFrZV5zAY sceSslShowMemoryStat
 0K1yQ6Lv-Yc sceSslTerm
 UQ+3Qu7v3cA sceSslUnloadCert
+aYkLspDSybs sceSulphaGetClientInfo
+mPdonXVe31M sceSulphaGetConnectedClientCount
 SqfL0YjlBiA sceSulphaGetDefaultConfig
 6x06HaJWiDQ sceSulphaGetNeededMemory
 fpFCQLbTB1w sceSulphaInit
@@ -16553,7 +16583,14 @@ YbAfwT8fO7Q sceSysUtilSendSystemNotificationWithUserId
 DC2NSz1IDyk sceSysUtilSendSystemNotificationWithUserName
 Kl9aRhwtXBM sceSysUtilSendSystemNotificationWithUserNameInfo
 -0FdPC78x7U sceSysUtilSendTrcCheckNotificationRequest
+Fz+01Q4GjpM sceTextToSpeechCancelImpl
+yn2loAZJRfk sceTextToSpeechCloseImpl
 q6yAtHbMlyk sceTextToSpeechGetStatusImpl
+KXBnxqAeTuo sceTextToSpeechInitImpl
+HFM-KkVMVps sceTextToSpeechOpenImpl
+m8KLvqm+xF4 sceTextToSpeechPauseImpl
+AceRR9y6-ss sceTextToSpeechResumeImpl
+rjU70FGcXDw sceTextToSpeechTermImpl
 MZbcWoK2x6s sceTsCloseFile
 x5crCoykxlM sceTsDisableRepresentation
 pyoZ0o2qhgE sceTsEnableRepresentation
@@ -17123,6 +17160,7 @@ Zsh1K8YTD1E sceVdecCoreQueryInstanceSize
 nFn-3CWQEyo sceVdecCoreResetDecoder
 F4nrEfi-M84 sceVdecCoreSetDecodeInput
 OyxRC7GT4Es sceVdecCoreSyncDecode
+JFcSDC6AD+k sceVdecCoreSyncDecodeWptr
 iQRVLJQ+OYs sceVdecCoreTrySyncDecode
 hIgrg5h4V6s sceVdecswAllocateComputeQueue
 +L5ArV1tPGA sceVdecswCreateDecoder
@@ -17423,6 +17461,7 @@ k9meG9QXtn4 sceVorbisDecRawTell
 DEogcVYTvm8 sceVorbisDecRawTotal
 ItJTxCCvT4A sceVorbisDecRead
 wHbu4oz+z0I sceVorbisDecReadFilter
++A20uE3spLQ sceVorbisDecReadFloat
 OZBKii+KboY sceVorbisDecSerialNumber
 ORxxAa6qnAA sceVorbisDecSetDecodePriority
 6yXA1cZyFz4 sceVorbisDecTimeSeek
@@ -18390,6 +18429,7 @@ d1IXlZ0caEU WKGeolocationPermissionRequestAllow
 GB8w2Gfd0Ag WKGeolocationPermissionRequestDeny
 nq-FMcy8LXU WKGeolocationPermissionRequestGetTypeID
 7B7QLlsyCo8 WKGeolocationPositionCreate
+UOMssWsF9UU WKGeolocationPositionCreate_b
 JuA51bPRpmc WKGeolocationPositionGetTypeID
 fTWrVJcXr44 WKGetTypeID
 bbCj+yciZEg WKGrammarDetailCopyGuesses
