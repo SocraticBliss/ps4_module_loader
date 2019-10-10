@@ -13479,6 +13479,7 @@ YeU23Szo3BM sceKernelGetAllowedSdkVersionOnSystem
 G-MYv5erXaU sceKernelGetAppInfo
 QtLhuYZf9jg sceKernelGetBackupRestoreMode
 CQ1bzp1ba0k sceKernelGetBackupRestoreModeOfNextBoot
+wSxRrFKzKXk sceKernelGetBasicProductShape
 n0FvTzIPodM sceKernelGetBioUsageAll
 OX9wtyjVAJY sceKernelGetBudget
 ikkTGg4Cshw sceKernelGetCallRecord
