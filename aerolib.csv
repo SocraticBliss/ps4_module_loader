@@ -12649,6 +12649,7 @@ dcQeaDr8UJc sceFontFtSupportOpenTypeOtf
 2KXS-HkZT3c sceFontFtSupportOpenTypeTtf
 +ehNXJPUyhk sceFontFtSupportSystemFonts
 nAfQ6qaL1fU sceFontFtSupportType1
+X9+pzrGtBus sceFontFtSupportType42
 w0hI3xsK-hc sceFontFtSupportWinFonts
 C-4Qw5Srlyw sceFontGenerateCharGlyph
 5kx49CAlO-M sceFontGetAttribute
@@ -14070,10 +14071,13 @@ WNxCIjZdcTo sceMbusDisconnectDevice
 tJ9kX6guf3I sceMbusDumpAppInfo
 MtBchJFDxdU sceMbusDumpDeviceInfo
 fZ3rCadtmXo sceMbusDumpHandleStatusInfo
+KdvFp7l2qhA sceMbusDumpHandleStatusInfoAll
 3UJTdJgcQzA sceMbusDumpModuleStateInfo
+YQdBMeXFvso sceMbusDumpModuleStateInfoAll
 nNxUUYCpZkw sceMbusDumpPlayerInfo
 28Gu3wb-d1o sceMbusDumpPortHandleInfo
 Qk18Owuq1Yg sceMbusDumpProcMediaInfo
+ZMskokGFzRk sceMbusDumpProcMediaInfoAll
 kdL5Xm-z3zw sceMbusDumpUserMediaInfo
 pM6IH8xwjQ4 sceMbusEventBusStatusChangeSubscribe
 sB-c6VjBmOs sceMbusEventBusStatusChangeUnsubscribe
@@ -17244,6 +17248,7 @@ UxV5adxfBFg sceVdecCoreQueryFrameBufferInfo
 Zsh1K8YTD1E sceVdecCoreQueryInstanceSize
 nFn-3CWQEyo sceVdecCoreResetDecoder
 F4nrEfi-M84 sceVdecCoreSetDecodeInput
+hF8Pz0rtPLU sceVdecCoreSetDecodeOutputSw
 OyxRC7GT4Es sceVdecCoreSyncDecode
 JFcSDC6AD+k sceVdecCoreSyncDecodeWptr
 iQRVLJQ+OYs sceVdecCoreTrySyncDecode
@@ -17385,6 +17390,7 @@ AjtlFa2HRws sceVideoOutAddSetModeEvent
 Ax1Qs3Cm95Q sceVideoOutAddStereoBuffer
 Xru92wHJRmg sceVideoOutAddVblankEvent
 pv9CI5VC+R0 sceVideoOutAdjustColor_
+8Lf4Fp1TxA0 sceVideoOutAdjustColor2_
 uquVH4-Du78 sceVideoOutClose
 DYhhWbJSeRg sceVideoOutColorSettingsSetGamma_
 ktP9j1fN-zE sceVideoOutConfigureOptionsInitialize_
@@ -17417,6 +17423,7 @@ IZw2TINic+0 sceVideoOutGetCoredumpOutputMode
 W0iQAbGaTBg sceVideoOutGetCurrentOutputMode_
 kGVLc3htQE8 sceVideoOutGetDeviceCapabilityInfo_
 k6JLQGuPEYA sceVideoOutGetDeviceInfoEx_
+p7FV-mU6EM0 sceVideoOutGetDeviceInfoExOts_
 Mt4QHHkxkOc sceVideoOutGetEventCount
 rWUTcKdkUzQ sceVideoOutGetEventData
 U2JJtSqNKZI sceVideoOutGetEventId
