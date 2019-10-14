@@ -13942,6 +13942,7 @@ cQke9UuBQOk sceKernelMunmap
 QvsZxomvUHs sceKernelNanosleep
 KB7Vc2+5S54 sceKernelNormalizePath
 hjErHT1CwJM sceKernelNotifySystemSuspendResumeProgress
+da6-yq0GbLg sceKernelNotifySystemSuspendStart
 1G3lF1Gg1k8 sceKernelOpen
 wibWed78GyY sceKernelOpenEport
 1vDaenmJtyA sceKernelOpenEventFlag
