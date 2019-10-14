@@ -13612,6 +13612,7 @@ rM-1hkuOhh0 sceImeVshDisableController
 ZmmV6iukhyo sceImeVshInformConfirmdString
 EQBusz6Uhp8 sceImeVshInformConfirmdString2
 LBicRa-hj3A sceImeVshOpen
+-IAOwd2nO7g sceImeVshSendTextInfo
 qDagOjvJdNk sceImeVshSetCaretGeometry
 tNOlmxee-Nk sceImeVshSetCaretIndexInPreedit
 rASXozKkQ9g sceImeVshSetPanelPosition
@@ -14083,6 +14084,7 @@ u32UXVridxQ sceLibcPafMspaceRealloc
 4SvlEtd0j40 sceLibcPafMspaceReallocalign
 0FnzR6qum90 sceLibcPafMspaceReportMemoryBlocks
 AUYdq63RG3U sceLibcPafMspaceTrim
+rJFDhypHYaY sceLibreSslGetMemoryPoolStats
 DWzAHSX9KW8 sceLibreSslInit
 n2fSRzuTEY4 sceLibreSslTerm
 GpWMCMxa1aA sceLibSecureAddCipher
@@ -14311,6 +14313,7 @@ OUrM7JZcRSg sceMbusUnregisterDriver
 VKZKhUg0vyU sceMbusUserLogout
 cAnT0Rw-IwU sceMouseClose
 Ymyy1HSSJLQ sceMouseConnectPort
+BRXOoXQtb+k sceMouseDebugGetDeviceId
 WiGKINCZWkc sceMouseDeviceOpen
 eDQTFHbgeTU sceMouseDisconnectDevice
 jJP1vYMEPd4 sceMouseDisconnectPort
@@ -14806,7 +14809,12 @@ xPrF2nGPBXQ sceNpDeleteSema
 toOJe5IsGwg sceNpEulaDialogCheckVersion
 Utd-6hXTsFQ sceNpEulaDialogCheckVersionAbort
 aQZPV4OQRGo sceNpEulaDialogClose
+5fq+oTNFedg sceNpEulaDialogGetResult
+kTsZrONvKNc sceNpEulaDialogGetStatus
+KXsx2C05JqA sceNpEulaDialogInitialize
 BV1OcAHhXnA sceNpEulaDialogOpen
+f8NjlGw6TgQ sceNpEulaDialogTerminate
+BonkDE5m1Ss sceNpEulaDialogUpdateStatus
 VWOc5KnleQ0 sceNpFreeImpl
 vjwlDmsGtME sceNpFreeKernelMemory
 +Y1acHGomGQ sceNpFriendListDialogClose
@@ -15159,15 +15167,19 @@ EKi1jx59SP4 sceNpPartyGetMemberVoiceInfo
 aEzKdJzATZ0 sceNpPartyGetState
 o7grRhiGHYI sceNpPartyGetStateAsUser
 EjyAI+QNgFw sceNpPartyGetStateAsUserA
+-lc6XZnQXvM sceNpPartyGetVoiceChatPriority
 lhYCTQmBkds sceNpPartyInitialize
 RXNCDw2GDEg sceNpPartyJoin
 J8jAi-tfJHc sceNpPartyLeave
 kA88gbv71ao sceNpPartyRegisterHandler
 +v4fVHMwFWc sceNpPartyRegisterHandlerA
+zo4G5WWYpKg sceNpPartyRegisterPrivateHandler
 U6VdUe-PNAY sceNpPartySendBinaryMessage
+nazKyHygHhY sceNpPartySetVoiceChatPriority
 -MFiL7hEnPE sceNpPartyShowInvitationList
 yARHEYLajs0 sceNpPartyShowInvitationListA
 oLYkibiHqRA sceNpPartyTerminate
+zQ7gIvt11Pc sceNpPartyUnregisterPrivateHandler
 uqcPJLWL08M sceNpPollAsync
 9YmBJ8KF9eI sceNpPollEventFlag
 xmF0yIF4iXc sceNpPollSema
@@ -16117,6 +16129,7 @@ voOYmhF1vsQ sceRegMgrToolGetEntryCnt
 0QcqLS+gFiQ sceRegMgrToolGetInfo
 jQ0656do1V4 sceRegMgrToolGetUpdateCnt
 xQeIryTX7dY sceRemoteplayApprove
+ZYUsJtcAnqA sceRemoteplayClearAllRegistData
 cCheyCbF7qw sceRemoteplayClearConnectHistory
 tPYT-kGbZh8 sceRemoteplayConfirmDeviceRegist
 6Lg4BNleJWc sceRemoteplayDisconnect
@@ -16124,6 +16137,7 @@ j98LdSGy4eY sceRemoteplayGeneratePinCode
 L+cL-M-DP3w sceRemoteplayGetApMode
 g4K51cY+PEw sceRemoteplayGetConnectHistory
 g3PNjYKWqnQ sceRemoteplayGetConnectionStatus
+3eBNV9A0BUM sceRemoteplayGetConnectUserId
 ufesWMVX6iU sceRemoteplayGetMbusDeviceInfo
 n5OxFJEvPlc sceRemoteplayGetRemoteplayStatus
 Cekhs6LSHC0 sceRemoteplayGetRpMode
@@ -16137,6 +16151,7 @@ C3r2zT5ebMg sceRemoteplayImeOpen
 oB730zwoz0s sceRemoteplayImeSetCaret
 rOTg1Nljp8w sceRemoteplayImeSetText
 k1SwgkMSOM8 sceRemoteplayInitialize
+R8RZC1ZIkzU sceRemoteplayIsRemoteOskReady
 uYhiELUtLgA sceRemoteplayIsRemotePlaying
 d-BBSEq1nfc sceRemoteplayNotifyMbusDeviceRegistComplete
 Yytq7NE38R8 sceRemoteplayNotifyNpPushWakeup
@@ -17121,11 +17136,13 @@ mryrNITeYvI sceUsbStorageGetDeviceList
 BDDZwF5kuTc sceUsbStorageInit
 tO8DvyElInw sceUsbStorageIsExist
 vFkdkzJgSpw sceUsbStorageRegisterCallback
+0rG6xtn7N5Q sceUsbStorageRegisterCallbackForMapAvailable
 IDYJZSeBgDs sceUsbStorageRequestMap
 rx7EcAS2ARk sceUsbStorageRequestMapWSB
 fl3roYs7F9U sceUsbStorageRequestUnmap
 Wp8zHTocS5E sceUsbStorageTerm
 +Ib-MHNUf80 sceUsbStorageUnregisterCallback
+C3ETNYXsht4 sceUsbStorageUnregisterCallbackForMapAvailable
 5cgHNZaLnH0 sceUserServiceCreateGuestUser
 CiQbpUqMc90 sceUserServiceCreateKratosUser
 F4aEZgffle0 sceUserServiceCreateSharePlayClientUser
@@ -17312,6 +17329,7 @@ FnWkLNOmJXw sceUserServiceIsGuestUser
 mNnB2PWMSgw sceUserServiceIsKratosPrimaryUser
 pZL154KvMjU sceUserServiceIsKratosUser
 MZxH8029+Wg sceUserServiceIsLoggedIn
+hTdcWcUUcrk sceUserServiceIsLoggedInWithoutLock
 -7XgCmEwKrs sceUserServiceIsSharePlayClientUser
 TLrDgrPYTDo sceUserServiceIsUserStorageAccountBound
 uvVR70ZxFrQ sceUserServiceLogin
@@ -17863,6 +17881,7 @@ ocHtyBwHfys sceWebBrowserDialogTerminate
 h1dR-t5ISgg sceWebBrowserDialogUpdateStatus
 xfw0+A2aiWE sceWkFontConfigGetAttr
 uBjfcMAhIJs sceWkFontConfigGetFont
+n3MYEpevnMo sceWkFontConfigGetFontFromFontName
 8jNGivweX70 sceWkFontConfigGetFontName
 HlPrXSZTbS0 sceWkFontConfigGetFontPath
 6na+Sa-B83w sceZlibFinalize
