@@ -11356,6 +11356,7 @@ Jmi+9w9u0E4 pthread_create_name_np
 +U1R4WtXvoc pthread_detach
 7Xl257M4VNI pthread_equal
 FJrT5LuUBAU pthread_exit
+td+DYvbbDfk pthread_get_specificarray_np
 YkGOXpJEtO8 pthread_get_user_context_np
 Jb2uGFMr688 pthread_getaffinity_np
 s+QHU9RLHS4 pthread_getconcurrency
@@ -11423,6 +11424,7 @@ xFebsA4YsFI pthread_rwlockattr_init
 OuKg+kRDD7U pthread_rwlockattr_setpshared
 8NuOHiTr1Vw pthread_rwlockattr_settype_np
 EotR8a3ASf4 pthread_self
+tG+805b1Njk pthread_set_defaultstacksize_np
 oxMp8uPqa+U pthread_set_name_np
 el9stmu6290 pthread_set_user_context_np
 5KWrg7-ZqvE pthread_setaffinity_np
@@ -13738,6 +13740,7 @@ H6bIN2qvlxY sceKernelEventLogPread
 L6WLBSYfL6k sceKernelEventLogRead
 TmkVz5YgHg8 sceKernelEventLogWrite
 Ac86z8q7T8A sceKernelExitSblock
+mRfyqqkg8w8 sceKernelExpectedHddFormat
 UtszJWHrDcA sceKernelFchmod
 SoZkxZkCHaw sceKernelFcntl
 30Rh4ixbKy4 sceKernelFdatasync
@@ -13871,6 +13874,7 @@ n2nyhRL5uUg sceKernelInternalGetMapStatistics
 rb8JKArrzc0 sceKernelInternalHeapPrintBacktraceWithModuleInfo
 xAKAe6kFk90 sceKernelInternalMapDirectMemory
 0ttVHjPWLsE sceKernelInternalMapNamedDirectMemory
+rjEuM0nb8xg sceKernelInternalMemoryGetAvailableSize
 -YTW+qXc3CQ sceKernelInternalMemoryGetModuleSegmentInfo
 1vCEy8EP+gc sceKernelInternalResumeDirectMemoryRelease
 3+E-5EFZxDo sceKernelInternalSuspendDirectMemoryRelease
@@ -13903,6 +13907,7 @@ YKT49TOLQWs sceKernelJitMapSharedMemory
 m5zDvD-LLjo sceKernelKernelHeapUsage
 wzvqT4UqKX8 sceKernelLoadStartModule
 Gg3+yWL6DWU sceKernelLoadStartModuleForSysmodule
+Y1nEpkCieOY sceKernelLoadStartModuleInternalForMono
 oib76F-12fk sceKernelLseek
 LFbwY8r50o8 sceKernelLwfsAllocateBlock
 s2PjRq4By9U sceKernelLwfsLseek
@@ -13915,6 +13920,7 @@ IWIBBdTHit4 sceKernelMapFlexibleMemory
 NcaWUxfMNIQ sceKernelMapNamedDirectMemory
 mL8NDH86iQI sceKernelMapNamedFlexibleMemory
 kc+LEEIYakc sceKernelMapNamedSystemFlexibleMemory
+8cAlCzoOiic sceKernelMapSanitizerShadowMemory
 DpDnfM6StzA sceKernelMapTraceMemory
 YN878uKRBbE sceKernelMemoryPoolBatch
 Vzl66WmfLvk sceKernelMemoryPoolCommit
@@ -13961,9 +13967,11 @@ QqxBetgJH+g sceKernelReadv
 bXxVDD3VuWc sceKernelReboot
 MBuItvba6z8 sceKernelReleaseDirectMemory
 teiItL2boFw sceKernelReleaseFlexibleMemory
+Alqa9RE0Y5k sceKernelReleaseTraceDirectMemory
 Qhv5ARAoOEc sceKernelRemoveExceptionHandler
 52NcYU9+lEo sceKernelRename
 M0z6Dr6TNnM sceKernelReportUnpatchedFunctionCall
+4zUh1kGuaiw sceKernelReserveSystemDirectMemory
 7oxv3PPCumo sceKernelReserveVirtualRange
 PS5hxxGEVB8 sceKernelResumeDirectMemoryRelease
 iZ5it+3LGQM sceKernelResumeProcess
@@ -15899,6 +15907,7 @@ ZyBRuMgQYvM ScePsmMonoFree
 O4LAoN2b7y4 ScePsmMonoStringChars
 83i-0wbUtlM ScePsmMonoStringLength
 GtOEkqZ1LDA ScePsmMonoStringNew
+6zGifD5IqRo ScePsmMonoStringNewWrapper
 VvAMtxBHcZc ScePsmMonoStringToUtf8
 vl8QdnxNxq4 scePsmRegisterInternalCall
 5U6NRSMS9QU scePsmUtilFinalize
@@ -16027,6 +16036,7 @@ i3tB6CuvHb4 scePthreadSetBesteffort
 OAmWq+OHSjw scePthreadSetcancelstate
 sCJd99Phct0 scePthreadSetcanceltype
 gdnv6wF6hwI scePthreadSetconcurrency
+oVZ+-KgZJGo scePthreadSetDefaultstacksize
 XeTqw+0Zl10 scePthreadSetName
 W0Hpm2X0uPE scePthreadSetprio
 oIRFTjoILbg scePthreadSetschedparam
