@@ -11376,6 +11376,7 @@ itv-U5mFPso pthread_mutex_getprioceiling
 x4vQj3JKKmc pthread_mutex_getspinloops_np
 OxEIUqkByy4 pthread_mutex_getyieldloops_np
 ttHNfU+qDBU pthread_mutex_init
+hLoEhSBhi84 pthread_mutex_init_for_mono
 gKqzW-zWhvY pthread_mutex_isowned_np
 7H0iTOciTLo pthread_mutex_lock
 nbQ0bXMRlhk pthread_mutex_reltimedlock_np
@@ -13671,6 +13672,7 @@ xT3Cpz0yh6Y sceKernelAioSubmitWriteCommandsMultiple
 KOF-oJbQVvc sceKernelAioWaitRequest
 lgK+oIWkJyA sceKernelAioWaitRequests
 rTXw65xmLIA sceKernelAllocateDirectMemory
+ll8I9K4RtUM sceKernelAllocateDirectMemoryForMiniApp
 B+vc2AO2Zrc sceKernelAllocateMainDirectMemory
 g6fhW-+NuuU sceKernelAllocateTraceDirectMemory
 C0f7TJcbfac sceKernelAvailableDirectMemorySize
@@ -13702,6 +13704,8 @@ s4tJF+n0mZ0 sceKernelCreateSblock
 188x57JYp0g sceKernelCreateSema
 XECwgo2nbek sceKernelDebugGetAppStatus
 CgfvQDFAtYU sceKernelDebugGetPauseCount
+QipjH+VV2CU sceKernelDebugGetPrivateLogText
+P9M5RftRHFE sceKernelDebugGetSdkLogText
 +iVwFsjXaFQ sceKernelDebugGpuPaDebugIsInProgress
 2tJsBnPiylo sceKernelDebugInjectProcessEvent
 9JYNqN6jAKI sceKernelDebugOutText
@@ -13709,6 +13713,7 @@ OMDRKKAZ8I4 sceKernelDebugRaiseException
 zE-wXIZjLoM sceKernelDebugRaiseExceptionOnReleaseMode
 DKWTYfo-jMY sceKernelDebugRaiseExceptionWithContext
 HbRSpVkdVF0 sceKernelDebugRaiseExceptionWithInfo
+8rHK-6bbvqM sceKernelDebugReleaseDebugContext
 S-AQZoElaRM sceKernelDebugSpawn
 vs+KPSoE7AM sceKernelDeleteBudget
 HhGAQ+ffliw sceKernelDeleteEport
@@ -13775,11 +13780,14 @@ Q0qr9AyqJSk sceKernelGetEventFflags
 23CPPI1tyBY sceKernelGetEventFilter
 mJ7aghmgvfc sceKernelGetEventId
 vz+pg2zdopI sceKernelGetEventUserData
+wJABa1X4+ec sceKernelGetExecutableModuleHandle
+OA7xpGDL8sY sceKernelGetExtLibcHandle
 JGfTMBOdUJo sceKernelGetFsSandboxRandomWord
 4oXYe9Xmk0Q sceKernelGetGPI
 6sy3Y9QjOJw sceKernelGetGPO
 lZG-WlKxRqQ sceKernelGetIdPs
 ePRSOZsroIQ sceKernelGetIpcPath
+0vTn5IDMU9A sceKernelGetMainSocId
 9urVLs6ovQk sceKernelGetMemoryPstate
 kUpgrXIrz7Q sceKernelGetModuleInfo
 QgsKEUfkqMA sceKernelGetModuleInfo2
@@ -13824,8 +13832,10 @@ Mv1zUObHvXI sceKernelGetSystemSwVersion
 4vkZwDJbMx0 sceKernelGetThreadName
 ejekcaNQNq0 sceKernelGettimeofday
 kOcnerypnQA sceKernelGettimezone
+Od0uMJZoVWg sceKernelGetTraceMemoryStats
 1j3S3n-tTW4 sceKernelGetTscFrequency
 otfCdjLjGrQ sceKernelGetVddVid
+heiOpxS1Zio sceKernelGetVrCaptureSize
 rNRtm1uioyY sceKernelHasNeoMode
 l-zbaxNzruE sceKernelHwHasOpticalOut
 +ofrEv1aAU0 sceKernelHwHasWlanBt
