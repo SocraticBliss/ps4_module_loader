@@ -13858,6 +13858,7 @@ WkwEd3N7w0Y sceKernelInstallExceptionHandler
 n2nyhRL5uUg sceKernelInternalGetMapStatistics
 rb8JKArrzc0 sceKernelInternalHeapPrintBacktraceWithModuleInfo
 xAKAe6kFk90 sceKernelInternalMapDirectMemory
+0ttVHjPWLsE sceKernelInternalMapNamedDirectMemory
 -YTW+qXc3CQ sceKernelInternalMemoryGetModuleSegmentInfo
 jh+8XiK4LeE sceKernelIsAddressSanitizerEnabled
 oU4h4oBe2l0 sceKernelIsAllowedToSelectDvdRegion
@@ -13919,6 +13920,7 @@ lvD71jP2Mnk sceKernelMunlockall
 cQke9UuBQOk sceKernelMunmap
 QvsZxomvUHs sceKernelNanosleep
 KB7Vc2+5S54 sceKernelNormalizePath
+hjErHT1CwJM sceKernelNotifySystemSuspendResumeProgress
 1G3lF1Gg1k8 sceKernelOpen
 wibWed78GyY sceKernelOpenEport
 1vDaenmJtyA sceKernelOpenEventFlag
