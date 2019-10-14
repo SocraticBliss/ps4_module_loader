@@ -13688,6 +13688,7 @@ JSNgID8Bupk sceKernelCheckDipsw
 hwVSPCmp5tM sceKernelCheckedReleaseDirectMemory
 uWyW3v98sU4 sceKernelCheckReachability
 fgIsQ10xYVA sceKernelChmod
+N9SrpMINuLw sceKernelClearBootReqNotifyCount
 7uhBFWRAS60 sceKernelClearEventFlag
 EgJqC+9VmvM sceKernelClearGameDirectMemory
 wRYVA5Zolso sceKernelClockGetres
