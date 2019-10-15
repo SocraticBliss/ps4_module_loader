@@ -1485,6 +1485,7 @@ PvGTq9AGFfk _ZN3sce2np12WorkerThreadD1Ev
 p5hRe1k4Wlg _ZN3sce2np13JsonDocParserD0Ev
 iFOXfoXRHFQ _ZN3sce2np13JsonDocParserD1Ev
 xS-Hjw1psYs _ZN3sce2np13JsonDocParserD2Ev
+Y5eglu1FrsE _ZN3sce2np13NpAccessToken5ClearEv
 h8d3tfMiyhc _ZN3sce2np13NpAccessTokenC1Ev
 2lzWy2xmnhY _ZN3sce2np13NpAccessTokenC2Ev
 SFZYbH7eOnk _ZN3sce2np13NpAccessTokenD0Ev
@@ -8365,6 +8366,7 @@ Ab0R4oOE-DY glWaitSync
 Ulu9vNs5vn8 goby_Fin
 7TKreizczvg goby_FreeLicenseInfo
 bR3lFCbl2ow goby_FreeLinkList
+bbuFLemjwRA goby_FreeNodeList
 uDv80Z-OaP8 goby_FreeRemoteInfo
 qUFOjETOS-4 goby_Init
 +fo47VU51qw goby_ProcessMessage
@@ -11204,7 +11206,9 @@ QaTrhMKUT18 nexttowardf
 ryyn6-WJm6U nexttowardl
 3YnXspQNyw8 nmount
 3wcYIMz8LUo nrand48
+VteK1e0o0fY nsnp_ActionCheck
 GjQLdCasJDg nsnp_Callback
+n2nk-l3evas nsnp_CheckHMAC
 ERhsQL+87ks nsnp_Decrypt
 0aPYh8P2+Ps nsnp_DecryptWithOffset
 Y3hsRCZODFs nsnp_Fin
@@ -14446,6 +14450,7 @@ TPVebHEFB2s sceMusicCoreServerSetTrackList
 EEkGXyPcT6E sceMusicCoreServerTriggerEvent
 Rz5fOEsYd7A sceMusicCoreServerTriggerEventSync
 MrUOZGxjKw8 sceMusicCoreServerUnregistEventCallback
+3KChwrxsVPg sceMusicPlayerServiceGetAudioVolume
 wHKiDjNLQwI sceMusicPlayerServiceGetTrackInfo
 WypjBw-l+pE sceMusicPlayerServiceInitialize
 xT55MQDY9lg sceMusicPlayerServiceInitialize2
@@ -14786,14 +14791,20 @@ UskWpVWxSvg sceNpArchTerm
 JrXA7baBMPQ sceNpAsmAbort
 0cn2c-bk8wA sceNpAsmClientAbortRequest
 tOJ-WGFDt-Y sceNpAsmClientCreateRequest2
+GPRRxFM01r4 sceNpAsmClientCreateResourceContext
 1wMn3X94WME sceNpAsmClientDeleteRequest
+KA2AITpVTCg sceNpAsmClientDeleteResourceContext
 yWcto7E39+k sceNpAsmClientGetAppId
+vf+lYeOXdI8 sceNpAsmClientGetGameNpTitleInfo
+YQ7-z4zFWok sceNpAsmClientGetGameNpTitleToken
 6bvqnBIINiY sceNpAsmClientGetGameTitleBanInfo
 cOLn5A3ZoqU sceNpAsmClientGetNpComInfo2
 P6fkTotWFEg sceNpAsmClientGetNpComInfo2A
 nuPl4uVXYMM sceNpAsmClientGetNpTitleId
 HtpGVrVLOlA sceNpAsmClientGetNpTitleToken
 cugDQBHux8k sceNpAsmClientGetNpTitleTokenA
+O42ZlBvIPMM sceNpAsmClientGetServiceBaseUrl
+iRvaaSfHBc8 sceNpAsmClientGetServiceBaseUrlA
 TiC81-OKjpg sceNpAsmClientGetServiceIdInfo
 3rlqy6XxrmI sceNpAsmClientGetServiceIdInfoA
 wZy5M6lzip0 sceNpAsmClientInitialize
@@ -14803,6 +14814,7 @@ YDDHD6RP4HQ sceNpAsmCreateConnection
 hIFFMeoLhcY sceNpAsmCreateRequest
 UxOJvGmy3mA sceNpAsmDeleteConnection
 RfokKHMuOsE sceNpAsmDeleteRequest
+kc-O9XKFRIE sceNpAsmGetServiceBaseUrl
 1Xe+XZ1oI28 sceNpAsmGetServiceIdInfo
 j2dSNi+SJro sceNpAsmInitialize
 Dt2rEe-d5c0 sceNpAsmTerminate
@@ -14966,6 +14978,7 @@ HoPC33siDD4 sceNpInt64ToStr
 GsWjzRU7AWA sceNpIntCheckPlus
 H6xqSNWg0wM sceNpIntGetAppType
 SdNiYQWjU6E sceNpIntGetGamePresenceStatus
+H0n1QHWdVwQ sceNpIntGetNpTitleId
 G6qytFoBJ-w sceNpIntGetPlatformType
 fY4XQoA20i8 sceNpIntIsOnlineIdString
 hkeX9iuCwlI sceNpIntIsValidOnlineId
@@ -15009,7 +15022,18 @@ iQr9UxPHUFs sceNpLookupCreateRequest
 vT9xhqPO6+0 sceNpLookupCreateTitleCtxA
 wLaxchvEEnk sceNpLookupDeleteRequest
 mtqDK9zkoIE sceNpLookupDeleteTitleCtx
+1O96muPzhgU sceNpLookupNetAbortRequest
+N0iF180VjGk sceNpLookupNetCensorComment
+UI5t6Rx6s5I sceNpLookupNetConvertJidToNpId
+ieROYX4vspk sceNpLookupNetConvertNpIdToJid
+KUIRsku7EPk sceNpLookupNetCreateRequest
+8DPEdJh9RkE sceNpLookupNetCreateTitleCtx
+HL-venrRcnQ sceNpLookupNetDeleteRequest
+dxpUx7z9StY sceNpLookupNetDeleteTitleCtx
 zVZE+fAhgFY sceNpLookupNetInit
+2nEVmFiV6OI sceNpLookupNetNpId
+jJH2P7KA4XU sceNpLookupNetSanitizeComment
+NWtf77WCXJs sceNpLookupNetSetTimeout
 Dbd5BY0QjG0 sceNpLookupNetTerm
 T6tnM1Uti4g sceNpLookupNpId
 V4EVrruHuy8 sceNpLookupPollAsync
@@ -15040,6 +15064,8 @@ Xg7dJekKeHM sceNpManagerIntCheckGameNpAvailability
 isNn0YyU83c sceNpManagerIntCheckGameNpAvailabilityA
 WtsuDMvVw-I sceNpManagerIntCheckGameNpAvailabilityWithPid
 m4JiU8k2PyI sceNpManagerIntCheckNpAvailability
+Dvk+xqAqXco sceNpManagerIntCheckNpState
+U30AU92fWdU sceNpManagerIntCheckNpStateA
 mQU19DRkeyI sceNpManagerIntCheckSignin
 3mR3QJFzrg4 sceNpManagerIntClearParentalControlInfo
 yX8qSFmkiyc sceNpManagerIntClearParentalControlInfoSubAccount
@@ -15076,6 +15102,7 @@ btKQfNe1jBY sceNpManagerIntGetGameTitleToken
 O7ivIf9AIFI sceNpManagerIntGetGameTitleTokenA
 vfHBP2-WXcM sceNpManagerIntGetGameVshToken
 pLjQLOflIUU sceNpManagerIntGetGameVshTokenWithPid
+es6OiIxGiL0 sceNpManagerIntGetIssuerId
 jCJEWuExbZg sceNpManagerIntGetLastAccountLanguage
 Oad+nopFTTA sceNpManagerIntGetMAccountId
 BTRVfOx7K1c sceNpManagerIntGetNpEnv
@@ -15161,6 +15188,7 @@ PZhz+vjp2CM sceNpManagerIntSetTimeout
 z-I94rQUMRY sceNpManagerIntSigninByJsonUserInfo
 64D6V-ADQe0 sceNpManagerIntSignout
 HyrG1GT4JxI sceNpManagerIntStartSystemMode
++IagDajB6AQ sceNpManagerIntSubmitUserCode
 wUT4cOK0bj0 sceNpManagerIntTemporarySignout
 prZNuK3iTi8 sceNpManagerIntTerm
 uZnL4QZxzkI sceNpManagerIntUnbind
@@ -15236,6 +15264,7 @@ tHD5FPFXtu4 sceNpMatching2SignalingGetConnectionStatus
 CTy4PBhpWDw sceNpMatching2SignalingGetPeerNetInfoResult
 wUmwXZHaX1w sceNpMatching2SignalingGetPingInfo
 WkvclTMjNdI sceNpMatching2SignalingGetPort
+wupHEf8WOhM sceNpMatching2SignalingSetPort
 Mqp3lJ+sjy4 sceNpMatching2Terminate
 dfXSH2Tsjkw sceNpMemoryHeapDestroy
 FaMNvjMA6to sceNpMemoryHeapGetAllocator
@@ -15827,6 +15856,7 @@ pnZXireDoeI scePadDisconnectDevice
 9ez71nWSvD0 scePadDisconnectPort
 77ooWxGOIVs scePadEnableAutoDetect
 +cE4Jx431wc scePadEnableExtensionPort
+E1KEw5XMGQQ scePadEnableSpecificDeviceClass
 DD-KiRLBqkQ scePadEnableUsbConnection
 Q66U8FdrMaw scePadGetBluetoothAddress
 qtasqbvwgV4 scePadGetCapability
@@ -16811,6 +16841,7 @@ zsVbNbWPYzg sceSpPthreadSetprio
 YsLBZ7qPu20 sceSpSelect
 uM3tl64pJNU sceSrcUtilityFinalize
 qCL0KDAv1Os sceSrcUtilityFlush
+UFLN-KNhzX0 sceSrcUtilityGetPriority
 Y0LiSp+hb38 sceSrcUtilityInitialize
 scvqkMgVNz8 sceSrcUtilitySetPriority
 1VM0h1JrUfA sceSslCheckRecvPending
@@ -16981,6 +17012,7 @@ JoBqSQt1yyA sceSystemServiceLoadExec
 AmTvo3RT5ss sceSystemServiceLoadExecVideoServiceWebApp
 9ScDVErRRgw sceSystemServiceNavigateToAnotherApp
 e4E3MIEAS2A sceSystemServiceNavigateToGoBack
+ZeubLhPDitw sceSystemServiceNavigateToGoBackWithValue
 x2-o9eBw3ZU sceSystemServiceNavigateToGoHome
 fZo48un7LK4 sceSystemServiceParamGetInt
 SsC-m-S9JTA sceSystemServiceParamGetString
