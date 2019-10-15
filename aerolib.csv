@@ -12086,6 +12086,7 @@ o+5KjZ3r4O4 sceBluetoothHidThreadParamInitialize
 upEB3XUvH8o sceBluetoothHidUnregisterCallback
 u+lIalCYOho sceBluetoothHidUnregisterDevice
 EwdhSaFjU7A sceBufferAlloc
+dFuIkGWGshc sceBufferDup
 DHItaFqEQkU sceBufferFree
 G2OOzViPX7I sceBufferInit
 rB8XP9T6Dsk sceBufferRealloc
@@ -14459,6 +14460,7 @@ tMgpmzMA4Zc sceMusicPlayerServiceSetAudioVolume
 +uCwAp6KYtQ sceMusicPlayerServiceSetRepeatMode
 DMvAm4HFKg0 sceMusicPlayerServiceSetShuffle
 4cuKd4S83xw sceMusicPlayerServiceSetTrackList
+iawJpYIQM7s sceMusicPlayerServiceSetTrackList2
 7Ayp3diNYnk sceMusicPlayerServiceStop
 uZXjTVsS-hU sceMusicPlayerServiceTerminate
 PIWqhn9oSxc sceNetAccept
@@ -15763,6 +15765,7 @@ N2Jbx4tIaQ4 sceNpWebApiIntCreateRequest
 TZSep4xB4EY sceNpWebApiIntCreateServicePushEventFilter
 8Vjplhyyc44 sceNpWebApiIntInitialize
 VjVukb2EWPc sceNpWebApiIntRegisterServicePushEventCallback
+sfq23ZVHVEw sceNpWebApiIntRegisterServicePushEventCallbackA
 CQtPRSF6Ds8 sceNpWebApiReadData
 vrM02A5Gy1M sceNpWebApiRegisterExtdPushEventCallback
 jhXKGQJ4egI sceNpWebApiRegisterExtdPushEventCallbackA
@@ -16371,6 +16374,7 @@ RQOqDbk3bSU sceSaveDataCheckBackupData
 v1TrX+3ZB10 sceSaveDataCheckBackupDataInternal
 -eczr5e4dsI sceSaveDataCheckCloudData
 4OPOZxfVkHA sceSaveDataCheckIpmiIfSize
+1i0rfc+mfa8 sceSaveDataCheckSaveDataBroken
 p6A1adyQi3E sceSaveDataCheckSaveDataVersion
 S49B+I96kpk sceSaveDataCheckSaveDataVersionLatest
 Wz-4JZfeO9g sceSaveDataClearProgress
@@ -16403,6 +16407,7 @@ A1ThglSGUwA sceSaveDataGetAllSize
 KuXcrMAQIMQ sceSaveDataGetAppLaunchedUser
 PL20kjAXZZ4 sceSaveDataGetAutoUploadRequestInfo
 G12foE0S77E sceSaveDataGetAutoUploadSetting
+PzDtD6eBXIM sceSaveDataGetBoundPsnAccountCount
 tu0SDPl+h88 sceSaveDataGetClientThreadPriority
 eBSSNIG6hMk sceSaveDataGetEventInfo
 j8xKtiFj0SY sceSaveDataGetEventResult
@@ -16417,10 +16422,12 @@ QwOO7vegnV8 sceSaveDataGetSaveDataMemory2
 3luF0xq0DkQ sceSaveDataGetSaveDataRootPath
 DwAvlQGvf1o sceSaveDataGetSaveDataRootUsbPath
 kb24-4DLyNo sceSaveDataGetSavePoint
+OYmnApJ9q+U sceSaveDataGetUpdatedDataCount
 ZkZhskCPXFw sceSaveDataInitialize
 l1NmDeDpNGU sceSaveDataInitialize2
 TywrFKCoLGY sceSaveDataInitialize3
 g9uwUI3BlQ8 sceSaveDataInitializeForCdlg
+voAQW45oKuo sceSaveDataIsDeletingUsbDb
 ieP6jP138Qo sceSaveDataIsMounted
 cGjO3wM3V28 sceSaveDataLoadIcon
 32HQAQdwM2o sceSaveDataMount
@@ -16428,12 +16435,15 @@ cGjO3wM3V28 sceSaveDataLoadIcon
 xz0YMi6BfNk sceSaveDataMount5
 msCER7Iibm8 sceSaveDataMountInternal
 -XYmdxjOqyA sceSaveDataMountSys
+SgIY-XYA2Xg sceSaveDataRebuildDatabase
 hsKd5c21sQc sceSaveDataRegisterEventCallback
 lU9YRFsgwSU sceSaveDataRestoreBackupData
+aoZKKNjlq3Y sceSaveDataRestoreLoadSaveDataMemory
 c88Yy54Mx0w sceSaveDataSaveIcon
 0VFHv-Fa4w8 sceSaveDataSetAutoUploadSetting
 52pL2GKkdjA sceSaveDataSetEventInfo
 85zul--eGXs sceSaveDataSetParam
+v3vg2+cooYw sceSaveDataSetSaveDataLibraryUser
 h3YURzXGSVQ sceSaveDataSetSaveDataMemory
 cduy9v4YmT4 sceSaveDataSetSaveDataMemory2
 v7AAAMo0Lz4 sceSaveDataSetupSaveDataMemory
@@ -17951,9 +17961,17 @@ H1VDOoibLBg sceVorbisDecBitrate
 I5jQit5Q78Q sceVorbisDecBitrateInstant
 UJvFjRAnQ2k sceVorbisDecClear
 M+ZTsbhxKpM sceVorbisDecComment
+gzjhKWIF5Gs sceVorbisDecCrossLap
 9kZc-37F7es sceVorbisDecGetDecodePriority
+bASEQctTGhI sceVorbisDecGetLastDecodeError
 YzIPMpnHJzU sceVorbisDecInfo
 s6a5LF1NG4g sceVorbisDecOpenCallbacks
+pZ1ctWkAU9Y sceVorbisDecPcmSeek
+oZZwcwzugfI sceVorbisDecPcmSeekLap
+PdwTVolubW4 sceVorbisDecPcmSeekPage
+Tyzq3UGlllM sceVorbisDecPcmSeekPageLap
+MPhCP85gRP4 sceVorbisDecPcmTell
+v6LjiH858Sc sceVorbisDecPcmTotal
 CSFNyhqnD5k sceVorbisDecRawSeek
 cu5DLZM7-k8 sceVorbisDecRawSeekLap
 k9meG9QXtn4 sceVorbisDecRawTell
@@ -17963,6 +17981,7 @@ wHbu4oz+z0I sceVorbisDecReadFilter
 +A20uE3spLQ sceVorbisDecReadFloat
 OZBKii+KboY sceVorbisDecSerialNumber
 ORxxAa6qnAA sceVorbisDecSetDecodePriority
+uNBguxxOcgI sceVorbisDecStreams
 6yXA1cZyFz4 sceVorbisDecTimeSeek
 rfYTE+X39pY sceVorbisDecTimeSeekLap
 0GAn6zZgyfA sceVorbisDecTimeSeekPage
