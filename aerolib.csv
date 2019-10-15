@@ -7806,8 +7806,11 @@ g1Rc0MQddG0 FT_Vector_Transform
 PrZtZyFwM6c FT_Vector_Transform_Scaled
 3WpTQrvGUcU FT_Vector_Unit
 mCIXittfvrw FTA_Add_Module
+r2C1PcTDYxk FTA_Add_Module_autofitter
 1gAJb1uKyGo FTA_Add_Module_bdf
 IjquEAbfizc FTA_Add_Module_cff
+L-qInx9Dldk FTA_Add_Module_gxvalid
+mhK+E1i3VuE FTA_Add_Module_otvalid
 bAbUJvsiVdI FTA_Add_Module_pcf
 1GYsjUC-HLM FTA_Add_Module_pfr
 KLaWCpRxYWo FTA_Add_Module_psaux
@@ -7820,6 +7823,10 @@ XpA3dnvjl8w FTA_Add_Module_smooth
 NLA7bmDS1jc FTA_Add_Module_smooth_lcd
 xcJCXHqBrjE FTA_Add_Module_smooth_lcdv
 oKG-LjaBzzs FTA_Add_Module_t1cid
+zxsyxyiLthM FTA_Add_Module_truetype
++v66TBg7tzA FTA_Add_Module_type1
+ZYpIYZg3Jf4 FTA_Add_Module_type42
+JSi+hWkA9pI FTA_Add_Module_winfonts
 yKy2yHbclT0 FTC_CMapCache_Lookup
 Z5y4QZQXuWk FTC_CMapCache_New
 FgKMxg-joM8 FTC_Image_Cache_Lookup
