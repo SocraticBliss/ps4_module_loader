@@ -11207,6 +11207,7 @@ ryyn6-WJm6U nexttowardl
 3YnXspQNyw8 nmount
 3wcYIMz8LUo nrand48
 VteK1e0o0fY nsnp_ActionCheck
+wivfLfaFAZg nsnp_ActionPerform
 GjQLdCasJDg nsnp_Callback
 n2nk-l3evas nsnp_CheckHMAC
 ERhsQL+87ks nsnp_Decrypt
@@ -11710,6 +11711,7 @@ AumF38kir6s sceApplicationLocalProcessResume
 slkr1eWM1o8 sceApplicationLocalProcessSuspend
 W+VrzBY+LBA sceApplicationNotifyCoredumpRequestEnd
 +dLapxrRdJM sceApplicationNotifyCoredumpRequestProgress
+rH8hY8WuDvg sceApplicationNotifyPhase
 f6zbafRlX3s sceApplicationNotifyVshMainOnStandby
 dqwCM7RWifY sceApplicationNotifyVshReady
 IgqBZdkIvqM sceApplicationRaiseException
@@ -13045,6 +13047,7 @@ xfy2uloQTls sceFsUfsLargewriteFsckWithMM
 ewN9DUWH07g sceFsUfsMkfsForExternalHDD
 K9EXdD9bqzM sceFsUfsMkfsWithFixedCylinderGroupSize
 LzrlqPj88rM sceFsUfsMkLwfs
+JhDPrErJnCw sceFsUfsRecryptSyncMetadata
 FKSu6oEy0iE sceFsUfsSeekHoleInFile
 rTu7zaYoryI sceFsUmountDownloadData
 UQTSykySQ40 sceFsUmountGamePkg
@@ -13284,6 +13287,7 @@ IVjtw0AuSBE sceHidControlSetHandleState
 hS1-bPYxKC4 sceHidControlSetJediAudioOutPath
 +Xne3E9M-E8 sceHidControlSetJediVolumeGain
 vY-muZt5ojc sceHidControlSetProcessFocus
+0ypWH4DpK9E sceHidControlSetRevokeList
 6wfdbeqaQco sceHidControlSetUserColor
 6biw1XHTSqQ sceHmdClose
 gEokC+OGI8g sceHmdDistortionGet2dVrCommand
@@ -13805,6 +13809,7 @@ ToISj0q68Qg sceKernelGetCpuUsageAll
 VS45LnNqyCo sceKernelGetCpuUsageProc
 QbdkmhQQfIM sceKernelGetCpuUsageProc2
 g0VTBxfJyu0 sceKernelGetCurrentCpu
+7siOfIbbg8I sceKernelGetCurrentFanDuty
 i-H8tE6wTqI sceKernelGetDataTransferMode
 j2AIqSqJP0w sceKernelGetdents
 pO96TwzOm5E sceKernelGetDirectMemorySize
