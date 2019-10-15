@@ -12086,6 +12086,7 @@ o+5KjZ3r4O4 sceBluetoothHidThreadParamInitialize
 upEB3XUvH8o sceBluetoothHidUnregisterCallback
 u+lIalCYOho sceBluetoothHidUnregisterDevice
 EwdhSaFjU7A sceBufferAlloc
+dFuIkGWGshc sceBufferDup
 DHItaFqEQkU sceBufferFree
 G2OOzViPX7I sceBufferInit
 rB8XP9T6Dsk sceBufferRealloc
@@ -14459,6 +14460,7 @@ tMgpmzMA4Zc sceMusicPlayerServiceSetAudioVolume
 +uCwAp6KYtQ sceMusicPlayerServiceSetRepeatMode
 DMvAm4HFKg0 sceMusicPlayerServiceSetShuffle
 4cuKd4S83xw sceMusicPlayerServiceSetTrackList
+iawJpYIQM7s sceMusicPlayerServiceSetTrackList2
 7Ayp3diNYnk sceMusicPlayerServiceStop
 uZXjTVsS-hU sceMusicPlayerServiceTerminate
 PIWqhn9oSxc sceNetAccept
@@ -15763,6 +15765,7 @@ N2Jbx4tIaQ4 sceNpWebApiIntCreateRequest
 TZSep4xB4EY sceNpWebApiIntCreateServicePushEventFilter
 8Vjplhyyc44 sceNpWebApiIntInitialize
 VjVukb2EWPc sceNpWebApiIntRegisterServicePushEventCallback
+sfq23ZVHVEw sceNpWebApiIntRegisterServicePushEventCallbackA
 CQtPRSF6Ds8 sceNpWebApiReadData
 vrM02A5Gy1M sceNpWebApiRegisterExtdPushEventCallback
 jhXKGQJ4egI sceNpWebApiRegisterExtdPushEventCallbackA
@@ -17958,9 +17961,17 @@ H1VDOoibLBg sceVorbisDecBitrate
 I5jQit5Q78Q sceVorbisDecBitrateInstant
 UJvFjRAnQ2k sceVorbisDecClear
 M+ZTsbhxKpM sceVorbisDecComment
+gzjhKWIF5Gs sceVorbisDecCrossLap
 9kZc-37F7es sceVorbisDecGetDecodePriority
+bASEQctTGhI sceVorbisDecGetLastDecodeError
 YzIPMpnHJzU sceVorbisDecInfo
 s6a5LF1NG4g sceVorbisDecOpenCallbacks
+pZ1ctWkAU9Y sceVorbisDecPcmSeek
+oZZwcwzugfI sceVorbisDecPcmSeekLap
+PdwTVolubW4 sceVorbisDecPcmSeekPage
+Tyzq3UGlllM sceVorbisDecPcmSeekPageLap
+MPhCP85gRP4 sceVorbisDecPcmTell
+v6LjiH858Sc sceVorbisDecPcmTotal
 CSFNyhqnD5k sceVorbisDecRawSeek
 cu5DLZM7-k8 sceVorbisDecRawSeekLap
 k9meG9QXtn4 sceVorbisDecRawTell
@@ -17970,6 +17981,7 @@ wHbu4oz+z0I sceVorbisDecReadFilter
 +A20uE3spLQ sceVorbisDecReadFloat
 OZBKii+KboY sceVorbisDecSerialNumber
 ORxxAa6qnAA sceVorbisDecSetDecodePriority
+uNBguxxOcgI sceVorbisDecStreams
 6yXA1cZyFz4 sceVorbisDecTimeSeek
 rfYTE+X39pY sceVorbisDecTimeSeekLap
 0GAn6zZgyfA sceVorbisDecTimeSeekPage
