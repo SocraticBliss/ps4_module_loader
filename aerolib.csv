@@ -16240,6 +16240,7 @@ sPhrQD31ClM sceRazorCpuFlushOccurred
 B782NptkGUc sceRazorCpuGetDataTagStorageSize
 EH9Au2RlSrE sceRazorCpuGpuMarkerSync
 A7oRMdaOJP8 sceRazorCpuInitDataTags
+NFwh-J-BrI0 sceRazorCpuInitializeGpuMarkerContext
 ElNyedXaa4o sceRazorCpuInitializeInternal
 EboejOQvLL4 sceRazorCpuIsCapturing
 dnEdyY4+klQ sceRazorCpuJobManagerDispatch
