@@ -11621,6 +11621,7 @@ lftdXgkTxmQ sceAppInstUtilAppGetInsertedDiscMasterDataId
 KnhTdl8Arjw sceAppInstUtilAppGetInsertedDiscTitleId
 hJifaKzQUxE sceAppInstUtilAppGetInsertedDiscTitleIdList
 8AFfaImRNvM sceAppInstUtilAppGetIrremovableAppList
+qz4egqkqF5Y sceAppInstUtilAppGetMoveErrorAppList
 2emCE6-7fOA sceAppInstUtilAppGetNoRelatedAddcontTitleList
 X41cYKFlQv8 sceAppInstUtilAppGetSize
 j7cPZ0+LO50 sceAppInstUtilAppGetStoreCompilationDiscInfo
@@ -12039,6 +12040,8 @@ KY6RXUXi6ZQ sceBgftServiceDownloadStopTask
 WQbIW7cm-Bc sceBgftServiceInit
 8yiDK9rMKtc sceBgftServiceIntAbortNotificationEvent
 yaRL7i-Vkng sceBgftServiceIntDebugDownloadRequest
+610iwJKrGGo sceBgftServiceIntDownloadGetGameAndGameAcProgress
+UZoHTWgeI9I sceBgftServiceIntDownloadGetPatchProgress
 5txx+w0HYOs sceBgftServiceIntDownloadGetProgress
 uDwHwwoT6rg sceBgftServiceIntDownloadGetTaskInfo
 byUP0khjgLA sceBgftServiceIntDownloadPauseTask
@@ -12057,6 +12060,8 @@ Yv0IsOYIZiA sceBgftServiceIntDownloadStopTaskAll
 BYmJ-iMswng sceBgftServiceIntDownloadUnregisterTaskAll
 vJhYrkgTYWY sceBgftServiceIntGetNotificationEvent
 YTQMY0RdykU sceBgftServiceIntGetNotificationParam
+Nzr1l05aG2k sceBgftServiceIntGetTaskInfoValueInt
+b3SquMkPlQc sceBgftServiceIntGetTaskInfoValueString
 BZ0olR8Da0g sceBgftServiceIntInit
 ODC4-mOiwl0 sceBgftServiceIntTerm
 8l9+nBL1Ps0 sceBgftServiceIntUploadGetProgress
@@ -12287,6 +12292,7 @@ IUlpGnuoR1c sceCompositorInitWithProcessOrder
 GgOrwi+9vcA sceCompositorLockCommandBuffer
 4PTzGjEmkXI sceCompositorMakeCanvasHandle
 mKEAx7QnPeg sceCompositorMapAnotherProcess
+y5IJdPxdBrE sceCompositorQuit
 1OXbuWLRxqI sceCompositorReleaseCommandBuffer
 ZwsBB3s8qMk sceCompositorReleaseIndex
 9zmcX1uKDGg sceCompositorReleaseLocalStall
@@ -13013,6 +13019,7 @@ k0Kog-TlHYg sceFsMountTrophyData
 SFz5prdeR54 sceFsSetAttribute
 AGLEZbbzOLo sceFsSetSystemReserveSize
 CMA9M3cwctY sceFsTrophyImageError
+DBswy44k1lU sceFsUfsAllocateAdditionalContents
 Gr4HfdAqjc4 sceFsUfsAllocateAligned
 82k2MzTAs3U sceFsUfsAllocateDownloadData
 DLpCCyufz2s sceFsUfsAllocateGameImage
@@ -14559,6 +14566,7 @@ LXADzTIzM9I sceNetCtlApGetInfo
 AKZOzsb9whc sceNetCtlApGetState
 FdN+edNRtiw sceNetCtlApInit
 pmjobSVHuY0 sceNetCtlApRegisterCallback
+amqSGH8l--s sceNetCtlApRestart
 r-pOyN6AhsM sceNetCtlApStop
 cv5Y2efOTeg sceNetCtlApTerm
 NpTcFtaQ-0E sceNetCtlApUnregisterCallback
@@ -15053,7 +15061,9 @@ CQG2oyx1-nM sceNpLwMutexUnlock
 A2OPwu2Xo-c sceNpMallocImpl
 AUuzKQIwhXY sceNpManagerIntAbortRequest
 HLQfohD2YuE sceNpManagerIntAccountId2UserId
+J0MUxuo9H9c sceNpManagerIntAddActiveSigninStateCallback
 E6rzFwsDFwE sceNpManagerIntAddPlusMemberTypeCallback
+S9xDus0Cums sceNpManagerIntAddSigninStateCallback
 f6hCBlMb-6Q sceNpManagerIntBind
 Nx+FM+bz0ZQ sceNpManagerIntBindByJson
 uyo-bsZsxII sceNpManagerIntBindByJsonUserInfo
@@ -15179,7 +15189,9 @@ wHY17vvA+mA sceNpManagerIntOnlineId2UserId
 Qk5ehOXWs4g sceNpManagerIntParseJsonUserInfo
 d0IkWV+u25g sceNpManagerIntPfAuth
 WJV0RYOEc-E sceNpManagerIntPsnCoreInternalTest
+SuBDgQswXgo sceNpManagerIntRemoveActiveSigninStateCallback
 PafRf+sxnwA sceNpManagerIntRemovePlusMemberTypeCallback
+zh2KsQZlAN4 sceNpManagerIntRemoveSigninStateCallback
 k4M1w5Xstck sceNpManagerIntRevalidatePassword
 C77VnsdaKKI sceNpManagerIntSetPlusMemberTypeNB
 PZhz+vjp2CM sceNpManagerIntSetTimeout
@@ -15321,6 +15333,7 @@ DkN+WBclFps sceNpPushInit
 1S2urF24zNQ sceNpPushIntBeginInactive
 XyvQv2qjUng sceNpPushIntEndInactive
 O-2TTjhWw10 sceNpPushIntGetConnectionState
+d695X978Bgw sceNpPushStopNotification
 qo5mH49gnDA sceNpPushTerm
 6MuJ-vnDk6A sceNpPushUnregisterNotificationCallback
 e5wi2n-IgTk sceNpReallocImpl
@@ -15985,6 +15998,7 @@ l3AOURv-MWU scePlayReadyDomainCertFind
 632HibKgIsU scePlayReadyDomainJoinProcessResponse
 WBPErtBvp0M scePlayReadyDomainLeaveGenerateChallenge
 W5tL-FE60Sw scePlayReadyDomainLeaveProcessResponse
+h0qUZQn20ww scePlayReadyEnvelopeOpen
 6EKG2A33Gtk scePlayReadyFinalize
 VrWK7GksARg scePlayReadyFreeDecryptContext
 kLERpSLEraQ scePlayReadyInitialize
