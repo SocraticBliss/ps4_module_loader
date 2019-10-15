@@ -7030,7 +7030,13 @@ SRI6S9B+-a4 atof
 fPxypibz2MY atoi
 +my9jdHCMIQ atol
 fLcU5G6Qrjs atoll
+xqlFMfkztKg audiodeccpuinternal_core_ops_ddp
+k0Gp2cXDeqU audiodeccpuinternal_core_ops_dts
+nR0nX7p2jFo audiodeccpuinternal_core_ops_dts_hd_lbr
+Hnrc4jUGrL4 audiodeccpuinternal_core_ops_dts_hd_ma
 lYA31T9O1KU audiodeccpuinternal_core_ops_hevag2
+31BlqiSZ3fw audiodeccpuinternal_core_ops_lpcm_bd2
+ijtKzWkV5h0 audiodeccpuinternal_core_ops_m4aac2
 2zKnvQlTfsw autofit_module_class
 QklPP5q5JUY backtrace
 rg5JEBlKCuo basename
@@ -11824,6 +11830,7 @@ X-AQLtdxQOo sceAudioInDeviceIdOpen
 VoX9InuwwTg sceAudioInDeviceOpen
 48-miagyJ2I sceAudioInDeviceOpenEx
 kFKJ3MVcDuo sceAudioInExtClose
+mhAfefP9m2g sceAudioInExtCtrl
 KpBKoHKVKEc sceAudioInExtInput
 YZ+3seW7CyY sceAudioInExtOpen
 S-rDUfQk9sg sceAudioInGetGain
@@ -12065,6 +12072,7 @@ vJhYrkgTYWY sceBgftServiceIntGetNotificationEvent
 YTQMY0RdykU sceBgftServiceIntGetNotificationParam
 Nzr1l05aG2k sceBgftServiceIntGetTaskInfoValueInt
 b3SquMkPlQc sceBgftServiceIntGetTaskInfoValueString
+XfuJkCbToVA sceBgftServiceIntGetTaskInfoValueStringIndex
 BZ0olR8Da0g sceBgftServiceIntInit
 ODC4-mOiwl0 sceBgftServiceIntTerm
 8l9+nBL1Ps0 sceBgftServiceIntUploadGetProgress
@@ -12845,9 +12853,13 @@ SSCaczu2aMQ sceFontDestroyString
 hWE4AwNixqY sceFontDestroyWords
 PEjv7CVDRYs sceFontDestroyWritingLine
 UuY-OJF+f0k sceFontDettachDeviceCacheBuffer
+ZcQL0iSjvFw sceFontFtSupportBdf
+LADHEyFTxRQ sceFontFtSupportCid
 oakL15-mBtc sceFontFtSupportOpenType
 dcQeaDr8UJc sceFontFtSupportOpenTypeOtf
 2KXS-HkZT3c sceFontFtSupportOpenTypeTtf
+H0mJnhKwV-s sceFontFtSupportPcf
+S2mw3sYplAI sceFontFtSupportPfr
 +ehNXJPUyhk sceFontFtSupportSystemFonts
 nAfQ6qaL1fU sceFontFtSupportType1
 X9+pzrGtBus sceFontFtSupportType42
@@ -13048,6 +13060,8 @@ xfy2uloQTls sceFsUfsLargewriteFsckWithMM
 ewN9DUWH07g sceFsUfsMkfsForExternalHDD
 K9EXdD9bqzM sceFsUfsMkfsWithFixedCylinderGroupSize
 LzrlqPj88rM sceFsUfsMkLwfs
+lJuu35VxkFY sceFsUfsRecryptBlocks
+fGnw2K4fNlQ sceFsUfsRecryptGetState
 JhDPrErJnCw sceFsUfsRecryptSyncMetadata
 FKSu6oEy0iE sceFsUfsSeekHoleInFile
 rTu7zaYoryI sceFsUmountDownloadData
@@ -13373,6 +13387,7 @@ stQ7AsondmE sceHmdInternalSeparateModeSendAudio
 jfnS-OoDayM sceHmdInternalSeparateModeSendVideo
 roHN4ml+tB8 sceHmdInternalSetBrightness
 0z2qLqedQH0 sceHmdInternalSetCrashReportCommand
+xhx5rVZEpnw sceHmdInternalSetDebugGpo
 e7laRxRGCHc sceHmdInternalSetDebugMode
 CRyJ7Q-ap3g sceHmdInternalSetDebugSocialScreenMode
 dG4XPW4juU4 sceHmdInternalSetDebugTextMode
@@ -15343,6 +15358,7 @@ DkN+WBclFps sceNpPushInit
 XyvQv2qjUng sceNpPushIntEndInactive
 O-2TTjhWw10 sceNpPushIntGetConnectionState
 d695X978Bgw sceNpPushStopNotification
+Xa1igyHioag sceNpPushStopNotificationA
 qo5mH49gnDA sceNpPushTerm
 6MuJ-vnDk6A sceNpPushUnregisterNotificationCallback
 e5wi2n-IgTk sceNpReallocImpl
@@ -15578,6 +15594,7 @@ Ro4sI9xgYl4 sceNpTrophySystemGetTrophyConfig
 aXhvf2OmbiE sceNpTrophySystemGetTrophyGroupData
 Rkt0bVyaa4Y sceNpTrophySystemGetTrophyIcon
 nXr5Rho8Bqk sceNpTrophySystemGetTrophyTitleData
+eV1rtLr+eys sceNpTrophySystemGetTrophyTitleIds
 SsGLKTfWfm0 sceNpTrophySystemGetUserFileInfo
 XqLLsvl48kA sceNpTrophySystemGetUserFileStatus
 -qjm2fFE64M sceNpTrophySystemIsServerAvailable
@@ -16020,7 +16037,11 @@ l3AOURv-MWU scePlayReadyDomainCertFind
 632HibKgIsU scePlayReadyDomainJoinProcessResponse
 WBPErtBvp0M scePlayReadyDomainLeaveGenerateChallenge
 W5tL-FE60Sw scePlayReadyDomainLeaveProcessResponse
++tPsvYO70II scePlayReadyEnvelopeClose
+azsWRjrskRA scePlayReadyEnvelopeGetSize
 h0qUZQn20ww scePlayReadyEnvelopeOpen
+oeI5GwWRS3U scePlayReadyEnvelopeRead
+s23Q07skOlc scePlayReadyEnvelopeSeek
 6EKG2A33Gtk scePlayReadyFinalize
 VrWK7GksARg scePlayReadyFreeDecryptContext
 kLERpSLEraQ scePlayReadyInitialize
