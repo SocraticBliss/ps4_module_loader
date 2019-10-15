@@ -11917,6 +11917,7 @@ d3WL2uPE1eE sceAudioOutSetSparkParam
 X7Cfsiujm8Y sceAudioOutSetUsbVolume
 b+uAV89IlxE sceAudioOutSetVolume
 rho9DH-0ehs sceAudioOutSetVolumeDown
+Mt7JB3lOyJk sceAudioOutSparkControlSetEqCoef
 uo+eoPzdQ-s sceAudioOutStartSharePlay
 teCyKKZPjME sceAudioOutStopSharePlay
 95bdtHdNUic sceAudioOutSuspendResume
@@ -12917,6 +12918,7 @@ L97d+3OgMlE sceFontGetCharGlyphMetrics
 ynSqYL8VpoA sceFontGetEffectSlant
 d7dDgRY+Bzw sceFontGetEffectWeight
 ZB8xRemRRG8 sceFontGetFontGlyphsCount
+4X14YSK4Ldk sceFontGetFontGlyphsOutlineProfile
 eb9S3zNlV5o sceFontGetFontMetrics
 tiIlroGki+g sceFontGetFontResolution
 imxVx8lm+KM sceFontGetHorizontalLayout
@@ -13308,6 +13310,7 @@ yvZ73uQUqrk sceGnmSubmitDone
 bsvV-oFZSiM sceGnmSysClose
 9l2uOATqogs sceGnmSysGetClientNumber
 DgEvomXMtAM sceGnmSysOpen
+0ikQsDP-+lg sceGnmSysSubmitCommandBuffersWithPid
 ArSg-TGinhk sceGnmUnmapComputeQueue
 yhFCnaz5daw sceGnmUnregisterAllResourcesForOwner
 fhKwCVVj9nk sceGnmUnregisterOwnerAndResources
@@ -14180,6 +14183,7 @@ Gx6XB3Cf5KY sceLibcFopenWithFH
 EkENuw5cosY sceLibcGetFD
 ZVPYiIh8mkQ sceLibcGetFH
 NWtTN10cJzE sceLibcHeapGetTraceInfo
+LXqt47GvaRA sceLibcInternalSetMallocCallback
 LYo3GhIlB38 sceLibcMspaceCalloc
 -hn1tcVHq5Q sceLibcMspaceCreate
 pi90NsG3zPA sceLibcMspaceCreateForMonoMutex
@@ -14336,6 +14340,7 @@ wZ2eXClFUaE sceLoginMgrServerDialogGetAppId
 YMxfNRx4DR4 sceLoginMgrServerDialogSetResult
 K+WAuNzvn3g sceLoginMgrServerGetLogoutInfo
 4J3Z9DzaMzs sceLoginMgrServerInitialize
+KxitkrVcrSg sceLoginMgrServerSetSharePlayMode
 NtHCBzSqxgo sceLoginMgrServerTerminate
 T9-NuSHAvcQ sceLoginServiceInitialize
 S1Uxf-lgJ-c sceLoginServiceRequestDevices
@@ -14361,6 +14366,7 @@ BIQaOpcytRc sceMbusAcquireControlList
 uryBfUoKlVg sceMbusAcquireControlWithState
 eTpWp430DA4 sceMbusAcquireControlWithState2
 3ic-p1mwH1I sceMbusAcquireControlWithStateFlag
+M16uOyvsNr0 sceMbusAddAudioOutHandleAttribute
 ZiBFdjUIV3A sceMbusAddHandle
 WW1zKfNo6HI sceMbusAddHandleByDeviceId
 CwDVsGO6U3Q sceMbusAddHandleByUserId
@@ -14554,6 +14560,9 @@ iawJpYIQM7s sceMusicPlayerServiceSetTrackList2
 7Ayp3diNYnk sceMusicPlayerServiceStop
 uZXjTVsS-hU sceMusicPlayerServiceTerminate
 PIWqhn9oSxc sceNetAccept
+BTUvkWzrP68 sceNetAddrConfig6GetInfo
+3qG7UJy2Fq8 sceNetAddrConfig6Start
+P+0ePpDfUAQ sceNetAddrConfig6Stop
 PcdLABhYga4 sceNetAllocateAllRouteInfo
 c8IRpl4L74I sceNetBandwidthControlGetDefaultParam
 b9Ft65tqvLk sceNetBandwidthControlGetIfParam
@@ -14562,6 +14571,10 @@ P4zZXE7bpsA sceNetBandwidthControlSetDefaultParam
 g4DKkzV2qC4 sceNetBandwidthControlSetIfParam
 7Z1hhsEmkQU sceNetBandwidthControlSetPolicy
 bErx49PgxyY sceNetBind
+YALqoY4aeY0 sceNetBweClearEventIpcInt
+G4vltQ0Vs+0 sceNetBweGetInfoIpcInt
+GqETL5+INhU sceNetBweRegisterCallbackIpcInt
+0lViPaTB-R8 sceNetBweUnregisterCallbackIpcInt
 eyLyLJrdEOU sceNetClearDnsCache
 Ea2NaVMQNO8 sceNetConfigAddArp
 0g0qIuPN3ZQ sceNetConfigAddArpWithInterface
@@ -14990,6 +15003,7 @@ KXsx2C05JqA sceNpEulaDialogInitialize
 BV1OcAHhXnA sceNpEulaDialogOpen
 f8NjlGw6TgQ sceNpEulaDialogTerminate
 BonkDE5m1Ss sceNpEulaDialogUpdateStatus
+OQTweRLgFr8 sceNpEventGetCurrentNetworkTick
 VWOc5KnleQ0 sceNpFreeImpl
 vjwlDmsGtME sceNpFreeKernelMemory
 +Y1acHGomGQ sceNpFriendListDialogClose
@@ -15632,6 +15646,7 @@ PeAyBjC5kp8 sceNpTrophyIntGetRunningTitles
 PEo09Dkqv0o sceNpTrophyIntGetTrpIconByUri
 kF9zjnlAzIA sceNpTrophyIntNetSyncTitle
 UXiyfabxFNQ sceNpTrophyIntNetSyncTitles
+hvdThnVvwdY sceNpTrophyNumInfoGetTotal
 TJCAxto9SEU sceNpTrophyRegisterContext
 d9jpdPz5f-8 sceNpTrophyShowTrophyList
 JzJdh-JLtu0 sceNpTrophySystemAbortHandle
@@ -16107,6 +16122,7 @@ WBPErtBvp0M scePlayReadyDomainLeaveGenerateChallenge
 W5tL-FE60Sw scePlayReadyDomainLeaveProcessResponse
 +tPsvYO70II scePlayReadyEnvelopeClose
 azsWRjrskRA scePlayReadyEnvelopeGetSize
+frqq5Tky-zI scePlayReadyEnvelopeInitializeRead
 h0qUZQn20ww scePlayReadyEnvelopeOpen
 oeI5GwWRS3U scePlayReadyEnvelopeRead
 s23Q07skOlc scePlayReadyEnvelopeSeek
@@ -17226,6 +17242,7 @@ KXBnxqAeTuo sceTextToSpeechInitImpl
 HFM-KkVMVps sceTextToSpeechOpenImpl
 m8KLvqm+xF4 sceTextToSpeechPauseImpl
 AceRR9y6-ss sceTextToSpeechResumeImpl
+wapB9dMovnk sceTextToSpeechSpeakImpl
 rjU70FGcXDw sceTextToSpeechTermImpl
 MZbcWoK2x6s sceTsCloseFile
 x5crCoykxlM sceTsDisableRepresentation
