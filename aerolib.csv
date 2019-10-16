@@ -13809,6 +13809,7 @@ yYiv7rqRorw sceDebugIpmiGetChannelInfo
 XuJAJecAwbM sceDebugIpmiGetChannelWaitingThreadList
 jQx7y+e2+Ww sceDebugIpmiGetClientInfo
 QN-BpZYsomU sceDebugIpmiGetClientKidList
+pb20o9PCWxE sceDebugIpmiGetClientKidListByDump
 N6lOuDxmAiU sceDebugIpmiGetClientKidListByServerKid
 8lWNf9MWnHw sceDebugIpmiGetConnectionInfoList
 7-R7QqM35s0 sceDebugIpmiGetDump
@@ -15063,6 +15064,7 @@ D0OdFMjp46I sceKernelCreateEqueue
 BpFoboUJoZU sceKernelCreateEventFlag
 s4tJF+n0mZ0 sceKernelCreateSblock
 188x57JYp0g sceKernelCreateSema
+FMvo0UFMf-o sceKernelDebugAcquireAndUpdateDebugRegister
 XECwgo2nbek sceKernelDebugGetAppStatus
 CgfvQDFAtYU sceKernelDebugGetPauseCount
 QipjH+VV2CU sceKernelDebugGetPrivateLogText
@@ -15591,6 +15593,7 @@ XpuZT1pS47A sceLoginMgrServerGetMorpheusRequiredUserId
 7qkaKBAshAk sceLoginMgrServerGetMoveAssignmentModeForIDU
 z4VKVtL7JbU sceLoginMgrServerGetSharePlayAllowPadOperation
 4J3Z9DzaMzs sceLoginMgrServerInitialize
+Xo9MQFVHpAQ sceLoginMgrServerInitializeSharePlayAllowPadOperation
 P1su7LBMSUw sceLoginMgrServerLoginServiceGetRequestParam
 bE03GJF7Bfc sceLoginMgrServerLoginServiceNotifyRequestFinished
 ozddwj2QrKI sceLoginMgrServerNotifySafetyNoticeShown
@@ -15692,6 +15695,7 @@ i1D0nTVcCgk sceMbusNotifyDriverEvent
 UBOvPwgs85s sceMbusReenableBgmForShellUi
 1UyDc79Q4B4 sceMbusRegisterDriver
 n8+7l03wVdE sceMbusReleaseControl
+aq2yxF3xO1c sceMbusRemoveAudioOutHandleAttribute
 +la07V7EES0 sceMbusRemoveHandle
 LbHgD9w6uAE sceMbusRemoveProxy
 GcdIHVyl-aw sceMbusResolveByDeviceId
@@ -19524,6 +19528,9 @@ CApAj-v1kVs sceVshAvcapOpenVideoEx
 Axq72jlliZk sceVshAvcapReadVideo
 w02zjBeV+n4 sceVshAvcapSelect
 iErIFNXEVDM sceVshAvcapSetInfo
+n7fxSSTwbQo sceVshAvcapStart
+qgt6cIuingk sceVshAvcapStop
+hgEbCUX22UM sceVshAvcapTerm
 PSK+Eik919Q sceWebBrowserDialogClose
 Wit4LjeoeX4 sceWebBrowserDialogGetEvent
 vCaW0fgVQmc sceWebBrowserDialogGetResult
