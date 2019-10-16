@@ -709,12 +709,21 @@ pB-yGZ2nQ9o _sceKernelSetThreadAtexitCount
 WhCc1w3EhSI _sceKernelSetThreadAtexitReport
 rNhWz+lvOMU _sceKernelSetThreadDtors
 1nZ4Xfnyp38 _sceLibcGetMallocParam
+0gdlCVNNHCI _sceNpAllocatorExConvertAllocator
+Zh23aSLeeZo _sceNpAllocatorExFree
+a2qdVU8RWb4 _sceNpAllocatorExMalloc
+kKF3w-XkCWA _sceNpAllocatorExRealloc
+Cmd4+m7V00c _sceNpAllocatorExStrdup
+BztTl7QeYqE _sceNpAllocatorFree
+mzlILsFx0cU _sceNpAllocatorMalloc
+VWcTu8wKwlQ _sceNpAllocatorRealloc
 c8-4aC9opYE _sceNpAllocatorStrdup
 vqA9bl6WsF0 _sceNpAllocatorStrndup
 z5kwfM5InpI _sceNpFree
 p1vvpKGRXe4 _sceNpHeapFree
 kwW5qddf+Lo _sceNpHeapMalloc
 wsfyvM+VbUk _sceNpHeapRealloc
+atWcfgasESY _sceNpHeapStrdup
 pHLjntY0psg _sceNpIpcCreateMemoryFromKernel
 UdhQmx64-uM _sceNpIpcCreateMemoryFromPool
 hOFQ6y6Lu1k _sceNpIpcDefaultFreeImpl
@@ -13884,6 +13893,7 @@ Sfr8N-9Sdhw sceDseehxInit
 iA5fgZroSXQ sceDtcpIpActivateAsync
 w8gdCsz9E5g sceDtcpIpAddHeader
 45gE-Md7pGc sceDtcpIpCancelActivate
+fpMtgjbfR28 sceDtcpIpCheckActivationAsync
 wB7VXMN6d7Y sceDtcpIpCloseContentAsync
 7YmdciXqdyw sceDtcpIpGetErrorCode
 YUMJ3Foe2ds sceDtcpIpGetHttpStatusCode
@@ -16580,6 +16590,7 @@ wyvlEgZ-55w sceNpMatching2GetLobbyInfoList
 gpSAvdheZ0Q sceNpMatching2GetMemoryInfo
 26vWrPAWJfM sceNpMatching2GetRoomDataExternalList
 Jraxifmoet4 sceNpMatching2GetRoomDataInternal
+nddl5xnQQEY sceNpMatching2GetRoomJoinedSlotMaskLocal
 dMQ+xGvTdqM sceNpMatching2GetRoomMemberDataExternalList
 5lhvOqheFBA sceNpMatching2GetRoomMemberDataInternal
 KC+GnHzrK2o sceNpMatching2GetRoomMemberIdListLocal
@@ -16589,6 +16600,7 @@ cgQhq3E0eGo sceNpMatching2GetSignalingOptParamLocal
 8btynvj0KNA sceNpMatching2GetSslMemoryInfo
 qeF-q5KDtAc sceNpMatching2GetUserInfoList
 GyI2f9yDUXM sceNpMatching2GetUserInfoListA
+lagjVl+bHFI sceNpMatching2GetWorldIdArrayForAllServers
 rJNPJqDCpiI sceNpMatching2GetWorldInfoList
 NCP3bLGPt+o sceNpMatching2GrantRoomOwner
 10t3e5+JPnU sceNpMatching2Initialize
@@ -17105,6 +17117,7 @@ xPRHNaD3kTc sceNpUtilCmpAccountId
 owm52JoZ8uc sceNpUtilGetDateSetAuto
 1Gfhi+tZ9IE sceNpUtilGetDbgCommerce
 kBON3bAtfGs sceNpUtilGetEnv
+FrxliFYAO8Y sceNpUtilGetIgnoreNpTitleId
 GRvK1ZE+FEQ sceNpUtilGetNpDebug
 OFiFmfsADas sceNpUtilGetNpLanguageCode
 RfiA17kV+xs sceNpUtilGetNpLanguageCodeStr
@@ -17417,10 +17430,13 @@ KVDCpwJXoxw scePs2EmuMenuDialogUpdateStatus
 JMADh-6iSWc scePsmExecute
 2eHZuGzujZI scePsmKitFontConfigGetFont
 Rgi0wr6wpDI scePsmKitFontConfigGetFontPath
+DNb-Y-33FyE ScePsmMonoArrayAddrWithSize
 WUKXnNDqQrM ScePsmMonoArrayLength
 hQMZAaNGHAs ScePsmMonoDomainGet
 ZyBRuMgQYvM ScePsmMonoFree
+BVdp6O0nF3k ScePsmMonoGcWbarrierGenericStore
 O4LAoN2b7y4 ScePsmMonoStringChars
+1WXYJN+b-e0 ScePsmMonoStringFromUtf16
 83i-0wbUtlM ScePsmMonoStringLength
 GtOEkqZ1LDA ScePsmMonoStringNew
 6zGifD5IqRo ScePsmMonoStringNewWrapper
@@ -18029,6 +18045,7 @@ NTttBlD2Xbk sceShellCoreUtilGetCrashReportResult
 4YQ-w9Xwn7s sceShellCoreUtilGetCrashReportStatus
 L6R0jU7yTTQ sceShellCoreUtilGetCrashReportUploadStatus
 oINHTqU1qvY sceShellCoreUtilGetDeviceIndexBehavior
+vPxKoc5MyxQ sceShellCoreUtilGetDeviceIndexBehaviorWithTimeout
 tHE2mqrhR4c sceShellCoreUtilGetDeviceStatus
 rkV5b-p490g sceShellCoreUtilGetEffectiveTotalSizeOfUserPartition
 guf+xcMoCas sceShellCoreUtilGetFreeSizeOfAvContentsTmp
@@ -18289,6 +18306,7 @@ gLjLCP6tKuw sceSulphaShutdown
 SI++DtNK+-M sceSysCoreGetEventCount
 0YmjfSJ8X98 sceSysCoreReceiveEvent
 D8cuU4d72xM sceSysmoduleGetModuleHandleInternal
+ctfO7dQ7geg sceSysmoduleIsCalledFromSysModule
 no6T3EfiS3E sceSysmoduleIsCameraPreloaded
 fMP5NHUOaMk sceSysmoduleIsLoaded
 ynFKQ5bfGks sceSysmoduleIsLoadedInternal
