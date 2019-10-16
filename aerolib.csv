@@ -16580,6 +16580,7 @@ wyvlEgZ-55w sceNpMatching2GetLobbyInfoList
 gpSAvdheZ0Q sceNpMatching2GetMemoryInfo
 26vWrPAWJfM sceNpMatching2GetRoomDataExternalList
 Jraxifmoet4 sceNpMatching2GetRoomDataInternal
+nddl5xnQQEY sceNpMatching2GetRoomJoinedSlotMaskLocal
 dMQ+xGvTdqM sceNpMatching2GetRoomMemberDataExternalList
 5lhvOqheFBA sceNpMatching2GetRoomMemberDataInternal
 KC+GnHzrK2o sceNpMatching2GetRoomMemberIdListLocal
@@ -16589,6 +16590,7 @@ cgQhq3E0eGo sceNpMatching2GetSignalingOptParamLocal
 8btynvj0KNA sceNpMatching2GetSslMemoryInfo
 qeF-q5KDtAc sceNpMatching2GetUserInfoList
 GyI2f9yDUXM sceNpMatching2GetUserInfoListA
+lagjVl+bHFI sceNpMatching2GetWorldIdArrayForAllServers
 rJNPJqDCpiI sceNpMatching2GetWorldInfoList
 NCP3bLGPt+o sceNpMatching2GrantRoomOwner
 10t3e5+JPnU sceNpMatching2Initialize
@@ -17417,10 +17419,13 @@ KVDCpwJXoxw scePs2EmuMenuDialogUpdateStatus
 JMADh-6iSWc scePsmExecute
 2eHZuGzujZI scePsmKitFontConfigGetFont
 Rgi0wr6wpDI scePsmKitFontConfigGetFontPath
+DNb-Y-33FyE ScePsmMonoArrayAddrWithSize
 WUKXnNDqQrM ScePsmMonoArrayLength
 hQMZAaNGHAs ScePsmMonoDomainGet
 ZyBRuMgQYvM ScePsmMonoFree
+BVdp6O0nF3k ScePsmMonoGcWbarrierGenericStore
 O4LAoN2b7y4 ScePsmMonoStringChars
+1WXYJN+b-e0 ScePsmMonoStringFromUtf16
 83i-0wbUtlM ScePsmMonoStringLength
 GtOEkqZ1LDA ScePsmMonoStringNew
 6zGifD5IqRo ScePsmMonoStringNewWrapper
