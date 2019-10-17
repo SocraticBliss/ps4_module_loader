@@ -13897,6 +13897,7 @@ Ob34lg2OTG0 sceDseehxFlush
 Sfr8N-9Sdhw sceDseehxInit
 iA5fgZroSXQ sceDtcpIpActivateAsync
 w8gdCsz9E5g sceDtcpIpAddHeader
+QXd85nHKgTc sceDtcpIpByteSeekAsync
 45gE-Md7pGc sceDtcpIpCancelActivate
 fpMtgjbfR28 sceDtcpIpCheckActivationAsync
 wB7VXMN6d7Y sceDtcpIpCloseContentAsync
@@ -14461,6 +14462,7 @@ QhnyReteJ1M sceGnmDrawInitDefaultHardwareState175
 yb2cRhagD1I sceGnmDrawInitDefaultHardwareState350
 8lH54sfjfmU sceGnmDrawInitToDefaultContextState
 im2ZuItabu4 sceGnmDrawInitToDefaultContextState400
+jajhf-Gi3AI sceGnmDrawInitToDefaultContextStateInternalSize
 stDSYW2SBVM sceGnmDrawOpaqueAuto
 TLV4mswiZ4A sceGnmDriverCaptureInProgress
 BvvO8Up88Zc sceGnmDriverInternalVirtualQuery
@@ -14555,6 +14557,27 @@ cMWWYeqQQlM sceGnmSpmSetSelectCounter
 -zJi8Vb4Du4 sceGnmSpmSetSpmSelects
 xTsOqp-1bE4 sceGnmSpmSetSpmSelects2
 AmmYLcJGTl0 sceGnmSpmStartSpm
+UHDiSFDxNao sceGnmSqttFini
+a3tLC56vwug sceGnmSqttFinishTrace
+L-owl1dSKKg sceGnmSqttGetBcInfo
+LQtzqghKQm4 sceGnmSqttGetGpuClocks
+9X4SkENMS0M sceGnmSqttGetStatus
+lbMccQM2iqc sceGnmSqttGetTraceCounter
+DYAC6JUeZvM sceGnmSqttGetTraceWptr
+X6yCBYPP7HA sceGnmSqttInit
+2IJhUyK8moE sceGnmSqttSelectMode
+QA5h6Gh3r60 sceGnmSqttSelectTarget
+F5XJY1XHa3Y sceGnmSqttSelectTokens
+wJtaTpNZfH4 sceGnmSqttSetCuPerfMask
+05YzC2r3hHo sceGnmSqttSetTraceBuffer2
+ASUric-2EnI sceGnmSqttSetTraceBuffers
+gPxYzPp2wlo sceGnmSqttSetUserData
+d-YcZX7SIQA sceGnmSqttSetUserdataTimer
+ru8cb4he6O8 sceGnmSqttStartTrace
+gVuGo1nBnG8 sceGnmSqttStopTrace
+OpyolX6RwS0 sceGnmSqttSwitchTraceBuffer
+dl5u5eGBgNk sceGnmSqttSwitchTraceBuffer2
+QLzOwOF0t+A sceGnmSqttWaitForEvent
 xbxNatawohc sceGnmSubmitAndFlipCommandBuffers
 Ga6r7H6Y0RI sceGnmSubmitAndFlipCommandBuffersForWorkload
 zwY0YV91TTI sceGnmSubmitCommandBuffers
@@ -16415,7 +16438,9 @@ KUIRsku7EPk sceNpLookupNetCreateRequest
 HL-venrRcnQ sceNpLookupNetDeleteRequest
 dxpUx7z9StY sceNpLookupNetDeleteTitleCtx
 zVZE+fAhgFY sceNpLookupNetInit
+DiUk6-mq--0 sceNpLookupNetInitWithFunctionPointer
 cpnwZeVIq8E sceNpLookupNetInitWithMemoryPool
+ZXlTj9RRCFo sceNpLookupNetIsInit
 2nEVmFiV6OI sceNpLookupNetNpId
 jJH2P7KA4XU sceNpLookupNetSanitizeComment
 NWtf77WCXJs sceNpLookupNetSetTimeout
@@ -16783,6 +16808,7 @@ fqk8SC63p1U sceNpScoreWaitAsync
 0lZHbA-HRD0 sceNpServerErrorJsonGetErrorCode
 WSQxnAVLKgw sceNpServerErrorJsonParse
 UbStlMKTBeU sceNpServerErrorJsonParseInit
+hbe+DdooIi4 sceNpServerErrorJsonParseMultiInit
 Kq+ftR9LHlE sceNpServiceChecker2IntAbortRequest
 IG1Kd+k6U3s sceNpServiceChecker2IntCreateRequest
 hBsBswrAiGM sceNpServiceChecker2IntDestroyRequest
@@ -17443,7 +17469,9 @@ RUrWdwTWZy8 scePngEncDelete
 xgDjJKpcyHo scePngEncEncode
 9030RnBDoh4 scePngEncQueryMemorySize
 Q-JroQdKRfM scePrecompiledShaderEntries
+RY+HIZ+rrdo sceProfileCacheGetAvatar
 DsKIPXZX4uU sceProfileCacheGetProfilePicture
+26K6KWi+gy4 sceProfileCacheGetTrueName
 zTnim89xUWY scePs2EmuMenuDialogClose
 eVkl4XZTS6M scePs2EmuMenuDialogGetResult
 45M67FoqnUo scePs2EmuMenuDialogGetStatus
@@ -17877,6 +17905,7 @@ tu0SDPl+h88 sceSaveDataGetClientThreadPriority
 eBSSNIG6hMk sceSaveDataGetEventInfo
 j8xKtiFj0SY sceSaveDataGetEventResult
 UMpxor4AlKQ sceSaveDataGetFormat
+pc4guaUPVqA sceSaveDataGetMountedSaveDataCount
 65VH0Qaaz6s sceSaveDataGetMountInfo
 XgvSuIdnMlw sceSaveDataGetParam
 ANmSWUiyyGQ sceSaveDataGetProgress
@@ -18342,6 +18371,7 @@ g8cM39EUZ6o sceSysmoduleLoadModule
 CU8m+Qs+HN4 sceSysmoduleLoadModuleByNameInternal
 39iV5E1HoCk sceSysmoduleLoadModuleInternal
 hHrGoGoNf+s sceSysmoduleLoadModuleInternalWithArg
+lZ6RvVl0vo0 sceSysmoduleMapLibcForLibkernel
 DOO+zuW1lrE sceSysmodulePreloadModuleForLibkernel
 eR2bZFAAU0Q sceSysmoduleUnloadModule
 vpTHmA6Knvg sceSysmoduleUnloadModuleByNameInternal
