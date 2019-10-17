@@ -6270,6 +6270,7 @@ U0EOfsJ6Euw _ZN4Manx21DisplayRefreshMonitor4stopEv
 l5q0L2fFbDg _ZN4Manx21DisplayRefreshMonitor5startEi
 dOB63+1z+QE _ZN4Manx21DisplayRefreshMonitor5startEv
 akvKAVg-uyk _ZN4Manx21DisplayRefreshMonitorC1Ev
+IGJ-lPf5b1Y _ZN4Manx21DisplayRefreshMonitorC2Ev
 AZb2Bl9bMsk _ZN4Manx21DisplayRefreshMonitorD1Ev
 ZJPqg9OExng _ZN4Manx21getPlatformFamilyListEPKwj
 SWUBqIUFFjM _ZN4Manx27monotonicallyIncreasingTimeEv
@@ -8254,6 +8255,7 @@ nR0nX7p2jFo audiodeccpuinternal_core_ops_dts_hd_lbr
 Hnrc4jUGrL4 audiodeccpuinternal_core_ops_dts_hd_ma
 lYA31T9O1KU audiodeccpuinternal_core_ops_hevag2
 31BlqiSZ3fw audiodeccpuinternal_core_ops_lpcm_bd2
+Psa+mnQ+wRg audiodeccpuinternal_core_ops_lpcm_dvd2
 ijtKzWkV5h0 audiodeccpuinternal_core_ops_m4aac2
 2zKnvQlTfsw autofit_module_class
 QklPP5q5JUY backtrace
@@ -14156,6 +14158,7 @@ H0mJnhKwV-s sceFontFtSupportPcf
 S2mw3sYplAI sceFontFtSupportPfr
 +ehNXJPUyhk sceFontFtSupportSystemFonts
 4BAhDLdrzUI sceFontFtSupportTrueType
+Utlzbdf+g9o sceFontFtSupportTrueTypeGx
 nAfQ6qaL1fU sceFontFtSupportType1
 X9+pzrGtBus sceFontFtSupportType42
 w0hI3xsK-hc sceFontFtSupportWinFonts
@@ -14546,6 +14549,7 @@ kkn+iy-mhyg sceGnmSpmEndSpm
 aqhuK2Mj4X4 sceGnmSpmInit
 KHpZ9hJo1c0 sceGnmSpmInit2
 QEsMC+M3yjE sceGnmSpmSetDelay
+hljMAxTLNF0 sceGnmSpmSetMuxRam
 cMWWYeqQQlM sceGnmSpmSetSelectCounter
 -zJi8Vb4Du4 sceGnmSpmSetSpmSelects
 xTsOqp-1bE4 sceGnmSpmSetSpmSelects2
