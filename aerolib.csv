@@ -12444,10 +12444,12 @@ wivfLfaFAZg nsnp_ActionPerform
 GjQLdCasJDg nsnp_Callback
 n2nk-l3evas nsnp_CheckHMAC
 ERhsQL+87ks nsnp_Decrypt
+YQC5ZjGfd+A nsnp_DecryptWithIV
 0aPYh8P2+Ps nsnp_DecryptWithOffset
 Y3hsRCZODFs nsnp_Fin
 IkLRlZVvw5g nsnp_FinSession
 xon5yCPxbAw nsnp_FinTrack
+b1hZVzYWL6E nsnp_FreeESB
 JCEBUaUl5QY nsnp_FreeLicenseMetadata
 k+jX53jlQm4 nsnp_FreeString
 -eI0Y-JCbf0 nsnp_GetLicenseMetadata
@@ -13107,6 +13109,7 @@ Ptlts326pds sceAudioOutGetLastOutputTime
 GrQ9s4IrNaQ sceAudioOutGetPortState
 pWmS7LajYlo sceAudioOutGetSimulatedHandleStatusInfo
 oPLghhAWgMM sceAudioOutGetSimulatedHandleStatusInfo2
+5+r7JYHpkXg sceAudioOutGetSparkVss
 R5hemoKKID8 sceAudioOutGetSystemState
 JfEPXVxhFqA sceAudioOutInit
 n16Kdoxnvl0 sceAudioOutInitIpmiGetSession
@@ -14562,6 +14565,7 @@ UHDiSFDxNao sceGnmSqttFini
 a3tLC56vwug sceGnmSqttFinishTrace
 L-owl1dSKKg sceGnmSqttGetBcInfo
 LQtzqghKQm4 sceGnmSqttGetGpuClocks
+wYN5mmv6Ya8 sceGnmSqttGetHiWater
 9X4SkENMS0M sceGnmSqttGetStatus
 lbMccQM2iqc sceGnmSqttGetTraceCounter
 DYAC6JUeZvM sceGnmSqttGetTraceWptr
@@ -14570,6 +14574,7 @@ X6yCBYPP7HA sceGnmSqttInit
 QA5h6Gh3r60 sceGnmSqttSelectTarget
 F5XJY1XHa3Y sceGnmSqttSelectTokens
 wJtaTpNZfH4 sceGnmSqttSetCuPerfMask
+7XRH1CIfNpI sceGnmSqttSetHiWater
 05YzC2r3hHo sceGnmSqttSetTraceBuffer2
 ASUric-2EnI sceGnmSqttSetTraceBuffers
 gPxYzPp2wlo sceGnmSqttSetUserData
@@ -14684,6 +14689,7 @@ nK1g+MwMV10 sceHmdInternalGetCrashDumpInfo
 L5WZgOTw41Y sceHmdInternalGetDebugMode
 3w8SkMfCHY0 sceHmdInternalGetDebugSocialScreenMode
 1Xmb76MHXug sceHmdInternalGetDebugTextMode
+mxjolbeBa78 sceHmdInternalGetDemoMode
 RFIi20Wp9j0 sceHmdInternalGetDeviceInformation
 P04LQJQZ43Y sceHmdInternalGetDeviceInformationByHandle
 PPCqsD8B5uM sceHmdInternalGetDeviceStatus
@@ -14720,9 +14726,11 @@ xhx5rVZEpnw sceHmdInternalSetDebugGpo
 e7laRxRGCHc sceHmdInternalSetDebugMode
 CRyJ7Q-ap3g sceHmdInternalSetDebugSocialScreenMode
 dG4XPW4juU4 sceHmdInternalSetDebugTextMode
+lu9I7jnUvWQ sceHmdInternalSetDemoMode
 hyATMTuQSoQ sceHmdInternalSetDeviceConnection
 U9kPT4g1mFE sceHmdInternalSetHmuPowerControl
 4KIjvAf8PCA sceHmdInternalSetIPD
+NnRKjf+hxW4 sceHmdInternalSetLedOn
 LkBkse9Pit0 sceHmdInternalSetPortConnection
 v243mvYg0Y0 sceHmdInternalSetPortStatus
 g3DKNOy1tYw sceHmdInternalSetSidetone
@@ -19456,6 +19464,7 @@ BFzmWeUd7kA sceVisionManagerRequestRecogUtility
 HIImy8uMSUg sceVisionManagerRequestStoreCameraImgY
 0rSeEhh-HKA sceVisionManagerSetCallbackForUpdateCalibrateHmdResult
 OHjgoIInnmU sceVisionManagerSetCallbackForUpdateCalibrateStereoCameraResult
+LeXBTikMUko sceVisionManagerSetCallbackForUpdateRecog
 fz3oxzTvcvI sceVisionManagerSetCallbackForUpdateRunningStatus
 q9iRVgGbrL0 sceVisionManagerWaitResponse
 oV9GAdJ23Gw sceVoiceConnectIPortToOPort
