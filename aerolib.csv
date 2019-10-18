@@ -12333,6 +12333,7 @@ ey7m-hHRtu4 mono_thread_exit
 a0W-aTAtW0o mono_thread_get_main
 57Jmwvu69bo mono_thread_get_managed_id
 ZvFNdVIxCAU mono_thread_get_max_threads
+jNnIm+e6ZBs mono_thread_get_name_utf8
 GQLPt+OUJkE mono_thread_get_num_threads
 GhsF8zOJ3Cc mono_thread_get_undeniable_exception
 WzKEl0hf1yM mono_thread_init
@@ -14590,6 +14591,7 @@ zwY0YV91TTI sceGnmSubmitCommandBuffers
 jRcI8VcgTz4 sceGnmSubmitCommandBuffersForWorkload
 yvZ73uQUqrk sceGnmSubmitDone
 bsvV-oFZSiM sceGnmSysClose
+H+bqFwVYz6M sceGnmSysEnableSubmitDone45Exception
 9l2uOATqogs sceGnmSysGetClientNumber
 DgEvomXMtAM sceGnmSysOpen
 0ikQsDP-+lg sceGnmSysSubmitCommandBuffersWithPid
