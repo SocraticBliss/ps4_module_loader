@@ -9145,6 +9145,8 @@ ZYpIYZg3Jf4 FTA_Add_Module_type42
 JSi+hWkA9pI FTA_Add_Module_winfonts
 ZhVdSRyrpUI FTA_Export_Module_bdf
 phi4au-2t04 FTA_Export_Module_cff
+qC+tiGwcW7E FTA_Export_Module_gxvalid
+rl7aW17qQb8 FTA_Export_Module_otvalid
 -qwk1RxUuDA FTA_Export_Module_pcf
 mQYQAi8B0Yo FTA_Export_Module_pfr
 4TJ1qJGXAV8 FTA_Export_Module_psaux
@@ -13355,6 +13357,7 @@ j-b-RFZ3gjw sceAvSettingGetCurrentOutputMode2_
 vfzFZDaFuKU sceAvSettingGetDetailedHdcpStatus
 vh3aQ+JUpSU sceAvSettingGetDeviceInfo
 AoBZzDiZwng sceAvSettingGetHdcpStatus
+lxo162czs6I sceAvSettingGetHdmiConnectDisconnectNum
 5ICXeCXAnDQ sceAvSettingGetHdmiKsvList
 -Mui67TZd4s sceAvSettingGetHdmiMonitorInfo
 6i0wQ7VpTSg sceAvSettingGetMorpheusPuStatus
@@ -15639,6 +15642,7 @@ Gx6XB3Cf5KY sceLibcFopenWithFH
 EkENuw5cosY sceLibcGetFD
 ZVPYiIh8mkQ sceLibcGetFH
 NWtTN10cJzE sceLibcHeapGetTraceInfo
+4iOzclpv1M0 sceLibcHeapSetAddressRangeCallback
 M6qiY0nhk54 sceLibcHeapSetTraceMarker
 h8jq9ee4h5c sceLibcInternalMemoryMutexEnable
 LXqt47GvaRA sceLibcInternalSetMallocCallback
@@ -15859,6 +15863,7 @@ QWVJAvJhcoE sceMbusDebugAcquireControlWithStateFlag
 ENIHay-pf9k sceMbusDebugAddProcess
 f3S7UzMOqpc sceMbusDebugCheckProcessResume
 doh35AZf7Zk sceMbusDebugDisableBgmForShellUi
+FW8GJjej89g sceMbusDebugGetApplicationStartupInfo
 iidMRmA0MEo sceMbusDebugGetControlStatus
 lrH9rFkouoY sceMbusDebugGetDeviceInfo
 1TpZWrOOCw0 sceMbusDebugGetInternalInfo
@@ -16422,6 +16427,7 @@ YDDHD6RP4HQ sceNpAsmCreateConnection
 hIFFMeoLhcY sceNpAsmCreateRequest
 UxOJvGmy3mA sceNpAsmDeleteConnection
 RfokKHMuOsE sceNpAsmDeleteRequest
+dSlkmPVTcvk sceNpAsmGetNpCommInfo
 Dkpw9X-HSVA sceNpAsmGetRelatedGameNpTitleIds
 kc-O9XKFRIE sceNpAsmGetServiceBaseUrl
 1Xe+XZ1oI28 sceNpAsmGetServiceIdInfo
