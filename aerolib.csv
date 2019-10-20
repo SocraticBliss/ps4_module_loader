@@ -9733,6 +9733,7 @@ Ab0R4oOE-DY glWaitSync
 1mecP7RgI2A gmtime
 5bBacGLyLOs gmtime_s
 3FfhG3OCRyk goby_CheckLicense
+qsf3QUNkffc goby_CheckPersonality
 1X+GW1hdTlM goby_DeleteLink
 Ulu9vNs5vn8 goby_Fin
 hBw3k9ipLow goby_FreeActionResults
@@ -12584,6 +12585,7 @@ ryyn6-WJm6U nexttowardl
 3YnXspQNyw8 nmount
 3wcYIMz8LUo nrand48
 VteK1e0o0fY nsnp_ActionCheck
+bIjisuca0z8 nsnp_ActionDescribe
 wivfLfaFAZg nsnp_ActionPerform
 GjQLdCasJDg nsnp_Callback
 n2nk-l3evas nsnp_CheckHMAC
@@ -14454,6 +14456,7 @@ oZf2EW1xS70 sceFsCreatePfsSaveDataImage
 fU5fcZt5QEg sceFsCreatePfsTrophyDataImage
 1b2I4GGnkw4 sceFsDeviceAlignedPread
 l6aA787njwE sceFsDeviceAlignedPwrite
+iLxIuu5Xs2A sceFsErriCtl
 79EsKMqL-jQ sceFsExfatfsMkfs
 QP4WA9hEAtM sceFsExfatMkfsExternalHdd
 gxvn6JGDhBw sceFsExternalStorageDeconfigure
@@ -15461,6 +15464,7 @@ RP9ImTNDfP8 sceKernelIccSetCpuInfoBit
 o4NI2wpFhbI sceKernelIccSetDownloadMode
 W2u-cvNkvOY sceKernelInitializeDipsw
 WkwEd3N7w0Y sceKernelInstallExceptionHandler
+L7aj7caj8+s sceKernelInternalGetKmemStatistics
 n2nyhRL5uUg sceKernelInternalGetMapStatistics
 rb8JKArrzc0 sceKernelInternalHeapPrintBacktraceWithModuleInfo
 xAKAe6kFk90 sceKernelInternalMapDirectMemory
@@ -15546,6 +15550,7 @@ yTj62I7kw4s sceKernelPreadv
 5ifAYsFspMM sceKernelPrepareToSuspendProcess
 Wl2o5hOVZdw sceKernelPrintBacktraceWithModuleInfo
 k1jIkFHa9OU sceKernelProtectDirectMemory
+cBp0Ad-24LA sceKernelProtectDirectMemoryForPID
 nKWi-N2HBV4 sceKernelPwrite
 mBd4AfLP+u8 sceKernelPwritev
 WFcfL2lzido sceKernelQueryMemoryProtection
@@ -18694,6 +18699,7 @@ JjIspXDbL6o sceSystemServiceActivateMpeg2Term
 jPKapVQLX70 sceSystemServiceAddLocalProcessForJvm
 tIdXUhSLyOU sceSystemServiceAddLocalProcessForPs2Emu
 cltshBrDLC0 sceSystemServiceAddLocalProcessForPsmKit
+FI+VqGdttvI sceSystemServiceChangeAcpClock
 ec72vt3WEQo sceSystemServiceChangeCpuClock
 Z5RgV4Chwxg sceSystemServiceChangeGpuClock
 LFo00RWzqRU sceSystemServiceChangeMemoryClock
