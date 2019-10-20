@@ -9143,6 +9143,7 @@ zxsyxyiLthM FTA_Add_Module_truetype
 +v66TBg7tzA FTA_Add_Module_type1
 ZYpIYZg3Jf4 FTA_Add_Module_type42
 JSi+hWkA9pI FTA_Add_Module_winfonts
+bZYqFlUVPCY FTA_Export_Module_autofitter
 ZhVdSRyrpUI FTA_Export_Module_bdf
 phi4au-2t04 FTA_Export_Module_cff
 qC+tiGwcW7E FTA_Export_Module_gxvalid
@@ -9740,8 +9741,10 @@ bR3lFCbl2ow goby_FreeLinkList
 bbuFLemjwRA goby_FreeNodeList
 uDv80Z-OaP8 goby_FreeRemoteInfo
 3ovo4cphzuw goby_GetAvailableLinks
+QWVrYTt602Y goby_GetDUIDParameters
 qUFOjETOS-4 goby_Init
 +fo47VU51qw goby_ProcessMessage
+UDkeOtF5o-k gp_set_functions
 yhd+GKb-NyQ gp_trace
 xqeyyKUZcQ4 gsharedvt_out_trampoline
 lmieh+K7+7o gsharedvt_trampoline
@@ -12628,6 +12631,7 @@ FwzVaZ8Vnus optopt
 CZNm+oNmB-I optreset
 x4-3rrCkF1s pa_pop_marker
 jQ06QCNi21g pa_push_marker
+QRO9p-E0uPg pa_set_functions
 8VBA6xuvSBA pa_sync
 oc98+zOImus pathconf
 EDyhWelj7UY pause
@@ -13233,6 +13237,9 @@ U0ivfdKFZbA sceAudioInSetSparkParam
 hWMCAPpqzDo sceAudioInSetSparkSideTone
 nqXpw3MaN50 sceAudioInSetUsbGain
 arJp991xk5k sceAudioInSetUserMute
+DVTn+iMSpBM sceAudioInVmicCreate
+3ULZGIl+Acc sceAudioInVmicDestroy
+4kHw99LUG3A sceAudioInVmicWrite
 Iz9X7ISldhs sceAudioOutA3dControl
 9RVIoocOVAo sceAudioOutA3dExit
 n7KgxE8rOuE sceAudioOutA3dInit
@@ -13373,6 +13380,7 @@ hdISXjL-bwY sceAvSettingNotifyAudioOutMode
 T6LrBljciS0 sceAvSettingNotifyProcessResume
 Ko8fB-6YDp8 sceAvSettingNotifyProcessSuspend
 02ozaKssy98 sceAvSettingNotifyResponseForSocialScreen
+Fyw2Fkasc+4 sceAvSettingNotifyUmdEvent
 2cJVU9KC3zY sceAvSettingNotifyVideoOutMode
 Pxx1uH51g-E sceAvSettingOpenLoopbackBuffers
 dnM9JfgxHbk sceAvSettingRemoveCallbacks
@@ -13708,6 +13716,7 @@ qZNF03+ghLI sceCompositorFlush
 9bnaeOBBD1Q sceCompositorFlushWithRepeat
 N7PrM+lPMW0 sceCompositorGetCanvasHandle
 9vHGtqLkmTQ sceCompositorGetClientList
+MjH7MOV6LVk sceCompositorGetDmemOffset
 fcDt18r-ibY sceCompositorGetDummyAddress
 F9gmz-sU-Z4 sceCompositorGetDummySize
 2xhRHbvhwfU sceCompositorGetRemainedCommandNum
@@ -13903,7 +13912,9 @@ FF2LpsJxclY sceDebugClearStepThread
 IeXW4fnPkyw sceDebugCreatePerfScratchDataArea
 WIkuITeINl8 sceDebugCreatePerfScratchExecutableArea
 a8xfs-qh9WA sceDebugCreateScratchDataArea
+juaxHn6Boy8 sceDebugCreateScratchDataAreaForPrx
 FS33uqKkEJA sceDebugCreateScratchExecutableArea
+2VMtYW1k054 sceDebugCreateScratchExecutableAreaForPrx
 QZaLNZ58fUE sceDebugDestroyPerfScratchDataArea
 G4tFfSDPtXU sceDebugDestroyPerfScratchExecutableArea
 Q29NWnvK6OI sceDebugDestroyScratchDataArea
@@ -13925,6 +13936,8 @@ a7MagzVs4cI sceDebugGetFileList
 Jv9NQNlhK+k sceDebugGetFileListForCoredump
 xexuBx9rGvg sceDebugGetGpuInfoArea
 TWvPsc6MkmA sceDebugGetJobManagerInfo
+wigNLIF1CtE sceDebugGetJobManagerSequenceInfo
+lP6QEEoBVqE sceDebugGetJobManagerSequenceList
 +cSD1hGmg+0 sceDebugGetModuleInfo
 HaI8g79+OOA sceDebugGetModuleList
 18ylu1q-Us8 sceDebugGetModuleMetaData
@@ -13969,6 +13982,7 @@ p-NcyN-4t34 sceDebugGetWorkerThreadListOfUltRuntime
 6+bfgq18W84 sceDebugInit
 FAqD7n94bYY sceDebugInitForCoredump
 SP-7qOzwl7U sceDebugInitForTest
+qNbjzkre+NE sceDebugIpmiGetBlockedIpcInfo
 yYiv7rqRorw sceDebugIpmiGetChannelInfo
 4slehMAh00w sceDebugIpmiGetChannelKidList
 XuJAJecAwbM sceDebugIpmiGetChannelWaitingThreadList
@@ -14040,6 +14054,7 @@ VZJhL9rau08 sceDepthSetPreFilterParameter
 3mjsu608hoU sceDepthSetRoi
 8nUMQUGz3Vs sceDepthSetRoiset
 hO0sxQP5n0Q sceDepthSetSrParameter
+zE2ws3Iyrqc sceDepthSetSrTnrParameter
 jLx5qd4qyjk sceDepthSubmit
 l+dKhCxtRHc sceDepthTerminate
 q0NXsQTzAI0 sceDepthUpdate
@@ -14338,6 +14353,7 @@ ZB8xRemRRG8 sceFontGetFontGlyphsCount
 4X14YSK4Ldk sceFontGetFontGlyphsOutlineProfile
 eb9S3zNlV5o sceFontGetFontMetrics
 tiIlroGki+g sceFontGetFontResolution
+3hVv3SNoL6E sceFontGetFontStyleInformation
 imxVx8lm+KM sceFontGetHorizontalLayout
 sDuhHGNhHvE sceFontGetKerning
 LzmHDnlcwfQ sceFontGetLibrary
@@ -14733,6 +14749,8 @@ wYN5mmv6Ya8 sceGnmSqttGetHiWater
 9X4SkENMS0M sceGnmSqttGetStatus
 lbMccQM2iqc sceGnmSqttGetTraceCounter
 DYAC6JUeZvM sceGnmSqttGetTraceWptr
+pS2tjBxzJr4 sceGnmSqttGetWrapCounts
+rXV8az6X+fM sceGnmSqttGetWrapCounts2
 X6yCBYPP7HA sceGnmSqttInit
 2IJhUyK8moE sceGnmSqttSelectMode
 QA5h6Gh3r60 sceGnmSqttSelectTarget
@@ -14812,6 +14830,7 @@ ao8NZ+FRYJE sceHmdDistortionInitialize
 8A4T5ahi790 sceHmdDistortionSetOutputMinColor
 BWY-qKM5hxE sceHmdGet2DEyeOffset
 za4xJfzCBcM sceHmdGet2dVrCommand
+Yx+CuF11D3Q sceHmdGetAssyError
 thDt9upZlp8 sceHmdGetDeviceInformation
 1pxQfif1rkE sceHmdGetDeviceInformationByHandle
 grCYks4m8Jw sceHmdGetDistortionCorrectionCommand
@@ -15100,6 +15119,7 @@ IMecW2MacSY sceIduUtilSetSettingStr
 qF9j5SGAiUk sceIduUtilSetSysLanguage
 gtWxylhD504 sceIduUtilShowOverlay
 SOx9LJtZNWw sceIduUtilTerminate
+nWqxZ43uS4U sceIduUtilUninstallApp
 g32w6rnsV-0 sceIduUtilUpdateSelf
 xbqCEIzvg3E sceImeBackendAllConfirm
 f22czPppTCQ sceImeBackendAllDeleteConvertString
@@ -15320,6 +15340,7 @@ VW3TVZiM4-E sceKernelFtruncate
 NLq2b1jOaN0 sceKernelFutimes
 YeU23Szo3BM sceKernelGetAllowedSdkVersionOnSystem
 G-MYv5erXaU sceKernelGetAppInfo
+1UOnecNlNW0 sceKernelGetAslrStatus
 QtLhuYZf9jg sceKernelGetBackupRestoreMode
 CQ1bzp1ba0k sceKernelGetBackupRestoreModeOfNextBoot
 wSxRrFKzKXk sceKernelGetBasicProductShape
@@ -15359,6 +15380,7 @@ JGfTMBOdUJo sceKernelGetFsSandboxRandomWord
 4oXYe9Xmk0Q sceKernelGetGPI
 6sy3Y9QjOJw sceKernelGetGPO
 lZG-WlKxRqQ sceKernelGetIdPs
+2YsHtbvCrgs sceKernelGetIdTableCurrentCount
 ePRSOZsroIQ sceKernelGetIpcPath
 0vTn5IDMU9A sceKernelGetMainSocId
 9urVLs6ovQk sceKernelGetMemoryPstate
@@ -16005,6 +16027,7 @@ Gc5k1qcK4fs sceMsgDialogProgressBarInc
 wTpfglkmv34 sceMsgDialogProgressBarSetValue
 ePw-kqZmelo sceMsgDialogTerminate
 6fIC3XKt2k0 sceMsgDialogUpdateStatus
+aBn53jPCbCE sceMusicCoreServerCheckCoreStatus
 JIvML6YBykI sceMusicCoreServerForceKillCurrentCore
 N54dyckyj2Q sceMusicCoreServerGetCoreInfo
 h4dd7oKiTQc sceMusicCoreServerGetEvent
@@ -16038,6 +16061,7 @@ mW3EHwAVHPA sceMusicPlayerServiceCreateTrackList
 7SOVShNUDXo sceMusicPlayerServiceEndTransaction
 3KChwrxsVPg sceMusicPlayerServiceGetAudioVolume
 CNsRsR5a+qc sceMusicPlayerServiceGetCurrentPlayStatus
+1+KpQYgv1zk sceMusicPlayerServiceGetPlaybackResults
 TVe6T-UKcoc sceMusicPlayerServiceGetPlayStatusExtension
 wHKiDjNLQwI sceMusicPlayerServiceGetTrackInfo
 qYbmAxRGuq8 sceMusicPlayerServiceGetTrackListVersion
@@ -16163,6 +16187,17 @@ AKZOzsb9whc sceNetCtlApGetState
 FdN+edNRtiw sceNetCtlApInit
 pmjobSVHuY0 sceNetCtlApRegisterCallback
 amqSGH8l--s sceNetCtlApRestart
+DufQZgH5ISc sceNetCtlApRpCheckCallback
+qhZbOi+2qLY sceNetCtlApRpClearEvent
+VQl16Q+qXeY sceNetCtlApRpGetInfo
+3pxwYqHzGcw sceNetCtlApRpGetResult
+LEn8FGztKWc sceNetCtlApRpGetState
+ofGsK+xoAaM sceNetCtlApRpRegisterCallback
+mjFgpqNavHg sceNetCtlApRpStart
+HMvaHoZWsn8 sceNetCtlApRpStartConf
+9Dxg7XSlr2s sceNetCtlApRpStartWithRetry
+6uvAl4RlEyk sceNetCtlApRpStop
+8eyH37Ns8tk sceNetCtlApRpUnregisterCallback
 r-pOyN6AhsM sceNetCtlApStop
 cv5Y2efOTeg sceNetCtlApTerm
 NpTcFtaQ-0E sceNetCtlApUnregisterCallback
@@ -16188,6 +16223,7 @@ uBPlr0lbuiI sceNetCtlGetState
 JXlI9EZVjf4 sceNetCtlGetState2IpcInt
 gvnJPMkSoAY sceNetCtlGetStateIpcInt
 +lxqIKeU9UY sceNetCtlGetStateV6
+BXW9b3R1Nw4 sceNetCtlGetWifiType
 gky0+oaNM4k sceNetCtlInit
 UJ+Z7Q+4ck0 sceNetCtlRegisterCallback
 WRvDk2syatE sceNetCtlRegisterCallbackForLibIpcInt
@@ -16429,6 +16465,7 @@ hIFFMeoLhcY sceNpAsmCreateRequest
 UxOJvGmy3mA sceNpAsmDeleteConnection
 RfokKHMuOsE sceNpAsmDeleteRequest
 dSlkmPVTcvk sceNpAsmGetNpCommInfo
+IDXFgpkpDsU sceNpAsmGetNpCommInfo2
 Dkpw9X-HSVA sceNpAsmGetRelatedGameNpTitleIds
 kc-O9XKFRIE sceNpAsmGetServiceBaseUrl
 1Xe+XZ1oI28 sceNpAsmGetServiceIdInfo
@@ -16563,6 +16600,11 @@ aF5D30uVRVk sceNpGriefReportCdDeleteRequest
 MwcHR8xIR2w sceNpGriefReportCdInit
 tcSNPbqj3pk sceNpGriefReportCdPost
 +nfHWFq9rhA sceNpGriefReportCdTerm
+QaTuZTNPygQ sceNpGriefReportReadReportItem
+hJku67PUGS0 sceNpGriefReportWriteJsonFile
+wSGXKvag-Jg sceNpGriefReportWriteReportItem
+RoxM-Cpzm9s sceNpGriefReportWriteReportItem2
+2aizWWQBSoY sceNpGriefReportWriteTemporaryFile
 Oad3rvY-NJQ sceNpHasSignedUp
 wVdn78HKc30 sceNpHeapDestroy
 JHGxU93dbQg sceNpHeapFreeImpl
@@ -18180,8 +18222,10 @@ ysfza71rm9M sceScreenShotDisableNotification
 2xxUtuC-RzE sceScreenShotEnable
 BDUaqlVdSAY sceScreenShotEnableNotification
 hNmK4SdhPT0 sceScreenShotGetAppInfo
+VlAQIgXa2R0 sceScreenShotGetDrcParam
 -SV-oTNGFQk sceScreenShotIsDisabled
 ICNJ-1POs84 sceScreenShotIsVshScreenCaptureDisabled
+itlWFWV3Tzc sceScreenShotSetDrcParam
 ahHhOf+QNkQ sceScreenShotSetOverlayImage
 73WQ4Jj0nJI sceScreenShotSetOverlayImageWithOrigin
 G7KlmIYFIZc sceScreenShotSetParam
@@ -18264,6 +18308,7 @@ mpkohyVqCRM sceShellCoreUtilActivateAbort
 fkcM5YcqjV8 sceShellCoreUtilActivateGetStatus
 x5hqKRKziYU sceShellCoreUtilActivateInit
 jktCMQNgyFc sceShellCoreUtilActivateIsActivated
+xIMClZZz50k sceShellCoreUtilActivateRecordActivation
 MRVnLsn-GRI sceShellCoreUtilActivateStart
 CZrOHqt6oCY sceShellCoreUtilActivateStartAsync
 ibXh+Mc4wbs sceShellCoreUtilActivateTerm
@@ -18684,6 +18729,8 @@ UMIlrOlGNQU sceSystemServiceGetParentSocket
 zqjkZ5VKFSg sceSystemServiceGetParentSocketForJvm
 qhPJ1EfqLjQ sceSystemServiceGetParentSocketForPs2Emu
 4ZYuSI8i2aM sceSystemServiceGetParentSocketForPsmKit
+5u2WeL-PR2w sceSystemServiceGetPlatformPrivacyDefinitionData
+t5K+IeMVD1Q sceSystemServiceGetPlatformPrivacyDefinitionVersion
 hvoLYhc4cq0 sceSystemServiceGetPlatformPrivacySetting
 gbUBqHCEgAI sceSystemServiceGetPSButtonEvent
 jA629PcMCKU sceSystemServiceGetRenderingMode
@@ -18708,6 +18755,7 @@ wX9wVFaegaM sceSystemServiceLaunchEventDetails
 Zj5FGJQPFxs sceSystemServiceLaunchStore
 G5AwzWnHxks sceSystemServiceLaunchTournamentList
 wIc92b0x6hk sceSystemServiceLaunchTournamentsTeamProfile
+YNoDjc1BPJI sceSystemServiceLaunchUdsApp
 f34qn7XA3QE sceSystemServiceLaunchWebApp
 -+3hY+y8bNo sceSystemServiceLaunchWebBrowser
 JoBqSQt1yyA sceSystemServiceLoadExec
@@ -18733,6 +18781,7 @@ oEJqGsNtFIw sceSystemServiceRequestReboot
 tMuzuZcUIcA sceSystemServiceResumeLocalProcess
 DNE77sfNw5Y sceSystemServiceSetControllerFocusPermission
 eLWnPuja+Y8 sceSystemServiceSetGpuLoadEmulationMode
+Xn-eH9-Fu60 sceSystemServiceSetOutOfVrPlayAreaFlag
 sgRPNJjrWjg sceSystemServiceSetOutOfVrPlayZoneWarning
 uhD7g7zXIQo sceSystemServiceShowClosedCaptionAdvancedSettings
 5W6LurzMZaY sceSystemServiceShowClosedCaptionSettings
@@ -18800,6 +18849,7 @@ KXBnxqAeTuo sceTextToSpeechInitImpl
 HFM-KkVMVps sceTextToSpeechOpenImpl
 m8KLvqm+xF4 sceTextToSpeechPauseImpl
 AceRR9y6-ss sceTextToSpeechResumeImpl
+0iJvHDhBxtA sceTextToSpeechSpeakContinuousImpl
 wapB9dMovnk sceTextToSpeechSpeakImpl
 rjU70FGcXDw sceTextToSpeechTermImpl
 MZbcWoK2x6s sceTsCloseFile
@@ -19562,6 +19612,7 @@ oeNtdmvV4II sceVideoOutDriverAddEvent
 0jGJbNTpSV4 sceVideoOutDriverDecrementBufferLabel
 lOR+Nos+Je8 sceVideoOutDriverDeleteEvent
 NGyEl5aT4fc sceVideoOutDriverGetBufferLabelAddress
+P1bIHoga4jE sceVideoOutDriverGetEopHandle
 Ztx4b2LhRDk sceVideoOutDriverIncrementBufferLabel
 soAIjspgdt8 sceVideoOutDriverResetBufferLabel
 OHnnkrUcShM sceVideoOutDriverTriggerEvent
@@ -19603,6 +19654,7 @@ emayD9LHYsc sceVideoOutSetGamutMetadata_
 CxUz3nU06NE sceVideoOutSetToneMap_
 MTxxrOCeSig sceVideoOutSetWindowModeMargins
 IOdgHlCGU-k sceVideoOutSubmitChangeBufferAttribute
+j8xl+92A0q4 sceVideoOutSubmitEopFlip
 U46NwOiJpys sceVideoOutSubmitFlip
 X8FN-5Nk-yE sceVideoOutSysAddSetModeEvent
 Ek+VR4lcJQI sceVideoOutSysAddVblankEvent
@@ -19615,13 +19667,16 @@ ekwMB-Ftq18 sceVideoOutSysCursorIsUpdatePending
 QSmT3attiVg sceVideoOutSysCursorRelease
 fZgBeiGqE+c sceVideoOutSysCursorSetPosition
 iwsJdAZCg34 sceVideoOutSysDeleteVblankEvent
+IpMhRnVgJUU sceVideoOutSysGetColorConversionStatus
 lXHMAc9Xjzo sceVideoOutSysGetCurrentOutputMode_
 21sS8EU45cw sceVideoOutSysGetFlipStatus
 vMLWuJckGv0 sceVideoOutSysGetMonitorInfo_
 8XGijEoThE0 sceVideoOutSysGetResolutionStatus
 d1AjT2uZJn0 sceVideoOutSysGetVblankStatus
+2KW9VnPMWDQ sceVideoOutSysSetBlackLevel
 OOF0YO73GTA sceVideoOutSysSetDimmer
 FZoCQTL8R04 sceVideoOutSysSetDisplayParameters
+fX9k++TzuQk sceVideoOutSysSetZoomBuffers
 dtmPxxVErK0 sceVideoOutSysUpdateDisplayParameter_
 Jl91AhxKc0w sceVideoOutSysUpdatePrivilege
 4G37EIMMD+Q sceVideoOutSysUpdateRenderingMode
@@ -19656,6 +19711,7 @@ kDHvQLi0PM4 sceVisionManagerGetNumOfRegisterUserDataSlot
 3OLHl6cAPjQ sceVisionManagerGetRegisterUserDataVersion
 qyhQZ35WxX4 sceVisionManagerGetResultOfCalibrateHmd
 5Lx1PHXzL6Y sceVisionManagerGetResultOfCalibrateStereoCamera
+brHQxy45WoE sceVisionManagerGetResultOfCalibrateTrackingLed
 O3HjB2izk9o sceVisionManagerGetResultOfFindFace
 Qc8kyzCZj+M sceVisionManagerGetResultOfFindPad
 dZqlWxQ1p+U sceVisionManagerGetResultOfFindPadCorrespondRegion
@@ -19670,6 +19726,7 @@ wzr6GTOo9Dw sceVisionManagerOpen
 GHrctgvI0SQ sceVisionManagerRegistryClear
 dEW3xn7DNFs sceVisionManagerRequestCalibrateHmd
 +lZ1yHWEViw sceVisionManagerRequestCalibrateStereoCamera
+qWFV6ZnNsRI sceVisionManagerRequestCalibrateTrackingLed
 ACdU2QH82O4 sceVisionManagerRequestClose
 ZZYNA4dAAIE sceVisionManagerRequestFindFace
 10NAQUqyOpw sceVisionManagerRequestFindPad
@@ -19687,6 +19744,7 @@ HIImy8uMSUg sceVisionManagerRequestStoreCameraImgY
 0rSeEhh-HKA sceVisionManagerSetCallbackForUpdateCalibrateHmdResult
 OHjgoIInnmU sceVisionManagerSetCallbackForUpdateCalibrateStereoCameraResult
 aE4wRKDjrgw sceVisionManagerSetCallbackForUpdateCameraFrame
+YSa0McV-ZIU sceVisionManagerSetCallbackForUpdateCtrlCore
 LeXBTikMUko sceVisionManagerSetCallbackForUpdateRecog
 fz3oxzTvcvI sceVisionManagerSetCallbackForUpdateRunningStatus
 JejsXQ++gvU sceVisionManagerSetCallbackForUpdateStoreFrame
@@ -19803,15 +19861,19 @@ Q8skQqEwn5c sceVrTrackerUnregisterDevice
 9fvHMUbsom4 sceVrTrackerUpdateMotionSensorData
 f1CLT4QGcSU sceVshAvcapClose
 HedUSy9swaw sceVshAvcapGetInfo
+Q-nfTbHkYNQ sceVshAvcapGetStaticInfo
 7wORfQWfnM0 sceVshAvcapInit
 OpuQOnIqZHw sceVshAvcapOpenAudio
 KNfo101eszA sceVshAvcapOpenAudioEx
+WuwbH5nNVmA sceVshAvcapOpenUserdata
 G-w5-0Oy+Pc sceVshAvcapOpenVideo
 CApAj-v1kVs sceVshAvcapOpenVideoEx
 8spY5jF1aig sceVshAvcapReadAudio
+N0b-Kky0vyc sceVshAvcapReadUserdata
 Axq72jlliZk sceVshAvcapReadVideo
 w02zjBeV+n4 sceVshAvcapSelect
 iErIFNXEVDM sceVshAvcapSetInfo
+AfY2Uq3R494 sceVshAvcapSetStaticInfo
 n7fxSSTwbQo sceVshAvcapStart
 qgt6cIuingk sceVshAvcapStop
 hgEbCUX22UM sceVshAvcapTerm
