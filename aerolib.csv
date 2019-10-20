@@ -710,6 +710,7 @@ WhCc1w3EhSI _sceKernelSetThreadAtexitReport
 rNhWz+lvOMU _sceKernelSetThreadDtors
 vhETq-NiqJA _SceLibcDebugOut
 1nZ4Xfnyp38 _sceLibcGetMallocParam
+-hOAbTf3Cqc _SceLibcTelemetoryOut
 0gdlCVNNHCI _sceNpAllocatorExConvertAllocator
 Zh23aSLeeZo _sceNpAllocatorExFree
 a2qdVU8RWb4 _sceNpAllocatorExMalloc
