@@ -9740,6 +9740,7 @@ bR3lFCbl2ow goby_FreeLinkList
 bbuFLemjwRA goby_FreeNodeList
 uDv80Z-OaP8 goby_FreeRemoteInfo
 3ovo4cphzuw goby_GetAvailableLinks
+QWVrYTt602Y goby_GetDUIDParameters
 qUFOjETOS-4 goby_Init
 +fo47VU51qw goby_ProcessMessage
 yhd+GKb-NyQ gp_trace
@@ -13233,6 +13234,9 @@ U0ivfdKFZbA sceAudioInSetSparkParam
 hWMCAPpqzDo sceAudioInSetSparkSideTone
 nqXpw3MaN50 sceAudioInSetUsbGain
 arJp991xk5k sceAudioInSetUserMute
+DVTn+iMSpBM sceAudioInVmicCreate
+3ULZGIl+Acc sceAudioInVmicDestroy
+4kHw99LUG3A sceAudioInVmicWrite
 Iz9X7ISldhs sceAudioOutA3dControl
 9RVIoocOVAo sceAudioOutA3dExit
 n7KgxE8rOuE sceAudioOutA3dInit
@@ -16167,8 +16171,16 @@ AKZOzsb9whc sceNetCtlApGetState
 FdN+edNRtiw sceNetCtlApInit
 pmjobSVHuY0 sceNetCtlApRegisterCallback
 amqSGH8l--s sceNetCtlApRestart
+DufQZgH5ISc sceNetCtlApRpCheckCallback
+qhZbOi+2qLY sceNetCtlApRpClearEvent
+VQl16Q+qXeY sceNetCtlApRpGetInfo
+3pxwYqHzGcw sceNetCtlApRpGetResult
+LEn8FGztKWc sceNetCtlApRpGetState
+ofGsK+xoAaM sceNetCtlApRpRegisterCallback
 mjFgpqNavHg sceNetCtlApRpStart
+HMvaHoZWsn8 sceNetCtlApRpStartConf
 6uvAl4RlEyk sceNetCtlApRpStop
+8eyH37Ns8tk sceNetCtlApRpUnregisterCallback
 r-pOyN6AhsM sceNetCtlApStop
 cv5Y2efOTeg sceNetCtlApTerm
 NpTcFtaQ-0E sceNetCtlApUnregisterCallback
@@ -18748,6 +18760,7 @@ oEJqGsNtFIw sceSystemServiceRequestReboot
 tMuzuZcUIcA sceSystemServiceResumeLocalProcess
 DNE77sfNw5Y sceSystemServiceSetControllerFocusPermission
 eLWnPuja+Y8 sceSystemServiceSetGpuLoadEmulationMode
+Xn-eH9-Fu60 sceSystemServiceSetOutOfVrPlayAreaFlag
 sgRPNJjrWjg sceSystemServiceSetOutOfVrPlayZoneWarning
 uhD7g7zXIQo sceSystemServiceShowClosedCaptionAdvancedSettings
 5W6LurzMZaY sceSystemServiceShowClosedCaptionSettings
@@ -19704,6 +19717,7 @@ HIImy8uMSUg sceVisionManagerRequestStoreCameraImgY
 0rSeEhh-HKA sceVisionManagerSetCallbackForUpdateCalibrateHmdResult
 OHjgoIInnmU sceVisionManagerSetCallbackForUpdateCalibrateStereoCameraResult
 aE4wRKDjrgw sceVisionManagerSetCallbackForUpdateCameraFrame
+YSa0McV-ZIU sceVisionManagerSetCallbackForUpdateCtrlCore
 LeXBTikMUko sceVisionManagerSetCallbackForUpdateRecog
 fz3oxzTvcvI sceVisionManagerSetCallbackForUpdateRunningStatus
 JejsXQ++gvU sceVisionManagerSetCallbackForUpdateStoreFrame
