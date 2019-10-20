@@ -13373,6 +13373,7 @@ hdISXjL-bwY sceAvSettingNotifyAudioOutMode
 T6LrBljciS0 sceAvSettingNotifyProcessResume
 Ko8fB-6YDp8 sceAvSettingNotifyProcessSuspend
 02ozaKssy98 sceAvSettingNotifyResponseForSocialScreen
+Fyw2Fkasc+4 sceAvSettingNotifyUmdEvent
 2cJVU9KC3zY sceAvSettingNotifyVideoOutMode
 Pxx1uH51g-E sceAvSettingOpenLoopbackBuffers
 dnM9JfgxHbk sceAvSettingRemoveCallbacks
@@ -14040,6 +14041,7 @@ VZJhL9rau08 sceDepthSetPreFilterParameter
 3mjsu608hoU sceDepthSetRoi
 8nUMQUGz3Vs sceDepthSetRoiset
 hO0sxQP5n0Q sceDepthSetSrParameter
+zE2ws3Iyrqc sceDepthSetSrTnrParameter
 jLx5qd4qyjk sceDepthSubmit
 l+dKhCxtRHc sceDepthTerminate
 q0NXsQTzAI0 sceDepthUpdate
@@ -16165,6 +16167,8 @@ AKZOzsb9whc sceNetCtlApGetState
 FdN+edNRtiw sceNetCtlApInit
 pmjobSVHuY0 sceNetCtlApRegisterCallback
 amqSGH8l--s sceNetCtlApRestart
+mjFgpqNavHg sceNetCtlApRpStart
+6uvAl4RlEyk sceNetCtlApRpStop
 r-pOyN6AhsM sceNetCtlApStop
 cv5Y2efOTeg sceNetCtlApTerm
 NpTcFtaQ-0E sceNetCtlApUnregisterCallback
@@ -16190,6 +16194,7 @@ uBPlr0lbuiI sceNetCtlGetState
 JXlI9EZVjf4 sceNetCtlGetState2IpcInt
 gvnJPMkSoAY sceNetCtlGetStateIpcInt
 +lxqIKeU9UY sceNetCtlGetStateV6
+BXW9b3R1Nw4 sceNetCtlGetWifiType
 gky0+oaNM4k sceNetCtlInit
 UJ+Z7Q+4ck0 sceNetCtlRegisterCallback
 WRvDk2syatE sceNetCtlRegisterCallbackForLibIpcInt
@@ -16431,6 +16436,7 @@ hIFFMeoLhcY sceNpAsmCreateRequest
 UxOJvGmy3mA sceNpAsmDeleteConnection
 RfokKHMuOsE sceNpAsmDeleteRequest
 dSlkmPVTcvk sceNpAsmGetNpCommInfo
+IDXFgpkpDsU sceNpAsmGetNpCommInfo2
 Dkpw9X-HSVA sceNpAsmGetRelatedGameNpTitleIds
 kc-O9XKFRIE sceNpAsmGetServiceBaseUrl
 1Xe+XZ1oI28 sceNpAsmGetServiceIdInfo
@@ -16568,6 +16574,7 @@ tcSNPbqj3pk sceNpGriefReportCdPost
 QaTuZTNPygQ sceNpGriefReportReadReportItem
 hJku67PUGS0 sceNpGriefReportWriteJsonFile
 wSGXKvag-Jg sceNpGriefReportWriteReportItem
+RoxM-Cpzm9s sceNpGriefReportWriteReportItem2
 Oad3rvY-NJQ sceNpHasSignedUp
 wVdn78HKc30 sceNpHeapDestroy
 JHGxU93dbQg sceNpHeapFreeImpl
@@ -18185,8 +18192,10 @@ ysfza71rm9M sceScreenShotDisableNotification
 2xxUtuC-RzE sceScreenShotEnable
 BDUaqlVdSAY sceScreenShotEnableNotification
 hNmK4SdhPT0 sceScreenShotGetAppInfo
+VlAQIgXa2R0 sceScreenShotGetDrcParam
 -SV-oTNGFQk sceScreenShotIsDisabled
 ICNJ-1POs84 sceScreenShotIsVshScreenCaptureDisabled
+itlWFWV3Tzc sceScreenShotSetDrcParam
 ahHhOf+QNkQ sceScreenShotSetOverlayImage
 73WQ4Jj0nJI sceScreenShotSetOverlayImageWithOrigin
 G7KlmIYFIZc sceScreenShotSetParam
@@ -18713,6 +18722,7 @@ wX9wVFaegaM sceSystemServiceLaunchEventDetails
 Zj5FGJQPFxs sceSystemServiceLaunchStore
 G5AwzWnHxks sceSystemServiceLaunchTournamentList
 wIc92b0x6hk sceSystemServiceLaunchTournamentsTeamProfile
+YNoDjc1BPJI sceSystemServiceLaunchUdsApp
 f34qn7XA3QE sceSystemServiceLaunchWebApp
 -+3hY+y8bNo sceSystemServiceLaunchWebBrowser
 JoBqSQt1yyA sceSystemServiceLoadExec
@@ -19567,6 +19577,7 @@ oeNtdmvV4II sceVideoOutDriverAddEvent
 0jGJbNTpSV4 sceVideoOutDriverDecrementBufferLabel
 lOR+Nos+Je8 sceVideoOutDriverDeleteEvent
 NGyEl5aT4fc sceVideoOutDriverGetBufferLabelAddress
+P1bIHoga4jE sceVideoOutDriverGetEopHandle
 Ztx4b2LhRDk sceVideoOutDriverIncrementBufferLabel
 soAIjspgdt8 sceVideoOutDriverResetBufferLabel
 OHnnkrUcShM sceVideoOutDriverTriggerEvent
