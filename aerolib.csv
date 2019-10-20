@@ -13713,6 +13713,7 @@ qZNF03+ghLI sceCompositorFlush
 9bnaeOBBD1Q sceCompositorFlushWithRepeat
 N7PrM+lPMW0 sceCompositorGetCanvasHandle
 9vHGtqLkmTQ sceCompositorGetClientList
+MjH7MOV6LVk sceCompositorGetDmemOffset
 fcDt18r-ibY sceCompositorGetDummyAddress
 F9gmz-sU-Z4 sceCompositorGetDummySize
 2xhRHbvhwfU sceCompositorGetRemainedCommandNum
@@ -14344,6 +14345,7 @@ ZB8xRemRRG8 sceFontGetFontGlyphsCount
 4X14YSK4Ldk sceFontGetFontGlyphsOutlineProfile
 eb9S3zNlV5o sceFontGetFontMetrics
 tiIlroGki+g sceFontGetFontResolution
+3hVv3SNoL6E sceFontGetFontStyleInformation
 imxVx8lm+KM sceFontGetHorizontalLayout
 sDuhHGNhHvE sceFontGetKerning
 LzmHDnlcwfQ sceFontGetLibrary
@@ -14739,6 +14741,7 @@ wYN5mmv6Ya8 sceGnmSqttGetHiWater
 9X4SkENMS0M sceGnmSqttGetStatus
 lbMccQM2iqc sceGnmSqttGetTraceCounter
 DYAC6JUeZvM sceGnmSqttGetTraceWptr
+pS2tjBxzJr4 sceGnmSqttGetWrapCounts
 X6yCBYPP7HA sceGnmSqttInit
 2IJhUyK8moE sceGnmSqttSelectMode
 QA5h6Gh3r60 sceGnmSqttSelectTarget
@@ -14818,6 +14821,7 @@ ao8NZ+FRYJE sceHmdDistortionInitialize
 8A4T5ahi790 sceHmdDistortionSetOutputMinColor
 BWY-qKM5hxE sceHmdGet2DEyeOffset
 za4xJfzCBcM sceHmdGet2dVrCommand
+Yx+CuF11D3Q sceHmdGetAssyError
 thDt9upZlp8 sceHmdGetDeviceInformation
 1pxQfif1rkE sceHmdGetDeviceInformationByHandle
 grCYks4m8Jw sceHmdGetDistortionCorrectionCommand
@@ -15326,6 +15330,7 @@ VW3TVZiM4-E sceKernelFtruncate
 NLq2b1jOaN0 sceKernelFutimes
 YeU23Szo3BM sceKernelGetAllowedSdkVersionOnSystem
 G-MYv5erXaU sceKernelGetAppInfo
+1UOnecNlNW0 sceKernelGetAslrStatus
 QtLhuYZf9jg sceKernelGetBackupRestoreMode
 CQ1bzp1ba0k sceKernelGetBackupRestoreModeOfNextBoot
 wSxRrFKzKXk sceKernelGetBasicProductShape
