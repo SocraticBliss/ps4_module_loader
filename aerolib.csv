@@ -708,6 +708,7 @@ Tz4RNUCBbGI _sceKernelRtldThreadAtexitIncrement
 pB-yGZ2nQ9o _sceKernelSetThreadAtexitCount
 WhCc1w3EhSI _sceKernelSetThreadAtexitReport
 rNhWz+lvOMU _sceKernelSetThreadDtors
+vhETq-NiqJA _SceLibcDebugOut
 1nZ4Xfnyp38 _sceLibcGetMallocParam
 0gdlCVNNHCI _sceNpAllocatorExConvertAllocator
 Zh23aSLeeZo _sceNpAllocatorExFree
@@ -8344,6 +8345,7 @@ SRI6S9B+-a4 atof
 fPxypibz2MY atoi
 +my9jdHCMIQ atol
 fLcU5G6Qrjs atoll
+ZEH+UsL9PFQ audiodeccpuinternal_core_ops_alac2
 xqlFMfkztKg audiodeccpuinternal_core_ops_ddp
 k0Gp2cXDeqU audiodeccpuinternal_core_ops_dts
 nR0nX7p2jFo audiodeccpuinternal_core_ops_dts_hd_lbr
@@ -16175,6 +16177,7 @@ IkBCxG+o4Nk sceNetConfigWlanInfraLeave
 U1q6DrPbY6k sceNetConfigWlanSetDeviceConfig
 OXXX4mUk3uk sceNetConnect
 lDTIbqNs0ps sceNetControl
+YtTwZ3pa4aQ sceNetCtlApAppStartWithRetry
 19Ec7WkMFfQ sceNetCtlApCheckCallback
 meFMaDpdsVI sceNetCtlApClearEvent
 3QtqTA0uMmU sceNetCtlApDialogClose
