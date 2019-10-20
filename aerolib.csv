@@ -13968,6 +13968,7 @@ p-NcyN-4t34 sceDebugGetWorkerThreadListOfUltRuntime
 6+bfgq18W84 sceDebugInit
 FAqD7n94bYY sceDebugInitForCoredump
 SP-7qOzwl7U sceDebugInitForTest
+qNbjzkre+NE sceDebugIpmiGetBlockedIpcInfo
 yYiv7rqRorw sceDebugIpmiGetChannelInfo
 4slehMAh00w sceDebugIpmiGetChannelKidList
 XuJAJecAwbM sceDebugIpmiGetChannelWaitingThreadList
@@ -15358,6 +15359,7 @@ JGfTMBOdUJo sceKernelGetFsSandboxRandomWord
 4oXYe9Xmk0Q sceKernelGetGPI
 6sy3Y9QjOJw sceKernelGetGPO
 lZG-WlKxRqQ sceKernelGetIdPs
+2YsHtbvCrgs sceKernelGetIdTableCurrentCount
 ePRSOZsroIQ sceKernelGetIpcPath
 0vTn5IDMU9A sceKernelGetMainSocId
 9urVLs6ovQk sceKernelGetMemoryPstate
@@ -16004,6 +16006,7 @@ Gc5k1qcK4fs sceMsgDialogProgressBarInc
 wTpfglkmv34 sceMsgDialogProgressBarSetValue
 ePw-kqZmelo sceMsgDialogTerminate
 6fIC3XKt2k0 sceMsgDialogUpdateStatus
+aBn53jPCbCE sceMusicCoreServerCheckCoreStatus
 JIvML6YBykI sceMusicCoreServerForceKillCurrentCore
 N54dyckyj2Q sceMusicCoreServerGetCoreInfo
 h4dd7oKiTQc sceMusicCoreServerGetEvent
@@ -16562,6 +16565,9 @@ aF5D30uVRVk sceNpGriefReportCdDeleteRequest
 MwcHR8xIR2w sceNpGriefReportCdInit
 tcSNPbqj3pk sceNpGriefReportCdPost
 +nfHWFq9rhA sceNpGriefReportCdTerm
+QaTuZTNPygQ sceNpGriefReportReadReportItem
+hJku67PUGS0 sceNpGriefReportWriteJsonFile
+wSGXKvag-Jg sceNpGriefReportWriteReportItem
 Oad3rvY-NJQ sceNpHasSignedUp
 wVdn78HKc30 sceNpHeapDestroy
 JHGxU93dbQg sceNpHeapFreeImpl
@@ -19614,6 +19620,7 @@ ekwMB-Ftq18 sceVideoOutSysCursorIsUpdatePending
 QSmT3attiVg sceVideoOutSysCursorRelease
 fZgBeiGqE+c sceVideoOutSysCursorSetPosition
 iwsJdAZCg34 sceVideoOutSysDeleteVblankEvent
+IpMhRnVgJUU sceVideoOutSysGetColorConversionStatus
 lXHMAc9Xjzo sceVideoOutSysGetCurrentOutputMode_
 21sS8EU45cw sceVideoOutSysGetFlipStatus
 vMLWuJckGv0 sceVideoOutSysGetMonitorInfo_
