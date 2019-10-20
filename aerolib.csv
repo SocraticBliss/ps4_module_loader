@@ -708,7 +708,9 @@ Tz4RNUCBbGI _sceKernelRtldThreadAtexitIncrement
 pB-yGZ2nQ9o _sceKernelSetThreadAtexitCount
 WhCc1w3EhSI _sceKernelSetThreadAtexitReport
 rNhWz+lvOMU _sceKernelSetThreadDtors
+vhETq-NiqJA _SceLibcDebugOut
 1nZ4Xfnyp38 _sceLibcGetMallocParam
+-hOAbTf3Cqc _SceLibcTelemetoryOut
 0gdlCVNNHCI _sceNpAllocatorExConvertAllocator
 Zh23aSLeeZo _sceNpAllocatorExFree
 a2qdVU8RWb4 _sceNpAllocatorExMalloc
@@ -8344,6 +8346,7 @@ SRI6S9B+-a4 atof
 fPxypibz2MY atoi
 +my9jdHCMIQ atol
 fLcU5G6Qrjs atoll
+ZEH+UsL9PFQ audiodeccpuinternal_core_ops_alac2
 xqlFMfkztKg audiodeccpuinternal_core_ops_ddp
 k0Gp2cXDeqU audiodeccpuinternal_core_ops_dts
 nR0nX7p2jFo audiodeccpuinternal_core_ops_dts_hd_lbr
@@ -9733,6 +9736,7 @@ Ab0R4oOE-DY glWaitSync
 1mecP7RgI2A gmtime
 5bBacGLyLOs gmtime_s
 3FfhG3OCRyk goby_CheckLicense
+qsf3QUNkffc goby_CheckPersonality
 1X+GW1hdTlM goby_DeleteLink
 Ulu9vNs5vn8 goby_Fin
 hBw3k9ipLow goby_FreeActionResults
@@ -12584,6 +12588,7 @@ ryyn6-WJm6U nexttowardl
 3YnXspQNyw8 nmount
 3wcYIMz8LUo nrand48
 VteK1e0o0fY nsnp_ActionCheck
+bIjisuca0z8 nsnp_ActionDescribe
 wivfLfaFAZg nsnp_ActionPerform
 GjQLdCasJDg nsnp_Callback
 n2nk-l3evas nsnp_CheckHMAC
@@ -13193,6 +13198,7 @@ VjhsmxpcezI sceAudiodecInitLibrary
 h5jSB2QIDV0 sceAudiodecTermLibrary
 tKumjQSzhys sceAudioDeviceControlGet
 5ChfcHOf3SM sceAudioDeviceControlSet
+WQhzwyaq4i8 sceAudiodReportLoudness
 zs1b1Y6IBdI sceAudiodReportMasteringGetParams
 l-cZLdtVXds sceAudiodReportMasteringSetParams
 oTBVBlVW9PU sceAudiodReportMasteringStates
@@ -14455,6 +14461,8 @@ oZf2EW1xS70 sceFsCreatePfsSaveDataImage
 fU5fcZt5QEg sceFsCreatePfsTrophyDataImage
 1b2I4GGnkw4 sceFsDeviceAlignedPread
 l6aA787njwE sceFsDeviceAlignedPwrite
+iLxIuu5Xs2A sceFsErriCtl
+-1whCDzGK1E sceFsErriGetState
 79EsKMqL-jQ sceFsExfatfsMkfs
 QP4WA9hEAtM sceFsExfatMkfsExternalHdd
 gxvn6JGDhBw sceFsExternalStorageDeconfigure
@@ -15462,6 +15470,7 @@ RP9ImTNDfP8 sceKernelIccSetCpuInfoBit
 o4NI2wpFhbI sceKernelIccSetDownloadMode
 W2u-cvNkvOY sceKernelInitializeDipsw
 WkwEd3N7w0Y sceKernelInstallExceptionHandler
+L7aj7caj8+s sceKernelInternalGetKmemStatistics
 n2nyhRL5uUg sceKernelInternalGetMapStatistics
 rb8JKArrzc0 sceKernelInternalHeapPrintBacktraceWithModuleInfo
 xAKAe6kFk90 sceKernelInternalMapDirectMemory
@@ -15547,6 +15556,7 @@ yTj62I7kw4s sceKernelPreadv
 5ifAYsFspMM sceKernelPrepareToSuspendProcess
 Wl2o5hOVZdw sceKernelPrintBacktraceWithModuleInfo
 k1jIkFHa9OU sceKernelProtectDirectMemory
+cBp0Ad-24LA sceKernelProtectDirectMemoryForPID
 nKWi-N2HBV4 sceKernelPwrite
 mBd4AfLP+u8 sceKernelPwritev
 WFcfL2lzido sceKernelQueryMemoryProtection
@@ -16171,6 +16181,7 @@ IkBCxG+o4Nk sceNetConfigWlanInfraLeave
 U1q6DrPbY6k sceNetConfigWlanSetDeviceConfig
 OXXX4mUk3uk sceNetConnect
 lDTIbqNs0ps sceNetControl
+YtTwZ3pa4aQ sceNetCtlApAppStartWithRetry
 19Ec7WkMFfQ sceNetCtlApCheckCallback
 meFMaDpdsVI sceNetCtlApClearEvent
 3QtqTA0uMmU sceNetCtlApDialogClose
@@ -17006,6 +17017,7 @@ hw5KNqAAels sceNpRegisterNpReachabilityStateCallback
 GImICnh+boA sceNpRegisterPlusEventCallback
 VfRSmPmj8Q8 sceNpRegisterStateCallback
 qQJfO8HAiaY sceNpRegisterStateCallbackA
+0c7HbXRKUt4 sceNpRegisterStateCallbackForToolkit
 VMjIo2Z-aW0 sceNpRtcConvertToPosixTime
 W0YWLVDndx0 sceNpRtcFormatRFC3339
 LtkeQwMIEWY sceNpRtcParseRFC3339
@@ -17419,6 +17431,7 @@ cRILAEvn+9M sceNpUnregisterNpReachabilityStateCallback
 xViqJdDgKl0 sceNpUnregisterPlusEventCallback
 mjjTXh+NHWY sceNpUnregisterStateCallback
 M3wFXbYQtAA sceNpUnregisterStateCallbackA
+YIvqqvJyjEc sceNpUnregisterStateCallbackForToolkit
 Gh74vNl06sg sceNpUserGetUserIdList
 N3tAHlBnowE sceNpUtilBuildTitleId
 4mEAk-UKVNw sceNpUtilCanonicalizeNpIdForPs4
@@ -18583,6 +18596,7 @@ Lw8wfmCaxlQ sceSrcUtilityGetDelaySamples
 wTO4cMkVNaM sceSrcUtilityGetHandleSize
 UFLN-KNhzX0 sceSrcUtilityGetPriority
 Y0LiSp+hb38 sceSrcUtilityInitialize
+M9Zur3ydU6g sceSrcUtilityResample
 scvqkMgVNz8 sceSrcUtilitySetPriority
 1VM0h1JrUfA sceSslCheckRecvPending
 viRXSHZYd0c sceSslClose
@@ -18695,6 +18709,7 @@ JjIspXDbL6o sceSystemServiceActivateMpeg2Term
 jPKapVQLX70 sceSystemServiceAddLocalProcessForJvm
 tIdXUhSLyOU sceSystemServiceAddLocalProcessForPs2Emu
 cltshBrDLC0 sceSystemServiceAddLocalProcessForPsmKit
+FI+VqGdttvI sceSystemServiceChangeAcpClock
 ec72vt3WEQo sceSystemServiceChangeCpuClock
 Z5RgV4Chwxg sceSystemServiceChangeGpuClock
 LFo00RWzqRU sceSystemServiceChangeMemoryClock
