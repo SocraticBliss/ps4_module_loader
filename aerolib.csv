@@ -13198,6 +13198,7 @@ VjhsmxpcezI sceAudiodecInitLibrary
 h5jSB2QIDV0 sceAudiodecTermLibrary
 tKumjQSzhys sceAudioDeviceControlGet
 5ChfcHOf3SM sceAudioDeviceControlSet
+WQhzwyaq4i8 sceAudiodReportLoudness
 zs1b1Y6IBdI sceAudiodReportMasteringGetParams
 l-cZLdtVXds sceAudiodReportMasteringSetParams
 oTBVBlVW9PU sceAudiodReportMasteringStates
@@ -14460,6 +14461,7 @@ fU5fcZt5QEg sceFsCreatePfsTrophyDataImage
 1b2I4GGnkw4 sceFsDeviceAlignedPread
 l6aA787njwE sceFsDeviceAlignedPwrite
 iLxIuu5Xs2A sceFsErriCtl
+-1whCDzGK1E sceFsErriGetState
 79EsKMqL-jQ sceFsExfatfsMkfs
 QP4WA9hEAtM sceFsExfatMkfsExternalHdd
 gxvn6JGDhBw sceFsExternalStorageDeconfigure
@@ -17014,6 +17016,7 @@ hw5KNqAAels sceNpRegisterNpReachabilityStateCallback
 GImICnh+boA sceNpRegisterPlusEventCallback
 VfRSmPmj8Q8 sceNpRegisterStateCallback
 qQJfO8HAiaY sceNpRegisterStateCallbackA
+0c7HbXRKUt4 sceNpRegisterStateCallbackForToolkit
 VMjIo2Z-aW0 sceNpRtcConvertToPosixTime
 W0YWLVDndx0 sceNpRtcFormatRFC3339
 LtkeQwMIEWY sceNpRtcParseRFC3339
@@ -17427,6 +17430,7 @@ cRILAEvn+9M sceNpUnregisterNpReachabilityStateCallback
 xViqJdDgKl0 sceNpUnregisterPlusEventCallback
 mjjTXh+NHWY sceNpUnregisterStateCallback
 M3wFXbYQtAA sceNpUnregisterStateCallbackA
+YIvqqvJyjEc sceNpUnregisterStateCallbackForToolkit
 Gh74vNl06sg sceNpUserGetUserIdList
 N3tAHlBnowE sceNpUtilBuildTitleId
 4mEAk-UKVNw sceNpUtilCanonicalizeNpIdForPs4
@@ -18591,6 +18595,7 @@ Lw8wfmCaxlQ sceSrcUtilityGetDelaySamples
 wTO4cMkVNaM sceSrcUtilityGetHandleSize
 UFLN-KNhzX0 sceSrcUtilityGetPriority
 Y0LiSp+hb38 sceSrcUtilityInitialize
+M9Zur3ydU6g sceSrcUtilityResample
 scvqkMgVNz8 sceSrcUtilitySetPriority
 1VM0h1JrUfA sceSslCheckRecvPending
 viRXSHZYd0c sceSslClose
