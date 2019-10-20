@@ -9143,6 +9143,7 @@ zxsyxyiLthM FTA_Add_Module_truetype
 +v66TBg7tzA FTA_Add_Module_type1
 ZYpIYZg3Jf4 FTA_Add_Module_type42
 JSi+hWkA9pI FTA_Add_Module_winfonts
+bZYqFlUVPCY FTA_Export_Module_autofitter
 ZhVdSRyrpUI FTA_Export_Module_bdf
 phi4au-2t04 FTA_Export_Module_cff
 qC+tiGwcW7E FTA_Export_Module_gxvalid
@@ -9743,6 +9744,7 @@ uDv80Z-OaP8 goby_FreeRemoteInfo
 QWVrYTt602Y goby_GetDUIDParameters
 qUFOjETOS-4 goby_Init
 +fo47VU51qw goby_ProcessMessage
+UDkeOtF5o-k gp_set_functions
 yhd+GKb-NyQ gp_trace
 xqeyyKUZcQ4 gsharedvt_out_trampoline
 lmieh+K7+7o gsharedvt_trampoline
@@ -12629,6 +12631,7 @@ FwzVaZ8Vnus optopt
 CZNm+oNmB-I optreset
 x4-3rrCkF1s pa_pop_marker
 jQ06QCNi21g pa_push_marker
+QRO9p-E0uPg pa_set_functions
 8VBA6xuvSBA pa_sync
 oc98+zOImus pathconf
 EDyhWelj7UY pause
@@ -13909,7 +13912,9 @@ FF2LpsJxclY sceDebugClearStepThread
 IeXW4fnPkyw sceDebugCreatePerfScratchDataArea
 WIkuITeINl8 sceDebugCreatePerfScratchExecutableArea
 a8xfs-qh9WA sceDebugCreateScratchDataArea
+juaxHn6Boy8 sceDebugCreateScratchDataAreaForPrx
 FS33uqKkEJA sceDebugCreateScratchExecutableArea
+2VMtYW1k054 sceDebugCreateScratchExecutableAreaForPrx
 QZaLNZ58fUE sceDebugDestroyPerfScratchDataArea
 G4tFfSDPtXU sceDebugDestroyPerfScratchExecutableArea
 Q29NWnvK6OI sceDebugDestroyScratchDataArea
@@ -13930,6 +13935,8 @@ a7MagzVs4cI sceDebugGetFileList
 Jv9NQNlhK+k sceDebugGetFileListForCoredump
 xexuBx9rGvg sceDebugGetGpuInfoArea
 TWvPsc6MkmA sceDebugGetJobManagerInfo
+wigNLIF1CtE sceDebugGetJobManagerSequenceInfo
+lP6QEEoBVqE sceDebugGetJobManagerSequenceList
 +cSD1hGmg+0 sceDebugGetModuleInfo
 HaI8g79+OOA sceDebugGetModuleList
 18ylu1q-Us8 sceDebugGetModuleMetaData
@@ -14742,6 +14749,7 @@ wYN5mmv6Ya8 sceGnmSqttGetHiWater
 lbMccQM2iqc sceGnmSqttGetTraceCounter
 DYAC6JUeZvM sceGnmSqttGetTraceWptr
 pS2tjBxzJr4 sceGnmSqttGetWrapCounts
+rXV8az6X+fM sceGnmSqttGetWrapCounts2
 X6yCBYPP7HA sceGnmSqttInit
 2IJhUyK8moE sceGnmSqttSelectMode
 QA5h6Gh3r60 sceGnmSqttSelectTarget
@@ -15110,6 +15118,7 @@ IMecW2MacSY sceIduUtilSetSettingStr
 qF9j5SGAiUk sceIduUtilSetSysLanguage
 gtWxylhD504 sceIduUtilShowOverlay
 SOx9LJtZNWw sceIduUtilTerminate
+nWqxZ43uS4U sceIduUtilUninstallApp
 g32w6rnsV-0 sceIduUtilUpdateSelf
 xbqCEIzvg3E sceImeBackendAllConfirm
 f22czPppTCQ sceImeBackendAllDeleteConvertString
@@ -16051,6 +16060,7 @@ mW3EHwAVHPA sceMusicPlayerServiceCreateTrackList
 7SOVShNUDXo sceMusicPlayerServiceEndTransaction
 3KChwrxsVPg sceMusicPlayerServiceGetAudioVolume
 CNsRsR5a+qc sceMusicPlayerServiceGetCurrentPlayStatus
+1+KpQYgv1zk sceMusicPlayerServiceGetPlaybackResults
 TVe6T-UKcoc sceMusicPlayerServiceGetPlayStatusExtension
 wHKiDjNLQwI sceMusicPlayerServiceGetTrackInfo
 qYbmAxRGuq8 sceMusicPlayerServiceGetTrackListVersion
@@ -16184,6 +16194,7 @@ LEn8FGztKWc sceNetCtlApRpGetState
 ofGsK+xoAaM sceNetCtlApRpRegisterCallback
 mjFgpqNavHg sceNetCtlApRpStart
 HMvaHoZWsn8 sceNetCtlApRpStartConf
+9Dxg7XSlr2s sceNetCtlApRpStartWithRetry
 6uvAl4RlEyk sceNetCtlApRpStop
 8eyH37Ns8tk sceNetCtlApRpUnregisterCallback
 r-pOyN6AhsM sceNetCtlApStop
@@ -16592,6 +16603,7 @@ QaTuZTNPygQ sceNpGriefReportReadReportItem
 hJku67PUGS0 sceNpGriefReportWriteJsonFile
 wSGXKvag-Jg sceNpGriefReportWriteReportItem
 RoxM-Cpzm9s sceNpGriefReportWriteReportItem2
+2aizWWQBSoY sceNpGriefReportWriteTemporaryFile
 Oad3rvY-NJQ sceNpHasSignedUp
 wVdn78HKc30 sceNpHeapDestroy
 JHGxU93dbQg sceNpHeapFreeImpl
@@ -18295,6 +18307,7 @@ mpkohyVqCRM sceShellCoreUtilActivateAbort
 fkcM5YcqjV8 sceShellCoreUtilActivateGetStatus
 x5hqKRKziYU sceShellCoreUtilActivateInit
 jktCMQNgyFc sceShellCoreUtilActivateIsActivated
+xIMClZZz50k sceShellCoreUtilActivateRecordActivation
 MRVnLsn-GRI sceShellCoreUtilActivateStart
 CZrOHqt6oCY sceShellCoreUtilActivateStartAsync
 ibXh+Mc4wbs sceShellCoreUtilActivateTerm
@@ -18715,6 +18728,8 @@ UMIlrOlGNQU sceSystemServiceGetParentSocket
 zqjkZ5VKFSg sceSystemServiceGetParentSocketForJvm
 qhPJ1EfqLjQ sceSystemServiceGetParentSocketForPs2Emu
 4ZYuSI8i2aM sceSystemServiceGetParentSocketForPsmKit
+5u2WeL-PR2w sceSystemServiceGetPlatformPrivacyDefinitionData
+t5K+IeMVD1Q sceSystemServiceGetPlatformPrivacyDefinitionVersion
 hvoLYhc4cq0 sceSystemServiceGetPlatformPrivacySetting
 gbUBqHCEgAI sceSystemServiceGetPSButtonEvent
 jA629PcMCKU sceSystemServiceGetRenderingMode
@@ -18833,6 +18848,7 @@ KXBnxqAeTuo sceTextToSpeechInitImpl
 HFM-KkVMVps sceTextToSpeechOpenImpl
 m8KLvqm+xF4 sceTextToSpeechPauseImpl
 AceRR9y6-ss sceTextToSpeechResumeImpl
+0iJvHDhBxtA sceTextToSpeechSpeakContinuousImpl
 wapB9dMovnk sceTextToSpeechSpeakImpl
 rjU70FGcXDw sceTextToSpeechTermImpl
 MZbcWoK2x6s sceTsCloseFile
@@ -19637,6 +19653,7 @@ emayD9LHYsc sceVideoOutSetGamutMetadata_
 CxUz3nU06NE sceVideoOutSetToneMap_
 MTxxrOCeSig sceVideoOutSetWindowModeMargins
 IOdgHlCGU-k sceVideoOutSubmitChangeBufferAttribute
+j8xl+92A0q4 sceVideoOutSubmitEopFlip
 U46NwOiJpys sceVideoOutSubmitFlip
 X8FN-5Nk-yE sceVideoOutSysAddSetModeEvent
 Ek+VR4lcJQI sceVideoOutSysAddVblankEvent
@@ -19655,8 +19672,10 @@ lXHMAc9Xjzo sceVideoOutSysGetCurrentOutputMode_
 vMLWuJckGv0 sceVideoOutSysGetMonitorInfo_
 8XGijEoThE0 sceVideoOutSysGetResolutionStatus
 d1AjT2uZJn0 sceVideoOutSysGetVblankStatus
+2KW9VnPMWDQ sceVideoOutSysSetBlackLevel
 OOF0YO73GTA sceVideoOutSysSetDimmer
 FZoCQTL8R04 sceVideoOutSysSetDisplayParameters
+fX9k++TzuQk sceVideoOutSysSetZoomBuffers
 dtmPxxVErK0 sceVideoOutSysUpdateDisplayParameter_
 Jl91AhxKc0w sceVideoOutSysUpdatePrivilege
 4G37EIMMD+Q sceVideoOutSysUpdateRenderingMode
@@ -19691,6 +19710,7 @@ kDHvQLi0PM4 sceVisionManagerGetNumOfRegisterUserDataSlot
 3OLHl6cAPjQ sceVisionManagerGetRegisterUserDataVersion
 qyhQZ35WxX4 sceVisionManagerGetResultOfCalibrateHmd
 5Lx1PHXzL6Y sceVisionManagerGetResultOfCalibrateStereoCamera
+brHQxy45WoE sceVisionManagerGetResultOfCalibrateTrackingLed
 O3HjB2izk9o sceVisionManagerGetResultOfFindFace
 Qc8kyzCZj+M sceVisionManagerGetResultOfFindPad
 dZqlWxQ1p+U sceVisionManagerGetResultOfFindPadCorrespondRegion
@@ -19705,6 +19725,7 @@ wzr6GTOo9Dw sceVisionManagerOpen
 GHrctgvI0SQ sceVisionManagerRegistryClear
 dEW3xn7DNFs sceVisionManagerRequestCalibrateHmd
 +lZ1yHWEViw sceVisionManagerRequestCalibrateStereoCamera
+qWFV6ZnNsRI sceVisionManagerRequestCalibrateTrackingLed
 ACdU2QH82O4 sceVisionManagerRequestClose
 ZZYNA4dAAIE sceVisionManagerRequestFindFace
 10NAQUqyOpw sceVisionManagerRequestFindPad
@@ -19839,15 +19860,19 @@ Q8skQqEwn5c sceVrTrackerUnregisterDevice
 9fvHMUbsom4 sceVrTrackerUpdateMotionSensorData
 f1CLT4QGcSU sceVshAvcapClose
 HedUSy9swaw sceVshAvcapGetInfo
+Q-nfTbHkYNQ sceVshAvcapGetStaticInfo
 7wORfQWfnM0 sceVshAvcapInit
 OpuQOnIqZHw sceVshAvcapOpenAudio
 KNfo101eszA sceVshAvcapOpenAudioEx
+WuwbH5nNVmA sceVshAvcapOpenUserdata
 G-w5-0Oy+Pc sceVshAvcapOpenVideo
 CApAj-v1kVs sceVshAvcapOpenVideoEx
 8spY5jF1aig sceVshAvcapReadAudio
+N0b-Kky0vyc sceVshAvcapReadUserdata
 Axq72jlliZk sceVshAvcapReadVideo
 w02zjBeV+n4 sceVshAvcapSelect
 iErIFNXEVDM sceVshAvcapSetInfo
+AfY2Uq3R494 sceVshAvcapSetStaticInfo
 n7fxSSTwbQo sceVshAvcapStart
 qgt6cIuingk sceVshAvcapStop
 hgEbCUX22UM sceVshAvcapTerm
