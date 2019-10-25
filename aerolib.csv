@@ -8480,6 +8480,7 @@ sfmawT-nIUc cairo_create
 K6aayzvQMlE cairo_destroy
 Ndvm8s28Gyc cairo_fill
 s9BsLfgWTeM cairo_format_stride_for_width
+Wr3nsor1aNc cairo_get_target
 ry52QkQeAWo cairo_image_surface_create
 wlO4ljYI06M cairo_image_surface_create_for_data
 wHTcu1PV-MU cairo_image_surface_get_data
@@ -8488,6 +8489,7 @@ CKmxM--7U88 cairo_image_surface_get_height
 3DtP-+fNq0c cairo_image_surface_get_stride
 inWumYPZgtw cairo_image_surface_get_width
 D1KYCZ80Sac cairo_mask
+KuArfZk6xEU cairo_matrix_init
 +PEo5Z7DOlY cairo_paint
 E5LkpnAY7po cairo_rectangle
 3pmBdB-bl8w cairo_reference
@@ -8497,6 +8499,7 @@ Pj8asGd55jA cairo_save
 suww6V0qqpU cairo_scale
 qzEwpfbLVxI cairo_set_font_face
 A-0StSi2AwA cairo_set_font_size
+oFltTuV0f7Y cairo_set_line_cap
 Ori3CK8Sx6g cairo_set_line_join
 zwMGP3ASKMI cairo_set_line_width
 niIR3TU71Bg cairo_set_matrix
@@ -8615,6 +8618,7 @@ XepdqehVYe4 closedir
 YNT8fNzZ2Dw coil_dlopen_native
 +pDyiHS3B0w coil_dlsym
 fwHTfTDLEJY coil_load_module_internal
+dQhl7bw-umE coil_mspace_free
 gXd5YDlR36k coil_pclose
 xh3OpSkf0l0 coil_popen
 06vOxgTjZhg coil_registry_get_int
@@ -12237,6 +12241,7 @@ cqbqklSaZ+U mono_jit_set_trace_options
 wv+exEIuY8I mono_jit_thread_detach
 yUkFDbw+X1M mono_ldstr
 yBJgtZBUXc0 mono_ldtoken
+mCyfcnKszjM mono_lls_init
 dXMGKAzykH0 mono_load_remote_field
 hY0vHypnMdg mono_load_remote_field_new
 N+-DuH-uzL0 mono_loader_init
@@ -12753,6 +12758,7 @@ oc98+zOImus pathconf
 EDyhWelj7UY pause
 XQbd3lyks0c pcf_driver_class
 FJxiqh2DvTw pclose
+r2ChuXgZiXQ PEM_read_bio_X509
 5tmv0sLeWpU PEM_read_bio_X509_AUX
 4NSxjyMl-ho PEM_read_X509
 A5Hxx4-o50g PEM_write_bio_X509
@@ -20376,6 +20382,12 @@ QMFyLoqNxIg setvbuf
 1wZvCS-KzPs SHA256_Final
 p0Bz7Spfm3I SHA256_Init
 ezeFkHDV4K8 SHA256_Update
+aVt320GW3sY SHA384_Final
+FEYYkBx7Yv8 SHA384_Init
+bRD04jjEhv0 SHA384_Update
+chFrHZ6pJm0 SHA512_Final
+S2gQI2nZ8FE SHA512_Init
+UdP5qTZTQzw SHA512_Update
 sydJTxUiLLI ShCompile
 NwnJ8AZrQ7o ShConstructCompiler
 PGlO4u5duZc ShDestruct
@@ -20499,6 +20511,7 @@ gOmQbOkqJBE SSL_free
 TUYoEUSlXss SSL_get_certificate
 GYYIk8cGKzw SSL_get_current_cipher
 0wGjbW+tVlc SSL_get_error
+QuI09j4a8-k SSL_get_ex_data
 ooPcqksbLj4 SSL_get_peer_cert_chain
 oye9egd7IbA SSL_get_peer_certificate
 ZCrqHPiB4ro SSL_get_privatekey
@@ -20546,6 +20559,7 @@ nXlhepw9ztI SSL_sendPending
 hIb43mo9ubQ SSL_SESSION_free
 rXHi08e0g80 SSL_set_bio
 tHOriQLfXsY SSL_set_connect_state
+tVJpWGFi-+M SSL_set_ex_data
 VLvKI1JQntk SSL_set_fd
 N9KKC6Q8mhg SSL_set_session
 Bf0pzkQc6CU SSL_setCookie
