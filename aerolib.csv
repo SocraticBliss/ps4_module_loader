@@ -12160,16 +12160,19 @@ cY3lUQytj6U mono_btls_x509_get_subject_name_string
 Wz8T1vbjO54 mono_btls_x509_lookup_by_fingerprint
 LPfoZwlYzkU mono_btls_x509_lookup_by_subject
 k+X8sU2x8Jw mono_btls_x509_lookup_free
+UN1A7FriZLY mono_btls_x509_lookup_get_type
 8ASJ+Z8ucho mono_btls_x509_lookup_init
 KeK0jSSrBXA mono_btls_x509_lookup_load_file
 F8AIoVlzTww mono_btls_x509_lookup_mono_free
 UZJ68N9vpf4 mono_btls_x509_lookup_mono_init
+6PEq4Zzkjrw mono_btls_x509_lookup_mono_method
 qgZpgSSrmAE mono_btls_x509_lookup_mono_new
 zijlNB4cxv4 mono_btls_x509_lookup_new
 QLvvlBPqRLs mono_btls_x509_lookup_peek_lookup
 lczaTIw9Nfc mono_btls_x509_lookup_shutdown
 AlP0gG2KQiw mono_btls_x509_name_free
 kNSoVmhYbnY mono_btls_x509_name_from_data
+uCEbE7yUA6g mono_btls_x509_name_from_name
 EKF3k5QZG2Y mono_btls_x509_name_get_entry_count
 omGp+AcigLE mono_btls_x509_name_get_entry_oid
 eXU5nNCm60U mono_btls_x509_name_get_entry_oid_data
@@ -12186,6 +12189,7 @@ HzWS4hQruF8 mono_btls_x509_revoked_free
 mx0faWWy7F0 mono_btls_x509_revoked_get_revocation_date
 3RuJrIP2QjM mono_btls_x509_revoked_get_sequence
 IgFReVl+gKY mono_btls_x509_revoked_get_serial_number
+DrQSmtwNhUE mono_btls_x509_revoked_new
 8uz5mbc23ig mono_btls_x509_store_add_cert
 uffabrxlIGw mono_btls_x509_store_add_orbis_certs
 on1ZzO7zyFg mono_btls_x509_store_ctx_free
@@ -12196,6 +12200,7 @@ BMV1qriRuLo mono_btls_x509_store_ctx_get_current_cert
 KXrjdb69+ng mono_btls_x509_store_ctx_get_current_issuer
 bu-Wdczcf3o mono_btls_x509_store_ctx_get_error
 AxNpQ9qdn3E mono_btls_x509_store_ctx_get_error_depth
+ZrroNl9Kk-o mono_btls_x509_store_ctx_get_foo
 4yylLfO254U mono_btls_x509_store_ctx_get_untrusted
 i2fNYHoTATU mono_btls_x509_store_ctx_get_verify_param
 jTIPn3+J6AI mono_btls_x509_store_ctx_init
@@ -12822,6 +12827,7 @@ Foj36srqK9g mono_monitor_enter_v4
 Po4ZjIgKP3Y mono_monitor_exit
 s5KB79+vKyA mono_monitor_try_enter
 oNlmXbLDtPo mono_mprotect
+SmLdzF-mHyM mono_native_thread_create
 njSuVaOC4UA mono_native_thread_id_get
 0kr8s+yacs0 mono_object_castclass_mbyref
 HrAPht9ZYiE mono_object_clone
@@ -13360,6 +13366,7 @@ nnoxZUHK+SA pthread_getcpuclockid
 aO+WS2xWuo4 pthread_getprio
 FIs3-UQT9sg pthread_getschedparam
 0-KXaS70xy4 pthread_getspecific
+ruZ9hhQ8oUk pthread_getstack_np
 3eqs37G74-s pthread_getthreadid_np
 h9CcP3J0oVM pthread_join
 mqULNdimTn0 pthread_key_create
@@ -14085,6 +14092,7 @@ WQbIW7cm-Bc sceBgftServiceInit
 bCD2orE1y84 sceBgftServiceIntDebugDownloadCorruptPkg
 bSCbtBzQnEA sceBgftServiceIntDebugDownloadRegisterPkg
 yaRL7i-Vkng sceBgftServiceIntDebugDownloadRequest
+ttZRFSBzDPQ sceBgftServiceIntDebugPlayGoClearSetFreeZone
 y9c6Qx9HKFA sceBgftServiceIntDebugPlayGoGetPlayGoStatusString
 D9ZcN1WT7lE sceBgftServiceIntDebugPlayGoIsPaused
 OFhg9OV+--M sceBgftServiceIntDebugPlayGoIsSetFreeZone
@@ -16029,6 +16037,7 @@ GpptAvO+vGI sceHttpCacheRetrieve
 moPKPd0A5FA sceHttpCacheSetResponseHeader
 R9VdZjbxQi8 sceHttpCacheSystemClearAll
 LfOVpdFit+Q sceHttpCacheSystemInit
+0gRbLi4WKVg sceHttpCacheSystemSendStatistics
 kbFr-IcUqH4 sceHttpCacheSystemShutdown
 J25sxFmD+1w sceHttpCacheSystemTerm
 UU-WJhJQWxQ sceHttpCacheTerm
@@ -19407,6 +19416,7 @@ kbIIP9aXK9A sceSaveDataCreateUploadData
 gW6G4HxBBXA sceSaveDataDebug
 bYCnxLexU7M sceSaveDataDebugCleanMount
 hVDqYB8+jkk sceSaveDataDebugCompiledSdkVersion
+K9gXXlrVLNI sceSaveDataDebugCreateSaveDataRoot
 5yHFvMwZX2o sceSaveDataDebugGetThreadId
 AYBQmnRplrg sceSaveDataDebugTarget
 S1GkePI17zQ sceSaveDataDelete
@@ -20261,6 +20271,7 @@ y6sRnKP+WLc sceUpsrvUpdateCheckDoCheckSystemVersionDown
 NqCD8n5dq+Y sceUpsrvUpdateCheckDoCheckSystemWithPupInfo
 upKNCUpJ018 sceUpsrvUpdateCheckGetPackageInfo
 AaVc2ZX5wCI sceUpsrvUpdateCheckGetUpdatelistURL
+v20c4Nmpmn8 sceUpsrvUpdateCheckIsSystemBetaClosed
 JCqpB7AGLQg sceUpsrvUpdateCheckRequestCheckGame
 glX67PWaF-g sceUpsrvUpdateCreateUpdateTask
 aYBAAH7Gfws sceUpsrvUpdateDestroyUpdateTask
@@ -21362,6 +21373,7 @@ Bq+LRV-N6Hk sem_getvalue
 pDuPEf3m4fI sem_init
 +P6FRnQJc1E sem_open
 IKP8typ0QUk sem_post
+4SbrhCozqQU sem_reltimedwait_np
 -wUggz2S5yk sem_setname
 w5IHyvahg-o sem_timedwait
 WBWzsRifCEA sem_trywait
@@ -21702,16 +21714,27 @@ zogPrkd46DY strxfrm
 EXH1U-UBywI swapcontext
 Q-AesC937KM swapon
 d77poKB+no4 SwCtrlManagerActivate
+-MD7V1yKTfE SwCtrlManagerCancelActivate
+cpe0upeEhcI SwCtrlManagerCancelInitialize
+9JsJTYD6boI SwCtrlManagerCheckActivate
+LZTq4tfa24A SwCtrlManagerCheckInitialize
+lhSZLgpu270 SwCtrlManagerEndActivateSession
 S3k+JisKvds SwCtrlManagerFinalize
 h8yISFR3si4 SwCtrlManagerInitialize
+tgxvowtOtX4 SwCtrlManagerSetSRM
+j1BG8L+rras SwCtrlManagerStartActivateSession
 ZEioiFNuqis SwCtrlSinkAuthenticate
 OUMr1+NpJU8 SwCtrlSinkCancel
 8svDYUH0Bjo SwCtrlSinkFinalize
 6oaQvkEtWE4 SwCtrlSinkInitialize
 lPbaxwlksZM SwCtrlSinkStreamCancel
 7U1GL2vgUtA SwCtrlSinkStreamFinalize
+c7qsIZyhC9I SwCtrlSinkStreamGetReadPointer
 aQ8Xoiz0yMQ SwCtrlSinkStreamGetWritePointer
 TQCA0u-vO2U SwCtrlSinkStreamInitialize
+4ZAN-jysmlg SwCtrlSinkStreamIsEOS
+t9-W9qSznuY SwCtrlSinkStreamSetEOS
+5Yq77syosgI SwCtrlSinkStreamSetReadPointer
 fs7IsFryZFc SwCtrlSinkStreamSetWritePointer
 4xoMS1UQvKI SwCtrlSinkStreamStart
 GFhTr50CnrE SwCtrlSinkStreamStop
@@ -23456,6 +23479,7 @@ DAaqGjN-L1E YGNodeStyleGetAlignContent
 o8PUxPppffo YGNodeStyleGetBorder
 N0v1-dO37MA YGNodeStyleGetDirection
 WJLWjZr-X+E YGNodeStyleGetDisplay
+A5d7+JLBz0o YGNodeStyleGetFlex
 wNUdyLfKQ9U YGNodeStyleGetFlexBasis
 HkXgZNMy-Sw YGNodeStyleGetFlexDirection
 Msg6ByVQ+u4 YGNodeStyleGetFlexGrow
