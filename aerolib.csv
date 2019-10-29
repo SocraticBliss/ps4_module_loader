@@ -38,6 +38,7 @@ UQTlJjhosWw __asan_get_report_pc
 AMBngNURvqs __asan_get_report_sp
 mWRHF5xdnlY __asan_get_shadow_mapping
 Q-dpWphd3xE __asan_handle_no_return
+MUyT8HsKtfA __asan_init_v5
 szUTqQasrxo __asan_load_cxx_array_cookie
 Ha876NZobao __asan_load1
 T4pnqZWxHco __asan_load16
@@ -401,6 +402,8 @@ qONj4mfcE6U __sanitizer_unaligned_store32
 0cvrKk89hOE __sanitizer_unaligned_store64
 H1sJExU7jt8 __sanitizer_update_counter_bitset_and_clear_counters
 P9Bggzmp21Q __sanitizer_verify_contiguous_container
+JgnbTezEXsc __sceAudioInVmicAttach
+fDP+C0zOptM __sceAudioInVmicDetach
 1IWsxK7VRoA __sceAudioInVmicWrite
 3JYhkiIHkJc __sceKernelGetGPI
 Rw4J-22tu1U __signbit
@@ -824,6 +827,8 @@ YCVxOE0lHOI _LXp_subx
 A-cEjaZBDwA _LZero
 mkFxjg4B3Dg _m_acc
 0wlN5i59xrM _m_agid
+dqpZ10KTssY _m_ch_key1
+CjPeOAnJSIs _m_ch_key2
 KZbHx6nNRQw _m_key1
 ZDKe0O0ynIs _m_key2
 tTDqwhYbUUo _Makeloc
@@ -897,6 +902,7 @@ e-ODUaoHXiY _sceApplicationGetAppId
 y8JFcLacpm0 _sceDepthHeadCandidateTrackerGetInformation
 azCmQEmb1-I _sceDepthHeadCandidateTrackerSetInformation
 HZ2ih547n5Y _sceDepthSetCameraFactoryCalibrationData
+X5F-dSXoUUw _sceDepthSetHeteroMode
 avfGJ94g36Q _sceFiberAttachContextAndRun
 ZqhZFuzKT6U _sceFiberAttachContextAndSwitch
 0dy4JtMUcMQ _sceFiberGetThreadFramePointerAddress
@@ -2222,6 +2228,7 @@ D-dT+vERWmU _ZN3sce2np7HttpUriD2Ev
 1P-MUvbtyTM _ZN3sce2np7RingBuf4ctorEv
 rvz8xYxhMW0 _ZN3sce2np7RingBuf4dtorEv
 IL3Wk7QuRhA _ZN3sce2np7RingBuf4InitEPvm
+Mg-IhL6SWfg _ZN3sce2np7RingBuf4ReadEPvm
 IZOGdJ+LFFU _ZN3sce2np7RingBuf5ClearEv
 8Y5OOBb0B5Y _ZN3sce2np7RingBuf5WriteEPKvm
 u-TlLaJUJEA _ZN3sce2np7RingBuf7DestroyEv
@@ -2378,6 +2385,7 @@ KGitZXuSY7U _ZN3sce2npeqERKNS0_10NpOnlineIdES3_
 ps246w9eXI8 _ZN3sce2npeqERKNS0_4TimeERK10SceRtcTick
 UVLmT9lzRYA _ZN3sce2npeqERKNS0_4TimeES3_
 0qjYM9bp5vs _ZN3sce2npeqERKNS0_4UserERKi
+-BgzebSMaVY _ZN3sce2npeqERKNS0_4UserES3_
 WaNQzws1ATU _ZN3sce2npeqERKNS0_8NpCommIdERK20SceNpCommunicationId
 E-mYAG-aa1A _ZN3sce2npeqERKNS0_8NpCommIdES3_
 gKruhA35EXQ _ZN3sce2npgeERK10SceRtcTickRKNS0_4TimeE
@@ -2400,6 +2408,7 @@ pt8E9JYqZm4 _ZN3sce2npneERKNS0_10NpOnlineIdES3_
 yXMjXN--3rY _ZN3sce2npneERKNS0_4TimeERK10SceRtcTick
 cnoM7EjlLe4 _ZN3sce2npneERKNS0_4TimeES3_
 XlGEzCqlHpI _ZN3sce2npneERKNS0_4UserERKi
+ta8lASAxro4 _ZN3sce2npneERKNS0_4UserES3_
 SM7OEf11LCA _ZN3sce2npneERKNS0_8NpCommIdERK20SceNpCommunicationId
 QQCqBHk79sI _ZN3sce2npneERKNS0_8NpCommIdES3_
 WJTGKfpoa1Q _ZN3sce3pss4core14IntHandleTable13NextIntHandleEv
@@ -11793,6 +11802,7 @@ Mb83Py2nhOI mono_allocator_malloc0
 oWX083a+4YM mono_allocator_memdup
 rfYnuMJmVOk mono_allocator_stats
 L4BRUCADoMQ mono_allocator_strdup
+FBUmWqGJHs8 mono_allocator_strdup_printf
 RkSFw3znsvI mono_aot_file_info
 6t5G5dYpMVg mono_aot_get_method
 7-xmQEeX5Ck mono_aot_I18N_CJKjit_code_end
@@ -14430,6 +14440,7 @@ YQOfxL4QfeU mprotect
 k-l0Jth-Go8 mrand48
 tZY4+SZNFhA msync
 tF6GpBRiB-A mtx
+bkhiljYMzWA mtx_rahead
 -zaXhPoavkU mtx_recvtbl
 KreckU5qLhw mtx_seqno
 ZIcknjuQst4 mtx_write
@@ -20778,6 +20789,7 @@ c34CuwRZZz8 ScePsmWapiCryptoPolicyCallback
 KuzCRxc5mVI scePssAudGetSurroundPan
 nqHJ9X3L3zI scePssAudIsStopped
 nTYiRmnd7zI scePssAudSetSurroundPan
+lkPny2sBZ7Q scePssAudSetSurroundPanSpeakerConfig
 P+bTZBk3z08 scePssCameraGetCameraConnection
 FIDyevLVMHA scePssCameraGetConfigType
 5J-HJDElPnM scePssCameraSetConfigType
@@ -22033,7 +22045,11 @@ fDGYYXcby1w sceUlpMgrSendData
 4M7UYhGTlqk sceUlpMgrUnregisterProtocol
 T4WqXTOe+A4 sceUlpMgrVshFinalize
 w62wXXsQx5E sceUlpMgrVshInitialize
+IK1XJgSEKSc sceUlpMgrVshInstallCmd
+cVRZlC-iNk4 sceUlpMgrVshMountCmd
 M7+3rTaF1Bk sceUlpMgrVshReadEvent
+VyxKS1qRxDk sceUlpMgrVshUninstallCmd
+40IZ5L7mLQo sceUlpMgrVshUnmountCmd
 xrmmI832R4U sceUltConditionVariableDestroy
 JTw1cAVkuc0 sceUltConditionVariableSignal
 byiceqcMvV0 sceUltConditionVariableSignalAll
