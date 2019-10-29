@@ -85,6 +85,7 @@ yYwzNjbdtrk __asan_report_store2
 NtJRF4ZYnGQ __asan_report_store4
 OSb9z7LMyzo __asan_report_store8
 cR-LBKUNmT8 __asan_set_death_callback
+Il4v0nCRffo __asan_set_error_exit_code
 jOVTkdrkn74 __asan_set_error_report_callback
 vkjq4GNSnMo __asan_stack_free_0
 WNrURc2cQKE __asan_stack_free_1
@@ -400,6 +401,7 @@ qONj4mfcE6U __sanitizer_unaligned_store32
 0cvrKk89hOE __sanitizer_unaligned_store64
 H1sJExU7jt8 __sanitizer_update_counter_bitset_and_clear_counters
 P9Bggzmp21Q __sanitizer_verify_contiguous_container
+1IWsxK7VRoA __sceAudioInVmicWrite
 3JYhkiIHkJc __sceKernelGetGPI
 Rw4J-22tu1U __signbit
 CjQROLB88a4 __signbitf
@@ -1793,6 +1795,7 @@ s0R93InPFGk _ZN3IPC15ArgumentEncoder6encodeEl
 A55zzvrPB7A _ZN3IPC15ArgumentEncoder6encodeEm
 Fo+yeWyWEec _ZN3IPC15ArgumentEncoder6encodeEt
 jDiVksx1LG8 _ZN3NTF10initializeERKNS_18CreationParametersE
+D8fbM215v5U _ZN3NTF10initializeEv
 bvrWxnkc-tI _ZN3NTF13URLRequestJob6createEPNS_17URLRequestMessageEPNS_18URLRequestListenerE
 1-Wwhd0ToKo _ZN3NTF14NetworkControl12getIPAddressEv
 BTCkyrYLBNE _ZN3NTF15DNSPrefetchImpl10initializeEv
@@ -1870,8 +1873,12 @@ g1N0rb2bGCs _ZN3NTF22URLRequestJobSchedulerD1Ev
 37dXZkodlCY _ZN3NTF22URLRequestJobSchedulerD2Ev
 Wb+sAKJQnGc _ZN3NTF26URLRequestUndefinedMessage6createEv
 Xh9mQftH0uk _ZN3NTF3Ssl10initializeEv
+yGII1y64fqE _ZN3NTF3URLC1EPKc
 jGw-fHxRZQ4 _ZN3NTF3URLC1Ev
+2ZMNABg88EE _ZN3NTF3URLC2EPKc
 DwCrp7rDiTM _ZN3NTF3URLC2Ev
+OJggewsMVbM _ZN3NTF3URLD1Ev
+Jk1OHHPzXnA _ZN3NTF3URLD2Ev
 hYmRpDiOE6Y _ZN3NTF5Cache16DiskCacheUtility9deleteAllEv
 SSzqc35PoKY _ZN3NTF5Mutex4lockEv
 C1skAF1VQbY _ZN3NTF5Mutex6unlockEv
@@ -2068,6 +2075,7 @@ OkLAycBUJfs _ZN3sce2np14HttpConnectionD1Ev
 PYBehFWVd60 _ZN3sce2np14JsonDocBuilder12BuildBufSizeEv
 V5xX2eroaWY _ZN3sce2np14JsonDocBuilder23EscapeJsonStringBufSizeEPKc
 S7FMltXS0QM _ZN3sce2np14JsonDocBuilderC2EPKNS0_9JsonValueE
+dhJGQPKLmn0 _ZN3sce2np14JsonDocBuilderC2ERKNS0_9JsonValueE
 wDLaq7IgfIc _ZN3sce2np14JsonDocBuilderD0Ev
 Kfv9jPxf7qA _ZN3sce2np14JsonDocBuilderD1Ev
 MH0LyghLJEE _ZN3sce2np14JsonDocBuilderD2Ev
@@ -2200,6 +2208,7 @@ xxOTJpEyoj4 _ZN3sce2np7Callout10IsTimedoutEv
 Zw3QlKu49eM _ZN3sce2np7Callout11CalloutFuncEPv
 14PDhhMEBKY _ZN3sce2np7Callout4StopEv
 TDuC6To9HJ8 _ZN3sce2np7Callout5StartEjPNS1_7HandlerE
+r0PYNWZLZS8 _ZN3sce2np7Callout5StartEmPNS1_7HandlerE
 3ErXia+y89M _ZN3sce2np7Callout9IsStartedEv
 Bpay3NjseSU _ZN3sce2np7CalloutC2EPNS0_14CalloutContextE
 Fx2UwoQVVmo _ZN3sce2np7CalloutD0Ev
@@ -7209,6 +7218,7 @@ mv9rtQAknH4 _ZNK15AbstractStorage6Folder7GetTypeEv
 ka5TVf37Akg _ZNK15AbstractStorage7Content7GetTypeEv
 1uryzAWFUuA _ZNK15AbstractStorage7Storage7GetTypeEv
 HulhdZP2sYE _ZNK23sceMetadataReaderWriter8Metadata13getFieldCountEv
+DiAiAYviceQ _ZNK23sceMetadataReaderWriter8Metadata14checkReadFieldEiRS0_S1_
 2aFFTXLXkGY _ZNK23sceMetadataReaderWriter8Metadata14checkReadFieldEiRS0_S1_Pb
 mQUuF7HMrSo _ZNK23sceMetadataReaderWriter8Metadata15checkWriteFieldEiRS0_S1_
 kl5tuVwRw14 _ZNK23sceMetadataReaderWriter8Metadata15checkWriteFieldEiRS0_S1_Pb
@@ -9521,6 +9531,7 @@ XpAJ1Ckg-q4 CMAC_Update
 Py8HlsNrKVc CmdfullpathThread
 3XHnMfffKJE CmdThread
 4B871WWhFkY coil_clock_gettime
+sZO0+H5iTbc coil_create_semaphore
 6qHZ69Qfeb4 coil_dlclose
 z8gA40d5yuA coil_dlopen
 YNT8fNzZ2Dw coil_dlopen_native
@@ -11752,6 +11763,7 @@ B59+zQQCcbU memmove_s
 h8GwqPFbu6I memset_s
 HWEOv0+n7cU mergesort
 P7vPDE-pNrw metadata_alloc
+Tt4j3Agw6Tk metadata_area
 +hFjyohmOU0 mincore
 ePfrY3-cnX4 mini_create_jit_domain_info
 OVV379uPphQ mini_free_jit_domain_info
@@ -11775,6 +11787,12 @@ BaOKcng8g88 module_start
 aDYs9XYn2PY module_start_2
 KpDMrPHvt3Q module_stop
 -Vt1ihrzI0Q mono_add_internal_call
+Ct67Z5RXulU mono_allocator_free
+GcGShVuyGwg mono_allocator_malloc
+Mb83Py2nhOI mono_allocator_malloc0
+oWX083a+4YM mono_allocator_memdup
+rfYnuMJmVOk mono_allocator_stats
+L4BRUCADoMQ mono_allocator_strdup
 RkSFw3znsvI mono_aot_file_info
 6t5G5dYpMVg mono_aot_get_method
 7-xmQEeX5Ck mono_aot_I18N_CJKjit_code_end
@@ -13022,6 +13040,8 @@ t8lPLT-KHqU mono_arch_get_throw_trampoline
 B3MQlY0+31s mono_arch_init
 3zoOAlAOZdg mono_arch_nullify_class_init_trampoline
 FQp+YoiVPDk mono_arch_set_breakpoint
+X-7JJLOUmds mono_arch_set_nullified_class_init_trampoline
+0jZegnTVAOk mono_arch_set_trigger_pages
 pigZNPpN0eE mono_arch_setup_jit_tls_data
 vIftfz9WmKw mono_array_addr_with_size
 eLasd29xQfY mono_array_class_get
@@ -13496,6 +13516,7 @@ OeEFtpgl3Cs mono_domain_owns_vtable_slot
 0GnYzmeB+AE mono_domain_set
 x-Jdve+yCj8 mono_domain_set_config
 QrulaA1mWGk mono_domain_set_internal
+1QQ1Z9gJyUg mono_domain_set_tls_offset
 Z+bUVHmzGQw mono_domain_try_type_resolve
 XjXZHOr9xQA mono_domain_try_unload
 O0LfokyVHKY mono_domain_unload
@@ -14073,6 +14094,7 @@ AkDTv2T16Dg mono_shared_area_remove
 J0jU9Q3l+aI mono_shared_area_unload
 f6pcc3Oq-aA mono_shared_hashtable_destroy
 UDsn+mGEUFM mono_shared_hashtable_foreach
+D213b+fMrCc mono_shared_hashtable_foreach_remove
 8J3ibSyXSGU mono_shared_hashtable_lookup
 Hrux++TH0pI mono_shared_hashtable_new
 SuUi5+0aDCI mono_shared_hashtable_new_full
@@ -20752,11 +20774,15 @@ eHZ5DsEGZPg scePsmUtilGetSystemAssetManagerSize
 psLU09dc2Vc scePsmUtilInitialize
 +arkFfg6uxw scePsmUtilRegisterCallbacks
 c34CuwRZZz8 ScePsmWapiCryptoPolicyCallback
+KuzCRxc5mVI scePssAudGetSurroundPan
 nqHJ9X3L3zI scePssAudIsStopped
+nTYiRmnd7zI scePssAudSetSurroundPan
 P+bTZBk3z08 scePssCameraGetCameraConnection
 FIDyevLVMHA scePssCameraGetConfigType
 5J-HJDElPnM scePssCameraSetConfigType
+atsO3WGZqZA scePssCAudGetSurroundPan
 XIPPPwj5i9A scePssCAudIsStopped
+-HH5Om7MHIQ scePssCAudSetSurroundPan
 nwX0xDpLzR4 scePssInternalKeyboardGetKeyCode
 MnBopnIaDzQ scePssInternalKeyboardGetUTF8Chars
 nMLyjnpy2hc scePssInternalOrbisControllerScan
@@ -20782,6 +20808,7 @@ MXRQZvQVjK0 scePssPadrGetOutputPortCount
 tmcEKba0ilI scePssPadrGetOutputPortDescription
 9+7ISLVZk2c scePssSoundPlayerGetPlayState
 F-iMNHd4L7I scePssSoundPlayerGetSurroundPan
+3Nm6tcgPCgQ scePssSoundPlayerSetSurroundPan
 mBrOTtvKHU0 scePssSoundPlayerStopEx
 YKu2Eub+j94 scePssSoundPlayerUserCreate
 7kXCiz3D0OU scePssThreadIsActive
@@ -22005,6 +22032,7 @@ fDGYYXcby1w sceUlpMgrSendData
 4M7UYhGTlqk sceUlpMgrUnregisterProtocol
 T4WqXTOe+A4 sceUlpMgrVshFinalize
 w62wXXsQx5E sceUlpMgrVshInitialize
+M7+3rTaF1Bk sceUlpMgrVshReadEvent
 xrmmI832R4U sceUltConditionVariableDestroy
 JTw1cAVkuc0 sceUltConditionVariableSignal
 byiceqcMvV0 sceUltConditionVariableSignalAll
@@ -23085,6 +23113,7 @@ gzjhKWIF5Gs sceVorbisDecCrossLap
 9kZc-37F7es sceVorbisDecGetDecodePriority
 bASEQctTGhI sceVorbisDecGetLastDecodeError
 rVNVc74vUAY sceVorbisDecHalfrate
+DxdfhwB4GdM sceVorbisDecHalfrateP
 YzIPMpnHJzU sceVorbisDecInfo
 s6a5LF1NG4g sceVorbisDecOpenCallbacks
 pZ1ctWkAU9Y sceVorbisDecPcmSeek
