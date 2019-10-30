@@ -902,6 +902,7 @@ e-ODUaoHXiY _sceApplicationGetAppId
 y8JFcLacpm0 _sceDepthHeadCandidateTrackerGetInformation
 azCmQEmb1-I _sceDepthHeadCandidateTrackerSetInformation
 HZ2ih547n5Y _sceDepthSetCameraFactoryCalibrationData
+AnQ9uoI3ENY _sceDepthSetHeteroAdjustParam
 X5F-dSXoUUw _sceDepthSetHeteroMode
 avfGJ94g36Q _sceFiberAttachContextAndRun
 ZqhZFuzKT6U _sceFiberAttachContextAndSwitch
@@ -11284,6 +11285,7 @@ PwWeQF-n0W0 infoLock
 zJOq3ux6y4A infoUnlock
 MOI4fLJNNiM initCommInfo
 uPza8y4cMC4 initCommInfoList
+yVUZbAd5TUw initDecidBootEvf
 uTW+63goeJs InitializeImeModule
 YzB8-Aa5UV4 InitializeNetLib
 KErdBAt4DHk initProtocolInfoList
@@ -14488,6 +14490,7 @@ eXL2pNf3JSA NpStateManagerStart
 5gsmp2Ox0Vs NpStateManagerStop
 f5Zum3vudFM NpStateManagerUnregisterCallback
 3wcYIMz8LUo nrand48
+PM58j4m17Gw nsff_FreeString
 VteK1e0o0fY nsnp_ActionCheck
 bIjisuca0z8 nsnp_ActionDescribe
 wivfLfaFAZg nsnp_ActionPerform
@@ -16140,6 +16143,7 @@ qCDIxJL+IN8 sceCoredumpInternalGetThreadContextInfo
 Uxqkdta7wEg sceCoredumpSetUserDataType
 fFkhOgztiCA sceCoredumpUnregisterCoredumpHandler
 Dbbkj6YHWdo sceCoredumpWriteUserData
+RCtiLzPYAgA sceCtrlpGetAvailPlayBufferNum
 PSrsDjizhM0 sceCtrlpGetMode
 k1PTjHF0qoA sceCtrlpGetRecData
 Z9E-FekUJ2w sceCtrlpInit
@@ -16147,6 +16151,7 @@ NfZz19Zp+Xc sceCtrlpPlayStart
 fqdGZ7GImpo sceCtrlpPlayStop
 Sw5F9MFh-WA sceCtrlpRecStart
 jQfM7t-YTxs sceCtrlpRecStop
+m9dGPgf55j8 sceCtrlpRegisterEventCB
 qeUNRM8Wl6w sceCustomMusicCoreBgmClose
 dJzkNeDFeAM sceCustomMusicCoreBgmOpen
 7S6OwXEoTmk sceCustomMusicCoreBgmOpen2
@@ -16417,6 +16422,7 @@ GoLUMUdvoi0 sceDeci4hDrfpFtruncate
 E63t2ZgWfpU sceDeci4hDrfpFtruncate_fuse_fullpath
 fCYZ8Ta2DJc sceDeci4hDrfpGetMsgBuf
 PwdjZ112xLU sceDeci4hDrfpGetOption
+2sk-Mt8xEsA sceDeci4hDrfpInitMountDoneEvf
 bFN5mIvW-mA sceDeci4hDrfpMkdir
 ivI59nvu564 sceDeci4hDrfpMkdir_fuse
 L3PcEQaDVkA sceDeci4hDrfpMkdir_fuse_fullpath
@@ -16461,6 +16467,8 @@ IGwoR-bZ-aQ sceDeci4hGetStatus
 q2eqZBGasE0 sceDeci4hOpen
 5zcQehpL1Mc sceDeci4hRead
 swrsxmobY1c sceDeci4hWrite
+1eDFI2b1+R4 sceDepthCalculateRectificationInformation
+tKb1NGqDL3o sceDepthDisableHeteroMode
 z5ST9CIgHa0 sceDepthEnableExtendedMode
 ApiBWk+XhTM sceDepthEnableHeteroMode
 LGls0LhQSGY sceDepthEnableHeteroModeAndGenerateInformation
@@ -16978,6 +16986,7 @@ k0Kog-TlHYg sceFsMountTrophyData
 xwB67z-O5-o sceFsReserveCluster
 SFz5prdeR54 sceFsSetAttribute
 Kh-t1fmxMnE sceFsSetClusterCacheSize
+ofMR3p9i+Pg sceFsSetFileReservedTotal
 AGLEZbbzOLo sceFsSetSystemReserveSize
 js06qcwSqnE sceFsSmrTrim
 JrGlxeyhY4A sceFsSmrTrimAll
@@ -17271,6 +17280,7 @@ H+bqFwVYz6M sceGnmSysEnableSubmitDone45Exception
 9l2uOATqogs sceGnmSysGetClientNumber
 hwzBUHtAZeE sceGnmSysIsGameClosed
 DgEvomXMtAM sceGnmSysOpen
+aR6uq1j7M7I sceGnmSysResetOttvLibrary
 0ikQsDP-+lg sceGnmSysSubmitCommandBuffersWithPid
 ZtaxGGmtQ80 sceGnmSysSubmitFlipHandleProxy
 ArSg-TGinhk sceGnmUnmapComputeQueue
@@ -18944,6 +18954,8 @@ x+cnsAxKSHo sceNetCtlGetNatInfoIpcInt
 0cBgduPRR+M sceNetCtlGetResult
 NEtnusbZyAs sceNetCtlGetResultIpcInt
 H5yARg37U5g sceNetCtlGetResultV6
+Wn-+887Lt2s sceNetCtlGetScanInfoBssidIpcInt
+FEdkOG1VbQo sceNetCtlGetScanInfoByBssidIpcInt
 uBPlr0lbuiI sceNetCtlGetState
 JXlI9EZVjf4 sceNetCtlGetState2IpcInt
 gvnJPMkSoAY sceNetCtlGetStateIpcInt
@@ -18956,12 +18968,15 @@ wIsKy+TfeLs sceNetCtlRegisterCallbackForNpToolkit
 rqkh2kXvLSw sceNetCtlRegisterCallbackIpcInt
 1NE9OWdBIww sceNetCtlRegisterCallbackV6
 reIsHryCDx4 sceNetCtlScanIpcInt
+LJYiiIS4HB0 sceNetCtlSetErrorNotificationEnabledIpcInt
+DjuqqqV08Nk sceNetCtlSetStunWithPaddingFlagIpcInt
 Z4wwCFiBELQ sceNetCtlTerm
 Rqm2OnZMCz0 sceNetCtlUnregisterCallback
 urWaUWkEGZg sceNetCtlUnregisterCallbackForLibIpcInt
 2oUqKR5odGc sceNetCtlUnregisterCallbackForNpToolkit
 by9cbB7JGJE sceNetCtlUnregisterCallbackIpcInt
 hIUVeUNxAwc sceNetCtlUnregisterCallbackV6
+1HSvkN9oxO4 sceNetCtlUnsetStunWithPaddingFlagIpcInt
 Q6T-zIblNqk sceNetDhcpdStart
 xwWm8jzrpeM sceNetDhcpdStop
 KhQxhlEslo0 sceNetDhcpGetAutoipInfo
@@ -20585,6 +20600,7 @@ xhLHHsgt39w scePktMgrGetProtocolNumber
 1NQg5a5nE2I scePktMgrGetSeqNum
 4TK7DRrXC5c scePktMgrGetUlpCmdHdr
 GOafsLorJmg scePktMgrGetUlpCmdPayload
+6EVXSBewBXs scePktMgrIsRecvDataReady
 1ADfldNB9aQ scePktMgrPrepareUlpNtfPacket
 KXhNUtFALj4 scePktMgrPrepareUlpResPacket
 +235EcrmaJc scePktMgrRecvDeciPacket
@@ -22923,6 +22939,7 @@ EJQifjOp8s4 sceVideoOutRegisterBufferAttribute
 w3BY+tAEiQY sceVideoOutRegisterBuffers
 lCTCOogRbk0 sceVideoOutRegisterStereoBuffers
 H8teLntGkWs sceVideoOutRemoveBuffer
+zILy8t+5bPo sceVideoOutSetBlankAfterResume
 i6-sR91Wt-4 sceVideoOutSetBufferAttribute
 18NPivA-byc sceVideoOutSetDisplayEventPosition
 CBiu4mCE1DA sceVideoOutSetFlipRate
@@ -23293,6 +23310,7 @@ mm0znr-xjqI set_phys_fmem_limit
 vZMcAfsA31I setbuf
 2VRU7xiqLO8 setcontext
 35NoyMOtYpE SetDataFolder
+1kDK8-lzz1s setDecidBootEvf
 4oKwKmeOKjM setegid
 M4YYbSFfJ8g setenv
 koKFfS8dL4k setenv_np
@@ -23888,6 +23906,7 @@ YgZ6qvFH3QI vwscanf_s
 ldVb3lc75PE wait
 NKF4F8SQyx4 wait3
 UFKprwxNhT8 wait4
+faxKS9gtHr0 waitDecidBootEvf
 dTnYqqLIQ6c waitpid
 3Rhy2gXDhwc warn
 AqUBdZqHZi4 warnc
