@@ -20839,6 +20839,7 @@ F-iMNHd4L7I scePssSoundPlayerGetSurroundPan
 3Nm6tcgPCgQ scePssSoundPlayerSetSurroundPan
 mBrOTtvKHU0 scePssSoundPlayerStopEx
 YKu2Eub+j94 scePssSoundPlayerUserCreate
+lEIjSr7+QME scePssSoundSetSurroundPanSpeakerConfig
 7kXCiz3D0OU scePssThreadIsActive
 i1kREW2pchs scePthreadAtfork
 62KCwEMmzcM scePthreadAttrDestroy
@@ -22048,6 +22049,7 @@ aQwNhI19JpE sceTsStartFileStreaming
 buBHKGLpYr4 sceTsStopFileStreaming
 hs-OARoWdxo sceUlpMgrCloseAllConnectedClients
 ISoryBJKvl4 sceUlpMgrInit
+k8d54j+HQn4 sceUlpMgrInitDecidState
 rn7ot06ElIs sceUlpMgrRecv
 mH-YHAtaP7I sceUlpMgrRecvData
 OvsK57sLpQE sceUlpMgrRegisterProtocol
@@ -22059,9 +22061,11 @@ zuW6UxRHTxQ sceUlpMgrReqSuspend
 fDGYYXcby1w sceUlpMgrSendData
 4M7UYhGTlqk sceUlpMgrUnregisterProtocol
 T4WqXTOe+A4 sceUlpMgrVshFinalize
+zngUTKZc6FQ sceUlpMgrVshGetStatCmd
 w62wXXsQx5E sceUlpMgrVshInitialize
 IK1XJgSEKSc sceUlpMgrVshInstallCmd
 cVRZlC-iNk4 sceUlpMgrVshMountCmd
+Wfr3Ss7wSPg sceUlpMgrVshNextChunkCmd
 M7+3rTaF1Bk sceUlpMgrVshReadEvent
 VyxKS1qRxDk sceUlpMgrVshUninstallCmd
 40IZ5L7mLQo sceUlpMgrVshUnmountCmd
