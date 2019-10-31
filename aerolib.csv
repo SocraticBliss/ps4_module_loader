@@ -9563,6 +9563,7 @@ xh3OpSkf0l0 coil_popen
 2wDzNZ9oKro coil_raise
 06vOxgTjZhg coil_registry_get_int
 7LvuNzXfACY coil_registry_get_str
+x8tkTyIE2d4 coil_set_debugger_attached
 Crcf65Klvc4 coil_signal_semaphore
 NlcMaGX2z24 coil_wait_semaphore
 hDncsiAwE+I comm_init
@@ -11734,6 +11735,7 @@ NrX7r94WRds makeUlpNtfHdrNoFragment
 018Raq8Lamk makeUlpResHdr
 8MjsRSBicYc makeUlpResHdrNoFragment
 gQX+4GDQjpM malloc
+ECOPpUQEch0 malloc_check_memory_bounds
 J6FoFNydpFI malloc_finalize
 SlG1FN-y0N0 malloc_get_footer_value
 Nmezc1Lh7TQ malloc_get_malloc_state
@@ -13991,6 +13993,7 @@ Dutyk7ghYas mono_privileges_set_heap
 obG6QKZMh30 mono_privileges_start_init
 1-9PZ6MKKjo mono_profiler_coverage_get
 FwjRUuF9+B8 mono_profiler_events
+81hRRuj67UY mono_profiler_get_current_time
 JDqkg5ihzk0 mono_profiler_get_events
 ldLepR7R76Q mono_profiler_install
 L1b+hssANP8 mono_profiler_install_allocation
@@ -14107,6 +14110,9 @@ J0jU9Q3l+aI mono_shared_area_unload
 f6pcc3Oq-aA mono_shared_hashtable_destroy
 UDsn+mGEUFM mono_shared_hashtable_foreach
 D213b+fMrCc mono_shared_hashtable_foreach_remove
+sGSwMuEpFB8 mono_shared_hashtable_insert_replace
+XMh3kJRY714 mono_shared_hashtable_iter_init
+iQY7iS5UxOE mono_shared_hashtable_iter_next
 8J3ibSyXSGU mono_shared_hashtable_lookup
 Hrux++TH0pI mono_shared_hashtable_new
 SuUi5+0aDCI mono_shared_hashtable_new_full
@@ -19892,6 +19898,7 @@ WSQxnAVLKgw sceNpServerErrorJsonParse
 UbStlMKTBeU sceNpServerErrorJsonParseInit
 hbe+DdooIi4 sceNpServerErrorJsonParseMultiInit
 Kq+ftR9LHlE sceNpServiceChecker2IntAbortRequest
+si-TLaBGtdw sceNpServiceChecker2IntCheckServiceFlagArray
 IG1Kd+k6U3s sceNpServiceChecker2IntCreateRequest
 hBsBswrAiGM sceNpServiceChecker2IntDestroyRequest
 cvZrmlSlwn8 sceNpServiceChecker2IntFinalize
@@ -20840,6 +20847,7 @@ F-iMNHd4L7I scePssSoundPlayerGetSurroundPan
 3Nm6tcgPCgQ scePssSoundPlayerSetSurroundPan
 mBrOTtvKHU0 scePssSoundPlayerStopEx
 YKu2Eub+j94 scePssSoundPlayerUserCreate
+lEIjSr7+QME scePssSoundSetSurroundPanSpeakerConfig
 7kXCiz3D0OU scePssThreadIsActive
 i1kREW2pchs scePthreadAtfork
 62KCwEMmzcM scePthreadAttrDestroy
@@ -22049,6 +22057,7 @@ aQwNhI19JpE sceTsStartFileStreaming
 buBHKGLpYr4 sceTsStopFileStreaming
 hs-OARoWdxo sceUlpMgrCloseAllConnectedClients
 ISoryBJKvl4 sceUlpMgrInit
+k8d54j+HQn4 sceUlpMgrInitDecidState
 rn7ot06ElIs sceUlpMgrRecv
 mH-YHAtaP7I sceUlpMgrRecvData
 OvsK57sLpQE sceUlpMgrRegisterProtocol
@@ -22060,9 +22069,11 @@ zuW6UxRHTxQ sceUlpMgrReqSuspend
 fDGYYXcby1w sceUlpMgrSendData
 4M7UYhGTlqk sceUlpMgrUnregisterProtocol
 T4WqXTOe+A4 sceUlpMgrVshFinalize
+zngUTKZc6FQ sceUlpMgrVshGetStatCmd
 w62wXXsQx5E sceUlpMgrVshInitialize
 IK1XJgSEKSc sceUlpMgrVshInstallCmd
 cVRZlC-iNk4 sceUlpMgrVshMountCmd
+Wfr3Ss7wSPg sceUlpMgrVshNextChunkCmd
 M7+3rTaF1Bk sceUlpMgrVshReadEvent
 VyxKS1qRxDk sceUlpMgrVshUninstallCmd
 40IZ5L7mLQo sceUlpMgrVshUnmountCmd
