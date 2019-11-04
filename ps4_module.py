@@ -116,10 +116,10 @@ class Binary:
     
     def procomp(self, processor, pointer, til):
     
-        # Set Processor...
+        # Processor Type
         idc.set_processor_type(processor, SETPROC_LOADER)
         
-        # Set Compiler...
+        # Compiler Attributes
         idc.set_inf_attr(INF_COMPILER, COMP_GNU)
         idc.set_inf_attr(INF_MODEL, pointer)
         idc.set_inf_attr(INF_SIZEOF_BOOL, 0x1)
