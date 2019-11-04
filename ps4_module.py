@@ -1063,37 +1063,12 @@ def load_file(f, neflags, format):
     # Start Function
     idc.add_entry(ps.E_START_ADDR, ps.E_START_ADDR, 'start', True)
     
-    print('# Waiting for the AutoAnalyzer to Complete...')
-    idaapi.auto_wait()
-    
     # Set No Return for __stack_chk_fail...
     try:
         function = idc.get_name_ea_simple('__stack_chk_fail')
         function = idaapi.get_func(function)
         function.flags |= FUNC_NORET
         idaapi.update_func(function)
-    
-    except:
-        pass
-    
-    # Missed Function Creation...
-    try:
-        code = idaapi.get_segm_by_name('CODE')
-        
-        address = code.start_ea
-        end     = code.end_ea
-        
-        # Final Pass
-        print('# Performing Final Pass...')
-        while address < end:
-            address = idaapi.find_not_func(address, SEARCH_DOWN)
-            
-            if idaapi.is_unknown(idaapi.get_flags(address)):
-                idaapi.create_insn(address)
-            else:
-                idc.add_func(address)
-            
-            address += 4
     
     except:
         pass
