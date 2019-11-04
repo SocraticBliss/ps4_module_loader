@@ -682,7 +682,7 @@ class Relocation:
         
         # Rename the Real Function...
         idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
-        idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN)
+        idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
         try:
             import_node = idaapi.netnode(library, 0, True)
@@ -779,7 +779,7 @@ class Symbol:
         if self.VALUE > 0:
             idc.add_func(self.VALUE)
             idc.add_entry(self.VALUE, self.VALUE, function, True)
-            idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN)
+            idc.set_name(self.VALUE, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
             idc.set_cmt(address, '%s | %s' % (function, self.info()), False)
         
     
