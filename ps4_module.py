@@ -116,10 +116,10 @@ class Binary:
     
     def procomp(self, processor, pointer, til):
     
-        # Set Processor...
+        # Processor Type
         idc.set_processor_type(processor, SETPROC_LOADER)
         
-        # Set Compiler...
+        # Compiler Attributes
         idc.set_inf_attr(INF_COMPILER, COMP_GNU)
         idc.set_inf_attr(INF_MODEL, pointer)
         idc.set_inf_attr(INF_SIZEOF_BOOL, 0x1)
@@ -139,7 +139,7 @@ class Binary:
         idc.set_inf_attr(INF_FILETYPE, FT_ELF)
         
         # Analysis Flags
-        idc.set_inf_attr(INF_AF, 0xC7FFBFD7)
+        idc.set_inf_attr(INF_AF, 0xDFFFFFDF)
         
         # Return Bitsize
         return self.EI_CLASS
@@ -691,7 +691,7 @@ class Relocation:
         
         try:
             import_node = idaapi.netnode(library, 0, True)
-            import_node.supset(ea2node(self.OFFSET), function)
+            import_node.supset(ea2node(real), function)
         
             # Requires customized loader.i / ida_loader.py(d)
             idaapi.import_module(library, None, import_node.index(), None, 'linux')
@@ -800,6 +800,17 @@ def accept_file(f, n):
     
     except:
         pass
+
+# Hopefully find functions...
+def function_search(mode, address, end, search):
+
+    while address < end:
+        address = idaapi.find_binary(address, end, search, 0x10, SEARCH_DOWN)
+        if address < idaapi.get_segm_by_name('CODE').end_ea:
+            address += mode
+            idaapi.do_unknown(address, 0)
+            idaapi.add_func(address, BADADDR)
+            address += 1
 
 # Load NID Library...
 def load_nids(location, nids = {}):
@@ -1075,6 +1086,65 @@ def load_file(f, neflags, format):
         function.flags |= FUNC_NORET
         idaapi.update_func(function)
     
+    except:
+        pass
+    
+    # Pablo's search for the missing functions
+    try:
+        base = idaapi.get_segm_by_name('CODE').start_ea
+        end  = idaapi.get_segm_by_name('CODE').end_ea
+        
+        print('# Searching for functions\n# Default patterns set')
+        function_search(0, base, 0x10, '55 48 89') # For sub_0
+        function_search(2, base, end, '90 90 55 48 ??')
+        function_search(2, base, end, 'c3 90 55 48 ??')
+        function_search(2, base, end, '66 90 55 48 ??')
+        function_search(2, base, end, 'c9 c3 55 48 ??')
+        function_search(2, base, end, '0f 0b 55 48 ??')
+        function_search(2, base, end, 'eb ?? 55 48 ??')
+        function_search(2, base, end, '5d c3 55 48 ??')
+        function_search(2, base, end, '5b c3 55 48 ??')
+        function_search(2, base, end, '90 90 55 41 ?? 41 ??')
+        function_search(2, base, end, '66 90 48 81 EC ?? 00 00 00')
+        function_search(2, base, end, '0F 0B 48 89 9D ?? ?? FF FF 49 89')
+        function_search(2, base, end, '90 90 53 4C 8B 54 24 20')
+        function_search(2, base, end, '90 90 55 41 56 53')
+        function_search(2, base, end, '90 90 53 48 89')
+        function_search(2, base, end, '90 90 41 ?? 41 ??')
+        function_search(3, base, end, '0f 0b 90 55 48 ??')
+        function_search(3, base, end, 'eb ?? 90 55 48 ??')
+        function_search(3, base, end, '41 5f c3 55 48 ??')
+        function_search(3, base, end, '41 5c c3 55 48 ??')
+        function_search(3, base, end, '31 c0 c3 55 48 ??')
+        function_search(3, base, end, '41 5d c3 55 48 ??')
+        function_search(3, base, end, '41 5e c3 55 48 ??')
+        function_search(3, base, end, '66 66 90 55 48 ??')
+        function_search(3, base, end, '0f 1f 00 55 48 ??')
+        function_search(3, base, end, '41 ?? C3 53 48')
+        function_search(3, base, end, '0F 1F 00 48 81 EC ?? 00 00 00')
+        function_search(4, base, end, '0f 1f 40 00 55 48 ??')
+        function_search(4, base, end, '0F 1F 40 00 48 81 EC ?? 00 00 00')
+        function_search(5, base, end, 'e9 ?? ?? ?? ?? 55 48 ??')
+        function_search(5, base, end, 'e8 ?? ?? ?? ?? 55 48 ??')
+        function_search(5, base, end, '48 83 c4 ?? c3 55 48 ??')
+        function_search(5, base, end, '0f 1f 44 00 00 55 48 ??')
+        function_search(5, base, end, '0f 1f 44 00 00 48 81 EC ?? 00 00 00')
+        function_search(6, base, end, 'e9 ?? ?? ?? ?? 90 55 48 ??')
+        function_search(6, base, end, 'e8 ?? ?? ?? ?? 90 55 48 ??')
+        function_search(6, base, end, '66 0f 1f 44 00 00 55 48 ??')
+        function_search(7, base, end, '0f 1f 80 00 00 00 00 55 48 ??')
+        function_search(8, base, end, '0f 1f 84 00 00 00 00 00 55 48 ??')
+        function_search(8, base, end, 'C3 0F 1F 80 00 00 00 00 48')
+        function_search(8, base, end, '0F 1F 84 00 00 00 00 00 53 48 83 EC')
+        print('# Special cases patterns set')
+        function_search(13, base, end, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        function_search(13, base, end, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 55') #fix for include function inside another function (no xrefs)
+        function_search(17, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        function_search(19, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        function_search(19, base, end, 'E8 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        function_search(20, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        function_search(20, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+
     except:
         pass
     
