@@ -116,10 +116,10 @@ class Binary:
     
     def procomp(self, processor, pointer, til):
     
-        # Processor Type
+        # Set Processor...
         idc.set_processor_type(processor, SETPROC_LOADER)
         
-        # Compiler Attributes
+        # Set Compiler...
         idc.set_inf_attr(INF_COMPILER, COMP_GNU)
         idc.set_inf_attr(INF_MODEL, pointer)
         idc.set_inf_attr(INF_SIZEOF_BOOL, 0x1)
@@ -673,16 +673,21 @@ class Relocation:
         
         # Function Name (Offset) == Symbol Value + AddEnd (S + A)
         # Library Name  (Offset) == Symbol Value (S)
+        real = idc.get_qword(self.OFFSET)
+        idc.add_func(real)
+        
+        # Hacky way to determine if this is the real function...
+        real -= 0x6 if idc.print_insn_mnem(real) == 'push' else 0x0
+        
         # Resolve the NID...
-        idc.set_cmt(idc.get_qword(self.OFFSET) - 0x6, 'NID: ' + symbol, False)
+        idc.set_cmt(real, 'NID: ' + symbol, False)
         function = nids.get(symbol[:11], symbol)
         
         # Rename the Jump Function...
         idc.set_name(self.OFFSET, '__imp_' + function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
         # Rename the Real Function...
-        idc.add_func(idc.get_qword(self.OFFSET) - 0x6)
-        idc.set_name(idc.get_qword(self.OFFSET) - 0x6, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
+        idc.set_name(real, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
         try:
             import_node = idaapi.netnode(library, 0, True)
