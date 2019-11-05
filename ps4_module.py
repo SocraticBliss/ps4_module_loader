@@ -116,10 +116,10 @@ class Binary:
     
     def procomp(self, processor, pointer, til):
     
-        # Set Processor...
+        # Processor Type
         idc.set_processor_type(processor, SETPROC_LOADER)
         
-        # Set Compiler...
+        # Compiler Attributes
         idc.set_inf_attr(INF_COMPILER, COMP_GNU)
         idc.set_inf_attr(INF_MODEL, pointer)
         idc.set_inf_attr(INF_SIZEOF_BOOL, 0x1)
@@ -139,7 +139,7 @@ class Binary:
         idc.set_inf_attr(INF_FILETYPE, FT_ELF)
         
         # Analysis Flags
-        idc.set_inf_attr(INF_AF, 0xC7FFFFD7)
+        idc.set_inf_attr(INF_AF, 0xC7FFBFD7)
         
         # Return Bitsize
         return self.EI_CLASS
@@ -1063,37 +1063,12 @@ def load_file(f, neflags, format):
     # Start Function
     idc.add_entry(ps.E_START_ADDR, ps.E_START_ADDR, 'start', True)
     
-    print('# Waiting for the AutoAnalyzer to Complete...')
-    idaapi.auto_wait()
-    
     # Set No Return for __stack_chk_fail...
     try:
         function = idc.get_name_ea_simple('__stack_chk_fail')
         function = idaapi.get_func(function)
         function.flags |= FUNC_NORET
         idaapi.update_func(function)
-    
-    except:
-        pass
-    
-    # Missed Function Creation...
-    try:
-        code = idaapi.get_segm_by_name('CODE')
-        
-        address = code.start_ea
-        end     = code.end_ea
-        
-        # Final Pass
-        print('# Performing Final Pass...')
-        while address < end:
-            address = idaapi.find_not_func(address, SEARCH_DOWN)
-            
-            if idaapi.is_unknown(idaapi.get_flags(address)):
-                idaapi.create_insn(address)
-            else:
-                idc.add_func(address)
-            
-            address += 4
     
     except:
         pass
