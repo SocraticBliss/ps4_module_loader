@@ -139,7 +139,7 @@ class Binary:
         idc.set_inf_attr(INF_FILETYPE, FT_ELF)
         
         # Analysis Flags
-        idc.set_inf_attr(INF_AF, 0xDFFFFFDF)
+        idc.set_inf_attr(INF_AF, 0xDFFFBFDF)
         
         # Return Bitsize
         return self.EI_CLASS
