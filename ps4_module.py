@@ -623,7 +623,10 @@ class Relocation:
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
             self.INFO &= 0xFF
-            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
+            if self.INDEX == 1:
+                symbol = next(value for key, value in enumerate(symbols) if key + 1 == self.INDEX)[1]
+            else:
+                symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
         else:
             self.INDEX = 0            
         
@@ -649,7 +652,10 @@ class Relocation:
         if self.INFO > Relocation.R_X86_64_ORBIS_GOTPCREL_LOAD:
             self.INDEX = self.INFO >> 32
             self.INFO &= 0xFF
-            symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
+            if self.INDEX == 1:
+                symbol = next(value for key, value in enumerate(symbols) if key + 1 == self.INDEX)[1]
+            else:
+                symbol = next(value for key, value in enumerate(symbols) if key + 2 == self.INDEX)[1]
         else:
             self.INDEX = 0
         
