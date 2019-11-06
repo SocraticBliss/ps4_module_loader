@@ -138,8 +138,10 @@ class Binary:
         # File Type
         idc.set_inf_attr(INF_FILETYPE, FT_ELF)
         
-        # Analysis Flags
-        idc.set_inf_attr(INF_AF, 0xDFFFBFDF)
+        # Analysis Flags 
+        # (unchecked) Delete instructions with no xrefs
+        # (unchecked) Coagulate data segments in the final pass
+        idc.set_inf_attr(INF_AF, 0xDFFFFFDF)
         
         # Return Bitsize
         return self.EI_CLASS
