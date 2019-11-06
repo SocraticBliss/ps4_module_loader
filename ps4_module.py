@@ -803,17 +803,6 @@ def accept_file(f, n):
     except:
         pass
 
-# Hopefully find functions...
-def function_search(mode, address, end, search):
-
-    while address < end:
-        address = idaapi.find_binary(address, end, search, 0x10, SEARCH_DOWN)
-        if address < idaapi.get_segm_by_name('CODE').end_ea:
-            address += mode
-            idaapi.do_unknown(address, 0)
-            idaapi.add_func(address, BADADDR)
-            address += 1
-
 # Load NID Library...
 def load_nids(location, nids = {}):
 
@@ -837,6 +826,28 @@ def load_nids(location, nids = {}):
             print('Ok, no NIDs for you!')
     
     return nids
+
+# Pablo's IDC
+def pablo(mode, address, end, search):
+
+    while address < end:
+        address = idaapi.find_binary(address, end, search, 0x10, SEARCH_DOWN)
+        
+        if address > idaapi.get_segm_by_name('CODE').end_ea:
+            offset = address - 0x3
+            
+            if idaapi.isUnknown(idaapi.getFlags(offset)):
+                if idaapi.get_qword(offset) <= end:
+                    idaapi.create_data(offset, FF_QWORD, 0x8, BADNODE)
+            
+            address = offset + 4
+        
+        else:
+            address += mode
+            idaapi.do_unknown(address, 0)
+            idaapi.create_insn(address)
+            idaapi.add_func(address, BADADDR)
+            address += 1
 
 # Load Input Binary...
 def load_file(f, neflags, format):
@@ -873,6 +884,7 @@ def load_file(f, neflags, format):
             
             # Process Dynamic Segment....
             elif segm.name() == 'DYNAMIC':
+                code = idaapi.get_segm_by_name('CODE')
             
                 stubs = {}
                 modules = {}
@@ -1091,61 +1103,63 @@ def load_file(f, neflags, format):
     except:
         pass
     
-    # Pablo's search for the missing functions
+    # --------------------------------------------------------------------------------------------------------
+    # Pablo's IDC
     try:
-        base = idaapi.get_segm_by_name('CODE').start_ea
-        end  = idaapi.get_segm_by_name('CODE').end_ea
+        print('# Processing Pablo\'s Push IDC...')
         
-        print('# Searching for functions\n# Default patterns set')
-        function_search(0, base, 0x10, '55 48 89') # For sub_0
-        function_search(2, base, end, '90 90 55 48 ??')
-        function_search(2, base, end, 'c3 90 55 48 ??')
-        function_search(2, base, end, '66 90 55 48 ??')
-        function_search(2, base, end, 'c9 c3 55 48 ??')
-        function_search(2, base, end, '0f 0b 55 48 ??')
-        function_search(2, base, end, 'eb ?? 55 48 ??')
-        function_search(2, base, end, '5d c3 55 48 ??')
-        function_search(2, base, end, '5b c3 55 48 ??')
-        function_search(2, base, end, '90 90 55 41 ?? 41 ??')
-        function_search(2, base, end, '66 90 48 81 EC ?? 00 00 00')
-        function_search(2, base, end, '0F 0B 48 89 9D ?? ?? FF FF 49 89')
-        function_search(2, base, end, '90 90 53 4C 8B 54 24 20')
-        function_search(2, base, end, '90 90 55 41 56 53')
-        function_search(2, base, end, '90 90 53 48 89')
-        function_search(2, base, end, '90 90 41 ?? 41 ??')
-        function_search(3, base, end, '0f 0b 90 55 48 ??')
-        function_search(3, base, end, 'eb ?? 90 55 48 ??')
-        function_search(3, base, end, '41 5f c3 55 48 ??')
-        function_search(3, base, end, '41 5c c3 55 48 ??')
-        function_search(3, base, end, '31 c0 c3 55 48 ??')
-        function_search(3, base, end, '41 5d c3 55 48 ??')
-        function_search(3, base, end, '41 5e c3 55 48 ??')
-        function_search(3, base, end, '66 66 90 55 48 ??')
-        function_search(3, base, end, '0f 1f 00 55 48 ??')
-        function_search(3, base, end, '41 ?? C3 53 48')
-        function_search(3, base, end, '0F 1F 00 48 81 EC ?? 00 00 00')
-        function_search(4, base, end, '0f 1f 40 00 55 48 ??')
-        function_search(4, base, end, '0F 1F 40 00 48 81 EC ?? 00 00 00')
-        function_search(5, base, end, 'e9 ?? ?? ?? ?? 55 48 ??')
-        function_search(5, base, end, 'e8 ?? ?? ?? ?? 55 48 ??')
-        function_search(5, base, end, '48 83 c4 ?? c3 55 48 ??')
-        function_search(5, base, end, '0f 1f 44 00 00 55 48 ??')
-        function_search(5, base, end, '0f 1f 44 00 00 48 81 EC ?? 00 00 00')
-        function_search(6, base, end, 'e9 ?? ?? ?? ?? 90 55 48 ??')
-        function_search(6, base, end, 'e8 ?? ?? ?? ?? 90 55 48 ??')
-        function_search(6, base, end, '66 0f 1f 44 00 00 55 48 ??')
-        function_search(7, base, end, '0f 1f 80 00 00 00 00 55 48 ??')
-        function_search(8, base, end, '0f 1f 84 00 00 00 00 00 55 48 ??')
-        function_search(8, base, end, 'C3 0F 1F 80 00 00 00 00 48')
-        function_search(8, base, end, '0F 1F 84 00 00 00 00 00 53 48 83 EC')
-        print('# Special cases patterns set')
-        function_search(13, base, end, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 48')
-        function_search(13, base, end, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 55') #fix for include function inside another function (no xrefs)
-        function_search(17, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 48')
-        function_search(19, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
-        function_search(19, base, end, 'E8 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
-        function_search(20, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
-        function_search(20, base, end, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        # Script 1) Push it real good...
+        # Default patterns set
+        pablo(0, code.start_ea, 0x10, '55 48 89')
+        pablo(2, code.start_ea, code.end_ea, '90 90 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, 'C3 90 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, '66 90 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, 'C9 C3 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, '0F 0B 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, 'EB ?? 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, '5D C3 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, '5B C3 55 48 ??')
+        pablo(2, code.start_ea, code.end_ea, '90 90 55 41 ?? 41 ??')
+        pablo(2, code.start_ea, code.end_ea, '66 90 48 81 EC ?? 00 00 00')
+        pablo(2, code.start_ea, code.end_ea, '0F 0B 48 89 9D ?? ?? FF FF 49 89')
+        pablo(2, code.start_ea, code.end_ea, '90 90 53 4C 8B 54 24 20')
+        pablo(2, code.start_ea, code.end_ea, '90 90 55 41 56 53')
+        pablo(2, code.start_ea, code.end_ea, '90 90 53 48 89')
+        pablo(2, code.start_ea, code.end_ea, '90 90 41 ?? 41 ??')
+        pablo(3, code.start_ea, code.end_ea, '0F 0B 90 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, 'EB ?? 90 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '41 5F C3 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '41 5C C3 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '31 C0 C3 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '41 5D C3 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '41 5E C3 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '66 66 90 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '0F 1F 00 55 48 ??')
+        pablo(3, code.start_ea, code.end_ea, '41 ?? C3 53 48')
+        pablo(3, code.start_ea, code.end_ea, '0F 1F 00 48 81 EC ?? 00 00 00')
+        pablo(4, code.start_ea, code.end_ea, '0F 1F 40 00 55 48 ??')
+        pablo(4, code.start_ea, code.end_ea, '0F 1F 40 00 48 81 EC ?? 00 00 00')
+        pablo(5, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 55 48 ??')
+        pablo(5, code.start_ea, code.end_ea, 'E8 ?? ?? ?? ?? 55 48 ??')
+        pablo(5, code.start_ea, code.end_ea, '48 83 C4 ?? C3 55 48 ??')
+        pablo(5, code.start_ea, code.end_ea, '0F 1F 44 00 00 55 48 ??')
+        pablo(5, code.start_ea, code.end_ea, '0F 1F 44 00 00 48 81 EC ?? 00 00 00')
+        pablo(6, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 90 55 48 ??')
+        pablo(6, code.start_ea, code.end_ea, 'E8 ?? ?? ?? ?? 90 55 48 ??')
+        pablo(6, code.start_ea, code.end_ea, '66 0F 1F 44 00 00 55 48 ??')
+        pablo(7, code.start_ea, code.end_ea, '0F 1F 80 00 00 00 00 55 48 ??')
+        pablo(8, code.start_ea, code.end_ea, '0F 1F 84 00 00 00 00 00 55 48 ??')
+        pablo(8, code.start_ea, code.end_ea, 'C3 0F 1F 80 00 00 00 00 48')
+        pablo(8, code.start_ea, code.end_ea, '0F 1F 84 00 00 00 00 00 53 48 83 EC')
+        
+        # Special cases patterns set
+        pablo(13, code.start_ea, code.end_ea, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        pablo(13, code.start_ea, code.end_ea, 'C3 90 90 90 90 90 90 90 90 90 90 90 90 55')
+        pablo(17, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        pablo(19, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        pablo(19, code.start_ea, code.end_ea, 'E8 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        pablo(20, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
+        pablo(20, code.start_ea, code.end_ea, 'E9 ?? ?? ?? ?? 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 48')
 
     except:
         pass
