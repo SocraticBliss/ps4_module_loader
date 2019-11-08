@@ -64,7 +64,7 @@ class Binary:
     
         f.seek(0)
         
-        self.EI_MAGIC         = struct.unpack('<I', f.read(4))[0]
+        self.EI_MAGIC         = struct.unpack('4s', f.read(4))[0]
         self.EI_CLASS         = struct.unpack('<B', f.read(1))[0]
         self.EI_DATA          = struct.unpack('<B', f.read(1))[0]
         self.EI_VERSION       = struct.unpack('<B', f.read(1))[0]
@@ -87,6 +87,10 @@ class Binary:
         self.E_SHT_SIZE       = struct.unpack('<H', f.read(2))[0]
         self.E_SHT_COUNT      = struct.unpack('<H', f.read(2))[0]
         self.E_SHT_INDEX      = struct.unpack('<H', f.read(2))[0]
+        
+        # Prevent Other Binaries
+        if self.E_MACHINE != Binary.EM_X86_64:
+            return None
         
         f.seek(self.E_PHT_OFFSET)
         
@@ -800,14 +804,15 @@ class Symbol:
 # PROGRAM START
 
 # Open File Dialog...
-def accept_file(f, n):
+def accept_file(f, filename):
 
-    try:
-        if not isinstance(n, (int, long)) or n == 0:
-            return 'PS4 - ' + Binary(f).type() if f.read(4) == '\x7FELF' else 0
+    ps4 = Binary(f)
     
-    except:
-        pass
+    # No Kernels
+    if ps4.E_MACHINE == Binary.EM_X86_64 and ps4.E_START_ADDR < 0xFFFFFFFF82200000:
+        return { 'format': 'PS4 - ' + ps4.type(),
+                 'options': ACCEPT_FIRST }
+    return 0
 
 # Load NID Library...
 def load_nids(location, nids = {}):
@@ -859,16 +864,16 @@ def pablo(mode, address, end, search):
 def load_file(f, neflags, format):
 
     print('# PS4 Module Loader')
-    ps = Binary(f)
+    ps4 = Binary(f)
     
     # PS4 Processor, Compiler, Library
-    bitness = ps.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'gnulnx_x64')
+    bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'gnulnx_x64')
     
     # Load Aerolib...
     nids = load_nids(idc.idadir() + '/loaders/aerolib.csv')
     
     # Segment Loading...
-    for segm in ps.E_SEGMENTS:
+    for segm in ps4.E_SEGMENTS:
     
         # Process Loadable Segments...
         if segm.name() in ['CODE', 'DATA', 'SCE_RELRO', 'DYNAMIC', 'GNU_EH_FRAME', 'SCE_DYNLIBDATA']:
@@ -1097,7 +1102,7 @@ def load_file(f, neflags, format):
             
     
     # Start Function
-    idc.add_entry(ps.E_START_ADDR, ps.E_START_ADDR, 'start', True)
+    idc.add_entry(ps4.E_START_ADDR, ps4.E_START_ADDR, 'start', True)
     
     # Set No Return for __stack_chk_fail...
     try:
