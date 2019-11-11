@@ -27789,6 +27789,7 @@ PPCqsD8B5uM sceHmdInternalGetDeviceStatus
 iINSFzCIaB8 sceHmdInternalGetHmuOpticalParam
 UhFPniZvm8U sceHmdInternalGetHmuSerialNumber
 9exeDpk7JU8 sceHmdInternalGetIPD
+yNtYRsxZ6-A sceHmdInternalGetIpdSettingEnableForSystemService
 EKn+IFVsz0M sceHmdInternalGetPuBuildNumber
 AxQ6HtktYfQ sceHmdInternalGetPuPositionParam
 ynKv9QCSbto sceHmdInternalGetPuRevision
@@ -29217,8 +29218,12 @@ g4DKkzV2qC4 sceNetBandwidthControlSetIfParam
 bErx49PgxyY sceNetBind
 XtClSOC1xcU sceNetBweCheckCallbackIpcInt
 YALqoY4aeY0 sceNetBweClearEventIpcInt
+ouyROWhGUbM sceNetBweFinishInternetConnectionTestIpcInt
 G4vltQ0Vs+0 sceNetBweGetInfoIpcInt
 GqETL5+INhU sceNetBweRegisterCallbackIpcInt
+mEUt-phGd5E sceNetBweSetInternetConnectionTestResultIpcInt
+pQLJV5SEAqk sceNetBweStartInternetConnectionTestBandwidthTestIpcInt
+c+aYh130SV0 sceNetBweStartInternetConnectionTestIpcInt
 0lViPaTB-R8 sceNetBweUnregisterCallbackIpcInt
 eyLyLJrdEOU sceNetClearDnsCache
 Ea2NaVMQNO8 sceNetConfigAddArp
@@ -29289,6 +29294,8 @@ IkBCxG+o4Nk sceNetConfigWlanInfraLeave
 U1q6DrPbY6k sceNetConfigWlanSetDeviceConfig
 OXXX4mUk3uk sceNetConnect
 lDTIbqNs0ps sceNetControl
+R-4a9Yh4tG8 sceNetCtlApAppInitWpaKey
+5oLJoOVBbGU sceNetCtlApAppInitWpaKeyForQa
 YtTwZ3pa4aQ sceNetCtlApAppStartWithRetry
 sgWeDrEt24U sceNetCtlApAppStartWithRetryPid
 19Ec7WkMFfQ sceNetCtlApCheckCallback
@@ -29330,7 +29337,9 @@ saYB0b2ZWtI sceNetCtlClearEventForNpToolkit
 HCD46HVTyQg sceNetCtlConnectConfIpcInt
 ID+Gq3Ddzbg sceNetCtlConnectIpcInt
 aPpic8K75YA sceNetCtlConnectWithRetryIpcInt
+9y4IcsJdTCc sceNetCtlDisableBandwidthManagementIpcInt
 qOefcpoSs0k sceNetCtlDisconnectIpcInt
+x9bSmRSE+hc sceNetCtlEnableBandwidthManagementIpcInt
 eCUIlA2t5CE sceNetCtlGetBandwidthInfoIpcInt
 2EfjPXVPk3s sceNetCtlGetEtherLinkMode
 teuK4QnJTGg sceNetCtlGetIfStat
@@ -29339,6 +29348,7 @@ xstcTqAhTys sceNetCtlGetInfoIpcInt
 Jy1EO5GdlcM sceNetCtlGetInfoV6
 JO4yuTuMoKI sceNetCtlGetNatInfo
 x+cnsAxKSHo sceNetCtlGetNatInfoIpcInt
+hhTsdv99azU sceNetCtlGetNetEvConfigInfoIpcInt
 0cBgduPRR+M sceNetCtlGetResult
 NEtnusbZyAs sceNetCtlGetResultIpcInt
 H5yARg37U5g sceNetCtlGetResultV6
@@ -29350,6 +29360,7 @@ gvnJPMkSoAY sceNetCtlGetStateIpcInt
 +lxqIKeU9UY sceNetCtlGetStateV6
 BXW9b3R1Nw4 sceNetCtlGetWifiType
 gky0+oaNM4k sceNetCtlInit
+YtAnCkTR0K4 sceNetCtlIsBandwidthManagementEnabledIpcInt
 UJ+Z7Q+4ck0 sceNetCtlRegisterCallback
 WRvDk2syatE sceNetCtlRegisterCallbackForLibIpcInt
 wIsKy+TfeLs sceNetCtlRegisterCallbackForNpToolkit
