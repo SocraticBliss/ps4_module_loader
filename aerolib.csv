@@ -845,6 +845,7 @@ pCWh67X1PHU _Mbcurmax
 wKsLxRq5+fg _Mbstate
 sij3OtJpHFc _Mbtowc
 -9SIhUr4Iuo _Mbtowcx
+qG35lhqoJnE _mono_register_opcode_emulation
 VYQwFs4CC4Y _Mtx_current_owns
 5Lf51jvohTQ _Mtx_destroy
 YaHc3GS7y7g _Mtx_init
@@ -3280,9 +3281,11 @@ gY1gQXkAUS8 _ZN3sce2np14HttpConnectionC2EP16SceNpAllocatorEx
 vnZZHHKamgw _ZN3sce2np14HttpConnectionD0Ev
 OkLAycBUJfs _ZN3sce2np14HttpConnectionD1Ev
 5OXqH8ACXSE _ZN3sce2np14HttpConnectionD2Ev
+mASC9qTNl3g _ZN3sce2np14JsonDocBuilder10GetBufSizeEv
 PYBehFWVd60 _ZN3sce2np14JsonDocBuilder12BuildBufSizeEv
 cLdoHqi5Ezg _ZN3sce2np14JsonDocBuilder16EscapeJsonStringEPKcPcmPm
 V5xX2eroaWY _ZN3sce2np14JsonDocBuilder23EscapeJsonStringBufSizeEPKc
+ESX8af0NRuU _ZN3sce2np14JsonDocBuilder27GetEscapedJsonStringBufSizeEPKc
 irex3q-O6po _ZN3sce2np14JsonDocBuilder5BuildEPcmPm
 8pSX4XvDgjc _ZN3sce2np14JsonDocBuilderC1EPKNS0_9JsonValueE
 ikFI73f3hP4 _ZN3sce2np14JsonDocBuilderC1ERKNS0_9JsonValueE
@@ -3663,6 +3666,10 @@ QQCqBHk79sI _ZN3sce2npneERKNS0_8NpCommIdES3_
 WJTGKfpoa1Q _ZN3sce3pss4core14IntHandleTable13NextIntHandleEv
 X6AKrGoJOU0 _ZN3sce3pss4core14IntHandleTable5mutexE
 2+XEVHKBMuY _ZN3sce3pss4core16InitializeCsharpEPK19ScePsmConfiguration
+k0halcNLNiQ _ZN3sce3pss4core5audio11SoundPlayerC1EPNS2_5SoundEj
+s57NRP+x7TU _ZN3sce3pss4core5audio11SoundPlayerC2EPNS2_5SoundEj
+yfB+iNO-SPA _ZN3sce3pss4core7imaging4impl5Image9SaveAsJpgEPKcPKvjRKNS3_11ImageExtentENS3_9ImageModeEjbPNS1_6memory13HeapAllocatorEi
+pAw3pEnX+cg _ZN3sce3pss4core7imaging4impl8ImageJpg9SaveAsJpgEPKcPKvjRKNS3_11ImageExtentENS3_9ImageModeEjbPNS1_6memory13HeapAllocatorEi
 M+n8OTEs3zY _ZN3sce3pss4core8graphics16InitializeCsharpEPK19ScePsmConfiguration
 LA2-aiER7co _ZN3sce3pss4core8graphics6OpenGL10SetTextureEPNS2_7TextureE
 nbpwDxSzw68 _ZN3sce3pss4core8graphics6OpenGL20GetTextureFormatTypeENS2_11PixelFormatE
@@ -19329,6 +19336,7 @@ xh3OpSkf0l0 coil_popen
 7LvuNzXfACY coil_registry_get_str
 x8tkTyIE2d4 coil_set_debugger_attached
 Eia04SHhxa0 coil_set_debugger_port
+f6nvFYiK3pA coil_set_homedir
 SyNGim8sCDQ coil_set_keepsocket
 Crcf65Klvc4 coil_signal_semaphore
 NlcMaGX2z24 coil_wait_semaphore
@@ -19638,6 +19646,7 @@ ef6LHi9kFVA DTLSv1_client_method
 znTrJH9b2h8 DTLSv1_server_method
 iiQjzvfWDq0 dup
 wdUufa9g-D8 dup2
+Ej2QCEJXBec dvdAuthInitialize
 EvvQwl+bIv4 DvdMac
 6eh9QGpaRWw dynlib_get_obj_member
 qBVx0vmleoc EC_KEY_free
@@ -21390,6 +21399,7 @@ PnEf59WpcxE jinit_memory_mgr
 zcYxoKYeQSM jinit_merged_upsampler
 39I2tW21-Kk jinit_upsampler
 0qMyjZaf2ew jit_area
+FafaS6YYcI0 jit_info_table_new
 QdE7Arjzxos jn
 M5KJmq-gKM8 jnf
 gcreMGwhTaY jpeg_abort
@@ -21863,6 +21873,7 @@ oWX083a+4YM mono_allocator_memdup
 rfYnuMJmVOk mono_allocator_stats
 L4BRUCADoMQ mono_allocator_strdup
 FBUmWqGJHs8 mono_allocator_strdup_printf
+yzwDZ2BtHm0 mono_amd64_have_tls_get
 RkSFw3znsvI mono_aot_file_info
 6t5G5dYpMVg mono_aot_get_method
 7-xmQEeX5Ck mono_aot_I18N_CJKjit_code_end
@@ -23669,6 +23680,7 @@ XdqOC4boOsU mono_gc_register_finalizer_callbacks
 fFIgneq4xtY mono_gc_register_root
 w+Ln0G-V+0s mono_gc_register_root_wbarrier
 2DGBAtaGQKc mono_gc_set_heap_size_limit
+LeU-8RZY5cA mono_gc_set_write_barrier
 eIREyQGh+gs mono_gc_toggleref_add
 VwMs8W4zc7k mono_gc_toggleref_register_callback
 7-RvuFg4OzY mono_gc_wait_for_bridge_processing
@@ -24153,6 +24165,8 @@ WqHfqjSXV0k mono_set_dirs
 j-4S7wJkl-w mono_set_hazard_table
 yO4Azml3bts mono_set_is_debugger_attached
 BeuQ-Tiwy6Y mono_set_jit_tls_offset
+-HnJLYY5Qbo mono_set_lmf_addr_tls_offset
+J6W0p3ZMQKs mono_set_lmf_tls_offset
 lZ8qVuIIn-w mono_set_rootdir
 FYNb0UsK7bo mono_set_signal_chaining
 xh9-wUa4fv8 mono_sgen_set_thread_type
