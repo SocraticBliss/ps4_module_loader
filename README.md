@@ -20,8 +20,9 @@ Extra Special Thanks for telling me my program sucks...
 
 # Installation
 1) Extract the **python** directory into your IDA directory (overwite the files when prompted)
-2) Place the **ps4_module.py** and **aerolib.csv** files in your IDA's **loaders** directory
-3) **Optional:** Install the latest https://github.com/SocraticBliss/ps4_name2nid
+2) Extract the **til** directory into your IDA directory
+3) Place the **ps4_module.py** and **aerolib.csv** files in your IDA's **loaders** directory
+4) **Optional:** Install the latest https://github.com/SocraticBliss/ps4_name2nid
 
 # Usage
 1) Load a PS4 Module file (.prx, .sprx, .elf, .self)
