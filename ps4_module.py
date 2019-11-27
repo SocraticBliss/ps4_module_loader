@@ -864,7 +864,7 @@ def load_file(f, neflags, format):
     ps4 = Binary(f)
     
     # PS4 Processor, Compiler, Library
-    bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'ps4module')
+    bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'ps4_errno_700')
     
     # Load Aerolib...
     nids = load_nids(idc.idadir() + '/loaders/aerolib.csv')
