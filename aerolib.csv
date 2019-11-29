@@ -19649,6 +19649,7 @@ znTrJH9b2h8 DTLSv1_server_method
 iiQjzvfWDq0 dup
 wdUufa9g-D8 dup2
 Ej2QCEJXBec dvdAuthInitialize
+ZzaGM24XNFI dvdAuthFinalize
 EvvQwl+bIv4 DvdMac
 6eh9QGpaRWw dynlib_get_obj_member
 qBVx0vmleoc EC_KEY_free
@@ -28121,6 +28122,7 @@ E+dPfjeQLHI sceHmdReprojectionSetDisplayBuffers
 LjdLRysHU6Y sceHmdReprojectionSetOutputMinColor
 knyIhlkpLgE sceHmdReprojectionSetUserEventEnd
 7as0CjXW1B8 sceHmdReprojectionSetUserEventStart
+ro1JFV7JR+E sceHmdReprojectionSetUserEventToStart
 dntZTJ7meIU sceHmdReprojectionStart
 q3e8+nEguyE sceHmdReprojectionStart2dVr
 RrvyU1pjb9A sceHmdReprojectionStartCapture
@@ -29227,6 +29229,7 @@ EUmWuIWWTvg sceMbusDebugSetApplicationFocusByAppId
 0vAuFLtXp10 sceMbusDebugSetAppModuleFocus
 uFUnPAXlyuw sceMbusDebugSetCameraAppModuleFocus
 sMW2cWXt-yk sceMbusDebugSetControllerFocusByAppId
+po33migRv1I sceMbusDebugSetOtherProcessExcludedAction
 FA-B27CW4RQ sceMbusDebugSetPriority
 wpMHmauFaok sceMbusDebugStartApplication
 ie4A5lHoO8U sceMbusDebugStartApplication2
@@ -30734,6 +30737,7 @@ WdCUUJLQodM sceNpTrophySystemGetDbgParam
 4QYFwC7tn4U sceNpTrophySystemGetDbgParamInt
 OcllHFFcQkI sceNpTrophySystemGetGroupIcon
 tQ3tXfVZreU sceNpTrophySystemGetLocalTrophySummary
+g0dxBNTspC0 sceNpTrophySystemGetNextTitleFileEntryStatus
 sJSDnJRJHhI sceNpTrophySystemGetProgress
 X47s4AamPGg sceNpTrophySystemGetTitleFileStatus
 7WPj4KCF3D8 sceNpTrophySystemGetTitleIcon
@@ -33494,6 +33498,7 @@ CZRLO-gAmpk sceVideoCoreInterfaceUnloadModule
 PfoKAY2M0QE sceVideoCoreInterfaceWaitCanvasFlip
 pc6PxOmaeMg sceVideoCoreLaunchVideoCore
 gylHiQ56F10 sceVideoCoreMediaSourceAppendData
+dCmNvuQjLIY sceVideoCoreMediaSourceEndOfStream
 aLifbmFk4tg sceVideoCoreMediaSourceSetDuration
 o27qlxiacL8 sceVideoCoreMediaSourceSetTimestampOffset
 -U6ujqBRGGg sceVideoCorePlayControl
