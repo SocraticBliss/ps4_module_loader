@@ -24608,6 +24608,7 @@ pWntRpPm9kg mono_perfcounter_foreach
 EVMBft8-fdQ mono_personality
 5JrIq4tzVIo mono_pmip
 ikqnnysGCoU mono_poll
+Rxedyw6GM4s mono_print_jit_stats
 X7drz43PfRM mono_print_method_from_ip
 8pST-rncXjc mono_print_thread_dump
 3HxE0UPm48E mono_print_thread_dump_from_ctx
