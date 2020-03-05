@@ -24137,6 +24137,7 @@ s8gdXxUXmQk mono_defaults
 aS8lb9rbDUA mono_delegate_free_ftnptr
 ymDMCu+TZMk mono_delegate_to_ftnptr
 TsODPcApwGo mono_digest_get_public_token
+PiMLXWchQjY mono_disable_jit_time_log
 T9OGLog7agk mono_disasm_code
 ny6YzqATUME mono_disasm_code_one
 Wufu-c6ksJc mono_dl_fallback_register
@@ -24166,6 +24167,7 @@ Z+bUVHmzGQw mono_domain_try_type_resolve
 XjXZHOr9xQA mono_domain_try_unload
 O0LfokyVHKY mono_domain_unload
 BeOKdUmvac8 mono_emit_native_call
+0DpYxkF3NWY mono_enable_jit_time_log
 opkpBy1S9Ek mono_environment_exitcode_get
 j7xEQQxEwhU mono_environment_exitcode_set
 8fN3lsDFf5c mono_error_cleanup
