@@ -31979,9 +31979,11 @@ HMEQbrlRmL0 ScePsmMonoConfigParse
 -ny9i-XOgiI ScePsmMonoDebugInit
 6oVBmLXDVZU ScePsmMonoDelegateFreeFtnptr
 rBz1OlRUnKY ScePsmMonoDelegateToFtnptr
+yV1vwsw1S3g ScePsmMonoDisableJitTimeLog
 +eZsBesRiBM ScePsmMonoDlFallbackRegister
 OgzRrdWr8uA ScePsmMonoDomainAssemblyOpen
 hQMZAaNGHAs ScePsmMonoDomainGet
+rafRG8hKN7I ScePsmMonoEnableJitTimeLog
 B4eWCeaW8ec ScePsmMonoEnvironmentExitcodeGet
 ZyBRuMgQYvM ScePsmMonoFree
 mCQvGf231qg ScePsmMonoGcOutOfMemory
