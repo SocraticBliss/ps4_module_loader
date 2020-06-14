@@ -26623,6 +26623,10 @@ arJp991xk5k sceAudioInSetUserMute
 DVTn+iMSpBM sceAudioInVmicCreate
 3ULZGIl+Acc sceAudioInVmicDestroy
 4kHw99LUG3A sceAudioInVmicWrite
+VeiZKFxdh8k sceAudioLatencyEstimationAddData
+Z1w28FnOa9o sceAudioLatencyEstimationGetDelayTime
+V++vjESqpWU sceAudioLatencyEstimationInitialize
+yR3k0vfjKII sceAudioLatencyEstimationRelease
 Iz9X7ISldhs sceAudioOutA3dControl
 9RVIoocOVAo sceAudioOutA3dExit
 n7KgxE8rOuE sceAudioOutA3dInit
