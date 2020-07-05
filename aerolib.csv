@@ -19496,6 +19496,7 @@ F2ZShEhLU8Y cairo_user_to_device_distance
 ifcK41yodsA call_filter
 GA4WnBtNXyI call_filter_p
 2X5agFjKxMc calloc
+1tk0xABWfqk Canonicalize
 XKRegsFpEpk catchReturnFromMain
 5ZkEP3Rq7As cbrt
 GlelR9EEeck cbrtf
@@ -21039,6 +21040,7 @@ epudbF-GqdU getSocketByProtocolNumber
 BkNALuQPzPU getSockListFromCommInfoList
 RenI1lL1WFk getsockname
 6O8EwYOgH9Y getsockopt
+8LRpdRXPf0s GetStringPlatformChars
 n88vx3C5nW8 gettimeofday
 kg4x8Prhfxw getuid
 AoLA2MRWJvc getw
@@ -22415,6 +22417,7 @@ tqMEyVwoePk JNU_GetFieldByName
 N-2TDcPqToU JNU_GetStaticFieldByName
 hHjw9-aLJk4 JNU_GetStringPlatformChars
 YODjvvt-jqs JNU_IsInstanceOfByName
+XHPiBhqR0zc JNU_MonitorWait
 JmCBbsCE55Y JNU_NewObjectByName
 +M5RIA4WqMo JNU_NewStringPlatform
 b6nYaiZQ9wo JNU_Notify
@@ -26321,6 +26324,12 @@ c+4r-T-tEIc nearbyintf
 6n23e0gIJ9s nearbyintl
 P330P3dFF68 Need_sceLibc
 ZT4ODD2Ts9o Need_sceLibcInternal
+V0dY21JIhV0 NET_Bind
+pgmsbivJe6E NET_GetSockOpt
+07slamu1UYY NET_InetAddressToSockaddr
+vzn-L+Pa+jc NET_MapSocketOption
+RxDsxb4GOQU NET_SetSockOpt
+CYPJi6zTh+U NET_ThrowNew
 8I7xekkfFhQ NetCtlCheckCallbackNative
 z4zamLphAP4 NetCtlGetDeviceTypeNative
 UBtYSUByi3M NetCtlGetStateNative
@@ -26329,6 +26338,7 @@ rlfaE8TqUJI NetCtlRegisterCallbackNative
 SKMDsFP5-Cs NetCtlTermNative
 6lwSxBExYLo NetCtlUnregisterCallbackNative
 jpBkXjnK-U4 NetworkProcessMainPlayStation
+lQCVZr1cW8g NewStringPlatform
 h+J60RRlfnk nextafter
 3m2ro+Di+Ck nextafterf
 R0-hvihVoy0 nextafterl
@@ -38453,3 +38463,4 @@ U5i72PwSh3Y YGUnitToString
 r2eb0xi4zjE YGWrapToString
 eWSt5lscApo yn
 wdPaII721tY ynf
+5FfwhxCHUwA ZIP_CRC32
