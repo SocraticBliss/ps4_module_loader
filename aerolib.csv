@@ -19244,6 +19244,17 @@ vsK6LzRtRLI basename_r
 5TjaJwkLWxE bcmp
 RMo7j0iTPfA bcopy
 mKA4m9Tc6-4 bdf_driver_class
+i30xyj0CsYc bdjbg_alloc
+vbD0xa+1ZX4 bdjbg_clear
+xJHXJ5fxBGY bdjbg_copyPlanes
+QzoLmttapDA bdjbg_destroy
+QnzT-RV-x4U bdjbg_display
+TpASYcKz4l0 bdjbg_free
+wmdQ0-bB-HA bdjbg_getAddress
+nqNjaxls1D8 bdjbg_getInfo
+wGokRTIQZgc bdjbg_init
+scl7UXNelNQ bdjbg_lock
+Mgy7OEaxxLQ bdjbg_unlock
 H0kyPvsDk5Y bemp2sys_logprintf_getlevel
 kgQk2xeWar4 bemp2sys_logprintf_setfunc
 5ssgfQ4aL9A bemp2sys_logprintf_setlevel
