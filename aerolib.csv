@@ -21607,6 +21607,7 @@ IIUY-5hk-4k initstate
 83OhUgcv-zM initThread
 PfccT7qURYE ioctl
 Hk7iHmGxB18 ipmimgr_call
+oXseKdtZASE ipv6_available
 WaThXSvAQNc is_in_sandbox
 4uJJNi+C9wk isalnum
 +xU0WKT8mDc isalpha
@@ -26329,6 +26330,7 @@ pgmsbivJe6E NET_GetSockOpt
 07slamu1UYY NET_InetAddressToSockaddr
 vzn-L+Pa+jc NET_MapSocketOption
 RxDsxb4GOQU NET_SetSockOpt
+T4jFoVqCZmA NET_SockaddrEqualsInetAddress
 CYPJi6zTh+U NET_ThrowNew
 8I7xekkfFhQ NetCtlCheckCallbackNative
 z4zamLphAP4 NetCtlGetDeviceTypeNative
