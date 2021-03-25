@@ -95,12 +95,12 @@ class Binary:
         f.seek(self.E_PHT_OFFSET)
         
         # Elf Program Header Table
-        Binary.E_SEGMENTS = [Segment(f) for entry in xrange(self.E_PHT_COUNT)]
+        Binary.E_SEGMENTS = [Segment(f) for entry in range(self.E_PHT_COUNT)]
         
         f.seek(self.E_SHT_OFFSET)
         
         # Elf Section Header Table
-        Binary.E_SECTIONS = [Section(f) for entry in xrange(self.E_SHT_COUNT)]
+        Binary.E_SECTIONS = [Section(f) for entry in range(self.E_SHT_COUNT)]
     
     def type(self):
     
@@ -113,7 +113,7 @@ class Binary:
             Binary.ET_SCE_EXEC        : 'Main Module',
             Binary.ET_SCE_REPLAY_EXEC : 'Replay Module',
             Binary.ET_SCE_RELEXEC     : 'Relocatable PRX',
-            Binary.ET_SCE_STUBLIB     : 'SDK Stub Library',
+            Binary.ET_SCE_STUBLIB     : 'Stub Library',
             Binary.ET_SCE_DYNEXEC     : 'Main Module - ASLR',
             Binary.ET_SCE_DYNAMIC     : 'Shared Object PRX',
         }.get(self.E_TYPE, 'Missing Program Type!!!')
@@ -302,7 +302,7 @@ class Dynamic:
     DT_SONAME, DT_RPATH, DT_SYMBOLIC, DT_REL, DT_RELSZ, DT_RELENT, DT_PLTREL,
     DT_DEBUG, DT_TEXTREL, DT_JMPREL, DT_BIND_NOW, DT_INIT_ARRAY, DT_FINI_ARRAY,
     DT_INIT_ARRAYSZ, DT_FINI_ARRAYSZ, DT_RUNPATH, DT_FLAGS, DT_ENCODING, DT_PREINIT_ARRAY,
-    DT_PREINIT_ARRAYSZ)         = xrange(0x22)
+    DT_PREINIT_ARRAYSZ)         = range(0x22)
     DT_SCE_IDTABENTSZ           = 0x61000005
     DT_SCE_FINGERPRINT          = 0x61000007
     DT_SCE_ORIGINAL_FILENAME    = 0x61000009
@@ -428,7 +428,7 @@ class Dynamic:
             0x8  : 'LOOSE_IMPORT',
             0x9  : 'AUTO_EXPORT|LOOSE_IMPORT',
             0x10 : 'WEAK_EXPORT|LOOSE_IMPORT',
-        }.get(self.INDEX, 'Missing Import Library Attribute!!!')
+        }.get(self.INDEX, 'Missing Library Attribute!!!')
     
     def mod_attribute(self):
     
@@ -445,9 +445,11 @@ class Dynamic:
     def comment(self, address, stubs, modules, libraries):
     
         if self.TAG in [Dynamic.DT_NEEDED, Dynamic.DT_SONAME]:
-            return '%s | %s' % (self.tag(), stubs[self.VALUE])
+            return '%s | %s' % (self.tag(), str(stubs[self.VALUE]))
         elif self.TAG == Dynamic.DT_SCE_HASH:
-            return '%s | %#x' % (self.tag(), address + Dynamic.HASHTAB)
+            address += Dynamic.HASHTAB
+            idc.add_entry(address, address, '.hash', False)
+            return '%s | %#x' % (self.tag(), address)
         elif self.TAG == Dynamic.DT_SCE_STRTAB:
             address += Dynamic.STRTAB
             idc.add_entry(address, address, '.dynstr', False)
@@ -463,7 +465,8 @@ class Dynamic:
         elif self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_IMPORT_LIB,
                           Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB,
                           Dynamic.DT_SCE_EXPORT_LIB_ATTR, Dynamic.DT_SCE_MODULE_INFO,
-                          Dynamic.DT_SCE_MODULE_ATTR, Dynamic.DT_SCE_ORIGINAL_FILENAME]:
+                          Dynamic.DT_SCE_MODULE_ATTR, Dynamic.DT_SCE_FINGERPRINT,
+                          Dynamic.DT_SCE_ORIGINAL_FILENAME]:
             self.ID             = self.VALUE >> 48
             self.VERSION_MINOR  = (self.VALUE >> 40) & 0xF
             self.VERSION_MAJOR  = (self.VALUE >> 32) & 0xF
@@ -471,17 +474,19 @@ class Dynamic:
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
                 return '%s | MID:%#x Version:%i.%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, modules[self.INDEX])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, str(modules[self.INDEX]))
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
                 return '%s | LID:%#x Version:%i Name:%s' % \
-                       (self.tag(), self.ID, self.VERSION_MAJOR, libraries[self.INDEX])
+                       (self.tag(), self.ID, self.VERSION_MAJOR, str(libraries[self.INDEX]))
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
                 return '%s | %s' % (self.tag(), self.mod_attribute())
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB_ATTR]:
                 return '%s | LID:%#x Attributes:%s' % \
                        (self.tag(), self.ID, self.lib_attribute())
+            elif self.TAG == Dynamic.DT_SCE_FINGERPRINT:
+                return '%s | %s' % (self.tag(), Dynamic.FINGERPRINT)
             elif self.TAG == Dynamic.DT_SCE_ORIGINAL_FILENAME:
-                return '%s | %s' % (self.tag(), stubs[self.VALUE])
+                return '%s | %s' % (self.tag(), str(stubs[self.VALUE]))
         
         return '%s | %#x' % (self.tag(), self.VALUE)
     
@@ -524,20 +529,19 @@ class Dynamic:
         elif self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_IMPORT_LIB,
                           Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB,
                           Dynamic.DT_SCE_EXPORT_LIB_ATTR, Dynamic.DT_SCE_MODULE_INFO,
-                          Dynamic.DT_SCE_MODULE_ATTR, Dynamic.DT_SCE_ORIGINAL_FILENAME]:
+                          Dynamic.DT_SCE_MODULE_ATTR, Dynamic.DT_SCE_FINGERPRINT,
+                          Dynamic.DT_SCE_ORIGINAL_FILENAME]:
             self.ID             = self.VALUE >> 48
             self.VERSION_MINOR  = (self.VALUE >> 40) & 0xF
             self.VERSION_MAJOR  = (self.VALUE >> 32) & 0xF
             self.INDEX          = self.VALUE & 0xFFF
             
             if self.TAG in [Dynamic.DT_SCE_NEEDED_MODULE, Dynamic.DT_SCE_MODULE_INFO]:
-                if self.INDEX not in modules:
-                    modules[self.INDEX] = 0
+                modules[self.INDEX] = 0
                 return '%s | MID:%#x Version:%i.%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.VERSION_MINOR, self.INDEX)
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB, Dynamic.DT_SCE_EXPORT_LIB]:
-                if self.INDEX not in libraries:
-                    libraries[self.INDEX] = self.ID
+                libraries[self.INDEX] = self.ID
                 return '%s | LID:%#x Version:%i | %#x' % \
                        (self.tag(), self.ID, self.VERSION_MAJOR, self.INDEX)
             elif self.TAG == Dynamic.DT_SCE_MODULE_ATTR:
@@ -545,6 +549,8 @@ class Dynamic:
             elif self.TAG in [Dynamic.DT_SCE_IMPORT_LIB_ATTR, Dynamic.DT_SCE_EXPORT_LIB_ATTR]:
                 return '%s | LID:%#x Attributes:%s' % \
                        (self.tag(), self.ID, self.lib_attribute())
+            elif self.TAG == Dynamic.DT_SCE_FINGERPRINT:
+                Dynamic.FINGERPRINT = self.VALUE
             elif self.TAG == Dynamic.DT_SCE_ORIGINAL_FILENAME:
                 stubs[self.INDEX] = 0
         
@@ -565,7 +571,7 @@ class Relocation:
     R_X86_64_GOTOFF64, R_X86_64_GOTPC32, R_X86_64_GOT64, R_X86_64_GOTPCREL64,
     R_X86_64_GOTPC64, R_X86_64_GOTPLT64, R_X86_64_PLTOFF64, R_X86_64_SIZE32,
     R_X86_64_SIZE64, R_X86_64_GOTPC32_TLSDESC, R_X86_64_TLSDESC_CALL, R_X86_64_TLSDESC,
-    R_X86_64_IRELATIVE, R_X86_64_RELATIVE64) = xrange(0x27)
+    R_X86_64_IRELATIVE, R_X86_64_RELATIVE64) = range(0x27)
     R_X86_64_ORBIS_GOTPCREL_LOAD             = 0x28 
     
     def __init__(self, f):
@@ -644,7 +650,10 @@ class Relocation:
         # Object
         else:
             # Resolve the NID...
-            idc.set_cmt(self.OFFSET, 'NID: ' + symbol, False)
+            try:
+                idc.set_cmt(self.OFFSET, 'NID: ' + symbol, False)
+            except:
+                pass
             object = nids.get(symbol[:11], symbol)
             
             # Rename the Object...
@@ -689,8 +698,11 @@ class Relocation:
         real -= 0x6 if idc.print_insn_mnem(real) == 'push' else 0x0
         
         # Resolve the NID...
-        idc.set_cmt(real, 'NID: ' + symbol, False)
-        function = nids.get(symbol[:11], symbol)
+        try:
+            idc.set_cmt(real, 'NID: ' + symbol, False)
+        except:
+            pass
+        function = str(nids.get(symbol[:11], symbol))
         
         # Rename the Jump Function...
         idc.set_name(self.OFFSET, '__imp_' + function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
@@ -699,12 +711,12 @@ class Relocation:
         idc.set_name(real, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
         try:
-            import_node = idaapi.netnode(library, 0, True)
+            import_node = idaapi.netnode(str(library), 0, True)
             import_node.supset(ea2node(real), function)
-        
+            
             # Requires customized loader.i / ida_loader.py(d)
-            idaapi.import_module(library, None, import_node.index(), None, 'linux')
-        
+            idaapi.import_module(str(library), None, import_node.index(), None, 'linux')
+            
         except:
             pass
         
@@ -713,7 +725,7 @@ class Relocation:
 
 class Symbol:
 
-    __slots__ = ('NAME', 'INFO', 'OTHER', 'INDEX', 'VALUE', 'SIZE')
+    __slots__ = ('NAME', 'INFO', 'OTHER', 'SHINDEX', 'VALUE', 'SIZE')
     
     # Symbol Information
     ST_LOCAL_NONE      = 0x0
@@ -743,7 +755,7 @@ class Symbol:
         self.NAME      = struct.unpack('<I', f.read(4))[0]
         self.INFO      = struct.unpack('<B', f.read(1))[0]
         self.OTHER     = struct.unpack('<B', f.read(1))[0]
-        self.INDEX     = struct.unpack('<H', f.read(2))[0]
+        self.SHINDEX   = struct.unpack('<H', f.read(2))[0]
         self.VALUE     = struct.unpack('<Q', f.read(8))[0]
         self.SIZE      = struct.unpack('<Q', f.read(8))[0]
     
@@ -783,7 +795,10 @@ class Symbol:
     def resolve(self, address, nids, symbol):
     
         # Resolve the NID...
-        idc.set_cmt(self.VALUE, 'NID: ' + symbol, False)
+        try:
+            idc.set_cmt(self.VALUE, 'NID: ' + symbol, False)
+        except:
+            pass
         function = nids.get(symbol[:11], symbol)
         
         #print('Function: %s | number: %s' % (function, idaapi.get_func_num(self.VALUE)))
@@ -835,7 +850,7 @@ def load_nids(location, nids = {}):
     
     return nids
 
-# Pablo's IDC
+# Pablo's Scripts
 def pablo(mode, address, end, search):
 
     while address < end:
@@ -844,7 +859,7 @@ def pablo(mode, address, end, search):
         if address > idaapi.get_segm_by_name('CODE').end_ea:
             offset = address - 0x3
             
-            if idaapi.isUnknown(idaapi.getFlags(offset)):
+            if idaapi.is_unknown(idaapi.get_flags(offset)):
                 if idaapi.get_qword(offset) <= end:
                     idaapi.create_data(offset, FF_QWORD, 0x8, BADNODE)
             
@@ -852,7 +867,7 @@ def pablo(mode, address, end, search):
         
         else:
             address += mode
-            idaapi.do_unknown(address, 0)
+            idaapi.del_items(address, 0)
             idaapi.create_insn(address)
             idaapi.add_func(address, BADADDR)
             address += 0x1
@@ -902,7 +917,7 @@ def load_file(f, neflags, format):
                 dynamic = address
                 dynamicsize = size
                 
-                for entry in xrange(size / 0x10):
+                for entry in range(int(dynamicsize / 0x10)):
                     idc.set_cmt(address + (entry * 0x10), Dynamic(f).process(stubs, modules, libraries), False)
             
             '''
@@ -922,7 +937,7 @@ def load_file(f, neflags, format):
                 members = [('exception', 'value', 0x8)]
                 struct = segm.struct('Exception', members)
                 
-                for entry in xrange(size / 0x8):
+                for entry in range(int(size / 0x8)):
                     idaapi.create_struct(address + (entry * 0x8), 0x8, struct)
             '''
         
@@ -932,7 +947,7 @@ def load_file(f, neflags, format):
             # SCE Fingerprint
             idc.make_array(address, 0x14)
             idc.set_name(address, 'SCE_FINGERPRINT', SN_NOCHECK | SN_NOWARN | SN_FORCE)
-            idc.set_cmt(address, ' '.join(x.encode('hex') for x in idc.get_bytes(address, 0x14)).upper(), False)
+            #idc.set_cmt(address, ' '.join(x.encode('hex') for x in idc.get_bytes(address, 0x14)).upper(), False)
             
             # Dynamic Symbol Table
             try:
@@ -951,10 +966,10 @@ def load_file(f, neflags, format):
                 f.seek(segm.OFFSET + Dynamic.SYMTAB)
                 symbols = {}
                 
-                for entry in xrange(Dynamic.SYMTABSZ / 0x18):
+                for entry in range(int(Dynamic.SYMTABSZ / 0x18)):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
                     idc.set_cmt(location + (entry * 0x18), Symbol(f).process(symbols), False)
-            
+                
             except:
                 pass
             
@@ -968,7 +983,7 @@ def load_file(f, neflags, format):
                 # Stubs
                 for key in stubs:
                     idc.create_strlit(location + key, BADADDR)
-                    stubs[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    stubs[key] = idc.get_strlit_contents(location + key, BADADDR).decode()
                     idc.set_cmt(location + key, 'Stub', False)
                 
                 #print('Stubs: %s' % stubs)
@@ -976,17 +991,17 @@ def load_file(f, neflags, format):
                 # Modules
                 for key in modules:
                     idc.create_strlit(location + key, BADADDR)
-                    modules[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    modules[key] = idc.get_strlit_contents(location + key, BADADDR).decode()
                     idc.set_cmt(location + key, 'Module', False)
                 
                 #print('Modules: %s' % modules)
                 
                 # Libraries and LIDs
                 lids = {}
-                for key, value in libraries.iteritems():
+                for key, value in libraries.items():
                     idc.create_strlit(location + key, BADADDR)
-                    lids[value] = idc.get_strlit_contents(location + key, BADADDR)
-                    libraries[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    lids[value] = idc.get_strlit_contents(location + key, BADADDR).decode()
+                    libraries[key] = idc.get_strlit_contents(location + key, BADADDR).decode()
                     idc.set_cmt(location + key, 'Library', False)
                 
                 #print('LIDs: %s' % lids)
@@ -994,28 +1009,28 @@ def load_file(f, neflags, format):
                 # Symbols
                 for key in symbols:
                     idc.create_strlit(location + key, BADADDR)
-                    symbols[key] = idc.get_strlit_contents(location + key, BADADDR)
+                    symbols[key] = idc.get_strlit_contents(location + key, BADADDR).decode()
                     idc.set_cmt(location + key, 'Symbol', False)
                 
                 #print('Symbols: %s' % symbols)
-            
+                
             except:
                 pass
             
             # Resolve Export Symbols
             try:
-                symbols = sorted(symbols.iteritems())
+                symbols = sorted(symbols.items())
                 location = address + Dynamic.SYMTAB + 0x30
                 f.seek(segm.OFFSET + Dynamic.SYMTAB + 0x30)
                 
-                for entry in xrange((Dynamic.SYMTABSZ - 0x30) / 0x18):
+                for entry in range(int((Dynamic.SYMTABSZ - 0x30) / 0x18)):
                     Symbol(f).resolve(location + (entry * 0x18), nids, symbols[entry][1])
-            
+                
             except:
                 pass
             
             # Jump Table
-            try:                
+            try:
                 # --------------------------------------------------------------------------------------------------------
                 # Jump Entry Structure
                 members = [('offset', 'Offset (String Index)', 0x8),
@@ -1032,10 +1047,10 @@ def load_file(f, neflags, format):
                 location = address + Dynamic.JMPTAB
                 f.seek(segm.OFFSET + Dynamic.JMPTAB)
                 
-                for entry in xrange(Dynamic.JMPTABSZ / 0x18):
+                for entry in range(int(Dynamic.JMPTABSZ / 0x18)):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
                     idc.set_cmt(location + (entry * 0x18), Relocation(f).resolve(alphabet, nids, symbols, lids), False)
-            
+                
             except:
                 pass
             
@@ -1052,10 +1067,10 @@ def load_file(f, neflags, format):
                 location = address + Dynamic.RELATAB
                 f.seek(segm.OFFSET + Dynamic.RELATAB)
                 
-                for entry in xrange(Dynamic.RELATABSZ / 0x18):
+                for entry in range(int(Dynamic.RELATABSZ / 0x18)):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
                     idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, symbols), False)
-            
+                
             except:
                 pass
             
@@ -1073,9 +1088,9 @@ def load_file(f, neflags, format):
                 location = address + Dynamic.HASHTAB
                 f.seek(segm.OFFSET + Dynamic.HASHTAB)
                 
-                for entry in xrange(Dynamic.HASHTABSZ / 0x8):
+                for entry in range(int(Dynamic.HASHTABSZ / 0x8)):
                     idaapi.create_struct(location + (entry * 0x8), 0x8, struct)
-            
+                
             except:
                 pass
             
@@ -1089,10 +1104,10 @@ def load_file(f, neflags, format):
                 
                 f.seek(offset)
                 
-                for entry in xrange(dynamicsize / 0x10):
+                for entry in range(int(dynamicsize / 0x10)):
                     idaapi.create_struct(dynamic + (entry * 0x10), 0x10, struct)
                     idc.set_cmt(dynamic + (entry * 0x10), Dynamic(f).comment(address, stubs, modules, libraries), False)
-            
+                
             except:
                 pass
             
@@ -1113,9 +1128,9 @@ def load_file(f, neflags, format):
         pass
     
     # --------------------------------------------------------------------------------------------------------
-    # Pablo's IDC
+    # Pablo's Scripts
     try:
-        print('# Processing Pablo\'s Push IDC...')
+        print('# Processing Pablo\'s Push script...')
         
         # Script 1) Push it real good...
         # Default patterns set
