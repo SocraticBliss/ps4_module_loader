@@ -22,7 +22,7 @@ Extra Special Thanks for telling me my program sucks...
 # IDA 7.0 - 7.2
 1) Extract the **IDA70-72.zip** directory into your IDA directory (overwite the files when prompted)
 
-# IDA 7.5 (Requires Python 3.9)
+# IDA 7.5-7.7 (Requires Python 3.9)
 1) Extract the **IDA75.zip** directory into your IDA directory (overwite the files when prompted)
 
 # Usage
