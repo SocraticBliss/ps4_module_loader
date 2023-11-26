@@ -134,7 +134,7 @@ class Binary:
         idc.add_default_til(til)
         
         # Loader Flags
-        idc.set_inf_attr(INF_LFLAGS, LFLG_64BIT)
+        #idc.set_inf_attr(INF_LFLAGS, LFLG_64BIT)
         
         # Assume GCC3 names
         idc.set_inf_attr(INF_DEMNAMES, DEMNAM_GCC3 | DEMNAM_NAME)

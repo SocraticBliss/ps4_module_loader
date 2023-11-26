@@ -25,6 +25,9 @@ Extra Special Thanks for telling me my program sucks...
 # IDA 7.5-7.7 (Requires Python 3.9)
 1) Extract the **IDA75.zip** directory into your IDA directory (overwite the files when prompted)
 
+# IDA 8.3
+1) I will eventually make a zip, just copy ps4_module.py and aerolib.csv to your loaders directory
+
 # Usage
 1) Load a PS4 Module file (.prx, .sprx, .elf, .self)
 2) Select the option ending with **[ps4_module.py]**
