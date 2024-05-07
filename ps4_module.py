@@ -821,7 +821,7 @@ def accept_file(f, filename):
     ps4 = Binary(f)
     
     # No Kernels
-    if ps4.E_MACHINE == Binary.EM_X86_64 and ps4.E_START_ADDR < 0xFFFFFFFF82200000:
+    if ps4.E_MACHINE == Binary.EM_X86_64:
         return { 'format': 'PS4 - ' + ps4.type(),
                  'options': ACCEPT_FIRST }
     return 0
@@ -1921,3 +1921,4 @@ def load_file(f, neflags, format):
     return 1
 
 # PROGRAM END
+
