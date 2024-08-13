@@ -829,11 +829,11 @@ def accept_file(f, filename):
 # Since IDA cannot create a compatibility layer to save its life...
 def find_binary(address, end, search, format, flags):
     
-    # Is this really so hard ilfak?
+    # Is this really so hard Ilfak?
     if idaapi.IDA_SDK_VERSION > 760:
         binpat = idaapi.compiled_binpat_vec_t()
         idaapi.parse_binpat_str(binpat, address, search, format)
-        address, _ = idaapi.bin_search3(address, end, binpat, SEARCH_DOWN)
+        address, _ = idaapi.bin_search3(address, end, binpat, flags)
     else:
         address = idaapi.find_binary(address, end, search, format, flags)
     
