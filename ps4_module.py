@@ -826,6 +826,19 @@ def accept_file(f, filename):
                  'options': ACCEPT_FIRST }
     return 0
 
+# Since IDA cannot create a compatibility layer to save its life...
+def find_binary(address, end, search, format, flags):
+    
+    # Is this really so hard ilfak?
+    if idaapi.IDA_SDK_VERSION > 760:
+        binpat = idaapi.compiled_binpat_vec_t()
+        idaapi.parse_binpat_str(binpat, address, search, format)
+        address, _ = idaapi.bin_search3(address, end, binpat, SEARCH_DOWN)
+    else:
+        address = idaapi.find_binary(address, end, search, format, flags)
+    
+    return address
+
 # Load NID Library...
 def load_nids(location, nids = {}):
 
@@ -854,7 +867,7 @@ def load_nids(location, nids = {}):
 def pablo(mode, address, end, search):
 
     while address < end:
-        address = idaapi.find_binary(address, end, search, 0x10, SEARCH_DOWN)
+        address = find_binary(address, end, search, 0x10, SEARCH_DOWN)
         
         if address > idaapi.get_segm_by_name('CODE').end_ea:
             offset = address - 0x3
@@ -1878,7 +1891,7 @@ def load_file(f, neflags, format):
         end     = code.end_ea
         
         while address < end:
-            address = idaapi.find_binary(address, end, '00 00 49 89 CA 0F 05', 0x10, SEARCH_DOWN)
+            address = find_binary(address, end, '00 00 49 89 CA 0F 05', 0x10, SEARCH_DOWN)
             number = address - 0x2
             
             if address < end:
