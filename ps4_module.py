@@ -715,8 +715,7 @@ class Relocation:
             import_node.supset(ea2node(real), function)
             
             # Requires customized loader.i / ida_loader.py(d)
-            idaapi.import_module(str(library), None, import_node.index(), None, 'linux')
-            
+            idaapi.ext.import_module(str(library), '', import_node.index(), 'linux')
         except:
             pass
         
