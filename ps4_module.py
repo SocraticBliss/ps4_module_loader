@@ -714,8 +714,12 @@ class Relocation:
             import_node = idaapi.netnode(str(library), 0, True)
             import_node.supset(ea2node(real), function)
             
-            # Requires customized loader.i / ida_loader.py(d)
-            idaapi.ext.import_module(str(library), '', import_node.index(), 'linux')
+            if hasattr(idaapi, 'import_module'):
+                # Requires customized loader.i / ida_loader.py(d)
+                idaapi.import_module(str(library), None, import_node.index(), None, 'linux')
+            else:
+                # Requires https://github.com/janisslsm/ida-ps4-helper
+                idaapi.ext.import_module(str(library), '', import_node.index(), 'linux')
         except:
             pass
         
