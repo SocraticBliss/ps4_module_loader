@@ -833,10 +833,19 @@ def accept_file(f, filename):
 def find_binary(address, end, search, format, flags):
     
     # Is this really so hard Ilfak?
+    # Not only do you break it between the beta and the release candidate... 
+    # You then have the audacity to write in your release notes that you added find_binary, but it is nowhere to be seen
+    # Feel free to take this version and modify it though to fit all edge cases, and in the spirit of your latest release, for free!
     if idaapi.IDA_SDK_VERSION > 760:
         binpat = idaapi.compiled_binpat_vec_t()
         idaapi.parse_binpat_str(binpat, address, search, format)
-        address, _ = idaapi.bin_search3(address, end, binpat, flags)
+        
+        # 9.0 RC1
+        try:
+            address, _ = idaapi.bin_search(address, end, binpat, flags)
+        # 9.0 Beta
+        except:
+            address, _ = idaapi.bin_search3(address, end, binpat, flags)
     else:
         address = idaapi.find_binary(address, end, search, format, flags)
     
