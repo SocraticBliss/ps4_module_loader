@@ -427,7 +427,7 @@ class Dynamic:
             0x2  : 'WEAK_EXPORT',
             0x8  : 'LOOSE_IMPORT',
             0x9  : 'AUTO_EXPORT|LOOSE_IMPORT',
-            0x10 : 'WEAK_EXPORT|LOOSE_IMPORT',
+            0xA  : 'WEAK_EXPORT|LOOSE_IMPORT',
         }.get(self.INDEX, 'Missing Library Attribute!!!')
     
     def mod_attribute(self):
