@@ -21,17 +21,8 @@ Extra Special Thanks for telling me my program sucks...
 * zecoxao
 
 # Installation
-# IDA 7.0 - 7.2
-1) Extract the **IDA70-72.zip** directory into your IDA directory (overwite the files when prompted)
-
-# IDA 7.5 - 7.7 (Requires Python 3.9)
-1) Extract the **IDA75.zip** directory into your IDA directory (overwite the files when prompted)
-
-# IDA 8.3 (Requires Python 3.10) Thanks janisslsm !!
-1) Extract the **IDA83.zip** directory into your IDA directory (overwrite the files when prompted)
-
-# IDA 9.0 Thanks very much to janisslsm !!
-1) Extract the **IDA90.zip** directory into your IDA directory (overwrite the files when prompted)
+# IDA 7.0 - 9.1 Thanks very much to janisslsm !!
+1) Extract the **ps4_module.py** and **aerolib.csv** into your IDA loaders directory
 
 # Usage
 1) Load a PS4 Module file (.prx, .sprx, .elf, .self)

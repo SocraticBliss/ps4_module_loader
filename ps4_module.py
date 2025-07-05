@@ -28,6 +28,7 @@ from idaapi import *
 from idc import *
 
 import csv
+import ctypes
 import idaapi
 import idc
 import shutil
@@ -710,18 +711,25 @@ class Relocation:
         # Rename the Real Function...
         idc.set_name(real, function, SN_NOCHECK | SN_NOWARN | SN_FORCE)
         
+        import_node = idaapi.netnode(str(library), 0, True)
+        import_node.supset(ea2node(real), function)
+        
+        # Who would have guessed that ctypes would solve this problem ?
+        # https://hex-rays.com/blog/calling-ida-apis-from-idapython-with-ctypes
+        if sys.platform == 'win32':
+            ext = '.dll'
+        elif sys.platform == 'linux2':
+            ext = '.so'
+        elif sys.platform == 'darwin':
+            ext = '.dynlib'
+        
         try:
-            import_node = idaapi.netnode(str(library), 0, True)
-            import_node.supset(ea2node(real), function)
-            
-            if hasattr(idaapi, 'import_module'):
-                # Requires customized loader.i / ida_loader.py(d)
-                idaapi.import_module(str(library), None, import_node.index(), None, 'linux')
-            else:
-                # Requires https://github.com/janisslsm/ida-ps4-helper
-                idaapi.ext.import_module(str(library), '', import_node.index(), 'linux')
+            dll = ctypes.windll['ida64' + ext]
         except:
-            pass
+            dll = ctypes.windll['ida' + ext]
+        dll.import_module.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_ulonglong, ctypes.c_char_p, ctypes.c_char_p]
+        
+        dll.import_module(library.encode(), None, import_node.index(), None, b'linux')
         
         return self.type()
     
