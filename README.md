@@ -16,6 +16,8 @@ Major Thanks to...
 * Team Reswitched
 * janisslsm
 * mailwl
+* Pharaoh2k
+* DeathRGH
 
 Extra Special Thanks for telling me my program sucks...
 * zecoxao
