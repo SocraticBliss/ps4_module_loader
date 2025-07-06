@@ -34,6 +34,46 @@ import idc
 import shutil
 import struct
 
+def get_custom_base_address(original_base):
+    """
+    Ask user for custom base address with dialog
+    Returns: (use_custom, base_address)
+    """
+    import idaapi
+    
+    choice = idaapi.ask_yn(idaapi.ASKBTN_YES, 
+                          "Do you want to load this PS4 module at a custom base address?\n\n"
+                          "Original base: 0x%X\n\n"
+                          "YES = Choose custom base\n"
+                          "NO = Use original addresses\n"
+                          "CANCEL = Use default 0x400000" % original_base)
+    
+    if choice == idaapi.ASKBTN_NO:
+        return False, 0
+    elif choice == idaapi.ASKBTN_CANCEL:
+        return True, 0x400000
+    else:
+        default_base = 0x400000
+        custom_base = idaapi.ask_addr(default_base, 
+                                     "Enter custom base address:\n\n"
+                                     "Common bases:\n"
+                                     "• 0x400000 (typical Linux/ELF)\n"
+                                     "• 0x10000000 (high memory)\n"
+                                     "• 0x140000000 (very high)\n\n"
+                                     "Base address:")
+        
+        if custom_base is None or custom_base == idaapi.BADADDR:
+            return False, 0
+        else:
+            if custom_base & 0xFFF != 0:
+                if idaapi.ask_yn(idaapi.ASKBTN_YES,
+                               "Warning: Address 0x%X is not page-aligned.\n"
+                               "This may cause issues.\n\n"
+                               "Continue anyway?" % custom_base) != idaapi.ASKBTN_YES:
+                    return False, 0
+            
+            return True, custom_base
+
 class Binary:
 
     __slots__ = ('EI_MAGIC', 'EI_CLASS', 'EI_DATA', 'EI_VERSION',
@@ -911,7 +951,27 @@ def load_file(f, neflags, format):
     print('# PS4 Module Loader')
     ps4 = Binary(f)
     
-    # PS4 Processor, Compiler, Library
+    # Find the original base from the first CODE segment...
+    original_base = None
+    for segm in ps4.E_SEGMENTS:
+        if segm.name() == 'CODE' and segm.MEM_ADDR > 0:
+            original_base = segm.MEM_ADDR
+            break
+    
+    if original_base is None:
+        original_base = ps4.E_START_ADDR & 0xFFFFF000  # Use entry point, page-aligned...
+    
+    # Ask user for base address preference...
+    use_custom, custom_base = get_custom_base_address(original_base)
+    
+    if use_custom:
+        base_offset = custom_base - original_base
+        print('# Custom rebase: 0x%X -> 0x%X (offset: %+#x)' % (original_base, custom_base, base_offset))
+    else:
+        base_offset = 0
+        print('# Using original base address: 0x%X' % original_base)
+    
+    # PS4 Processor, Compiler, Library...
     bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'ps4_errno_700')
     
     # Load Aerolib...
@@ -923,12 +983,22 @@ def load_file(f, neflags, format):
         # Process Loadable Segments...
         if segm.name() in ['CODE', 'DATA', 'SCE_RELRO', 'DYNAMIC', 'GNU_EH_FRAME', 'SCE_DYNLIBDATA']:
         
-            address = segm.MEM_ADDR if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.OFFSET + 0x1000000
-            size    = segm.MEM_SIZE if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.FILE_SIZE
+            # Apply custom base address if requested
+            if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA']:
+                address = segm.MEM_ADDR + base_offset
+            else:
+                address = segm.OFFSET + 0x1000000
+                
+            size = segm.MEM_SIZE if segm.name() not in ['DYNAMIC', 'SCE_DYNLIBDATA'] else segm.FILE_SIZE
             
-            print('# Processing %s Segment...' % segm.name())
+            if base_offset != 0:
+                print('# Processing %s Segment at 0x%X (was 0x%X)...' % (segm.name(), address, segm.MEM_ADDR))
+            else:
+                print('# Processing %s Segment at 0x%X...' % (segm.name(), address))
+                
             f.file2base(segm.OFFSET, address, address + segm.FILE_SIZE, FILEREG_PATCHABLE)
             
+            # Continue with existing segment processing...
             if segm.name() not in ['DYNAMIC', 'GNU_EH_FRAME']:
                 
                 idaapi.add_segm(0, address, address + size, segm.name(), segm.type(), ADDSEG_NOTRUNC | ADDSEG_FILLGAP)
@@ -1146,6 +1216,10 @@ def load_file(f, neflags, format):
             
     
     code = idaapi.get_segm_by_name('CODE')
+    
+    # Adjust entry point
+    adjusted_entry = ps4.E_START_ADDR + base_offset
+    idc.add_entry(adjusted_entry, adjusted_entry, 'start', True)
     
     # Start Function
     idc.add_entry(ps4.E_START_ADDR, ps4.E_START_ADDR, 'start', True)
