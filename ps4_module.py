@@ -947,7 +947,6 @@ def pablo(mode, address, end, search):
 
 # Load Input Binary...
 def load_file(f, neflags, format):
-
     print('# PS4 Module Loader')
     ps4 = Binary(f)
     
@@ -970,6 +969,9 @@ def load_file(f, neflags, format):
     else:
         base_offset = 0
         print('# Using original base address: 0x%X' % original_base)
+        
+    global BASE_OFFSET
+    BASE_OFFSET = base_offset
     
     # PS4 Processor, Compiler, Library...
     bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'ps4_errno_700')
@@ -1152,7 +1154,9 @@ def load_file(f, neflags, format):
                 
                 for entry in range(int(Dynamic.JMPTABSZ / 0x18)):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).resolve(alphabet, nids, symbols, lids), False)
+                    rel = Relocation(f)
+                    rel.OFFSET += base_offset  # Adjust the offset before resolving
+                    idc.set_cmt(location + (entry * 0x18), rel.resolve(alphabet, nids, symbols, lids), False)
                 
             except:
                 pass
@@ -1172,7 +1176,9 @@ def load_file(f, neflags, format):
                 
                 for entry in range(int(Dynamic.RELATABSZ / 0x18)):
                     idaapi.create_struct(location + (entry * 0x18), 0x18, struct)
-                    idc.set_cmt(location + (entry * 0x18), Relocation(f).process(nids, symbols), False)
+                    rel = Relocation(f)
+                    rel.OFFSET += base_offset  # Adjust the offset before processing
+                    idc.set_cmt(location + (entry * 0x18), rel.process(nids, symbols), False)
                 
             except:
                 pass
