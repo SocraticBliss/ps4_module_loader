@@ -26,7 +26,7 @@ ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 from idaapi import *
 from idc import *
-
+import sys
 import csv
 import ctypes
 import idaapi
