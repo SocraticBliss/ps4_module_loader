@@ -756,17 +756,18 @@ class Relocation:
         
         # Who would have guessed that ctypes would solve this problem ?
         # https://hex-rays.com/blog/calling-ida-apis-from-idapython-with-ctypes
-        if sys.platform == 'win32':
-            ext = '.dll'
-        elif sys.platform == 'linux2':
+        if sys.platform.startswith('linux'):  # Python 3 compatible
             ext = '.so'
+            loader = ctypes.CDLL  # Correct for Linux shared librarie
         elif sys.platform == 'darwin':
-            ext = '.dynlib'
-        
-        try:
-            dll = ctypes.windll['ida64' + ext]
-        except:
-            dll = ctypes.windll['ida' + ext]
+            ext = '.dylib'  # .dylib on mac
+            loader = ctypes.CDLL
+        else:  # Windows
+            ext = '.dll'
+            loader = ctypes.windll
+
+  dll = loader(idaapi.find_plugin('ida64' + ext, True))
+
         dll.import_module.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_ulonglong, ctypes.c_char_p, ctypes.c_char_p]
         
         dll.import_module(library.encode(), None, import_node.index(), None, b'linux')
