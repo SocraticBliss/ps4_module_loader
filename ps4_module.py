@@ -766,7 +766,7 @@ class Relocation:
             ext = '.dll'
             loader = ctypes.windll
 
-  dll = loader(idaapi.find_plugin('ida64' + ext, True))
+        dll = loader(idaapi.find_plugin('ida64' + ext, True))
 
         dll.import_module.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_ulonglong, ctypes.c_char_p, ctypes.c_char_p]
         
