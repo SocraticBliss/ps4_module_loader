@@ -26,7 +26,7 @@ ps4_module.py: IDA loader for reading Sony PlayStation(R) 4 Module files
 
 from idaapi import *
 from idc import *
-
+import sys
 import csv
 import ctypes
 import idaapi
@@ -138,10 +138,13 @@ class Binary:
         # Elf Program Header Table
         Binary.E_SEGMENTS = [Segment(f) for entry in range(self.E_PHT_COUNT)]
         
-        f.seek(self.E_SHT_OFFSET)
+        try:
+            f.seek(self.E_SHT_OFFSET)
         
-        # Elf Section Header Table
-        Binary.E_SECTIONS = [Section(f) for entry in range(self.E_SHT_COUNT)]
+            # Elf Section Header Table
+            Binary.E_SECTIONS = [Section(f) for entry in range(self.E_SHT_COUNT)]
+        except:
+            Binary.E_SECTIONS = []
     
     def type(self):
     
@@ -756,17 +759,19 @@ class Relocation:
         
         # Who would have guessed that ctypes would solve this problem ?
         # https://hex-rays.com/blog/calling-ida-apis-from-idapython-with-ctypes
-        if sys.platform == 'win32':
-            ext = '.dll'
-        elif sys.platform == 'linux2':
-            ext = '.so'
-        elif sys.platform == 'darwin':
-            ext = '.dynlib'
+        idavariant = 'ida64' if __EA64__ else 'ida'
+        if sys.platform.startswith('linux'):  # Linux
+            idalib = 'lib%s.so' % idavariant
+            loader = ctypes.CDLL
+        elif sys.platform == 'darwin':  # Mac
+            idalib = 'lib%s.dylib' % idavariant
+            loader = ctypes.CDLL
+        else:  # Windows
+            idalib = '%s.dll' % idavariant
+            loader = ctypes.windll
         
-        try:
-            dll = ctypes.windll['ida64' + ext]
-        except:
-            dll = ctypes.windll['ida' + ext]
+        dll = loader(idaapi.find_plugin(idalib, True))
+        
         dll.import_module.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_ulonglong, ctypes.c_char_p, ctypes.c_char_p]
         
         dll.import_module(library.encode(), None, import_node.index(), None, b'linux')
@@ -950,7 +955,16 @@ def load_file(f, neflags, format):
     print('# PS4 Module Loader')
     ps4 = Binary(f)
     
-    # Find the original base from the first CODE segment...
+    # Find the minimum virtual address across all loadable segments
+    # This matches how PS4 system loader calculates the base
+    loadable_segments = [segm for segm in ps4.E_SEGMENTS if segm.name() in ['CODE', 'DATA', 'SCE_RELRO']]
+    
+    if loadable_segments:
+        min_vaddr = min(segm.MEM_ADDR for segm in loadable_segments)
+    else:
+        min_vaddr = ps4.E_START_ADDR & 0xFFFFF000
+    
+    # Find the CODE segment base for display purposes
     original_base = None
     for segm in ps4.E_SEGMENTS:
         if segm.name() == 'CODE' and segm.MEM_ADDR > 0:
@@ -958,17 +972,18 @@ def load_file(f, neflags, format):
             break
     
     if original_base is None:
-        original_base = ps4.E_START_ADDR & 0xFFFFF000  # Use entry point, page-aligned...
+        original_base = ps4.E_START_ADDR & 0xFFFFF000
     
-    # Ask user for base address preference...
+    # Ask user for base address preference
     use_custom, custom_base = get_custom_base_address(original_base)
     
     if use_custom:
-        base_offset = custom_base - original_base
-        print('# Custom rebase: 0x%X -> 0x%X (offset: %+#x)' % (original_base, custom_base, base_offset))
+        # Calculate offset from minimum virtual address (PS4-style)
+        base_offset = custom_base - min_vaddr
+        print('# Custom rebase: 0x%X -> 0x%X (offset: %+#x)' % (min_vaddr, custom_base, base_offset))
     else:
         base_offset = 0
-        print('# Using original base address: 0x%X' % original_base)
+        print('# Using original virtual addresses')
         
     global BASE_OFFSET
     BASE_OFFSET = base_offset
