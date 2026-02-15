@@ -759,18 +759,21 @@ class Relocation:
         
         # Who would have guessed that ctypes would solve this problem ?
         # https://hex-rays.com/blog/calling-ida-apis-from-idapython-with-ctypes
-        idavariant = 'ida64' if __EA64__ else 'ida'
         if sys.platform.startswith('linux'):  # Linux
-            idalib = 'lib%s.so' % idavariant
-            loader = ctypes.CDLL
+            ext = '.so'
         elif sys.platform == 'darwin':  # Mac
-            idalib = 'lib%s.dylib' % idavariant
-            loader = ctypes.CDLL
-        else:  # Windows
-            idalib = '%s.dll' % idavariant
-            loader = ctypes.windll
+            ext = '.dylib'
         
-        dll = loader(idaapi.find_plugin(idalib, True))
+        if sys.platform.startswith('win'):  # Windows
+            try:
+                dll = ctypes.windll['ida64.dll']
+            except:
+                dll = ctypes.windll['ida.dll']
+        else:  # Linux and Mac
+            try:
+                dll = ctypes.cdll['libida64' + ext]
+            except:
+                dll = ctypes.cdll['libida' + ext]
         
         dll.import_module.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_ulonglong, ctypes.c_char_p, ctypes.c_char_p]
         
