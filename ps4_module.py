@@ -995,7 +995,8 @@ def load_file(f, neflags, format):
     bitness = ps4.procomp('metapc', CM_N64 | CM_M_NN | CM_CC_FASTCALL, 'ps4_errno_700')
     
     # Load Aerolib...
-    nids = load_nids(idc.idadir() + '/loaders/aerolib.csv')
+    nids_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'aerolib.csv')
+    nids = load_nids(nids_path)
     
     # Segment Loading...
     for segm in ps4.E_SEGMENTS:
