@@ -684,8 +684,9 @@ class Relocation:
         
         # String (Offset) == Base + AddEnd (B + A)
         if self.type() == 'R_X86_64_RELATIVE':
-            idaapi.put_qword(self.OFFSET, self.ADDEND)
+            idaapi.put_qword(self.OFFSET, self.ADDEND + BASE_OFFSET)
             idaapi.create_data(self.OFFSET, FF_QWORD, 0x8, BADNODE)
+            idc.op_plain_offset(self.OFFSET, 0, 0) # also tell IDA it's an offset so we get xrefs
         
         # TLS Object
         elif self.type() in ['R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
