@@ -2048,6 +2048,23 @@ def load_file(f, neflags, format):
     
     except:
         pass
+
+    # Vtable header heuristic
+    try:
+        print('# Formatting leftover SCE_RELRO bytes (Vtable fix)...')
+        
+        relro = idaapi.get_segm_by_name('SCE_RELRO')
+        if relro:
+            ea = relro.start_ea
+            while ea < relro.end_ea:
+                # IDA groups unformatted bytes into giant 'unk_' blobs, which visually misaligns xrefs.
+                # Forcing these leftover bytes into QWORDs breaks the blobs and snaps xrefs to the right offsets.
+                # This fixes up vtable xrefs.
+                if idaapi.is_unknown(idaapi.get_flags(ea)):
+                    idaapi.create_data(ea, FF_QWORD, 8, BADNODE)
+                ea += 8
+    except:
+        pass
     
     print('# Done!')
     return 1
