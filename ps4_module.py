@@ -684,8 +684,9 @@ class Relocation:
         
         # String (Offset) == Base + AddEnd (B + A)
         if self.type() == 'R_X86_64_RELATIVE':
-            idaapi.put_qword(self.OFFSET, self.ADDEND)
+            idaapi.put_qword(self.OFFSET, self.ADDEND + BASE_OFFSET)
             idaapi.create_data(self.OFFSET, FF_QWORD, 0x8, BADNODE)
+            idc.op_plain_offset(self.OFFSET, 0, 0) # also tell IDA it's an offset so we get xrefs
         
         # TLS Object
         elif self.type() in ['R_X86_64_DTPMOD64', 'R_X86_64_DTPOFF64']:
@@ -2045,6 +2046,23 @@ def load_file(f, neflags, format):
             
             address = idaapi.next_head(address, BADADDR)
     
+    except:
+        pass
+
+    # Vtable header heuristic
+    try:
+        print('# Formatting leftover SCE_RELRO bytes (Vtable fix)...')
+        
+        relro = idaapi.get_segm_by_name('SCE_RELRO')
+        if relro:
+            ea = relro.start_ea
+            while ea < relro.end_ea:
+                # IDA groups unformatted bytes into giant 'unk_' blobs, which visually misaligns xrefs.
+                # Forcing these leftover bytes into QWORDs breaks the blobs and snaps xrefs to the right offsets.
+                # This fixes up vtable xrefs.
+                if idaapi.is_unknown(idaapi.get_flags(ea)):
+                    idaapi.create_data(ea, FF_QWORD, 8, BADNODE)
+                ea += 8
     except:
         pass
     
